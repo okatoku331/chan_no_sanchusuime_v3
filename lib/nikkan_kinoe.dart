@@ -96,29 +96,9 @@ class NikkanKinoe extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-
-
-
-
-
-
-
-
           ],
         ),
-
       ),
-
-      //bottomNavigationBar: BottomNavigationBar(
-      //  items: const[
-      //    BottomNavigationBarItem(
-      //      icon: Icon(Icons.home),
-      //      label: '',
-      //    )
-      //  ],
-      //),
-
     );
   }
-
 }
