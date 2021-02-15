@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.0
+  admob_flutter: ^1.0.1
 
   intl: ^0.16.1
 
