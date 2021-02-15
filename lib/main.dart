@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            Image.asset('images/チャン_1.jpg'),
             Padding(
                 padding: const EdgeInsets.all(32.0),
               child: Text('あなたの日干はなんですか？'),
