@@ -1,11 +1,10 @@
 import 'dart:ui';
-
 import 'package:admob_flutter/admob_flutter.dart';
-//import 'input_seinengappi.dart';
+import 'package:chan_no_sanchusuimei_v3/input_seinengappi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'input_seinengappi.dart';
 import 'jiko_syoukai.dart';
-import 'nikkan_input1.dart';
 import 'nikkan/nikkan_hinoe.dart';
 import 'nikkan/nikkan_hinoto.dart';
 import 'nikkan/nikkan_kanoe.dart';
@@ -236,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 final result = await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NikkanInput1(),
+                      builder: (context) => InputSeinengappi(),
                     ));
                 text = result;
                 print(text);

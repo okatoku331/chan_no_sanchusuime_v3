@@ -1,26 +1,15 @@
 import 'package:admob_flutter/admob_flutter.dart';
-import 'package:chan_no_sanchusuimei_v3/input_seinengappi_kekka.dart';
-//import 'nikkan_jump.dart';
+import 'input_seinengappi_kekka.dart';
 import 'package:flutter/material.dart';
-
-import 'nikkan/nikkan_kinoe.dart';
-import 'nikkan/nikkan_kinoto.dart';
-import 'nikkan/nikkan_hinoe.dart';
-import 'nikkan/nikkan_hinoto.dart';
-import 'nikkan/nikkan_tsutinoe.dart';
-import 'nikkan/nikkan_tsutinoto.dart';
-import 'nikkan/nikkan_kanoe.dart';
-import 'nikkan/nikkan_kanoto.dart';
-import 'nikkan/nikkan_mizunoe.dart';
-import 'nikkan/nikkan_mizunoto.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import "package:intl/intl.dart";
 import 'services/admob.dart';
 
 class InputSeinengappi extends StatelessWidget {
   DateTime Date0 = DateTime(1900, 1, 1);
   DateTime Date2;
   int nissuu = 0;
-  int nikkan = -1;
-  String title1 = "次の画面";
+  int nikkan = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -46,26 +35,59 @@ class InputSeinengappi extends StatelessWidget {
                     locale: const Locale('ja'),
                   );
 
+                  //■■入力された生年月日のデータを加工する■■
+
                   nissuu = Date2.difference(Date0).inDays;
                   nikkan = nissuu % 10;
-                  String nikkanmoji = nikkan.toRadixString(10);
 
-                  //print('$Date0');
-                  print('a$Date2');
-                  //print('$nissuu');
-                  print('$nikkan');
+                  String nikkanmoji = nikkan.toRadixString(10);
+                  int nikkan1 = int.parse(nikkanmoji);
+
+                  initializeDateFormatting("ja_JP");
+                  //var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP");
+                  var seinengappiType = new DateFormat('yyyy/MM/dd', "ja_JP");
+                  var seinengappiMoji =
+                      seinengappiType.format(Date2); // Dateから生年月日の文字
+                  var seinenType = new DateFormat('yyyy', "ja_JP");
+                  var seinenMoji = seinenType.format(Date2); // Dateから生年の文字
+                  var seigatuType = new DateFormat('MM', "ja_JP");
+                  var seigatuMoji = seigatuType.format(Date2); // Dateから生月の文字
+                  var seihiType = new DateFormat('dd', "ja_JP");
+                  var seihiMoji = seihiType.format(Date2); // Dateから生日の文字
+                  int seinen = int.parse(seinenMoji);
+                  int seigatu = int.parse(seigatuMoji);
+                  int seihi = int.parse(seihiMoji);
+
+                  print('a:$Date2'); //生年月日のDateTime型
+                  print('b:$nikkan'); //日干を表す数字
+                  print('c:$nikkanmoji'); //日干を表す文字
+                  print('d:$nikkan1');
+                  print('e:$seinengappiMoji'); //生年月日を表す文字
+                  print('f:$seinenMoji'); //生年を表す文字
+                  print('g:$seigatuMoji'); //生月を表す文字
+                  print('h:$seihiMoji'); //生日を表す文字
+                  print('i:$seinen'); //生年を表す数字
+                  print('j:$seigatu'); //生月を表す数字
+                  print('k:$seihi'); //生日を表す数字
+
+                  //■■生年月日の表示画面へ画面遷移する
+                  /* Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => InputSeinengappiKekka()),
+                  );*/
 
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            InputSeinengappiKekka(title1: nikkanmoji)),
+                            InputSeinengappiKekka(titleNikkan: nikkanmoji)),
                   );
-                  /* Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NikkanJump(),
-                      ));*/
+
+                  if (Date2 != null) {
+                    // do something
+                    //print('$Date2');
+                  }
                 },
               ),
             ),

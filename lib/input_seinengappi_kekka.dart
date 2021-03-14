@@ -13,8 +13,8 @@ import 'nikkan/nikkan_mizunoto.dart';
 import 'services/admob.dart';
 
 class InputSeinengappiKekka extends StatelessWidget {
-  final String title1;
-  InputSeinengappiKekka({Key key, this.title1}) : super(key: key);
+  final String titleNikkan;
+  InputSeinengappiKekka({Key key, this.titleNikkan}) : super(key: key);
   //DateTime Date0 = DateTime(1900, 1, 1);
   //DateTime Date2;
   //int nissuu = 0;
@@ -40,14 +40,14 @@ class InputSeinengappiKekka extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('あなたの日干は「$title1」です。'),
+              child: Text('あなたの日干は「$titleNikkan」です。'),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: RaisedButton(
                 child: Text('日干からみた性格'),
                 onPressed: () {
-                  int nikkan = int.parse(title1);
+                  int nikkan = int.parse(titleNikkan);
 
                   if (nikkan == 0) {
                     //print('甲');
