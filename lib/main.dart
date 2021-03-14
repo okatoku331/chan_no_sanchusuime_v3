@@ -1,20 +1,21 @@
 import 'dart:ui';
 
 import 'package:admob_flutter/admob_flutter.dart';
+//import 'input_seinengappi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'jiko_syoukai.dart';
 import 'nikkan_input1.dart';
-import 'nikkan_hinoe.dart';
-import 'nikkan_hinoto.dart';
-import 'nikkan_kanoe.dart';
-import 'nikkan_kanoto.dart';
-import 'nikkan_kinoe.dart';
-import 'nikkan_kinoto.dart';
-import 'nikkan_mizunoe.dart';
-import 'nikkan_mizunoto.dart';
-import 'nikkan_tsutinoe.dart';
-import 'nikkan_tsutinoto.dart';
+import 'nikkan/nikkan_hinoe.dart';
+import 'nikkan/nikkan_hinoto.dart';
+import 'nikkan/nikkan_kanoe.dart';
+import 'nikkan/nikkan_kanoto.dart';
+import 'nikkan/nikkan_kinoe.dart';
+import 'nikkan/nikkan_kinoto.dart';
+import 'nikkan/nikkan_mizunoe.dart';
+import 'nikkan/nikkan_mizunoto.dart';
+import 'nikkan/nikkan_tsutinoe.dart';
+import 'nikkan/nikkan_tsutinoto.dart';
 import 'services/admob.dart';
 
 void main() {
@@ -55,13 +56,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  //int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  //void _incrementCounter() {
+  //  setState(() {
+  // _counter++;
+  // });
+  //}
 
   String text = '甲';
 
@@ -245,9 +246,8 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               height: 40,
               color: Colors.white70,
-              child: Text (''),
+              child: Text(''),
             ),
-
             AdmobBanner(
               adUnitId: AdMobService().getBannerAdUnitId(),
               adSize: AdmobBannerSize(
@@ -256,7 +256,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 name: 'SMART_BANNER',
               ),
             )
-
           ],
         ),
       ),

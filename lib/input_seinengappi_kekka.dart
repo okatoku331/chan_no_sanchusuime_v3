@@ -1,5 +1,8 @@
 import 'package:admob_flutter/admob_flutter.dart';
+//import 'package:chan_no_sanchusuimei_v3/nikkan_jump.dart';
+//import 'nikkan_jump.dart';
 import 'package:flutter/material.dart';
+//import 'package:flutter/physics.dart';
 
 import 'nikkan/nikkan_kinoe.dart';
 import 'nikkan/nikkan_kinoto.dart';
@@ -13,43 +16,52 @@ import 'nikkan/nikkan_mizunoe.dart';
 import 'nikkan/nikkan_mizunoto.dart';
 import 'services/admob.dart';
 
-class NikkanInput1 extends StatelessWidget {
-  DateTime Date0 = DateTime(1900, 1, 1);
-  DateTime Date2;
-  int nissuu = 0;
-  int nikkan = 0;
+class InputSeinengappiKekka extends StatelessWidget {
+  final String title1;
+  InputSeinengappiKekka({Key key, this.title1}) : super(key: key);
+
+  int nikkan = int.parse('title1');
+  //DateTime Date0 = DateTime(1900, 1, 1);
+  //DateTime Date2;
+
+  //int nissuu = 0;
+  //int nikkan = -1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('生年月日の入力'),
+        title: Text('あなたの日干は'),
       ),
       body: Center(
         child: Column(
           children: <Widget>[
             Image.asset('images/チャン_1.jpg'),
             Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('title：' '$title1'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('生年月日：' ''),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('あなたの日干は:' '$nikkan'),
+            ),
+            Padding(
               padding: const EdgeInsets.all(16.0),
               child: RaisedButton(
-                child: Text('生年月日入力'),
-                onPressed: () async {
-                  final Date2 = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(DateTime.now().year - 99),
-                    lastDate: DateTime(DateTime.now().year + 30),
-                    initialDatePickerMode: DatePickerMode.year,
-                    locale: const Locale('ja'),
-                  );
-
-                  nissuu = Date2.difference(Date0).inDays;
-                  nikkan = nissuu % 10;
+                child: Text('詳細'),
+                onPressed: () {
+                  //nissuu = Date2.difference(Date0).inDays;
+                  //nikkan = nissuu % 10;
 
                   //print('$Date0');
                   //print('$Date2');
                   //print('$nissuu');
                   //print('$nikkan');
+                  print('$title1');
                   if (nikkan == 0) {
                     //print('甲');
                     Navigator.push(
@@ -105,33 +117,24 @@ class NikkanInput1 extends StatelessWidget {
                       context,
                       MaterialPageRoute(builder: (context) => NikkanMizunoe()),
                     );
-                  } else {
+                  } else if (nikkan == 9) {
                     //print('癸');
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => NikkanMizunoto()),
                     );
-                  }
+                  } else {}
 
-                  if (Date2 != null) {
-                    // do something
-                    //print('$Date2');
-                  }
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: RaisedButton(
-                child: Text('戻る'),
-                onPressed: () {
-                  Navigator.pop(context);
+                  //if (Date2 != null) {
+                  // do something
+                  //print('$Date2');
+                  //}
                 },
               ),
             ),
             Container(
               width: double.infinity,
-              height: 240,
+              height: 200,
               color: Colors.white70,
               child: Text(''),
             ),
