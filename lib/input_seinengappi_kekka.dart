@@ -1,9 +1,5 @@
 import 'package:admob_flutter/admob_flutter.dart';
-//import 'package:chan_no_sanchusuimei_v3/nikkan_jump.dart';
-//import 'nikkan_jump.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/physics.dart';
-
 import 'nikkan/nikkan_kinoe.dart';
 import 'nikkan/nikkan_kinoto.dart';
 import 'nikkan/nikkan_hinoe.dart';
@@ -19,13 +15,14 @@ import 'services/admob.dart';
 class InputSeinengappiKekka extends StatelessWidget {
   final String title1;
   InputSeinengappiKekka({Key key, this.title1}) : super(key: key);
-
-  int nikkan = int.parse('title1');
   //DateTime Date0 = DateTime(1900, 1, 1);
   //DateTime Date2;
-
   //int nissuu = 0;
-  //int nikkan = -1;
+  //var int nikkan = 0;
+  //int nikkan = int.parse('7');
+  int nikkan = 0;
+
+  get seinengappiMoji => null;
 
   @override
   Widget build(BuildContext context) {
@@ -39,29 +36,19 @@ class InputSeinengappiKekka extends StatelessWidget {
             Image.asset('images/チャン_1.jpg'),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('title：' '$title1'),
+              child: Text('生年月日：$seinengappiMoji'),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('生年月日：' ''),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('あなたの日干は:' '$nikkan'),
+              child: Text('あなたの日干は「$title1」です。'),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: RaisedButton(
-                child: Text('詳細'),
+                child: Text('日干からみた性格'),
                 onPressed: () {
-                  //nissuu = Date2.difference(Date0).inDays;
-                  //nikkan = nissuu % 10;
+                  int nikkan = int.parse(title1);
 
-                  //print('$Date0');
-                  //print('$Date2');
-                  //print('$nissuu');
-                  //print('$nikkan');
-                  print('$title1');
                   if (nikkan == 0) {
                     //print('甲');
                     Navigator.push(
@@ -117,24 +104,28 @@ class InputSeinengappiKekka extends StatelessWidget {
                       context,
                       MaterialPageRoute(builder: (context) => NikkanMizunoe()),
                     );
-                  } else if (nikkan == 9) {
+                  } else {
                     //print('癸');
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => NikkanMizunoto()),
                     );
-                  } else {}
-
-                  //if (Date2 != null) {
-                  // do something
-                  //print('$Date2');
-                  //}
+                  }
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: RaisedButton(
+                child: Text('戻る'),
+                onPressed: () {
+                  Navigator.pop(context);
                 },
               ),
             ),
             Container(
               width: double.infinity,
-              height: 200,
+              height: 190,
               color: Colors.white70,
               child: Text(''),
             ),
