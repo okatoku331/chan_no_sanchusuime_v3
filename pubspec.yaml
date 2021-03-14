@@ -1,9 +1,9 @@
 name: chan_no_sanchusuimei_v3
-description: チャンの三柱推命v3・AdMobのバナー広告を設置する
+description: チャンの三柱推命v4・十二運を算出する
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.3.0+4
+version: 2.0.0+5
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
