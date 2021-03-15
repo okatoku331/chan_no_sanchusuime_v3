@@ -6,10 +6,10 @@ import "package:intl/intl.dart";
 import 'services/admob.dart';
 
 class InputSeinengappi extends StatelessWidget {
-  final DateTime Date0 = DateTime(1900, 1, 1);
-  DateTime Date2;
-  int nissuu = 0;
-  int nikkan = 0;
+  final DateTime date0 = DateTime(1900, 1, 1);
+  //DateTime date2 = DateTime(1900, 1, 1);
+  //int nissuu = 0;
+  //int nikkan = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class InputSeinengappi extends StatelessWidget {
               child: RaisedButton(
                 child: Text('生年月日入力'),
                 onPressed: () async {
-                  final Date2 = await showDatePicker(
+                  final date2 = await showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
                     firstDate: DateTime(DateTime.now().year - 99),
@@ -37,8 +37,8 @@ class InputSeinengappi extends StatelessWidget {
 
                   //■■入力された生年月日のデータを加工する■■
 
-                  nissuu = Date2.difference(Date0).inDays;
-                  nikkan = nissuu % 10;
+                  var nissuu = date2.difference(date0).inDays;
+                  var nikkan = nissuu % 10;
 
                   String nikkanmoji = nikkan.toRadixString(10);
                   int nikkan1 = int.parse(nikkanmoji);
@@ -48,18 +48,19 @@ class InputSeinengappi extends StatelessWidget {
                   var seinengappiType =
                       new DateFormat('yyyy．MM．dd（E）', "ja_JP");
                   var seinengappiMoji =
-                      seinengappiType.format(Date2); // Dateから生年月日の文字
+                      seinengappiType.format(date2); // Dateから生年月日の文字
                   var seinenType = new DateFormat('yyyy', "ja_JP");
-                  var seinenMoji = seinenType.format(Date2); // Dateから生年の文字
+                  var seinenMoji = seinenType.format(date2); // Dateから生年の文字
                   var seigatuType = new DateFormat('MM', "ja_JP");
-                  var seigatuMoji = seigatuType.format(Date2); // Dateから生月の文字
+                  var seigatuMoji = seigatuType.format(date2); // Dateから生月の文字
                   var seihiType = new DateFormat('dd', "ja_JP");
-                  var seihiMoji = seihiType.format(Date2); // Dateから生日の文字
+                  var seihiMoji = seihiType.format(date2); // Dateから生日の文字
                   int seinen = int.parse(seinenMoji);
                   int seigatu = int.parse(seigatuMoji);
                   int seihi = int.parse(seihiMoji);
 
-                  print('a:$Date2'); //生年月日のDateTime型
+/*
+                  print('a:$date2'); //生年月日のDateTime型
                   print('b:$nikkan'); //日干を表す数字
                   print('c:$nikkanmoji'); //日干を表す文字
                   print('d:$nikkan1');
@@ -70,6 +71,7 @@ class InputSeinengappi extends StatelessWidget {
                   print('i:$seinen'); //生年を表す数字
                   print('j:$seigatu'); //生月を表す数字
                   print('k:$seihi'); //生日を表す数字
+ */
 
                   //■■生年月日の表示画面へ画面遷移する
 
@@ -83,7 +85,7 @@ class InputSeinengappi extends StatelessWidget {
                     ),
                   );
 
-                  if (Date2 != null) {
+                  if (date2 != null) {
                     // do something
                     //print('$Date2');
                   }

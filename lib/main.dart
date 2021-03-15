@@ -55,8 +55,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String texttttttttttt = '甲';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,14 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: const Icon(Icons.navigate_next),
             tooltip: 'Next page',
-            onPressed: () async {
-              final result = await Navigator.push(
+            onPressed: () {
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => JikoSyoukai(),
                   ));
-              //texttttttttttt = result;
-              //print(texttttttttttt);
             },
           ),
         ],
@@ -103,8 +99,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         RaisedButton(
                           child: Text('甲'),
-                          onPressed: () async {
-                            final result = await Navigator.push(
+                          onPressed: () {
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => NikkanKinoe(),
@@ -163,8 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         RaisedButton(
                           child: Text('乙'),
-                          onPressed: () async {
-                            final result = await Navigator.push(
+                          onPressed: () {
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => NikkanKinoto(),
@@ -219,8 +215,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             RaisedButton(
               child: Text('生年月日を入力して日干を求める'),
-              onPressed: () async {
-                final result = await Navigator.push(
+              onPressed: () {
+                Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => InputSeinengappi(),

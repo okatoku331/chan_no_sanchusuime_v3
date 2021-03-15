@@ -24,21 +24,20 @@ class InputSeinengappiKekka extends StatelessWidget {
 
   //■■　変数初期設定　■■
 
-  int nikkan = 0;
+  final int nikkan = -1;
   //List<String> nikkanName = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
   final String jukkan = "甲乙丙丁戊己庚辛壬癸";
   final String jukkanYomi = "甲【きのえ】　乙【きのと】　丙【ひのえ】　丁【ひのと】　戊【つちのえ】"
       "己【つちのと】庚【かのえ】　辛【かのと】　壬【みずのえ】癸【みずのと】"; //十干リスト
-  final String jukkanName = null; // 十干
-  String jukkanNameYomi = null; // 十干【よみ】
-  String seinengappiMoji = null;
+  final String jukkanName = null;
+  //final int nikkan = -1;// 十干
 
   @override
   Widget build(BuildContext context) {
     //■■　受けっとった　生年月日・日干　の文字データから表示文字を生成する　■■
 
     int nikkan = int.parse(titleNikkan); // 日干の文字データを数字データに変換する
-    jukkanNameYomi =
+    var jukkanNameYomi =
         jukkanYomi.substring(nikkan * 7, (nikkan + 1) * 7).trimRight();
     // 十干リストから日干【よみ】を取り出し、空白を削除する
 
