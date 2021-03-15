@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:admob_flutter/admob_flutter.dart';
-import 'package:chan_no_sanchusuimei_v3/input_seinengappi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'input_seinengappi.dart';
@@ -18,8 +17,8 @@ import 'nikkan/nikkan_tsutinoto.dart';
 import 'services/admob.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  Admob.initialize();
+  WidgetsFlutterBinding.ensureInitialized(); //AdMob初期化の前に必要
+  Admob.initialize(); //AdMob初期化
   runApp(MyApp());
 }
 
@@ -97,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('甲'),
                           onPressed: () {
                             Navigator.push(
@@ -107,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ));
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('丙'),
                           onPressed: () {
                             Navigator.push(
@@ -117,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ));
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('戊'),
                           onPressed: () {
                             Navigator.push(
@@ -127,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ));
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('庚'),
                           onPressed: () {
                             Navigator.push(
@@ -137,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ));
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('壬'),
                           onPressed: () {
                             Navigator.push(
@@ -157,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('乙'),
                           onPressed: () {
                             Navigator.push(
@@ -167,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ));
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('丁'),
                           onPressed: () {
                             Navigator.push(
@@ -177,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ));
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('己'),
                           onPressed: () {
                             Navigator.push(
@@ -187,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ));
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('辛'),
                           onPressed: () {
                             Navigator.push(
@@ -197,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ));
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text('癸'),
                           onPressed: () {
                             Navigator.push(
@@ -213,7 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('生年月日を入力して日干を求める'),
               onPressed: () {
                 Navigator.push(

@@ -67,7 +67,7 @@ class NikkanMizunoe extends StatelessWidget {
             ListTile(
               title: Text(''),
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('戻る'),
               onPressed: () {
                 Navigator.pop(context);

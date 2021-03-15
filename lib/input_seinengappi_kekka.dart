@@ -61,7 +61,7 @@ class InputSeinengappiKekka extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text('日干からみた性格'),
                 onPressed: () {
                   //int nikkan = int.parse(titleNikkan);
@@ -133,7 +133,7 @@ class InputSeinengappiKekka extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text('戻る'),
                 onPressed: () {
                   Navigator.pop(context);
