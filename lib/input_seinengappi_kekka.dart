@@ -14,18 +14,35 @@ import 'services/admob.dart';
 
 class InputSeinengappiKekka extends StatelessWidget {
   final String titleNikkan;
+  //final String titleSeinengappi;
   InputSeinengappiKekka({Key key, this.titleNikkan}) : super(key: key);
+  //InputSeinengappiKekka({Key key, this.titleSeinengappi}) : super(key: key);
   //DateTime Date0 = DateTime(1900, 1, 1);
   //DateTime Date2;
   //int nissuu = 0;
   //var int nikkan = 0;
   //int nikkan = int.parse('7');
   int nikkan = 0;
+  //List<String> nikkanName = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+  String jukkan = "甲乙丙丁戊己庚辛壬癸";
+  String jukkanYomi = "甲【きのえ】　乙【きのと】　丙【ひのえ】　丁【ひのと】　戊【つちのえ】"
+      "己【つちのと】庚【かのえ】　辛【かのと】　壬【みずのえ】癸【みずのと】";
+  String jukkanName = null;
+  String jukkanNameYomi = null;
 
-  get seinengappiMoji => null;
+  //get seinengappiMoji => null;
+  String seinengappiMoji = null;
 
   @override
   Widget build(BuildContext context) {
+    int nikkan = int.parse(titleNikkan);
+    //String nikkanMoji = nikkanName(nikkan);
+    jukkanName = jukkan.substring(nikkan, nikkan + 1);
+    //print(jukkanName);
+    //jukkanNameYomi = jukkanYomi.substring(nikkan, nikkan + 7);
+    jukkanNameYomi =
+        jukkanYomi.substring(nikkan * 7, (nikkan + 1) * 7).trimRight();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('あなたの日干は'),
@@ -40,14 +57,14 @@ class InputSeinengappiKekka extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('あなたの日干は「$titleNikkan」です。'),
+              child: Text('あなたの日干は、$jukkanNameYomiです。'),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: RaisedButton(
                 child: Text('日干からみた性格'),
                 onPressed: () {
-                  int nikkan = int.parse(titleNikkan);
+                  //int nikkan = int.parse(titleNikkan);
 
                   if (nikkan == 0) {
                     //print('甲');

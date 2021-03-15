@@ -80,8 +80,10 @@ class InputSeinengappi extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            InputSeinengappiKekka(titleNikkan: nikkanmoji)),
+                        builder: (context) => InputSeinengappiKekka(
+                              titleNikkan: nikkanmoji,
+                              //titleSeinengappi: seinengappiMoji
+                            )),
                   );
 
                   if (Date2 != null) {
