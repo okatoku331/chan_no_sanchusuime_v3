@@ -14,8 +14,13 @@ import 'services/admob.dart';
 
 class InputSeinengappiKekka extends StatelessWidget {
   final String titleNikkan;
-  //final String titleSeinengappi;
-  InputSeinengappiKekka({Key key, this.titleNikkan}) : super(key: key);
+  final String titleSeinengappi;
+
+  InputSeinengappiKekka({
+    Key key,
+    this.titleNikkan,
+    this.titleSeinengappi,
+  }) : super(key: key);
   //InputSeinengappiKekka({Key key, this.titleSeinengappi}) : super(key: key);
   //DateTime Date0 = DateTime(1900, 1, 1);
   //DateTime Date2;
@@ -53,7 +58,7 @@ class InputSeinengappiKekka extends StatelessWidget {
             Image.asset('images/チャン_1.jpg'),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('生年月日：$seinengappiMoji'),
+              child: Text('$titleSeinengappi 生まれの'),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

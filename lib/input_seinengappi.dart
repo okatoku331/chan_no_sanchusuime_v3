@@ -45,7 +45,8 @@ class InputSeinengappi extends StatelessWidget {
 
                   initializeDateFormatting("ja_JP");
                   //var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP");
-                  var seinengappiType = new DateFormat('yyyy/MM/dd', "ja_JP");
+                  var seinengappiType =
+                      new DateFormat('yyyy．MM．dd（E）', "ja_JP");
                   var seinengappiMoji =
                       seinengappiType.format(Date2); // Dateから生年月日の文字
                   var seinenType = new DateFormat('yyyy', "ja_JP");
@@ -80,10 +81,11 @@ class InputSeinengappi extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => InputSeinengappiKekka(
-                              titleNikkan: nikkanmoji,
-                              //titleSeinengappi: seinengappiMoji
-                            )),
+                      builder: (context) => InputSeinengappiKekka(
+                        titleNikkan: nikkanmoji,
+                        titleSeinengappi: seinengappiMoji,
+                      ),
+                    ),
                   );
 
                   if (Date2 != null) {
