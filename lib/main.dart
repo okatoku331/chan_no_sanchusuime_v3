@@ -55,15 +55,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //int _counter = 0;
-
-  //void _incrementCounter() {
-  //  setState(() {
-  // _counter++;
-  // });
-  //}
-
-  String text = '甲';
+  String texttttttttttt = '甲';
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   MaterialPageRoute(
                     builder: (context) => JikoSyoukai(),
                   ));
-              text = result;
-              print(text);
+              //texttttttttttt = result;
+              //print(texttttttttttt);
             },
           ),
         ],
@@ -117,8 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                 MaterialPageRoute(
                                   builder: (context) => NikkanKinoe(),
                                 ));
-                            text = result;
-                            print(text);
                           },
                         ),
                         RaisedButton(
@@ -179,8 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                 MaterialPageRoute(
                                   builder: (context) => NikkanKinoto(),
                                 ));
-                            text = result;
-                            print(text);
                           },
                         ),
                         RaisedButton(
@@ -237,8 +225,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(
                       builder: (context) => InputSeinengappi(),
                     ));
-                text = result;
-                print(text);
               },
             ),
             Container(

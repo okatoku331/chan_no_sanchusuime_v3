@@ -21,32 +21,28 @@ class InputSeinengappiKekka extends StatelessWidget {
     this.titleNikkan,
     this.titleSeinengappi,
   }) : super(key: key);
-  //InputSeinengappiKekka({Key key, this.titleSeinengappi}) : super(key: key);
-  //DateTime Date0 = DateTime(1900, 1, 1);
-  //DateTime Date2;
-  //int nissuu = 0;
-  //var int nikkan = 0;
-  //int nikkan = int.parse('7');
+
+  //■■　変数初期設定　■■
+
   int nikkan = 0;
   //List<String> nikkanName = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
-  String jukkan = "甲乙丙丁戊己庚辛壬癸";
-  String jukkanYomi = "甲【きのえ】　乙【きのと】　丙【ひのえ】　丁【ひのと】　戊【つちのえ】"
-      "己【つちのと】庚【かのえ】　辛【かのと】　壬【みずのえ】癸【みずのと】";
-  String jukkanName = null;
-  String jukkanNameYomi = null;
-
-  //get seinengappiMoji => null;
+  final String jukkan = "甲乙丙丁戊己庚辛壬癸";
+  final String jukkanYomi = "甲【きのえ】　乙【きのと】　丙【ひのえ】　丁【ひのと】　戊【つちのえ】"
+      "己【つちのと】庚【かのえ】　辛【かのと】　壬【みずのえ】癸【みずのと】"; //十干リスト
+  final String jukkanName = null; // 十干
+  String jukkanNameYomi = null; // 十干【よみ】
   String seinengappiMoji = null;
 
   @override
   Widget build(BuildContext context) {
-    int nikkan = int.parse(titleNikkan);
-    //String nikkanMoji = nikkanName(nikkan);
-    jukkanName = jukkan.substring(nikkan, nikkan + 1);
-    //print(jukkanName);
-    //jukkanNameYomi = jukkanYomi.substring(nikkan, nikkan + 7);
+    //■■　受けっとった　生年月日・日干　の文字データから表示文字を生成する　■■
+
+    int nikkan = int.parse(titleNikkan); // 日干の文字データを数字データに変換する
     jukkanNameYomi =
         jukkanYomi.substring(nikkan * 7, (nikkan + 1) * 7).trimRight();
+    // 十干リストから日干【よみ】を取り出し、空白を削除する
+
+    //■■　画面を生成する　■■
 
     return Scaffold(
       appBar: AppBar(
@@ -147,7 +143,7 @@ class InputSeinengappiKekka extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: 190,
+              height: 190, //　縦幅の低い端末はこの値を下げる
               color: Colors.white70,
               child: Text(''),
             ),

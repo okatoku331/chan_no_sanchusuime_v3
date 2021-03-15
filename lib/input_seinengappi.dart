@@ -6,7 +6,7 @@ import "package:intl/intl.dart";
 import 'services/admob.dart';
 
 class InputSeinengappi extends StatelessWidget {
-  DateTime Date0 = DateTime(1900, 1, 1);
+  final DateTime Date0 = DateTime(1900, 1, 1);
   DateTime Date2;
   int nissuu = 0;
   int nikkan = 0;
@@ -72,11 +72,6 @@ class InputSeinengappi extends StatelessWidget {
                   print('k:$seihi'); //生日を表す数字
 
                   //■■生年月日の表示画面へ画面遷移する
-                  /* Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => InputSeinengappiKekka()),
-                  );*/
 
                   Navigator.push(
                     context,
