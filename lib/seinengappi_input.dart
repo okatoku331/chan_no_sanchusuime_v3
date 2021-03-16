@@ -1,12 +1,11 @@
 import 'package:admob_flutter/admob_flutter.dart';
-import 'input_seinengappi_kekka.dart';
+import 'seinengappi_output.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import "package:intl/intl.dart";
 import 'services/admob.dart';
 
-class InputSeinengappi extends StatelessWidget {
-  final DateTime date0 = DateTime(1900, 1, 1);
+class SeinengappiInput extends StatelessWidget {
   //DateTime date2 = DateTime(1900, 1, 1);
   //int nissuu = 0;
   //int nikkan = 0;
@@ -33,53 +32,21 @@ class InputSeinengappi extends StatelessWidget {
                     lastDate: DateTime(DateTime.now().year + 30),
                     initialDatePickerMode: DatePickerMode.year,
                     locale: const Locale('ja'),
-                  );
+                  ); //data2 に　DateTime型で　生年月日が格納される。
 
-                  //■■入力された生年月日のデータを加工する■■
-
-                  var nissuu = date2.difference(date0).inDays;
-                  var nikkan = nissuu % 10;
-
-                  String nikkanmoji = nikkan.toRadixString(10);
-                  //int nikkan1 = int.parse(nikkanmoji);
+                  //■■生年月日のデータをDateTime型から文字列型に変換する■■
 
                   initializeDateFormatting("ja_JP");
-                  //var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm', "ja_JP");
                   var seinengappiType =
                       new DateFormat('yyyy．MM．dd（E）', "ja_JP");
-                  var seinengappiMoji =
-                      seinengappiType.format(date2); // Dateから生年月日の文字
-                  //var seinenType = new DateFormat('yyyy', "ja_JP");
-                  //var seinenMoji = seinenType.format(date2); // Dateから生年の文字
-                  //var seigatuType = new DateFormat('MM', "ja_JP");
-                  //var seigatuMoji = seigatuType.format(date2); // Dateから生月の文字
-                  //var seihiType = new DateFormat('dd', "ja_JP");
-                  //var seihiMoji = seihiType.format(date2); // Dateから生日の文字
-                  //int seinen = int.parse(seinenMoji);
-                  //int seigatu = int.parse(seigatuMoji);
-                  //int seihi = int.parse(seihiMoji);
-
-/*
-                  print('a:$date2'); //生年月日のDateTime型
-                  print('b:$nikkan'); //日干を表す数字
-                  print('c:$nikkanmoji'); //日干を表す文字
-                  print('d:$nikkan1');
-                  print('e:$seinengappiMoji'); //生年月日を表す文字
-                  print('f:$seinenMoji'); //生年を表す文字
-                  print('g:$seigatuMoji'); //生月を表す文字
-                  print('h:$seihiMoji'); //生日を表す文字
-                  print('i:$seinen'); //生年を表す数字
-                  print('j:$seigatu'); //生月を表す数字
-                  print('k:$seihi'); //生日を表す数字
- */
+                  var seinengappiMoji = seinengappiType.format(date2);
 
                   //■■生年月日の表示画面へ画面遷移する
 
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => InputSeinengappiKekka(
-                        titleNikkan: nikkanmoji,
+                      builder: (context) => SeinengappiOutput(
                         titleSeinengappi: seinengappiMoji,
                       ),
                     ),

@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'input_seinengappi.dart';
+import 'seinengappi_input.dart';
 import 'jiko_syoukai.dart';
 import 'nikkan/nikkan_hinoe.dart';
 import 'nikkan/nikkan_hinoto.dart';
@@ -40,6 +40,24 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      // デフォルトのルーティング
+      initialRoute: '/',
+      // ルーティングの一覧を設定
+      routes: {
+        //'/': (context) => MyHomePage(),
+        '/seinengappiInput': (context) => SeinengappiInput(), //生年月日入力
+        //'/seinengappiOutput': (context) => SeinengappiOutput(titleSeinengappi: ''), //生年月日結果
+        '/nikkan0': (context) => NikkanKinoe(), //甲
+        '/nikkan1': (context) => NikkanKinoto(), //乙
+        '/nikkan2': (context) => NikkanHinoe(), //丙
+        '/nikkan3': (context) => NikkanHinoto(), //丁
+        '/nikkan4': (context) => NikkanTsutinoe(), //戊
+        '/nikkan5': (context) => NikkanTsutinoto(), //己
+        '/nikkan6': (context) => NikkanKanoe(), //庚
+        '/nikkan7': (context) => NikkanKanoto(), //辛
+        '/nikkan8': (context) => NikkanMizunoe(), //壬
+        '/nikkan9': (context) => NikkanMizunoto(), //癸
+      },
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -99,51 +117,31 @@ class _MyHomePageState extends State<MyHomePage> {
                         ElevatedButton(
                           child: Text('甲'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanKinoe(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan0');
                           },
                         ),
                         ElevatedButton(
                           child: Text('丙'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanHinoe(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan2');
                           },
                         ),
                         ElevatedButton(
                           child: Text('戊'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanTsutinoe(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan4');
                           },
                         ),
                         ElevatedButton(
                           child: Text('庚'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanKanoe(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan6');
                           },
                         ),
                         ElevatedButton(
                           child: Text('壬'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanMizunoe(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan8');
                           },
                         ),
                       ],
@@ -159,51 +157,31 @@ class _MyHomePageState extends State<MyHomePage> {
                         ElevatedButton(
                           child: Text('乙'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanKinoto(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan1');
                           },
                         ),
                         ElevatedButton(
                           child: Text('丁'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanHinoto(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan3');
                           },
                         ),
                         ElevatedButton(
                           child: Text('己'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanTsutinoto(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan5');
                           },
                         ),
                         ElevatedButton(
                           child: Text('辛'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanKanoto(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan7');
                           },
                         ),
                         ElevatedButton(
                           child: Text('癸'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => NikkanMizunoto(),
-                                ));
+                            Navigator.pushNamed(context, '/nikkan9');
                           },
                         ),
                       ],
@@ -218,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => InputSeinengappi(),
+                      builder: (context) => SeinengappiInput(),
                     ));
               },
             ),
