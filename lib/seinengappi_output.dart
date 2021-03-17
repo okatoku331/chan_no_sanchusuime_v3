@@ -63,20 +63,6 @@ class SeinengappiOutput extends StatelessWidget {
     //　日干画面遷移用の文字データを生成する
     var gamenNikkan = '/nikkan$nikkan';
 
-    // 六十干支リストを生成する
-    //String rokujuuKansi = '';
-    //for (int i = 0; i < 60; i++) {
-    //  var j = i % 10;
-    //  var k = i % 12;
-    //  var kan = jukkan.substring(j, j + 1);
-    //  var si = juunisi.substring(k, k + 1);
-    //  rokujuuKansi = rokujuuKansi + kan + si;
-    //  print('$i');
-    //  print('$j');
-    //  print('$k');
-    //  print('$rokujuuKansi');
-    //};
-
     // 関数を定義して使う練習(1/2)
     //int cc;
     //int aa = 3;
@@ -93,10 +79,21 @@ class SeinengappiOutput extends StatelessWidget {
     int nitiKansiHeirinSuu = nanmojime(rokujukkansi, nikkannissiMoji);
     // 干支併臨を算出する　1924年は「甲子」
     var nitikansiHeirin = kansiHeirin(nitiKansiHeirinSuu, seinengappiMoji);
-    //var nitikansiHeirin = List.from(kansiHeirinList);
-    print('Cloned listc: $nitikansiHeirin');
+    // 天地徳合を算出する
+    var tokugouTen = (nikkan + 5) % 10;
+    var tokugouTi = (13 - nissi) % 12;
+    String tokugouTenMoji = jukkan.substring(tokugouTen, tokugouTen + 1);
+    String tokugouTiMoji = juunisi.substring(tokugouTi, tokugouTi + 1);
+    String tentiTokugouMoji = '$tokugouTenMoji$tokugouTiMoji';
+    int tentiTokugouSuu = nanmojime(rokujukkansi, tentiTokugouMoji);
+    var tentiTokugou = kansiHeirin(tentiTokugouSuu, seinengappiMoji);
+
     print('nikkannissiMoji: $nikkannissiMoji');
     print('nitiKansiHeirinSuu: $nitiKansiHeirinSuu');
+    print('nitikansiHeirin: $nitikansiHeirin');
+    print('tentiTokugouMoji:$tentiTokugouMoji');
+    print('tentiTokugouSuu:$tentiTokugouSuu');
+    print('tentiTokugou:$tentiTokugou');
 
     //■■　画面を生成する　■■
 
@@ -213,8 +210,8 @@ List kansiHeirin(int kansiSuu, String seinengappiMojiretu) {
   List kansiHeirinList = [];
   // 生年月日（文字列）を　（DateTime型）に変換する
   DateTime date3 = DateTime.parse(seinengappiMojiretu); // StringからDate
-  print('$date3'); //チェックポイント
-  print('a');
+  //print('$date3'); //チェックポイント
+  //print('a');
   int seinen = int.parse(seinengappiMojiretu.substring(0, 4));
   DateTime date4 = DateTime(seinen, 2, 4);
   //　1900.1.1 (甲辰）から誕生日までの日数を算出する
@@ -222,8 +219,8 @@ List kansiHeirin(int kansiSuu, String seinengappiMojiretu) {
   if (nissuu < 0) {
     --seinen;
   }
-  print('seinen:$seinen');
-  print('b');
+  //print('seinen:$seinen');
+  //print('b');
   int nen = 0;
   for (int i = 0; i < 6; ++i) {
     nen = 1864 + 60 * i + kansiSuu;
@@ -234,8 +231,22 @@ List kansiHeirin(int kansiSuu, String seinengappiMojiretu) {
     } else {
       kansiHeirinList.add(nen);
     }
-    print('Cloned lista: $kansiHeirinList');
+    //print('Cloned lista: $kansiHeirinList');
   }
-  print('Cloned listb: $kansiHeirinList');
+  //print('Cloned listb: $kansiHeirinList');
   return kansiHeirinList;
 }
+
+// 六十干支リストを生成する　（String rokujukkansi　の文字列をつくるため）
+//String rokujuuKansi = '';
+//for (int i = 0; i < 60; i++) {
+//  var j = i % 10;
+//  var k = i % 12;
+//  var kan = jukkan.substring(j, j + 1);
+//  var si = juunisi.substring(k, k + 1);
+//  rokujuuKansi = rokujuuKansi + kan + si;
+//  print('$i');
+//  print('$j');
+//  print('$k');
+//  print('$rokujuuKansi');
+//};
