@@ -28,6 +28,8 @@ class SeinengappiOutput extends StatelessWidget {
       "甲辰乙巳丙午丁未戊申己酉庚戌辛亥壬子癸丑"
       "甲寅乙卯丙辰丁巳戊午己未庚申辛酉壬戌癸亥"; //
   final String jukkanName = null;
+  final List nitikansiHeirin = [0, 0, 0, 0, 0, 0];
+  final List kansiHeirinList = [0, 0, 0, 0, 0, 0];
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +92,11 @@ class SeinengappiOutput extends StatelessWidget {
     // 六十干支リストから日干日支を検索する
     int nitiKansiHeirinSuu = nanmojime(rokujukkansi, nikkannissiMoji);
     // 干支併臨を算出する　1924年は「甲子」
+    var nitikansiHeirin = kansiHeirin(nitiKansiHeirinSuu, seinengappiMoji);
+    //var nitikansiHeirin = List.from(kansiHeirinList);
+    print('Cloned listc: $nitikansiHeirin');
+    print('nikkannissiMoji: $nikkannissiMoji');
+    print('nitiKansiHeirinSuu: $nitiKansiHeirinSuu');
 
     //■■　画面を生成する　■■
 
@@ -199,6 +206,36 @@ int nanmojime(String mojilist, String kensaku2moji) {
 // 関数定義　干支から対応する西暦年と年齢を99歳までの間で算出する
 //  c = kannsiHeirin(a,b)
 //   a: 干支No.を表す0～59の数字　（　0:甲子　1:乙丑　～　58:壬戌　59:癸亥　）
-//   b: 生年月日を表す文字列　（例：2021．03．17（水））
-//   c: 干支併臨の年を表す配列　（　例：　[1971,2031] )
-var list = [];
+//   b: 生年月日を表す文字列　（yyyy-MM-dd）
+//   c: 干支併臨の年を表す 数字の配列（　[0,0,1961,2021,0] )
+//
+List kansiHeirin(int kansiSuu, String seinengappiMojiretu) {
+  List kansiHeirinList = [];
+  // 生年月日（文字列）を　（DateTime型）に変換する
+  DateTime date3 = DateTime.parse(seinengappiMojiretu); // StringからDate
+  print('$date3'); //チェックポイント
+  print('a');
+  int seinen = int.parse(seinengappiMojiretu.substring(0, 4));
+  DateTime date4 = DateTime(seinen, 2, 4);
+  //　1900.1.1 (甲辰）から誕生日までの日数を算出する
+  var nissuu = date3.difference(date4).inDays;
+  if (nissuu < 0) {
+    --seinen;
+  }
+  print('seinen:$seinen');
+  print('b');
+  int nen = 0;
+  for (int i = 0; i < 6; ++i) {
+    nen = 1864 + 60 * i + kansiSuu;
+    if (nen < seinen) {
+      kansiHeirinList.add(0);
+    } else if (nen > seinen + 100) {
+      kansiHeirinList.add(0);
+    } else {
+      kansiHeirinList.add(nen);
+    }
+    print('Cloned lista: $kansiHeirinList');
+  }
+  print('Cloned listb: $kansiHeirinList');
+  return kansiHeirinList;
+}
