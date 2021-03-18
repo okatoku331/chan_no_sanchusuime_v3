@@ -87,6 +87,7 @@ class SeinengappiOutput extends StatelessWidget {
     String tentiTokugouMoji = '$tokugouTenMoji$tokugouTiMoji';
     int tentiTokugouSuu = nanmojime(rokujukkansi, tentiTokugouMoji);
     var tentiTokugou = kansiHeirin(tentiTokugouSuu, seinengappiMoji);
+    // 干支併臨リスト・天地徳合リストから年と年齢を生成する
 
     print('nikkannissiMoji: $nikkannissiMoji');
     print('nitiKansiHeirinSuu: $nitiKansiHeirinSuu');
@@ -101,69 +102,93 @@ class SeinengappiOutput extends StatelessWidget {
       appBar: AppBar(
         title: Text('あなたの日干は'),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Image.asset('images/チャン_1.jpg'),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('$titleSeinengappi 生まれの'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Image.asset('images/hana_sakura.jpg'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Text('$titleSeinengappi 生まれの'),
+                Text('あなたの日干は、$jukkanNameYomiです。'),
+                SizedBox(
+                  width: 180,
+                  height: 36,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      elevation: 4,
+                      shadowColor: Colors.red,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, gamenNikkan);
+                    },
+                    child: Text('日干からみた性格'),
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('あなたの日干は、$jukkanNameYomiです。'),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Text('天地徳合の年は、？？？年？？歳の時です'),
+                Text('干支併臨の年は、？？？年？？歳の時です'),
+                Text('天地徳合の年は、？？？年？？歳の時です'),
+                Text('天地徳合の年は、？？？年？？歳の時です'),
+                Text('天地徳合の年は、？？？年？？歳の時です'),
+                SizedBox(
+                  width: 180,
+                  height: 36,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      elevation: 4,
+                      shadowColor: Colors.red,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/nikkan0');
+                    },
+                    child: Text('天地徳合とは'),
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SizedBox(
+              width: 90,
+              height: 36,
               child: ElevatedButton(
-                child: Text('日干からみた性格'),
-                onPressed: () {
-                  Navigator.pushNamed(context, gamenNikkan);
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('天地徳合の年は、？？？年？？歳の時です'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('干支併臨の年は、？？？年？？歳の時です'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                child: Text('天地徳合の年とは'),
-                onPressed: () {
-                  //　天地徳合画面に画面遷移する
-                  // Navigator.pop(context);
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                child: Text('戻る'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  elevation: 4,
+                  shadowColor: Colors.red,
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
+                child: Text('戻る'),
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: 60, //　縦幅の低い端末はこの値を下げる
-              color: Colors.white70,
-              child: Text(''),
-            ),
-            AdmobBanner(
-                adUnitId: AdMobService().getBannerAdUnitId(),
-                adSize: AdmobBannerSize(
-                  width: MediaQuery.of(context).size.width.toInt(),
-                  height: AdMobService().getHeight(context).toInt(),
-                  name: 'SMART_BANNER',
-                )),
-          ],
-        ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 60, //　縦幅の低い端末はこの値を下げる
+            color: Colors.white70,
+            child: Text(''),
+          ),
+          AdmobBanner(
+              adUnitId: AdMobService().getBannerAdUnitId(),
+              adSize: AdmobBannerSize(
+                width: MediaQuery.of(context).size.width.toInt(),
+                height: AdMobService().getHeight(context).toInt(),
+                name: 'SMART_BANNER',
+              )),
+        ],
       ),
     );
   }

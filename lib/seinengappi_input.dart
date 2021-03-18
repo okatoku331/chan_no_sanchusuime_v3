@@ -1,4 +1,5 @@
 import 'package:admob_flutter/admob_flutter.dart';
+//import 'package:chan_no_sanchusuimei_v3/output.dart';
 import 'seinengappi_output.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -19,10 +20,15 @@ class SeinengappiInput extends StatelessWidget {
       body: Center(
         child: Column(
           children: <Widget>[
-            Image.asset('images/チャン_1.jpg'),
+            Image.asset('images/hana_sakura.jpg'),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  elevation: 4,
+                  shadowColor: Colors.red,
+                ),
                 child: Text('生年月日入力'),
                 onPressed: () async {
                   final date2 = await showDatePicker(
@@ -62,10 +68,15 @@ class SeinengappiInput extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
-                child: Text('戻る'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  elevation: 4,
+                  shadowColor: Colors.red,
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
+                child: Text('戻る'),
               ),
             ),
             Container(

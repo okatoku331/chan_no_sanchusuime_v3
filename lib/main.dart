@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         const Locale('en'),
         const Locale('ja'),
       ],
-      title: 'Flutter Demo',
+      title: '三柱推命【生年月日占い】', //Flutter Demo', //三柱推命【生年月日占い】',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('チャンの三柱推命v3'),
+        title: Text('三柱推命 v4'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.navigate_next),
@@ -95,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Image.asset('images/チャン_1.jpg'),
+            Image.asset('images/hana1.jpg'),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('あなたの日干はなんですか？'),
@@ -191,7 +191,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             ElevatedButton(
-              child: Text('生年月日を入力して日干を求める'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                elevation: 4,
+                shadowColor: Colors.red,
+              ),
               onPressed: () {
                 Navigator.push(
                     context,
@@ -199,6 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       builder: (context) => SeinengappiInput(),
                     ));
               },
+              child: Text('生年月日を入力して日干を求める'),
             ),
             Container(
               width: double.infinity,
