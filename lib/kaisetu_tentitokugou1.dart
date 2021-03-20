@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 import 'services/admob.dart';
 
-class JikoSyoukai extends StatelessWidget {
+class KaisetuTentitokugou1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('プロフィール'),
+        title: Text('天地徳合/干支併臨とは'),
       ),
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Image.asset('images/tax.jpg'),
+            title: Image.asset('images/anehaturu.jpg'),
           ),
           ListTile(
             title: Text('　私は東京のタクシー運転手です。63歳です。'

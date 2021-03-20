@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:admob_flutter/admob_flutter.dart';
-//import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'seinengappi_input.dart';
@@ -45,9 +44,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       // ルーティングの一覧を設定
       routes: {
-        //'/': (context) => MyHomePage(),
         '/seinengappiInput': (context) => SeinengappiInput(), //生年月日入力
-        //'/seinengappiOutput': (context) => SeinengappiOutput(titleSeinengappi: ''), //生年月日結果
         '/nikkan0': (context) => NikkanKinoe(), //甲
         '/nikkan1': (context) => NikkanKinoto(), //乙
         '/nikkan2': (context) => NikkanHinoe(), //丙

@@ -1,5 +1,6 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou.dart';
+import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou1.dart';
 import 'package:flutter/material.dart';
 import 'services/admob.dart';
 
@@ -213,9 +214,9 @@ class SeinengappiOutput extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => KaisetuTentitokugou(
-                            titleSeinengappi: seinengappiMoji,
-                          ),
+                          builder: (context) => KaisetuTentitokugou1(
+                              //titleSeinengappi: seinengappiMoji,
+                              ),
                         ),
                       );
                     },

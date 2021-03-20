@@ -1,5 +1,4 @@
 import 'package:admob_flutter/admob_flutter.dart';
-//import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou.dart';
 import 'seinengappi_output.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -7,10 +6,6 @@ import "package:intl/intl.dart";
 import 'services/admob.dart';
 
 class SeinengappiInput extends StatelessWidget {
-  //DateTime date2 = DateTime(1900, 1, 1);
-  //int nissuu = 0;
-  //int nikkan = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,14 +36,12 @@ class SeinengappiInput extends StatelessWidget {
                   ); //data2 に　DateTime型で　生年月日が格納される。
 
                   //■■生年月日のデータをDateTime型から文字列型に変換する■■
-
                   initializeDateFormatting("ja_JP");
                   var seinengappiType =
                       new DateFormat('yyyy．MM．dd（E）', "ja_JP");
                   var seinengappiMoji = seinengappiType.format(date2);
 
                   //■■生年月日の表示画面へ画面遷移する
-
                   Navigator.push(
                     context,
                     MaterialPageRoute(
