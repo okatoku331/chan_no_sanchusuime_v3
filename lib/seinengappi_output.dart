@@ -1,4 +1,5 @@
 import 'package:admob_flutter/admob_flutter.dart';
+import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou.dart';
 import 'package:flutter/material.dart';
 import 'services/admob.dart';
 
@@ -35,6 +36,12 @@ class SeinengappiOutput extends StatelessWidget {
   String tenunMeiMoji2 = '干支併臨';
   String tenunMeiMoji3 = '干支併臨';
   String tenunMeiMoji4 = '干支併臨';
+  String tenunText0;
+  String tenunText1;
+  String tenunText2;
+  String tenunText3;
+  String tenunText4;
+
   int tenunNen3;
   int tenunNen4;
   int tenunNenrei3;
@@ -109,6 +116,12 @@ class SeinengappiOutput extends StatelessWidget {
     int tenunLength = tenunList.length;
     print('tenunLength:$tenunLength');
 
+    for (int i = 0; i < (5 - tenunLength); ++i) {
+      tenunList.add(0);
+      print('tenunListfor:$tenunList');
+    }
+    print('tenunList:$tenunList');
+
     int tenun0 = tenunList.removeAt(0);
     print('tenun0:$tenun0');
     print('tenunList:$tenunList');
@@ -117,12 +130,17 @@ class SeinengappiOutput extends StatelessWidget {
     var tenunMei0 = tenun0 % 10;
     print('tenunNen0:$tenunNen0');
     print('tenunNenrei0:$tenunNenrei0');
-    print('tenunMei:$tenunMei0');
+    print('tenunMei0:$tenunMei0');
     if (tenunMei0 == 4) {
-      String tenunMeiMoji0 = '天地徳合';
+      tenunMeiMoji0 = '天地徳合';
     } else {}
     ;
     print('$tenunMeiMoji0');
+    if (tenunNenrei0 < 10) {
+      tenunText0 = '$tenunNen0年（ $tenunNenrei0歳）：$tenunMeiMoji0';
+    } else {
+      tenunText0 = '$tenunNen0年（$tenunNenrei0歳）：$tenunMeiMoji0';
+    }
 
     int tenun1 = tenunList.removeAt(0);
     print('tenun1:$tenun1');
@@ -135,9 +153,14 @@ class SeinengappiOutput extends StatelessWidget {
     print('tenunNenrei1:$tenunNenrei0');
     print('tenunMei1:$tenunMei1');
     if (tenunMei1 == 4) {
-      String tenunMeiMoji1 = '天地徳合';
+      tenunMeiMoji1 = '天地徳合';
     } else {}
-    ;
+    if (tenunNenrei1 < 10) {
+      tenunText1 = '$tenunNen1年（ $tenunNenrei1歳）：$tenunMeiMoji1';
+    } else {
+      tenunText1 = '$tenunNen1年（$tenunNenrei1歳）：$tenunMeiMoji1';
+    }
+
     print('$tenunMeiMoji0');
     int tenun2 = tenunList.removeAt(0);
     print('tenun2:$tenun2');
@@ -150,63 +173,51 @@ class SeinengappiOutput extends StatelessWidget {
     print('tenunNenrei2:$tenunNenrei0');
     print('tenunMei2:$tenunMei2');
     if (tenunMei2 == 4) {
-      String tenunMeiMoji2 = '天地徳合';
+      tenunMeiMoji2 = '天地徳合';
     } else {}
     ;
+    print('$tenunMeiMoji2');
+    tenunText2 = '$tenunNen2年（$tenunNenrei2歳）：$tenunMeiMoji2';
+
+    int tenun3 = tenunList.removeAt(0);
+    print('tenun3:$tenun3');
+    print('tenunList:$tenunList');
+    if (tenun3 == 0) {
+      tenunText4 = '';
+    } else {
+      var tenunNen3 = tenun3 ~/ 1000;
+      var tenunNenrei3 = tenun3 % 1000 ~/ 10;
+      var tenunMei3 = tenun3 % 10;
+      print('tenunNen3:$tenunNen3');
+      print('tenunNenrei3:$tenunNenrei3');
+      print('tenunMei3:$tenunMei3');
+      if (tenunMei3 == 4) {
+        tenunMeiMoji3 = '天地徳合';
+      } else {}
+      ;
+      tenunText3 = '$tenunNen3年（$tenunNenrei3歳）：$tenunMeiMoji3';
+    }
+
     print('$tenunMeiMoji0');
-    switch (tenunLength) {
-      case (3):
-        break;
-      case (4):
-        int tenun3 = tenunList.removeAt(0);
-        print('tenun3:$tenun3');
-        print('tenunList:$tenunList');
+    int tenun4 = tenunList.removeAt(0);
+    if (tenun4 == 0) {
+      tenunText4 = '';
+    } else {
+      print('tenun4:$tenun4');
+      print('tenunList:$tenunList');
 
-        var tenunNen3 = tenun3 ~/ 1000;
-        var tenunNenrei3 = tenun3 % 1000 ~/ 10;
-        var tenunMei3 = tenun3 % 10;
-        print('tenunNen3:$tenunNen3');
-        print('tenunNenrei3:$tenunNenrei3');
-        print('tenunMei3:$tenunMei3');
-        if (tenunMei3 == 4) {
-          String tenunMeiMoji3 = '天地徳合';
-        } else {}
-        ;
-        print('$tenunMeiMoji3');
-        break;
-      default:
-        int tenun3 = tenunList.removeAt(0);
-        print('tenun3:$tenun3');
-        print('tenunList:$tenunList');
-
-        var tenunNen3 = tenun3 ~/ 1000;
-        var tenunNenrei3 = tenun3 % 1000 ~/ 10;
-        var tenunMei3 = tenun3 % 10;
-        print('tenunNen3:$tenunNen3');
-        print('tenunNenrei3:$tenunNenrei3');
-        print('tenunMei3:$tenunMei3');
-        if (tenunMei3 == 4) {
-          String tenunMeiMoji3 = '天地徳合';
-        } else {}
-        ;
-        print('$tenunMeiMoji0');
-        int tenun4 = tenunList.removeAt(0);
-        print('tenun4:$tenun4');
-        print('tenunList:$tenunList');
-
-        var tenunNen4 = tenun4 ~/ 1000;
-        var tenunNenrei4 = tenun4 % 1000 ~/ 10;
-        var tenunMei4 = tenun4 % 10;
-        print('tenunNen4:$tenunNen4');
-        print('tenunNenrei4:$tenunNenrei4');
-        print('tenunMei4:$tenunMei4');
-        if (tenunMei0 == 4) {
-          String tenunMeiMoji4 = '天地徳合';
-        } else {}
-        ;
-        print('$tenunMeiMoji4');
-
-        break;
+      var tenunNen4 = tenun4 ~/ 1000;
+      var tenunNenrei4 = tenun4 % 1000 ~/ 10;
+      var tenunMei4 = tenun4 % 10;
+      print('tenunNen4:$tenunNen4');
+      print('tenunNenrei4:$tenunNenrei4');
+      print('tenunMei4:$tenunMei4');
+      if (tenunMei4 == 4) {
+        String tenunMeiMoji4 = '天地徳合';
+      } else {}
+      ;
+      print('$tenunMeiMoji4');
+      tenunText4 = '$tenunNen4年（$tenunNenrei4歳）：$tenunMeiMoji4';
     }
 
     //■■　画面を生成する　■■
@@ -248,13 +259,13 @@ class SeinengappiOutput extends StatelessWidget {
             child: Column(
               children: [
                 Text('天運の年は、'),
-                Text('$tenunNen0年($tenunNenrei0歳)　$tenunMeiMoji0'),
-                Text('$tenunNen1年($tenunNenrei1歳)　$tenunMeiMoji1'),
-                Text('$tenunNen2年($tenunNenrei2歳)　$tenunMeiMoji2'),
-                Text('$tenunNen3年($tenunNenrei3歳)　$tenunMeiMoji3'),
-                Text('$tenunNen4年($tenunNenrei4歳)　$tenunMeiMoji4'),
+                Text('$tenunText0'),
+                Text('$tenunText1'),
+                Text('$tenunText2'),
+                Text('$tenunText3'),
+                Text('$tenunText4'),
                 SizedBox(
-                  width: 180,
+                  width: 220,
                   height: 36,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -263,9 +274,16 @@ class SeinengappiOutput extends StatelessWidget {
                       shadowColor: Colors.red,
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/nikkan0');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => KaisetuTentitokugou(
+                            titleSeinengappi: seinengappiMoji,
+                          ),
+                        ),
+                      );
                     },
-                    child: Text('天地徳合とは'),
+                    child: Text('天地徳合/干支併臨とは'),
                   ),
                 ),
               ],
