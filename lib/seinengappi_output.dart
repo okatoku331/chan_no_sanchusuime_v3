@@ -4,17 +4,14 @@ import 'package:flutter/material.dart';
 import 'services/admob.dart';
 
 class SeinengappiOutput extends StatelessWidget {
-  //final String titleNikkan;
   final String titleSeinengappi;
 
   SeinengappiOutput({
     Key key,
-    //this.titleNikkan,
     this.titleSeinengappi,
   }) : super(key: key);
 
   //■■　変数初期設定　■■
-
   final DateTime date0 = DateTime(1900, 1, 1);
   final int nikkan = -1;
   //List<String> nikkanName = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
@@ -31,27 +28,21 @@ class SeinengappiOutput extends StatelessWidget {
   final String jukkanName = null;
   final List nitikansiHeirin = [0, 0, 0, 0, 0, 0];
   final List kansiHeirinList = [0, 0, 0, 0, 0, 0];
-  String tenunMeiMoji0 = '干支併臨';
-  String tenunMeiMoji1 = '干支併臨';
-  String tenunMeiMoji2 = '干支併臨';
-  String tenunMeiMoji3 = '干支併臨';
-  String tenunMeiMoji4 = '干支併臨';
-  String tenunText0;
-  String tenunText1;
-  String tenunText2;
-  String tenunText3;
-  String tenunText4;
-
-  int tenunNen3;
-  int tenunNen4;
-  int tenunNenrei3;
-  int tenunNenrei4;
 
   @override
   Widget build(BuildContext context) {
-    //■■画面生成のための各種データを生成する■■
+    String tenunMeiMoji0 = '干支併臨';
+    String tenunMeiMoji1 = '干支併臨';
+    String tenunMeiMoji2 = '干支併臨';
+    String tenunMeiMoji3 = '干支併臨';
+    String tenunMeiMoji4 = '干支併臨';
+    String tenunText0;
+    String tenunText1;
+    String tenunText2;
+    String tenunText3;
+    String tenunText4;
 
-    // ■■　生年月日（文字列）を　（DateTime型）に変換する
+    //■■画面生成のための各種データを生成する■■
 
     //　受けっとった　生年月日をタイトル型から文字列に変換する
     var seinenMoji = titleSeinengappi.substring(0, 4);
@@ -60,32 +51,17 @@ class SeinengappiOutput extends StatelessWidget {
     var seinengappiMoji = '$seinenMoji-$seigatuMoji-$seinitiMoji';
     //　生年月日を　文字列から　DateTime型　に変換する
     DateTime datetSeinengappi = DateTime.parse(seinengappiMoji); // StringからDate
-    //print('$datetSeinengappi');//チェックポイント
-    //print('b');
-
     //　1900.1.1 (甲辰）から誕生日までの日数を算出する
     var nissuu = datetSeinengappi.difference(date0).inDays;
     //  日干を算出する
     var nikkan = nissuu % 10;
-
     // 十干リスト【よみ】から日干【よみ】を取り出し、空白を削除する
     var jukkanNameYomi =
         jukkanYomi.substring(nikkan * 7, (nikkan + 1) * 7).trimRight();
-
     //　日支を算出する
     var nissi = (nissuu + 10) % 12;
-    //print('nissi:$nissi');
-
     //　日干画面遷移用の文字データを生成する
     var gamenNikkan = '/nikkan$nikkan';
-
-    // 関数を定義して使う練習(1/2)
-    //int cc;
-    //int aa = 3;
-    //int bb = 4;
-    //cc = tasu(aa, bb);
-    //print('$cc');
-
     // 六十干支から干支併臨を算出する
     //日柱の六十干支を算出する
     String nikkanMoji = jukkan.substring(nikkan, nikkan + 1);
@@ -112,46 +88,29 @@ class SeinengappiOutput extends StatelessWidget {
     List tenunList = tenun(nenKansiHeirin, getuKansiHeirin, nitiKansiHeirin,
         tentiTokugou, seinengappiMoji);
     print('tenunList:$tenunList');
-    // 天運リストの要素数を算出する
+    // 天運リストの要素数を5にするため0を追加する
     int tenunLength = tenunList.length;
-    print('tenunLength:$tenunLength');
-
     for (int i = 0; i < (5 - tenunLength); ++i) {
       tenunList.add(0);
-      print('tenunListfor:$tenunList');
     }
-    print('tenunList:$tenunList');
-
+    // 天運リストの１番目のテキスト文を作成する
     int tenun0 = tenunList.removeAt(0);
-    print('tenun0:$tenun0');
-    print('tenunList:$tenunList');
     var tenunNen0 = tenun0 ~/ 1000;
     var tenunNenrei0 = tenun0 % 1000 ~/ 10;
     var tenunMei0 = tenun0 % 10;
-    print('tenunNen0:$tenunNen0');
-    print('tenunNenrei0:$tenunNenrei0');
-    print('tenunMei0:$tenunMei0');
     if (tenunMei0 == 4) {
       tenunMeiMoji0 = '天地徳合';
     } else {}
-    ;
-    print('$tenunMeiMoji0');
     if (tenunNenrei0 < 10) {
       tenunText0 = '$tenunNen0年（ $tenunNenrei0歳）：$tenunMeiMoji0';
     } else {
       tenunText0 = '$tenunNen0年（$tenunNenrei0歳）：$tenunMeiMoji0';
     }
-
+    // 天運リストの２番目のテキスト文を作成する
     int tenun1 = tenunList.removeAt(0);
-    print('tenun1:$tenun1');
-    print('tenunList:$tenunList');
-
     var tenunNen1 = tenun1 ~/ 1000;
     var tenunNenrei1 = tenun1 % 1000 ~/ 10;
     var tenunMei1 = tenun1 % 10;
-    print('tenunNen1:$tenunNen0');
-    print('tenunNenrei1:$tenunNenrei0');
-    print('tenunMei1:$tenunMei1');
     if (tenunMei1 == 4) {
       tenunMeiMoji1 = '天地徳合';
     } else {}
@@ -160,63 +119,40 @@ class SeinengappiOutput extends StatelessWidget {
     } else {
       tenunText1 = '$tenunNen1年（$tenunNenrei1歳）：$tenunMeiMoji1';
     }
-
-    print('$tenunMeiMoji0');
+    // 天運リストの３番目のテキスト文を作成する
     int tenun2 = tenunList.removeAt(0);
-    print('tenun2:$tenun2');
-    print('tenunList:$tenunList');
-
     var tenunNen2 = tenun2 ~/ 1000;
     var tenunNenrei2 = tenun2 % 1000 ~/ 10;
     var tenunMei2 = tenun2 % 10;
-    print('tenunNen2:$tenunNen0');
-    print('tenunNenrei2:$tenunNenrei0');
-    print('tenunMei2:$tenunMei2');
     if (tenunMei2 == 4) {
       tenunMeiMoji2 = '天地徳合';
     } else {}
-    ;
-    print('$tenunMeiMoji2');
     tenunText2 = '$tenunNen2年（$tenunNenrei2歳）：$tenunMeiMoji2';
-
+    // 天運リストの４番目のテキスト文を作成する
     int tenun3 = tenunList.removeAt(0);
-    print('tenun3:$tenun3');
-    print('tenunList:$tenunList');
     if (tenun3 == 0) {
       tenunText4 = '';
     } else {
       var tenunNen3 = tenun3 ~/ 1000;
       var tenunNenrei3 = tenun3 % 1000 ~/ 10;
       var tenunMei3 = tenun3 % 10;
-      print('tenunNen3:$tenunNen3');
-      print('tenunNenrei3:$tenunNenrei3');
-      print('tenunMei3:$tenunMei3');
       if (tenunMei3 == 4) {
         tenunMeiMoji3 = '天地徳合';
       } else {}
-      ;
       tenunText3 = '$tenunNen3年（$tenunNenrei3歳）：$tenunMeiMoji3';
     }
-
-    print('$tenunMeiMoji0');
+    // 天運リストの５番目のテキスト文を作成する
     int tenun4 = tenunList.removeAt(0);
     if (tenun4 == 0) {
       tenunText4 = '';
     } else {
-      print('tenun4:$tenun4');
-      print('tenunList:$tenunList');
-
       var tenunNen4 = tenun4 ~/ 1000;
       var tenunNenrei4 = tenun4 % 1000 ~/ 10;
       var tenunMei4 = tenun4 % 10;
-      print('tenunNen4:$tenunNen4');
-      print('tenunNenrei4:$tenunNenrei4');
-      print('tenunMei4:$tenunMei4');
       if (tenunMei4 == 4) {
-        String tenunMeiMoji4 = '天地徳合';
+        tenunMeiMoji4 = '天地徳合';
       } else {}
-      ;
-      print('$tenunMeiMoji4');
+      //;
       tenunText4 = '$tenunNen4年（$tenunNenrei4歳）：$tenunMeiMoji4';
     }
 
@@ -431,7 +367,7 @@ int nentyuu(String a) {
 //          例　[1962053,1963062,2007504,2017601,2022653,2023662]
 //
 List tenun(List a, List b, List c, List d, String e) {
-  List tenunList = [];
+  //List tenunList = [];
   List<int> tenunNen = [];
   int nen = 0;
   // 生年月日（文字列）を　（DateTime型）に変換する
@@ -442,9 +378,9 @@ List tenun(List a, List b, List c, List d, String e) {
   print('c:$c');
   print('d:$d');
 
-  int nenrei;
+  //int nenrei;
   int tenunMei;
-  int tenunDate;
+  //int tenunDate;
   List nenList = [];
   // 年柱
   nenList = a;
@@ -458,7 +394,7 @@ List tenun(List a, List b, List c, List d, String e) {
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
     } else {}
-    ;
+    //;
   }
   print('tenunNen:$tenunNen');
   // 月柱
@@ -473,7 +409,7 @@ List tenun(List a, List b, List c, List d, String e) {
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
     } else {}
-    ;
+    //;
   }
   print('tenunNen:$tenunNen');
   // 日柱
@@ -488,7 +424,7 @@ List tenun(List a, List b, List c, List d, String e) {
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
     } else {}
-    ;
+    //;
   }
   print('tenunNen:$tenunNen');
   // 天地徳合
@@ -503,7 +439,7 @@ List tenun(List a, List b, List c, List d, String e) {
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
     } else {}
-    ;
+    //;
   }
   print('tenunNen:$tenunNen');
   // 西暦昇順にソートする

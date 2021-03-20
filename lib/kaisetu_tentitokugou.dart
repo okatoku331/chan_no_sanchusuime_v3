@@ -23,7 +23,7 @@ class KaisetuTentitokugou extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Image.asset('images/hana_sakura.jpg'),
+          Image.asset('images/anehaturu.jpg'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

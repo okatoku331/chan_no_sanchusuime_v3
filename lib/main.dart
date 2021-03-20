@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:admob_flutter/admob_flutter.dart';
-import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou.dart';
+//import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'seinengappi_input.dart';
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('三柱推命【生年月日占い】v4'),
+        title: Text('三柱推命：生年月日占い'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.navigate_next),
