@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('三柱推命(生年月日)'),
+        title: Text('三柱推命(生年月)'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.navigate_next),
