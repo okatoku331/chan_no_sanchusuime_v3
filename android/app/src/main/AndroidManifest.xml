@@ -45,8 +45,9 @@
             android:value="2" />
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <!-- Seihin AdMob app ID: ca-app-pub-6197150911254354~7453943837 -->
+        <!-- Seihin AdMob app ID: ca-app-pub-6197150911254354~4486782952 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6197150911254354~7453943837" />
+            android:value="ca-app-pub-6197150911254354~4486782952" />
     </application>
 </manifest>
