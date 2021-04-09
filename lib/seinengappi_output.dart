@@ -1,5 +1,4 @@
 import 'package:admob_flutter/admob_flutter.dart';
-import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou.dart';
 import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou1.dart';
 import 'package:flutter/material.dart';
 import 'services/admob.dart';
@@ -173,19 +172,22 @@ class SeinengappiOutput extends StatelessWidget {
               children: [
                 Text('$titleSeinengappi 生まれの'),
                 Text('あなたの日干は、$jukkanNameYomiです。'),
-                SizedBox(
-                  width: 180,
-                  height: 36,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      elevation: 4,
-                      shadowColor: Colors.red,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: 180,
+                    height: 36,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        elevation: 4,
+                        shadowColor: Colors.red,
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, gamenNikkan);
+                      },
+                      child: Text('日干からみた性格'),
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, gamenNikkan);
-                    },
-                    child: Text('日干からみた性格'),
                   ),
                 ),
               ],
@@ -201,26 +203,29 @@ class SeinengappiOutput extends StatelessWidget {
                 Text('$tenunText2'),
                 Text('$tenunText3'),
                 Text('$tenunText4'),
-                SizedBox(
-                  width: 220,
-                  height: 36,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      elevation: 4,
-                      shadowColor: Colors.red,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: 220,
+                    height: 36,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        elevation: 4,
+                        shadowColor: Colors.red,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => KaisetuTentitokugou1(
+                                //titleSeinengappi: seinengappiMoji,
+                                ),
+                          ),
+                        );
+                      },
+                      child: Text('天地徳合/干支併臨とは'),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => KaisetuTentitokugou1(
-                              //titleSeinengappi: seinengappiMoji,
-                              ),
-                        ),
-                      );
-                    },
-                    child: Text('天地徳合/干支併臨とは'),
                   ),
                 ),
               ],
@@ -246,7 +251,7 @@ class SeinengappiOutput extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            height: 40, //　縦幅の低い端末はこの値を下げる
+            height: 8, //　縦幅の低い端末はこの値を下げる
             color: Colors.white70,
             child: Text(''),
           ),
@@ -262,12 +267,6 @@ class SeinengappiOutput extends StatelessWidget {
     );
   }
 }
-
-// 関数を定義して使う練習（2/2）
-//int tasu(int a, int b) {
-//  var c = a + b;
-//  return c;
-//}
 
 // 関数定義　文字列リストから検索文字列が先頭から何文字目にあるか返す
 //  c = nanmojime(a,b)
@@ -304,8 +303,6 @@ List kansiHeirin(int kansiSuu, String seinengappiMojiretu) {
   List kansiHeirinList = [];
   // 生年月日（文字列）を　（DateTime型）に変換する
   DateTime date3 = DateTime.parse(seinengappiMojiretu); // StringからDate
-  //print('$date3'); //チェックポイント
-  //print('a');
   int seinen = int.parse(seinengappiMojiretu.substring(0, 4));
   DateTime date4 = DateTime(seinen, 2, 4);
   //　1900.1.1 (甲辰）から誕生日までの日数を算出する
@@ -313,8 +310,6 @@ List kansiHeirin(int kansiSuu, String seinengappiMojiretu) {
   if (nissuu < 0) {
     --seinen;
   }
-  //print('seinen:$seinen');
-  //print('b');
   int nen = 0;
   for (int i = 0; i < 6; ++i) {
     nen = 1864 + 60 * i + kansiSuu;
@@ -325,9 +320,7 @@ List kansiHeirin(int kansiSuu, String seinengappiMojiretu) {
     } else {
       kansiHeirinList.add(nen);
     }
-    //print('Cloned lista: $kansiHeirinList');
   }
-  //print('Cloned listb: $kansiHeirinList');
   return kansiHeirinList;
 }
 
@@ -347,9 +340,6 @@ int nentyuu(String a) {
     --seinen;
   }
   var kansiSui = (seinen - 1924) % 60;
-  print('seinen:$seinen');
-  print('nnentyu');
-  print('kansiSui:$kansiSui');
   return kansiSui;
 }
 
@@ -368,20 +358,11 @@ int nentyuu(String a) {
 //          例　[1962053,1963062,2007504,2017601,2022653,2023662]
 //
 List tenun(List a, List b, List c, List d, String e) {
-  //List tenunList = [];
   List<int> tenunNen = [];
   int nen = 0;
   // 生年月日（文字列）を　（DateTime型）に変換する
   DateTime date3 = DateTime.parse(e); // StringからDate
-
-  print('a:$a');
-  print('b:$b');
-  print('c:$c');
-  print('d:$d');
-
-  //int nenrei;
   int tenunMei;
-  //int tenunDate;
   List nenList = [];
   // 年柱
   nenList = a;
@@ -391,13 +372,12 @@ List tenun(List a, List b, List c, List d, String e) {
     if (nen != 0) {
       DateTime date4 = DateTime(nen, 2, 4);
       var nissuu = date4.difference(date3).inDays;
-      var nenrei = nissuu ~/ 365;
+      print('nissuu:$nissuu');
+      var nenrei = nissuu ~/ 365.2422;
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
     } else {}
-    //;
   }
-  print('tenunNen:$tenunNen');
   // 月柱
   nenList = b;
   tenunMei = 2;
@@ -406,13 +386,11 @@ List tenun(List a, List b, List c, List d, String e) {
     if (nen != 0) {
       DateTime date4 = DateTime(nen, 2, 4);
       var nissuu = date4.difference(date3).inDays;
-      var nenrei = nissuu ~/ 365;
+      var nenrei = nissuu ~/ 365.2422;
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
     } else {}
-    //;
   }
-  print('tenunNen:$tenunNen');
   // 日柱
   nenList = c;
   tenunMei = 3;
@@ -421,13 +399,11 @@ List tenun(List a, List b, List c, List d, String e) {
     if (nen != 0) {
       DateTime date4 = DateTime(nen, 2, 4);
       var nissuu = date4.difference(date3).inDays;
-      var nenrei = nissuu ~/ 365;
+      var nenrei = nissuu ~/ 365.2422;
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
     } else {}
-    //;
   }
-  print('tenunNen:$tenunNen');
   // 天地徳合
   nenList = d;
   tenunMei = 4;
@@ -436,16 +412,13 @@ List tenun(List a, List b, List c, List d, String e) {
     if (nen != 0) {
       DateTime date4 = DateTime(nen, 2, 4);
       var nissuu = date4.difference(date3).inDays;
-      var nenrei = nissuu ~/ 365;
+      var nenrei = nissuu ~/ 365.2422;
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
     } else {}
-    //;
   }
-  print('tenunNen:$tenunNen');
   // 西暦昇順にソートする
   tenunNen.sort((num1, num2) => num1 - num2);
-  print('tenunNen:$tenunNen');
   return tenunNen;
 }
 

@@ -1,5 +1,5 @@
 name: chan_no_sanchusuimei_v3
-description: チャンの三柱推命v4・十二運を算出する
+description: 天運三柱推命(生年月日占い）・アプリ名を変更・天地徳合を追加
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -62,7 +62,8 @@ flutter:
     - images/hana_sakura.jpg
     - images/hana1.jpg
     - images/anehaturu.jpg
-    - images/tax.jpg
-
+    - images/anehaturu1.jpg
+    - images/anehaturu2.jpg
+    - images/taxi.png
 
 

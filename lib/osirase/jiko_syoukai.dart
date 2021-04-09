@@ -2,7 +2,7 @@ import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'services/admob.dart';
+import '../services/admob.dart';
 
 class JikoSyoukai extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class JikoSyoukai extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Image.asset('images/tax.jpg'),
+            title: Image.asset('images/taxi.png'),
           ),
           ListTile(
             title: Text('　私は東京のタクシー運転手です。63歳です。'
@@ -62,6 +62,9 @@ class JikoSyoukai extends StatelessWidget {
             title: Text('　また、タクシー運転手としてもまだまだ未熟です。未熟ゆえにこん'
                 'な支援機能があったらいいなと思うことが沢山あります。今後もプログラムを'
                 '学びながら実現していきたいと思っています。'),
+          ),
+          ListTile(
+            title: Text('　　(2021.2.22)'),
           ),
           ListTile(
             title: Text(''),
