@@ -17,8 +17,16 @@ class KaisetuTentitokugou1 extends StatelessWidget {
             title: Text('　天地徳合（てんちとくごう）/干支併臨（かんしへいりん）とは、'
                 '人生における天の上昇気流(天の風)が吹き、大飛躍を遂げることが出来る時を示します。'),
           ),
-          ListTile(
-            title: Image.asset('images/anehaturu1.jpg'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: double.infinity,
+              height: 200,
+              color: Colors.white70,
+              child: ListTile(
+                title: Image.asset('images/anehaturu1.jpg'),
+              ),
+            ),
           ),
           ListTile(
             title: Text('　天の上昇気流はよく、アネハ鶴がヒマラヤ山脈を越えていく様子に例えられます。'
@@ -47,8 +55,11 @@ class KaisetuTentitokugou1 extends StatelessWidget {
                 'ケガをしてしまうこともあります。しかし、体力を蓄え再び挑戦し、'
                 '強い上昇気流の中をさらに羽ばたいて高度を上げていくのです。'),
           ),
-          ListTile(
-            title: Image.asset('images/anehaturu2.jpg'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Image.asset('images/anehaturu2.jpg'),
+            ),
           ),
           ListTile(
             title: Text('　同様に、天運期間を迎えるにあたって、自身の準備を怠らないことが大切です。'

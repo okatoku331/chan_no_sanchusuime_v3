@@ -19,8 +19,13 @@ class NikkanKanoe extends StatelessWidget {
             ListTile(
               title: Text('　日干が庚の人は、剣にたとえられる性質を持っています。'),
             ),
-            ListTile(
-              title: Image.asset('images/庚_剣.jpg'),
+            Container(
+              width: double.infinity,
+              height: 250,
+              color: Colors.white70,
+              child: ListTile(
+                title: Image.asset('images/庚_剣.jpg'),
+              ),
             ),
             ListTile(
               title: Text('　剣はとても硬く、ものを一刀両断にたたき切る強い力があります。白黒ハッ'
