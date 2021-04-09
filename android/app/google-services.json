@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "140292068125",
+    "project_id": "sanchusuimei",
+    "storage_bucket": "sanchusuimei.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140292068125:android:115da2ae8a4271ab1e47f4",
+        "android_client_info": {
+          "package_name": "com.chan.chan_no_sanchusuimei_v3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140292068125-ti2qimce90fotaim86g1hdfadr5hto1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXnvrj6Gst_qzNlr3fSjGYJDtLu9lGtnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140292068125-ti2qimce90fotaim86g1hdfadr5hto1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
