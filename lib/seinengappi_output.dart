@@ -228,6 +228,31 @@ class SeinengappiOutput extends StatelessWidget {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: 120,
+                    height: 36,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        elevation: 4,
+                        shadowColor: Colors.red,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => KaisetuTentitokugou1(
+                                //titleSeinengappi: seinengappiMoji,
+                                ),
+                          ),
+                        );
+                      },
+                      child: Text('今日の運勢'),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -251,7 +276,7 @@ class SeinengappiOutput extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            height: 8, //　縦幅の低い端末はこの値を下げる
+            height: 0, //　縦幅の低い端末はこの値を下げる
             color: Colors.white70,
             child: Text(''),
           ),
