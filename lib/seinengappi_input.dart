@@ -1,5 +1,5 @@
 import 'package:admob_flutter/admob_flutter.dart';
-import 'seinengappi_output.dart';
+import 'package:chan_no_sanchusuimei_v3/output.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import "package:intl/intl.dart";
@@ -45,7 +45,7 @@ class SeinengappiInput extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SeinengappiOutput(
+                      builder: (context) => Output(
                         titleSeinengappi: seinengappiMoji,
                       ),
                     ),

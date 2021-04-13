@@ -1,12 +1,11 @@
 import 'package:admob_flutter/admob_flutter.dart';
-import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou1.dart';
 import 'package:flutter/material.dart';
 import 'services/admob.dart';
 
-class SeinengappiOutput extends StatelessWidget {
+class KyouUnsei extends StatelessWidget {
   final String titleSeinengappi;
 
-  SeinengappiOutput({
+  KyouUnsei({
     Key key,
     this.titleSeinengappi,
   }) : super(key: key);
@@ -31,16 +30,16 @@ class SeinengappiOutput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String tenunMeiMoji0 = '干支併臨';
-    String tenunMeiMoji1 = '干支併臨';
-    String tenunMeiMoji2 = '干支併臨';
-    String tenunMeiMoji3 = '干支併臨';
-    String tenunMeiMoji4 = '干支併臨';
-    String tenunText0;
-    String tenunText1;
-    String tenunText2;
-    String tenunText3;
-    String tenunText4;
+    //String tenunMeiMoji0 = '干支併臨';
+    //String tenunMeiMoji1 = '干支併臨';
+    //String tenunMeiMoji2 = '干支併臨';
+    //String tenunMeiMoji3 = '干支併臨';
+    //String tenunMeiMoji4 = '干支併臨';
+    //String tenunText0;
+    //String tenunText1;
+    //String tenunText2;
+    //String tenunText3;
+    //String tenunText4;
 
     //■■画面生成のための各種データを生成する■■
 
@@ -60,107 +59,12 @@ class SeinengappiOutput extends StatelessWidget {
         jukkanYomi.substring(nikkan * 7, (nikkan + 1) * 7).trimRight();
     //　日支を算出する
     var nissi = (nissuu + 10) % 12;
-    //　日干画面遷移用の文字データを生成する
-    var gamenNikkan = '/nikkan$nikkan';
-    // 六十干支から干支併臨を算出する
-    //日柱の六十干支を算出する
-    String nikkanMoji = jukkan.substring(nikkan, nikkan + 1);
-    String nissiMoji = juunisi.substring(nissi, nissi + 1);
-    String nikkannissiMoji = "$nikkanMoji$nissiMoji";
-    // 六十干支リストから日柱の六十干支を検索して、六十干支番号を算出する
-    int nitiKansiHeirinSuu = nanmojime(rokujukkansi, nikkannissiMoji);
-    // 干支併臨(日)を算出する　1924年は「甲子」
-    var nitiKansiHeirin = kansiHeirin(nitiKansiHeirinSuu, seinengappiMoji);
-    // 干支併臨(月)を算出する。節入り日時データがないので現時点では算出出来ない。
-    var getuKansiHeirin = [0, 0, 0, 0, 0, 0];
-    // 干支併臨(年)を算出する
-    var nenKansiHeirinSuu = nentyuu(seinengappiMoji);
-    var nenKansiHeirin = kansiHeirin(nenKansiHeirinSuu, seinengappiMoji);
-    // 天地徳合を算出する
-    var tokugouTen = (nikkan + 5) % 10;
-    var tokugouTi = (13 - nissi) % 12;
-    String tokugouTenMoji = jukkan.substring(tokugouTen, tokugouTen + 1);
-    String tokugouTiMoji = juunisi.substring(tokugouTi, tokugouTi + 1);
-    String tentiTokugouMoji = '$tokugouTenMoji$tokugouTiMoji';
-    int tentiTokugouSuu = nanmojime(rokujukkansi, tentiTokugouMoji);
-    var tentiTokugou = kansiHeirin(tentiTokugouSuu, seinengappiMoji);
-    // 干支併臨リスト・天地徳合リストから年と年齢を生成する
-    List tenunList = tenun(nenKansiHeirin, getuKansiHeirin, nitiKansiHeirin,
-        tentiTokugou, seinengappiMoji);
-    print('tenunList:$tenunList');
-    // 天運リストの要素数を5にするため0を追加する
-    int tenunLength = tenunList.length;
-    for (int i = 0; i < (5 - tenunLength); ++i) {
-      tenunList.add(0);
-    }
-    // 天運リストの１番目のテキスト文を作成する
-    int tenun0 = tenunList.removeAt(0);
-    var tenunNen0 = tenun0 ~/ 1000;
-    var tenunNenrei0 = tenun0 % 1000 ~/ 10;
-    var tenunMei0 = tenun0 % 10;
-    if (tenunMei0 == 4) {
-      tenunMeiMoji0 = '天地徳合';
-    } else {}
-    if (tenunNenrei0 < 10) {
-      tenunText0 = '$tenunNen0年（ $tenunNenrei0歳）：$tenunMeiMoji0';
-    } else {
-      tenunText0 = '$tenunNen0年（$tenunNenrei0歳）：$tenunMeiMoji0';
-    }
-    // 天運リストの２番目のテキスト文を作成する
-    int tenun1 = tenunList.removeAt(0);
-    var tenunNen1 = tenun1 ~/ 1000;
-    var tenunNenrei1 = tenun1 % 1000 ~/ 10;
-    var tenunMei1 = tenun1 % 10;
-    if (tenunMei1 == 4) {
-      tenunMeiMoji1 = '天地徳合';
-    } else {}
-    if (tenunNenrei1 < 10) {
-      tenunText1 = '$tenunNen1年（ $tenunNenrei1歳）：$tenunMeiMoji1';
-    } else {
-      tenunText1 = '$tenunNen1年（$tenunNenrei1歳）：$tenunMeiMoji1';
-    }
-    // 天運リストの３番目のテキスト文を作成する
-    int tenun2 = tenunList.removeAt(0);
-    var tenunNen2 = tenun2 ~/ 1000;
-    var tenunNenrei2 = tenun2 % 1000 ~/ 10;
-    var tenunMei2 = tenun2 % 10;
-    if (tenunMei2 == 4) {
-      tenunMeiMoji2 = '天地徳合';
-    } else {}
-    tenunText2 = '$tenunNen2年（$tenunNenrei2歳）：$tenunMeiMoji2';
-    // 天運リストの４番目のテキスト文を作成する
-    int tenun3 = tenunList.removeAt(0);
-    if (tenun3 == 0) {
-      tenunText4 = '';
-    } else {
-      var tenunNen3 = tenun3 ~/ 1000;
-      var tenunNenrei3 = tenun3 % 1000 ~/ 10;
-      var tenunMei3 = tenun3 % 10;
-      if (tenunMei3 == 4) {
-        tenunMeiMoji3 = '天地徳合';
-      } else {}
-      tenunText3 = '$tenunNen3年（$tenunNenrei3歳）：$tenunMeiMoji3';
-    }
-    // 天運リストの５番目のテキスト文を作成する
-    int tenun4 = tenunList.removeAt(0);
-    if (tenun4 == 0) {
-      tenunText4 = '';
-    } else {
-      var tenunNen4 = tenun4 ~/ 1000;
-      var tenunNenrei4 = tenun4 % 1000 ~/ 10;
-      var tenunMei4 = tenun4 % 10;
-      if (tenunMei4 == 4) {
-        tenunMeiMoji4 = '天地徳合';
-      } else {}
-      //;
-      tenunText4 = '$tenunNen4年（$tenunNenrei4歳）：$tenunMeiMoji4';
-    }
 
     //■■　画面を生成する　■■
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('あなたの日干は'),
+        title: Text('今日の運勢'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -171,25 +75,7 @@ class SeinengappiOutput extends StatelessWidget {
             child: Column(
               children: [
                 Text('$titleSeinengappi 生まれの'),
-                Text('あなたの日干は、$jukkanNameYomiです。'),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: 180,
-                    height: 36,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        elevation: 4,
-                        shadowColor: Colors.red,
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, gamenNikkan);
-                      },
-                      child: Text('日干からみた性格'),
-                    ),
-                  ),
-                ),
+                Text('あなたの今日の運勢は、KyouUnnseiです。'),
               ],
             ),
           ),
@@ -198,61 +84,11 @@ class SeinengappiOutput extends StatelessWidget {
             child: Column(
               children: [
                 Text('天運の年は、'),
-                Text('$tenunText0'),
-                Text('$tenunText1'),
-                Text('$tenunText2'),
-                Text('$tenunText3'),
-                Text('$tenunText4'),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: 220,
-                    height: 36,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        elevation: 4,
-                        shadowColor: Colors.red,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => KaisetuTentitokugou1(
-                                //titleSeinengappi: seinengappiMoji,
-                                ),
-                          ),
-                        );
-                      },
-                      child: Text('天地徳合/干支併臨とは'),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: 120,
-                    height: 36,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        elevation: 4,
-                        shadowColor: Colors.red,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => KaisetuTentitokugou1(
-                                //titleSeinengappi: seinengappiMoji,
-                                ),
-                          ),
-                        );
-                      },
-                      child: Text('今日の運勢'),
-                    ),
-                  ),
-                ),
+                Text(''),
+                Text('tenunText1'),
+                Text('tenunText2'),
+                Text('tenunText3'),
+                Text('tenunText4'),
               ],
             ),
           ),
@@ -276,7 +112,7 @@ class SeinengappiOutput extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            height: 0, //　縦幅の低い端末はこの値を下げる
+            height: 8, //　縦幅の低い端末はこの値を下げる
             color: Colors.white70,
             child: Text(''),
           ),
