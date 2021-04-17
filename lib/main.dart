@@ -4,7 +4,6 @@ import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'seinengappi_input.dart';
-import 'osirase/jiko_syoukai.dart';
 import 'nikkan/nikkan_hinoe.dart';
 import 'nikkan/nikkan_hinoto.dart';
 import 'nikkan/nikkan_kanoe.dart';
