@@ -230,6 +230,7 @@ class Output extends StatelessWidget {
                     ),
                   ),
                 ),
+                /*
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
@@ -255,6 +256,7 @@ class Output extends StatelessWidget {
                     ),
                   ),
                 ),
+                */
               ],
             ),
           ),

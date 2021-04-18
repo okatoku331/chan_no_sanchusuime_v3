@@ -1,9 +1,9 @@
 name: chan_no_sanchusuimei_v3
-description: 天運三柱推命(生年月日占い）・アプリ名を変更・天地徳合を追加
+description: 天運三柱推命(生年月日占い）・挿絵のサイズ調整他
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 3.0.0+6
+version: 2.1.0+6
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

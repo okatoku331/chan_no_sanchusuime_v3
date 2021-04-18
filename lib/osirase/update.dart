@@ -1,5 +1,6 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update1.dart';
+import 'package:chan_no_sanchusuimei_v3/osirase/update2a.dart';
 import 'package:chan_no_sanchusuimei_v3/services/admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,20 @@ class Update extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Text('第2.1版　軽微な修正（2021/4/18 更新)'),
+              trailing: Icon(Icons.navigate_next),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Update2a(),
+                    ));
+              },
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
