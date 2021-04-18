@@ -26,6 +26,7 @@ dependencies:
 
   cupertino_icons: ^1.0.0
   admob_flutter: ^1.0.1
+  #google_mobile_ads: ^0.12.1+1 #追加するとエラーになる
 
   provider: ^4.3.3
 

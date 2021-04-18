@@ -24,6 +24,16 @@ class KyouUnsei extends StatelessWidget {
       "甲午乙未丙申丁酉戊戌己亥庚子辛丑壬寅癸卯"
       "甲辰乙巳丙午丁未戊申己酉庚戌辛亥壬子癸丑"
       "甲寅乙卯丙辰丁巳戊午己未庚申辛酉壬戌癸亥"; //
+  final String tuuhenbosi = "比肩劫敗食神傷官偏財正財偏官正官倒食印綬"
+      "劫敗比肩傷官食神正財偏財正官偏官印綬倒食"
+      "倒食印綬比肩劫敗食神傷官偏財正財偏官正官"
+      "印綬倒食劫敗比肩傷官食神正財偏財正官偏官"
+      "偏官正官倒食印綬比肩劫敗食神傷官偏財正財"
+      "正官偏官印綬倒食劫敗比肩傷官食神正財偏財"
+      "偏財正財偏官正官倒食印綬比肩劫敗食神傷官"
+      "正財偏財正官偏官印綬倒食劫敗比肩傷官食神"
+      "食神傷官偏財正財偏官正官倒食印綬比肩劫敗"
+      "傷官食神正財偏財正官偏官印綬倒食劫敗比肩";
   final String jukkanName = null;
   final List nitikansiHeirin = [0, 0, 0, 0, 0, 0];
   final List kansiHeirinList = [0, 0, 0, 0, 0, 0];
@@ -60,10 +70,10 @@ class KyouUnsei extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Text('　今日の運勢は・・・'),
+            title: Text('$titleSeinengappi　生まれのあなたの '),
           ),
           ListTile(
-            title: Text(' '),
+            title: Text('　今日の運勢は・・・'),
           ),
           ListTile(
             title: Text(' '),
