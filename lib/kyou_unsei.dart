@@ -1,5 +1,6 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'services/admob.dart';
 
 class KyouUnsei extends StatelessWidget {
@@ -51,13 +52,26 @@ class KyouUnsei extends StatelessWidget {
     var seinengappiMoji = '$seinenMoji-$seigatuMoji-$seinitiMoji';
     //　生年月日を　文字列から　DateTime型　に変換する
     DateTime datetSeinengappi = DateTime.parse(seinengappiMoji); // StringからDate
+    //　今日の日付を取得する
+    DateTime now = DateTime.now();
+    DateFormat outputFormat = DateFormat('yyyy-MM-dd');
+    String dateNow = outputFormat.format(now);
+    print(dateNow);
+    //　1900.1.1 (甲辰）から今日までの日数を算出する
+    var nissuuNow = datetSeinengappi.difference(now).inDays;
+    //  今日の日干を算出する
+    var nikkanNow = nissuuNow % 10;
+
     //　1900.1.1 (甲辰）から誕生日までの日数を算出する
     var nissuu = datetSeinengappi.difference(date0).inDays;
     //  日干を算出する
     var nikkan = nissuu % 10;
+
+    //　今日の通変星を算出する
     // 十干リスト【よみ】から日干【よみ】を取り出し、空白を削除する
-    var jukkanNameYomi =
-        jukkanYomi.substring(nikkan * 7, (nikkan + 1) * 7).trimRight();
+    var tuuhendosiNow = tuuhenbosi.substring(
+        nikkan * 20 + nikkanNow * 2, nikkan * 20 + nikkanNow * 2 + 2);
+
     //　日支を算出する
     var nissi = (nissuu + 10) % 12;
 
@@ -73,10 +87,28 @@ class KyouUnsei extends StatelessWidget {
             title: Text('$titleSeinengappi　生まれのあなたの '),
           ),
           ListTile(
-            title: Text('　今日の運勢は・・・'),
+            title: Text('　今日($dateNow)の運勢は・・・'),
           ),
           ListTile(
-            title: Text(' '),
+            title: Text('　　　　　$nikkanNow：今日の日干 '),
+          ),
+          ListTile(
+            title: Text('　　　　　$nikkan：生年月日の日干 '),
+          ),
+          ListTile(
+            title: Text('　　　　　$tuuhendosiNow：今日の通変星 '),
+          ),
+          ListTile(
+            title: Text('　'),
+          ),
+          ListTile(
+            title: Text('　'),
+          ),
+          ListTile(
+            title: Text('　'),
+          ),
+          ListTile(
+            title: Text('　'),
           ),
           AdmobBanner(
               adUnitId: AdMobService().getBannerAdUnitId(),
