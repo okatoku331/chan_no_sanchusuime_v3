@@ -35,6 +35,16 @@ class KyouUnsei extends StatelessWidget {
       "正財偏財正官偏官印綬倒食劫敗比肩傷官食神"
       "食神傷官偏財正財偏官正官倒食印綬比肩劫敗"
       "傷官食神正財偏財正官偏官印綬倒食劫敗比肩";
+  final String kangou = "　　　　　合　　　　"
+      "　　　　　　合　　　"
+      "　　　　　　　合　　"
+      "　　　　　　　　合　"
+      "　　　　　　　　　合"
+      "合　　　　　　　　　"
+      "　合　　　　　　　　"
+      "　　合　　　　　　　"
+      "　　　合　　　　　　"
+      "　　　　合　　　　　";
   final String jukkanName = null;
   final List nitikansiHeirin = [0, 0, 0, 0, 0, 0];
   final List kansiHeirinList = [0, 0, 0, 0, 0, 0];
@@ -42,6 +52,7 @@ class KyouUnsei extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //　変数定義
+    String kangouMoji = '';
 
     //■■画面生成のための各種データを生成する■■
 
@@ -74,6 +85,14 @@ class KyouUnsei extends StatelessWidget {
     var tuuhendosiNow = tuuhenbosi.substring(
         nikkan * 20 + nikkanNow * 2, nikkan * 20 + nikkanNow * 2 + 2);
 
+    //　干合を算出する
+    var kangouNow = kangou.substring(
+        nikkan * 10 + nikkanNow * 1, nikkan * 10 + nikkanNow * 1 + 1);
+    if (kangouNow == '合') {
+      kangouMoji = '干合があります';
+    } else {}
+    ;
+
     //　日支を算出する
     var nissi = (nissuu + 10) % 12;
 
@@ -101,7 +120,7 @@ class KyouUnsei extends StatelessWidget {
             title: Text('　　　　　$tuuhendosiNow：今日の通変星 '),
           ),
           ListTile(
-            title: Text('　'),
+            title: Text('　　　　　$kangouMoji'),
           ),
           ListTile(
             title: Text('　'),
