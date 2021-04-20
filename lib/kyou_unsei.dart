@@ -58,14 +58,16 @@ class KyouUnsei extends StatelessWidget {
     String dateNow = outputFormat.format(now);
     print(dateNow);
     //　1900.1.1 (甲辰）から今日までの日数を算出する
-    var nissuuNow = datetSeinengappi.difference(now).inDays;
+    var nissuuNow = now.difference(date0).inDays;
     //  今日の日干を算出する
     var nikkanNow = nissuuNow % 10;
+    var jukkanNow = jukkan.substring(nikkanNow, nikkanNow + 1);
 
     //　1900.1.1 (甲辰）から誕生日までの日数を算出する
     var nissuu = datetSeinengappi.difference(date0).inDays;
     //  日干を算出する
     var nikkan = nissuu % 10;
+    var jukkanMoji = jukkan.substring(nikkan, nikkan + 1);
 
     //　今日の通変星を算出する
     // 十干リスト【よみ】から日干【よみ】を取り出し、空白を削除する
@@ -90,10 +92,10 @@ class KyouUnsei extends StatelessWidget {
             title: Text('　今日($dateNow)の運勢は・・・'),
           ),
           ListTile(
-            title: Text('　　　　　$nikkanNow：今日の日干 '),
+            title: Text('　　　　　$nikkan：$jukkanMoji：生年月日の日干 '),
           ),
           ListTile(
-            title: Text('　　　　　$nikkan：生年月日の日干 '),
+            title: Text('　　　　　$nikkanNow：$jukkanNow：今日の日干 '),
           ),
           ListTile(
             title: Text('　　　　　$tuuhendosiNow：今日の通変星 '),
