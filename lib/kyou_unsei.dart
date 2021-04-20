@@ -45,6 +45,30 @@ class KyouUnsei extends StatelessWidget {
       "　　合　　　　　　　"
       "　　　合　　　　　　"
       "　　　　合　　　　　";
+  final String sigou = "　合　　三　冲害三　　　"
+      "合　　　　三害冲　三　　"
+      "　　　　　害三　冲　三合"
+      "　　　　害　　三　冲合三"
+      "三　　害　　　　三合冲　"
+      "　三害　　　　　合三　冲"
+      "冲害三　　　　合　　三　"
+      "害冲　三　　合　　　　三"
+      "三　冲　三合　　　　　害"
+      "　三　冲合三　　　　害　"
+      "　　三合冲　三　　害　　"
+      "　　合三　冲　三害　　　";
+  final String sikei = "　　　刑　　　　　　　　"
+      "　　　　　　　刑　　刑　"
+      "　　　　　刑　　刑　　　"
+      "刑　　　　　　　　　　　"
+      "　　　　刑　　　　　　　"
+      "　　刑　　　　　刑　　　"
+      "　　　　　　刑　　　　　"
+      "　刑　　　　　　　　刑　"
+      "　　刑　　刑　　　　　　"
+      "　　　　　　　　　刑　　"
+      "　刑　　　　　刑　　　　"
+      "　　　　　　　　　　　刑";
   final String jukkanName = null;
   final List nitikansiHeirin = [0, 0, 0, 0, 0, 0];
   final List kansiHeirinList = [0, 0, 0, 0, 0, 0];
