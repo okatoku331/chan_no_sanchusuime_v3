@@ -77,6 +77,8 @@ class KyouUnsei extends StatelessWidget {
   Widget build(BuildContext context) {
     //　変数定義
     String kangouMoji = '';
+    String sigouMoji = '';
+    String sikeiMoji = '';
 
     //■■画面生成のための各種データを生成する■■
 
@@ -105,7 +107,6 @@ class KyouUnsei extends StatelessWidget {
     var jukkanMoji = jukkan.substring(nikkan, nikkan + 1);
 
     //　今日の通変星を算出する
-    // 十干リスト【よみ】から日干【よみ】を取り出し、空白を削除する
     var tuuhendosiNow = tuuhenbosi.substring(
         nikkan * 20 + nikkanNow * 2, nikkan * 20 + nikkanNow * 2 + 2);
 
@@ -118,7 +119,31 @@ class KyouUnsei extends StatelessWidget {
     ;
 
     //　日支を算出する
+    var nissiNow = (nissuuNow + 10) % 12;
+    var nissiNowMoji = juunisi.substring(nissiNow, nissiNow + 1);
+    //　日支を算出する
     var nissi = (nissuu + 10) % 12;
+    var nissiMoji = juunisi.substring(nissi, nissi + 1);
+    //　支合を算出する
+    var sigouNow = sigou.substring(
+        nissi * 12 + nissiNow * 1, nissi * 12 + nissiNow * 1 + 1);
+    if (sigouNow == '合') {
+      sigouMoji = '支合があります';
+    } else if (sigouNow == '三') {
+      sigouMoji = '三合があります';
+    } else if (sigouNow == '冲') {
+      sigouMoji = '冲があります';
+    } else if (sigouNow == '害') {
+      sigouMoji = '害があります';
+    } else {}
+    ;
+    //　支刑を算出する
+    var sikeiNow = sikei.substring(
+        nissi * 12 + nissiNow * 1, nissi * 12 + nissiNow * 1 + 1);
+    if (sikeiNow == '刑') {
+      sigouMoji = '刑があります';
+    } else {}
+    ;
 
     //■■　画面を生成する　■■
 
@@ -147,10 +172,16 @@ class KyouUnsei extends StatelessWidget {
             title: Text('　　　　　$kangouMoji'),
           ),
           ListTile(
-            title: Text('　'),
+            title: Text('　　　　　$nissi：$nissiMoji：生年月日の日支 　'),
           ),
           ListTile(
-            title: Text('　'),
+            title: Text('　　　　　$nissiNow：$nissiNowMoji：今日の日干　'),
+          ),
+          ListTile(
+            title: Text('　　　　　$sigouMoji　'),
+          ),
+          ListTile(
+            title: Text('　　　　　$sikeiMoji　　'),
           ),
           ListTile(
             title: Text('　'),
