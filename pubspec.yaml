@@ -20,6 +20,8 @@ dependencies:
   #firebase_auth: ^1.0.1
   #cloud_firestore: ^1.0.1
 
+  shared_preferences: ^2.0.5 # 再起動したとき前回の設定を残して置くため
+
 
   flutter_localizations:
     sdk: flutter

@@ -116,7 +116,6 @@ class KyouUnsei extends StatelessWidget {
     if (kangouNow == '合') {
       kangouMoji = '干合があります';
     } else {}
-    ;
 
     //　日支を算出する
     var nissiNow = (nissuuNow + 10) % 12;
@@ -136,14 +135,13 @@ class KyouUnsei extends StatelessWidget {
     } else if (sigouNow == '害') {
       sigouMoji = '害があります';
     } else {}
-    ;
+
     //　支刑を算出する
     var sikeiNow = sikei.substring(
         nissi * 12 + nissiNow * 1, nissi * 12 + nissiNow * 1 + 1);
     if (sikeiNow == '刑') {
       sigouMoji = '刑があります';
     } else {}
-    ;
 
     //■■　画面を生成する　■■
 
