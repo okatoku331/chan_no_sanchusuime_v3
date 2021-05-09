@@ -3,6 +3,7 @@ import 'package:admob_flutter/admob_flutter.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'seinengappi_input.dart';
 import 'nikkan/nikkan_hinoe.dart';
 import 'nikkan/nikkan_hinoto.dart';
@@ -70,11 +71,54 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() async {
+    setState(() {
+      _counter++;
+      _setPrefItems(); //Shared Preference に値を保存する
+    });
+  }
+
+  // shareed Preference に保存されているデータを読み込んで、_counterにセットする
+  _getPrefItems() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //
+    setState(() {
+      _counter = prefs.getInt('counter') ?? 0;
+    });
+  }
+
+  //データを書き込む
+  _setPrefItems() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //
+    prefs.setInt('counter', _counter);
+  }
+
+  //データを削除する
+  _removePrefItems() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      _counter = 0;
+      //
+      prefs.remove('counter');
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    //
+    _getPrefItems();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('三柱推命(生年月日占い)'),
+        title: Text('三柱推命(生年月日占い/今日の運勢)'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.navigate_next),
@@ -95,8 +139,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Image.asset('images/hana1.jpg'),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(4.0),
               child: Text('あなたの日干はなんですか？'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text('$_counter'),
             ),
             Container(
               width: double.infinity,
@@ -203,9 +251,18 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Text('生年月日を入力して日干を求める'),
             ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                elevation: 4,
+                shadowColor: Colors.red,
+              ),
+              onPressed: () => _removePrefItems(),
+              child: Text('削除する'),
+            ),
             Container(
               width: double.infinity,
-              height: 40,
+              height: 4,
               color: Colors.white70,
               child: Text(''),
             ),
@@ -219,6 +276,11 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
       ),
     );
   }
