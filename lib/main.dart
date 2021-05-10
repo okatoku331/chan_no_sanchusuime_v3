@@ -16,6 +16,7 @@ import 'nikkan/nikkan_mizunoto.dart';
 import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
 import 'services/admob.dart';
+//練習push/pull この行が反映されるか確認
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); //AdMob初期化の前に必要
