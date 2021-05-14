@@ -18,6 +18,7 @@ class KyouUnsei extends StatelessWidget {
   final String jukkan = "甲乙丙丁戊己庚辛壬癸"; //十干リスト
   final String jukkanYomi = "甲【きのえ】　乙【きのと】　丙【ひのえ】　丁【ひのと】　戊【つちのえ】"
       "己【つちのと】庚【かのえ】　辛【かのと】　壬【みずのえ】癸【みずのと】"; //十干リスト【よみ】
+  final String gogyou = "木＋木−火＋火−土＋土−金＋金−水＋水−";// 五行リスト
   final String juunisi = "子丑寅卯辰巳午未申酉戌亥"; //十二支リスト
   final String rokujukkansi = "甲子乙丑丙寅丁卯戊辰己巳庚午辛未壬申癸酉"
       "甲戌乙亥丙子丁丑戊寅己卯庚辰辛巳壬午癸未"
@@ -25,7 +26,12 @@ class KyouUnsei extends StatelessWidget {
       "甲午乙未丙申丁酉戊戌己亥庚子辛丑壬寅癸卯"
       "甲辰乙巳丙午丁未戊申己酉庚戌辛亥壬子癸丑"
       "甲寅乙卯丙辰丁巳戊午己未庚申辛酉壬戌癸亥"; //
-  final String tuuhenbosi = "比肩劫敗食神傷官偏財正財偏官正官倒食印綬"
+  final String tuuhenbosiKanji =
+      "比肩劫敗食神傷官偏財正財偏官正官倒食印綬";
+  final String tuuhenbosiYomi =
+      "ひけん　　ごうはい　しょくしんしょうかんへんざい　せいざい　へんがん　せいがん　とうしょくいんじゅ　";
+  final String tuuhenbosi =
+      "比肩劫敗食神傷官偏財正財偏官正官倒食印綬"
       "劫敗比肩傷官食神正財偏財正官偏官印綬倒食"
       "倒食印綬比肩劫敗食神傷官偏財正財偏官正官"
       "印綬倒食劫敗比肩傷官食神正財偏財正官偏官"
@@ -35,6 +41,17 @@ class KyouUnsei extends StatelessWidget {
       "正財偏財正官偏官印綬倒食劫敗比肩傷官食神"
       "食神傷官偏財正財偏官正官倒食印綬比肩劫敗"
       "傷官食神正財偏財正官偏官印綬倒食劫敗比肩";
+  final String tuuhenbosizu =
+      "00010203040506070809"
+      "01000302050407060908"
+      "18191011121314151617"
+      "19181110131215141716"
+      "26272829202122232425"
+      "27262928212023222524"
+      "34353637383930313233"
+      "35343736393831303332"
+      "42434445464748494041"
+      "43424544474649484140";
   final String kangou = "　　　　　合　　　　"
       "　　　　　　合　　　"
       "　　　　　　　合　　"
@@ -91,7 +108,7 @@ class KyouUnsei extends StatelessWidget {
     DateTime datetSeinengappi = DateTime.parse(seinengappiMoji); // StringからDate
     //　今日の日付を取得する
     DateTime now = DateTime.now();
-    DateFormat outputFormat = DateFormat('yyyy-MM-dd');
+    DateFormat outputFormat = DateFormat('yyyy.MM.dd');
     String dateNow = outputFormat.format(now);
     print(dateNow);
     //　1900.1.1 (甲辰）から今日までの日数を算出する
@@ -99,15 +116,26 @@ class KyouUnsei extends StatelessWidget {
     //  今日の日干を算出する
     var nikkanNow = nissuuNow % 10;
     var jukkanNow = jukkan.substring(nikkanNow, nikkanNow + 1);
+    //　今日の五行を算出する
+    var gogyouNow = gogyou.substring(
+        nikkanNow * 2, nikkanNow * 2 + 2);
 
     //　1900.1.1 (甲辰）から誕生日までの日数を算出する
     var nissuu = datetSeinengappi.difference(date0).inDays;
     //  日干を算出する
     var nikkan = nissuu % 10;
     var jukkanMoji = jukkan.substring(nikkan, nikkan + 1);
+    //　五行を算出する
+    var gogyouMoji = gogyou.substring(
+        nikkan * 2, nikkan * 2 + 2);
+
 
     //　今日の通変星を算出する
     var tuuhendosiNow = tuuhenbosi.substring(
+        nikkan * 20 + nikkanNow * 2, nikkan * 20 + nikkanNow * 2 + 2);
+
+    //　今日の通変星図を算出する
+    var tuuhendosizuNow = tuuhenbosizu.substring(
         nikkan * 20 + nikkanNow * 2, nikkan * 20 + nikkanNow * 2 + 2);
 
     //　干合を算出する
@@ -147,24 +175,33 @@ class KyouUnsei extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('今日の運勢'),
+        title: Text('今日の運勢 ($titleSeinengappi 生) '),
       ),
       body: ListView(
         children: <Widget>[
+
           ListTile(
-            title: Text('$titleSeinengappi　生まれのあなたの '),
+            title: Text('　今日（$dateNow）の運勢は・・・'),
+          ),
+
+          ListTile(
+            title: Text('　　生年月日の日干が　$jukkanMoji（$gogyouMoji）、'),
           ),
           ListTile(
-            title: Text('　今日($dateNow)の運勢は・・・'),
+            title: Text('　　今日の日干が　　　$jukkanNow（$gogyouNow）なので'),
           ),
           ListTile(
-            title: Text('　　　　　$nikkan：$jukkanMoji：生年月日の日干 '),
+            title: Text('　今日の通変星は　$tuuhendosiNow（ごうはい）になります。図で表すと'
+                '下図のようになります。'),
           ),
           ListTile(
-            title: Text('　　　　　$nikkanNow：$jukkanNow：今日の日干 '),
+            title: Image.asset('images/tuuhenbosi/$tuuhendosizuNow.jpg'),
           ),
           ListTile(
-            title: Text('　　　　　$tuuhendosiNow：今日の通変星 '),
+            title: Text('　$tuuhendosiNow　の持つ意味は、エネルギーを授け受けして運勢が'
+                '強くなります。自分が強くなりすぎて、周りの人を傷つけてしまうこともありますので注意しましょう。'
+                '　開運方法は、他の人に尽くすことです。'
+                ),
           ),
           ListTile(
             title: Text('　　　　　$kangouMoji'),

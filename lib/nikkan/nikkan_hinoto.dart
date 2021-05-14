@@ -20,7 +20,7 @@ class NikkanHinoto extends StatelessWidget {
               title: Text('　日干が丁の人は、ロウソクの火にたとえられる性質を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/丁_キャンドル.jpg'),
+              title: Image.asset('images/nikkan/丁_キャンドル.jpg'),
             ),
             ListTile(
               title: Text('　ロウソクの火は静かに燃えて部屋の小さな空間を照らします。ですから、身近'
@@ -36,7 +36,7 @@ class NikkanHinoto extends StatelessWidget {
                   'たように一気に激しく炎上し、周囲を巻き込んで大惨事となります。'),
             ),
             ListTile(
-              title: Image.asset('images/丁_燃える炎.jpg'),
+              title: Image.asset('images/nikkan/丁_燃える炎.jpg'),
             ),
             ListTile(
               title: Text('　普段は、神経質でインテリで、礼儀正しく、人に対して細やかな心配りができ'

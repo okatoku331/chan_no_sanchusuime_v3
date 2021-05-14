@@ -21,7 +21,7 @@ class NikkanMizunoto extends StatelessWidget {
               title: Text('　日干が癸に人は、雨水や雲にたとえられる性質をもっています。'),
             ),
             ListTile(
-              title: Image.asset('images/癸_雲雨.jpg'),
+              title: Image.asset('images/nikkan/癸_雲雨.jpg'),
             ),
             ListTile(
               title: Text('　雨水はしとしとと大地に降り、土壌に静かに浸透していきます。ですから、穏や'
@@ -35,7 +35,7 @@ class NikkanMizunoto extends StatelessWidget {
                   'コツコツと堅実な努力を重ね、忍耐力を備えています。'),
             ),
             ListTile(
-              title: Image.asset('images/癸_潤う.jpg'),
+              title: Image.asset('images/nikkan/癸_潤う.jpg'),
             ),
             ListTile(
               title: Text('　雨水が天（空）から降りてくるように、想像力に富み、純粋で神経質なところが'

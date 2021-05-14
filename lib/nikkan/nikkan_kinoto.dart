@@ -20,7 +20,7 @@ class NikkanKinoto extends StatelessWidget {
               title: Text('　日干が乙の人は、草花やつる草にたとえられる性格を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/乙_イラスト１.jpg'),
+              title: Image.asset('images/nikkan/乙_イラスト１.jpg'),
             ),
             ListTile(
               title: Text('　つる草は柔らかく、弱々しい印象です。性格はつる草がしなやかなように、柔'
@@ -34,7 +34,7 @@ class NikkanKinoto extends StatelessWidget {
                   '束されがちです。'),
             ),
             ListTile(
-              title: Image.asset('images/乙_からみつく.jpg'),
+              title: Image.asset('images/nikkan/乙_からみつく.jpg'),
             ),
             ListTile(
               title: Text('　つる草が絡みついていくように、表面はおとなしく見えても、内面は独占欲'

@@ -19,7 +19,7 @@ class NikkanKinoe extends StatelessWidget {
               title: Text('　日干が甲の人は、樹木にたとえられる性質を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/甲_大樹.jpg'),
+              title: Image.asset('images/nikkan/甲_大樹.jpg'),
             ),
             ListTile(
               title: Text('　樹木は天に向かって伸びるように、向上心にあふれ、新しいことをしようと'
@@ -38,7 +38,7 @@ class NikkanKinoe extends StatelessWidget {
                   'う。'),
             ),
             ListTile(
-              title: Image.asset('images/甲_木陰.jpg'),
+              title: Image.asset('images/nikkan/甲_木陰.jpg'),
             ),
             ListTile(
               title: Text('　樹木が枝をはり、その木陰に生き物が集うように、思いやりがあり、優しく、'

@@ -24,7 +24,7 @@ class NikkanKanoe extends StatelessWidget {
               height: 250,
               color: Colors.white70,
               child: ListTile(
-                title: Image.asset('images/庚_剣.jpg'),
+                title: Image.asset('images/nikkan/庚_剣.jpg'),
               ),
             ),
             ListTile(
@@ -42,7 +42,7 @@ class NikkanKanoe extends StatelessWidget {
                   'また、負けず嫌いでトップになりたがります。'),
             ),
             ListTile(
-              title: Image.asset('images/庚_鍛える.jpg'),
+              title: Image.asset('images/nikkan/庚_鍛える.jpg'),
             ),
             ListTile(
               title: Text('　剣や斧がその用途に合わせて形が作られるように、学んだことを応用して利'

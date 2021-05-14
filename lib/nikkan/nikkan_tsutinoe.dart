@@ -20,7 +20,7 @@ class NikkanTsutinoe extends StatelessWidget {
               title: Text('　日干が戊の人は、岩石や岩山にたとえられる性質を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/戊_岩山.jpg'),
+              title: Image.asset('images/nikkan/戊_岩山.jpg'),
             ),
             ListTile(
               title: Text('　岩石は固くて水をせき止める堤防となる力があります。岩山が動かないよ'
@@ -32,7 +32,7 @@ class NikkanTsutinoe extends StatelessWidget {
                   'めで正直ものです。頑固ではありますが、素朴で信用できる人です。'),
             ),
             ListTile(
-              title: Image.asset('images/戊_石垣.jpg'),
+              title: Image.asset('images/nikkan/戊_石垣.jpg'),
             ),
             ListTile(
               title: Text('　何をするにもしっかり基礎を固めてからじっくりと時間をかけてから取り組'

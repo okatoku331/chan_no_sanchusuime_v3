@@ -20,7 +20,7 @@ class NikkanHinoe extends StatelessWidget {
               title: Text('　日干が丙の人は、太陽にたとえられる性質を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/丙_太陽.jpg'),
+              title: Image.asset('images/nikkan/丙_太陽.jpg'),
             ),
             ListTile(
               title: Text('　太陽は明るく輝き世界を照らしています。ですから、心が広くて小さなことに'
@@ -33,7 +33,7 @@ class NikkanHinoe extends StatelessWidget {
                   'はなく、気前がよくて何かと浪費しがちです。'),
             ),
             ListTile(
-              title: Image.asset('images/丙_朝日.jpg'),
+              title: Image.asset('images/nikkan/丙_朝日.jpg'),
             ),
             ListTile(
               title: Text('　日が射すと、すべての物が白日の下にさらされるように、開けっぴろげで隠'

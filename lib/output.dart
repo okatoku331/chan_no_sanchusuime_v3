@@ -49,6 +49,7 @@ class Output extends StatelessWidget {
     var seinenMoji = titleSeinengappi.substring(0, 4);
     var seigatuMoji = titleSeinengappi.substring(5, 7);
     var seinitiMoji = titleSeinengappi.substring(8, 10);
+    var seinengappiMojia = '$seinenMoji．$seigatuMoji．$seinitiMoji';
     var seinengappiMoji = '$seinenMoji-$seigatuMoji-$seinitiMoji';
     //　生年月日を　文字列から　DateTime型　に変換する
     DateTime datetSeinengappi = DateTime.parse(seinengappiMoji); // StringからDate
@@ -246,7 +247,7 @@ class Output extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => KyouUnsei(
-                              titleSeinengappi: seinengappiMoji,
+                              titleSeinengappi: seinengappiMojia,
                             ),
                           ),
                         );

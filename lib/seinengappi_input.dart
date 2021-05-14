@@ -10,6 +10,8 @@ class SeinengappiInput extends StatelessWidget {
   DateTime date9 = DateTime(1957, 3, 1);
   int _counter = 0;
 
+
+
   @override
   Widget build(BuildContext context) {
     var _counter;
@@ -21,6 +23,10 @@ class SeinengappiInput extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Image.asset('images/hana_sakura.jpg'),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text('$_counter : _birthday0'),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(

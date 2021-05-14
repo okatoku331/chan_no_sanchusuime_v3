@@ -20,7 +20,7 @@ class NikkanTsutinoto extends StatelessWidget {
               title: Text('　日干が己の人は、畑の土にたとえられる性質を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/己_畑土.jpg'),
+              title: Image.asset('images/nikkan/己_畑土.jpg'),
             ),
             ListTile(
               title: Text('　畑の土は柔らかく湿っているので、水はせき止めません。柔らかい土を使っ'
@@ -37,7 +37,7 @@ class NikkanTsutinoto extends StatelessWidget {
                   'と学習し、知識を深め、人格を高めるように心がけています。'),
             ),
             ListTile(
-              title: Image.asset('images/己_陶芸.jpg'),
+              title: Image.asset('images/nikkan/己_陶芸.jpg'),
             ),
             ListTile(
               title: Text('　柔軟なので、何をやらせても上手にこなし、変化に応じる方法を心得ていま'

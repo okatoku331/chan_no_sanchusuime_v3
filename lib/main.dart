@@ -73,10 +73,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String _birthday0 = '';
 
   void _incrementCounter() async {
     setState(() {
       _counter++;
+      _birthday0 = _birthday0 + 'a';
       _setPrefItems(); //Shared Preference に値を保存する
     });
   }
@@ -87,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //
     setState(() {
       _counter = prefs.getInt('counter') ?? 0;
+      _birthday0 = prefs.getString('birthday0') ?? '';
     });
   }
 
@@ -95,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //
     prefs.setInt('counter', _counter);
+    prefs.setString('birthday0', _birthday0);
   }
 
   //データを削除する
@@ -103,8 +107,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
     setState(() {
       _counter = 0;
+      _birthday0 = '';
       //
       prefs.remove('counter');
+      prefs.remove('birthday0');
     });
   }
 
@@ -114,6 +120,8 @@ class _MyHomePageState extends State<MyHomePage> {
     //
     _getPrefItems();
   }
+
+    var aaa = 'images/hana1.jpg';
 
   @override
   Widget build(BuildContext context) {
@@ -138,14 +146,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Image.asset('images/hana1.jpg'),
+            Image.asset('$aaa'),
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text('あなたの日干はなんですか？'),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
-              child: Text('$_counter'),
+              child: Text('$_counter : $_birthday0'),
             ),
             Container(
               width: double.infinity,

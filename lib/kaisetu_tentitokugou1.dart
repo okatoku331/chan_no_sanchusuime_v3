@@ -24,7 +24,7 @@ class KaisetuTentitokugou1 extends StatelessWidget {
               height: 200,
               color: Colors.white70,
               child: ListTile(
-                title: Image.asset('images/anehaturu1.jpg'),
+                title: Image.asset('images/tentitokugou/anehaturu1.jpg'),
               ),
             ),
           ),
@@ -36,7 +36,7 @@ class KaisetuTentitokugou1 extends StatelessWidget {
                 '巧みに利用して越えていきます。'),
           ),
           ListTile(
-            title: Image.asset('images/anehaturu.jpg'),
+            title: Image.asset('images/tentitokugou/anehaturu.jpg'),
           ),
           ListTile(
             title: Text('　同じように、人の努力だけでは越えられない壁も、この時吹く天の上昇気流に'
@@ -58,7 +58,7 @@ class KaisetuTentitokugou1 extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              title: Image.asset('images/anehaturu2.jpg'),
+              title: Image.asset('images/tentitokugou/anehaturu2.jpg'),
             ),
           ),
           ListTile(

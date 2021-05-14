@@ -20,7 +20,7 @@ class NikkanMizunoe extends StatelessWidget {
               title: Text('　日干が壬の人は、海や大河にたとえられる性質をもっています。'),
             ),
             ListTile(
-              title: Image.asset('images/壬_海.jpg'),
+              title: Image.asset('images/nikkan/壬_海.jpg'),
             ),
             ListTile(
               title: Text('　海原はどこまでも広がり、ゆったりと水を満たしています。ですから、楽観的に'
@@ -38,7 +38,7 @@ class NikkanMizunoe extends StatelessWidget {
                   '変に対処し、タイミングを逃しません。'),
             ),
             ListTile(
-              title: Image.asset('images/壬_支流.jpg'),
+              title: Image.asset('images/nikkan/壬_支流.jpg'),
             ),
             ListTile(
               title: Text('　小さな川がまとまりやがて海という目標にむかって一つになって流れていく'

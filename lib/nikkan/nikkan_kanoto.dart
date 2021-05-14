@@ -20,7 +20,7 @@ class NikkanKanoto extends StatelessWidget {
               title: Text('　日干が辛の人は、宝石にたとえられる性質を持っています。'),
             ),
             ListTile(
-              title: Image.asset('images/辛_宝石.jpg'),
+              title: Image.asset('images/nikkan/辛_宝石.jpg'),
             ),
             ListTile(
               title: Text('　宝石は、美しく繊細で光を反射させるように、とても繊細で敏感な感受性の'
@@ -38,7 +38,7 @@ class NikkanKanoto extends StatelessWidget {
                   '嫌いはハッキリしているようです。'),
             ),
             ListTile(
-              title: Image.asset('images/辛_王冠.jpg'),
+              title: Image.asset('images/nikkan/辛_王冠.jpg'),
             ),
             ListTile(
               title: Text('　宝石なので、プライドが高く、世間体を重んじます。国王が宝石を身につける'
