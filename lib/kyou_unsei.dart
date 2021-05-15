@@ -131,12 +131,18 @@ class KyouUnsei extends StatelessWidget {
 
 
     //　今日の通変星を算出する
-    var tuuhendosiNow = tuuhenbosi.substring(
+    var tuuhenbosiNow = tuuhenbosi.substring(
         nikkan * 20 + nikkanNow * 2, nikkan * 20 + nikkanNow * 2 + 2);
 
     //　今日の通変星図を算出する
     var tuuhendosizuNow = tuuhenbosizu.substring(
         nikkan * 20 + nikkanNow * 2, nikkan * 20 + nikkanNow * 2 + 2);
+
+    //　今日の通変星のふりがなを算出する
+    var tuuhenbosiSuu = nanmojimea(tuuhenbosiKanji,tuuhenbosiNow,10 );
+    //print ('tuuhenbosiSuu:$tuuhenbosiSuu');
+    var tuuhenbosiYomiNow = tuuhenbosiYomi.substring(
+        tuuhenbosiSuu * 5,  tuuhenbosiSuu * 5 + 5).trimRight();
 
     //　干合を算出する
     var kangouNow = kangou.substring(
@@ -185,20 +191,20 @@ class KyouUnsei extends StatelessWidget {
           ),
 
           ListTile(
-            title: Text('　　生年月日の日干が　$jukkanMoji（$gogyouMoji）、'),
+            title: Text('　　生年月日の日干が、$jukkanMoji（$gogyouMoji）、'),
           ),
           ListTile(
-            title: Text('　　今日の日干が　　　$jukkanNow（$gogyouNow）なので'),
+            title: Text('　　今日の日干が、$jukkanNow（$gogyouNow）なので、'),
           ),
           ListTile(
-            title: Text('　今日の通変星は　$tuuhendosiNow（ごうはい）になります。図で表すと'
+            title: Text('　今日の通変星は、$tuuhenbosiNow（$tuuhenbosiYomiNow）になります。図で表すと'
                 '下図のようになります。'),
           ),
           ListTile(
             title: Image.asset('images/tuuhenbosi/$tuuhendosizuNow.jpg'),
           ),
           ListTile(
-            title: Text('　$tuuhendosiNow　の持つ意味は、エネルギーを授け受けして運勢が'
+            title: Text('　$tuuhenbosiNow　の持つ意味は、エネルギーを授け受けして運勢が'
                 '強くなります。自分が強くなりすぎて、周りの人を傷つけてしまうこともありますので注意しましょう。'
                 '　開運方法は、他の人に尽くすことです。'
                 ),
@@ -248,4 +254,30 @@ class KyouUnsei extends StatelessWidget {
       ),
     );
   }
+}
+
+// 関数定義　文字列リストから検索文字列が先頭から何文字目にあるか返す
+//  c = nanmojime(a,b,d)
+//  a:　120文字（2文字×60組）の文字列リスト
+//  b:　2文字の検索文字
+//  d: 要素数
+//  c:　-2：一致が2組以上ある
+//      -1:一致する組がない
+//      0 ～ 59 : 組めに1組だけある
+int nanmojimea(String mojilist, String kensaku2moji, int yousosuu) {
+  int nanbanme = -1;
+  int ittisuu = 0;
+  for (int i = 0; i < (yousosuu -1); i++) {
+    String nimoji = mojilist.substring(i * 2, i * 2 + 2);
+    if (nimoji == kensaku2moji) {
+      nanbanme = i;
+      ittisuu = ittisuu + 1;
+    } else {}
+  }
+  if (ittisuu > 1) {
+    nanbanme = -2;
+  } else if (ittisuu < 1) {
+    nanbanme = -1;
+  } else {}
+  return nanbanme;
 }
