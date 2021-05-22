@@ -185,7 +185,6 @@ class KyouUnsei extends StatelessWidget {
 
     //　今日の通変星のふりがなを算出する
     var tuuhenbosiSuu = nanmojimea(tuuhenbosiKanji,tuuhenbosiNow,10 );
-    //print ('tuuhenbosiSuu:$tuuhenbosiSuu');
     var tuuhenbosiYomiNow = tuuhenbosiYomi.substring(
         tuuhenbosiSuu * 5,  tuuhenbosiSuu * 5 + 5).trimRight();
 
@@ -444,7 +443,7 @@ class KyouUnsei extends StatelessWidget {
 int nanmojimea(String mojilist, String kensaku2moji, int yousosuu) {
   int nanbanme = -1;
   int ittisuu = 0;
-  for (int i = 0; i < (yousosuu -1); i++) {
+  for (int i = 0; i < yousosuu ; i++) {
     String nimoji = mojilist.substring(i * 2, i * 2 + 2);
     if (nimoji == kensaku2moji) {
       nanbanme = i;

@@ -89,13 +89,13 @@ class Output extends StatelessWidget {
     // 干支併臨リスト・天地徳合リストから年と年齢を生成する
     List tenunList = tenun(nenKansiHeirin, getuKansiHeirin, nitiKansiHeirin,
         tentiTokugou, seinengappiMoji);
-    print('tenunList:$tenunList');
+    //print('tenunList:$tenunList');
     // 天運リストの要素数を5にするため0を追加する
     int tenunLength = tenunList.length;
     for (int i = 0; i < (5 - tenunLength); ++i) {
       tenunList.add(0);
     }
-    print('tenunList:$tenunList');
+    //print('tenunList:$tenunList');
     // 天運リストの１番目のテキスト文を作成する
     int tenun0 = tenunList.removeAt(0);
     var tenunNen0 = tenun0 ~/ 1000;
@@ -400,7 +400,7 @@ List tenun(List a, List b, List c, List d, String e) {
     if (nen != 0) {
       DateTime date4 = DateTime(nen, 2, 4);
       var nissuu = date4.difference(date3).inDays;
-      print('nissuu:$nissuu');
+      //print('nissuu:$nissuu');
       var nenrei = nissuu ~/ 365.2422;
       var tenunDate = nen * 1000 + nenrei * 10 + tenunMei;
       tenunNen.add(tenunDate);
