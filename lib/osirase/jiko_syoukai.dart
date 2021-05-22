@@ -1,8 +1,8 @@
-import 'package:admob_flutter/admob_flutter.dart';
+//import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../services/admob.dart';
+//import '../services/admob.dart';
 
 class JikoSyoukai extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class JikoSyoukai extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Image.asset('images/taxi.png'),
+            title: Image.asset('images/main/taxi.png'),
           ),
           ListTile(
             title: Text('　私は東京のタクシー運転手です。63歳です。'
@@ -69,13 +69,13 @@ class JikoSyoukai extends StatelessWidget {
           ListTile(
             title: Text(''),
           ),
-          AdmobBanner(
+          /*AdmobBanner(
               adUnitId: AdMobService().getBannerAdUnitId(),
               adSize: AdmobBannerSize(
                 width: MediaQuery.of(context).size.width.toInt(),
                 height: AdMobService().getHeight(context).toInt(),
                 name: 'SMART_BANNER',
-              )),
+              )),*/
           ListTile(
             title: Text(''),
           ),

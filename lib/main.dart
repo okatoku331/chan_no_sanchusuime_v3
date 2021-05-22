@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:admob_flutter/admob_flutter.dart';
+//import 'package:admob_flutter/admob_flutter.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,12 +15,12 @@ import 'nikkan/nikkan_mizunoe.dart';
 import 'nikkan/nikkan_mizunoto.dart';
 import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
-import 'services/admob.dart';
+//import 'services/admob.dart';
 //練習push/pull この行が反映されるか確認
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); //AdMob初期化の前に必要
-  Admob.initialize(); //AdMob初期化
+  //WidgetsFlutterBinding.ensureInitialized(); //AdMob初期化の前に必要
+  //Admob.initialize(); //AdMob初期化
   runApp(MyApp());
 }
 
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _getPrefItems();
   }
 
-    var aaa = 'images/hana1.jpg';
+    var aaa = 'images/main/hana1.jpg';
 
   @override
   Widget build(BuildContext context) {
@@ -275,14 +275,14 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.white70,
               child: Text(''),
             ),
-            AdmobBanner(
+            /*AdmobBanner(
               adUnitId: AdMobService().getBannerAdUnitId(),
               adSize: AdmobBannerSize(
                 width: MediaQuery.of(context).size.width.toInt(),
                 height: AdMobService().getHeight(context).toInt(),
                 name: 'SMART_BANNER',
               ),
-            )
+            )*/
           ],
         ),
       ),

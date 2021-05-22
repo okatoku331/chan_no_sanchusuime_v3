@@ -1,8 +1,8 @@
-import 'package:admob_flutter/admob_flutter.dart';
+//import 'package:admob_flutter/admob_flutter.dart';
 import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou1.dart';
 import 'package:chan_no_sanchusuimei_v3/kyou_unsei.dart';
 import 'package:flutter/material.dart';
-import 'services/admob.dart';
+//import 'services/admob.dart';
 
 class Output extends StatelessWidget {
   final String titleSeinengappi;
@@ -168,7 +168,7 @@ class Output extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Image.asset('images/hana_sakura.jpg'),
+          Image.asset('images/main/hana_sakura.jpg'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -283,13 +283,13 @@ class Output extends StatelessWidget {
             color: Colors.white70,
             child: Text(''),
           ),
-          AdmobBanner(
+          /*AdmobBanner(
               adUnitId: AdMobService().getBannerAdUnitId(),
               adSize: AdmobBannerSize(
                 width: MediaQuery.of(context).size.width.toInt(),
                 height: AdMobService().getHeight(context).toInt(),
                 name: 'SMART_BANNER',
-              )),
+              )),*/
         ],
       ),
     );

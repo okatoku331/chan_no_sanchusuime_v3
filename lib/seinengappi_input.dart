@@ -1,10 +1,10 @@
-import 'package:admob_flutter/admob_flutter.dart';
+//import 'package:admob_flutter/admob_flutter.dart';
 import 'package:chan_no_sanchusuimei_v3/output.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import "package:intl/intl.dart";
-import 'package:shared_preferences/shared_preferences.dart';
-import 'services/admob.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
+//import 'services/admob.dart';
 
 class SeinengappiInput extends StatelessWidget {
   DateTime date9 = DateTime(1957, 3, 1);
@@ -22,7 +22,7 @@ class SeinengappiInput extends StatelessWidget {
       body: Center(
         child: Column(
           children: <Widget>[
-            Image.asset('images/hana_sakura.jpg'),
+            Image.asset('images/main/hana_sakura.jpg'),
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text('$_counter : _birthday0'),
@@ -115,13 +115,13 @@ class SeinengappiInput extends StatelessWidget {
               color: Colors.white70,
               child: Text(''),
             ),
-            AdmobBanner(
+            /*AdmobBanner(
                 adUnitId: AdMobService().getBannerAdUnitId(),
                 adSize: AdmobBannerSize(
                   width: MediaQuery.of(context).size.width.toInt(),
                   height: AdMobService().getHeight(context).toInt(),
                   name: 'SMART_BANNER',
-                )),
+                )),*/
           ],
         ),
       ),
