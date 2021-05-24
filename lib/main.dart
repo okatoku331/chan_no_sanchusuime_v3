@@ -84,6 +84,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _counter = 0;
   String _birthday0 = '';
+  String _birthday1 = '';
+  String _birthday2 = '';
+  String _birthday3 = '';
+  String _birthday4 = '';
+  String _memo0 = '';
+  String _memo1 = '';
+  String _memo2 = '';
+  String _memo3 = '';
+  String _memo4 = '';
   BannerAd banner ;
 
   void _incrementCounter() async {
@@ -121,6 +130,15 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter = prefs.getInt('counter') ?? 0;
       _birthday0 = prefs.getString('birthday0') ?? '';
+      _birthday1 = prefs.getString('birthday1') ?? '';
+      _birthday2 = prefs.getString('birthday2') ?? '';
+      _birthday3 = prefs.getString('birthday3') ?? '';
+      _birthday4 = prefs.getString('birthday4') ?? '';
+      _memo0 = prefs.getString('memo0') ?? '';
+      _memo1 = prefs.getString('memo1') ?? '';
+      _memo2 = prefs.getString('memo2') ?? '';
+      _memo3 = prefs.getString('memo3') ?? '';
+      _memo4 = prefs.getString('memo4') ?? '';
     });
   }
 
@@ -130,6 +148,15 @@ class _MyHomePageState extends State<MyHomePage> {
     //
     prefs.setInt('counter', _counter);
     prefs.setString('birthday0', _birthday0);
+    prefs.setString('birthday1', _birthday1);
+    prefs.setString('birthday2', _birthday2);
+    prefs.setString('birthday3', _birthday3);
+    prefs.setString('birthday4', _birthday4);
+    prefs.setString('memo0', _memo0);
+    prefs.setString('memo1', _memo1);
+    prefs.setString('memo2', _memo2);
+    prefs.setString('memo3', _memo3);
+    prefs.setString('memo4', _memo4);
   }
 
   //データを削除する
@@ -139,6 +166,15 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter = 0;
       _birthday0 = '';
+      _birthday1 = '';
+      _birthday2 = '';
+      _birthday3 = '';
+      _birthday4 = '';
+      _memo0 = '';
+      _memo1 = '';
+      _memo2 = '';
+      _memo3 = '';
+      _memo4 = '';
       //
       prefs.remove('counter');
       prefs.remove('birthday0');
@@ -154,24 +190,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var aaa = 'images/main/hana1.jpg';
 
- /* //google_mobile_adsを配置するため追加 2021.5.24
-  BannerAd banner;
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
-    adState.initialization.then((status) {
-      setState(() {
-        banner = BannerAd(
-          adUnitId: adState.bannerAdUnitId,
-          size: AdSize.banner,
-          request: AdRequest(),
-          listener: adState.adListener,
-        )..load();
-      });
-    });
-  }
-  //追加ここまで*/
 
   @override
   Widget build(BuildContext context) {
@@ -214,95 +232,25 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(4.0),
               child: Text('$_counter : $_birthday0'),
             ),
-            Container(
-              width: double.infinity,
-              height: 280,
-              color: Colors.white70,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 150,
-                    height: 300,
-                    color: Colors.white70,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        ElevatedButton(
-                          child: Text('甲'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan0');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: Text('丙'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan2');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: Text('戊'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan4');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: Text('庚'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan6');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: Text('壬'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan8');
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 150,
-                    height: 300,
-                    color: Colors.white70,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        ElevatedButton(
-                          child: Text('乙'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan1');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: Text('丁'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan3');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: Text('己'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan5');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: Text('辛'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan7');
-                          },
-                        ),
-                        ElevatedButton(
-                          child: Text('癸'),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/nikkan9');
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text('1: $_birthday0 生： $_memo0'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text('2: $_birthday1 生： $_memo1'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text('3: $_birthday2 生： $_memo2'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text('4: $_birthday3 生： $_memo3'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text('5: $_birthday4 生： $_memo4'),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
