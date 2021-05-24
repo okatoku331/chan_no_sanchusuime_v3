@@ -1,7 +1,13 @@
 //import 'package:admob_flutter/admob_flutter.dart';
-import 'package:chan_no_sanchusuimei_v3/kaisetu_tentitokugou1.dart';
-import 'package:chan_no_sanchusuimei_v3/kyou_unsei.dart';
+//import 'dart:js';
+
+import 'kaisetu_tentitokugou1.dart';
+import 'kyou_unsei.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:provider/provider.dart';
+import 'services/ad_state.dart';
+//import 'main.dart';
 //import 'services/admob.dart';
 
 class Output extends StatelessWidget {
@@ -29,6 +35,33 @@ class Output extends StatelessWidget {
   final String jukkanName = null;
   final List nitikansiHeirin = [0, 0, 0, 0, 0, 0];
   final List kansiHeirinList = [0, 0, 0, 0, 0, 0];
+
+
+
+  //google_mobile_adsを配置するため追加 2021.5.24
+  //WidgetsFlutterBinding.ensureInitialized();
+  //final initFuture = MobileAds.instance.initialize();
+  //final adSate =AdState(initFuture);
+
+
+  /*/google_mobile_adsを配置するため追加 2021.5.24
+  BannerAd banner;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final adState = Provider.of<AdState>(context);
+    adState.initialization.then((status) {
+      setState(() {
+        banner = BannerAd(
+          adUnitId: adState.bannerAdUnitId,
+          size: AdSize.banner,
+          request: AdRequest(),
+          listener: adState.adListener,
+        )..load();
+      });
+    });
+  }
+  //追加ここまで*/
 
   @override
   Widget build(BuildContext context) {
@@ -168,6 +201,15 @@ class Output extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          /*//バナー広告追加
+          if (banner == null)
+            SizedBox(height: 50) // Ads
+          else
+            Container(
+              height: 50,
+              child: AdWidget(ad: banner),
+            ),
+          //バナー広告ここまで*/
           Image.asset('images/main/hana_sakura.jpg'),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -294,6 +336,8 @@ class Output extends StatelessWidget {
       ),
     );
   }
+
+  void setState(Null Function() param0) {}
 }
 
 // 関数定義　文字列リストから検索文字列が先頭から何文字目にあるか返す

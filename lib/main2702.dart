@@ -19,7 +19,7 @@ import 'nikkan/nikkan_mizunoto.dart';
 import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
 
-void main() {
+void main2702() {
   //google_mobile_adsを配置するため追加 2021.5.24
   WidgetsFlutterBinding.ensureInitialized();
   final initFuture = MobileAds.instance.initialize();
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-   //google_mobile_adsを配置するため追加 2021.5.24
+  //google_mobile_adsを配置するため追加 2021.5.24
   //BannerAd banner;
   @override
   void didChangeDependencies() {
@@ -152,9 +152,9 @@ class _MyHomePageState extends State<MyHomePage> {
     _getPrefItems();
   }
 
-    var aaa = 'images/main/hana1.jpg';
+  var aaa = 'images/main/hana1.jpg';
 
- /* //google_mobile_adsを配置するため追加 2021.5.24
+  /* //google_mobile_adsを配置するため追加 2021.5.24
   BannerAd banner;
   @override
   void didChangeDependencies() {

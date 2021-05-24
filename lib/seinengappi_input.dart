@@ -8,7 +8,7 @@ import "package:intl/intl.dart";
 
 class SeinengappiInput extends StatelessWidget {
   DateTime date9 = DateTime(1957, 3, 1);
-  int _counter = 0;
+  //int _counter = 0;
 
 
 
