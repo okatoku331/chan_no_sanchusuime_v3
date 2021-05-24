@@ -1,9 +1,14 @@
+//import 'dart:js';
 import 'dart:ui';
+import 'dart:io';
 //import 'package:admob_flutter/admob_flutter.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+import 'services/ad_state.dart';
 import 'seinengappi_input.dart';
 import 'nikkan/nikkan_hinoe.dart';
 import 'nikkan/nikkan_hinoto.dart';
@@ -19,14 +24,61 @@ import 'nikkan/nikkan_tsutinoto.dart';
 //練習push/pull この行が反映されるか確認
 
 void main() {
+  //以下の二行を追加 2021.5.23
+  WidgetsFlutterBinding.ensureInitialized();
+  final initFuture = MobileAds.instance.initialize();
+  final adSate =AdState(initFuture);
+  //追加ここまで
   //WidgetsFlutterBinding.ensureInitialized(); //AdMob初期化の前に必要
   //Admob.initialize(); //AdMob初期化
-  runApp(MyApp());
+  runApp(Provider.value(
+    value: adSate,
+    builder: (context,child) => MyApp(),
+
+  ));
 }
 
+/*
+String getTestAdBannerUnitId(){
+  String testBannerUnitId = "";
+  if(Platform.isAndroid) {
+    // Android のとき
+    testBannerUnitId = "ca-app-pub-3940256099942544/6300978111";
+  } else if(Platform.isIOS) {
+    // iOSのとき
+    testBannerUnitId = "ca-app-pub-3940256099942544/2934735716";
+  }
+  return testBannerUnitId;
+}
+*/
+
 class MyApp extends StatelessWidget {
+
+/*
+  // This widget is the root of your application.2021.5.23
+  final BannerAd myBanner = BannerAd(
+    adUnitId: getTestAdBannerUnitId(),
+    size: AdSize.banner,
+    request: AdRequest(),
+    listener: AdListener(),
+  );
+*/
+
   @override
   Widget build(BuildContext context) {
+
+/*
+    myBanner.load();
+
+    final AdWidget adWidget = AdWidget(ad: myBanner);
+
+    final Container adContainer = Container(
+      alignment: Alignment.center,
+      child: adWidget,
+      width: myBanner.size.width.toDouble(),
+      height: myBanner.size.height.toDouble(),
+    );
+*/
     return MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -72,6 +124,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+/*
+  //2021.5.24 バナー広告のために追加
+  BannerAd banner;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final adState = Provider.of<AdState>(context);
+    adState.initialization.then((status) {
+      setState(() {
+        banner = BannerAd(
+          adUnitId: adState.bannerAdUnitId,
+          size: AdSize.banner,
+          request: AdRequest(),
+          listener: adState.adListener,
+        )..load();
+      });
+    });
+  }
+ */
+
   int _counter = 0;
   String _birthday0 = '';
 
@@ -121,7 +194,28 @@ class _MyHomePageState extends State<MyHomePage> {
     _getPrefItems();
   }
 
+  // TODO: 広告の処理
+
+
     var aaa = 'images/main/hana1.jpg';
+
+  BannerAd banner;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final adState = Provider.of<AdState>(context);
+    adState.initialization.then((status) {
+      setState(() {
+        banner = BannerAd(
+          adUnitId: adState.bannerAdUnitId,
+          size: AdSize.banner,
+          request: AdRequest(),
+          listener: adState.adListener,
+        )..load();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,6 +240,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            //バナー広告
+            if (banner == null)
+              SizedBox(height: 50) // Ads
+            else
+              Container(
+                height: 50,
+                child: AdWidget(ad: banner),
+              ),
+            //バナー広告ここまで
             Image.asset('$aaa'),
             Padding(
               padding: const EdgeInsets.all(4.0),
@@ -275,6 +378,7 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.white70,
               child: Text(''),
             ),
+
             /*AdmobBanner(
               adUnitId: AdMobService().getBannerAdUnitId(),
               adSize: AdmobBannerSize(

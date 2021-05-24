@@ -11,28 +11,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  google_fonts: ^2.1.0
+  google_mobile_ads: ^0.11.0+4
+  # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる
+  provider: ^5.0.0
+  cupertino_icons: ^1.0.3
+  shared_preferences: ^2.0.5 # 再起動したとき前回の設定を残して置くため
+  intl: ^0.17.0
+
   # Add the dependency for the Firebase Core Flutter SDK(2021.3.31)
-  # firebase_core: ^1.0.1
+  #firebase_core: ^1.0.1
   # Add the dependency for the FlutterFire plugin for Google Analytics
   #firebase_analytics: ^7.1.1
   # Add the dependencies for any other Firebase products you want to use in your app
   # For example, to use Firebase Authentication and Cloud Firestore
   #firebase_auth: ^1.0.1
   #cloud_firestore: ^1.0.1
-
-  shared_preferences: ^2.0.5 # 再起動したとき前回の設定を残して置くため
-
-
-  flutter_localizations:
-    sdk: flutter
-
-  cupertino_icons: ^1.0.3
   #admob_flutter: ^1.0.1
-  #google_mobile_ads: ^0.12.1+1 #追加するとエラーになる
-
-  provider: ^5.0.0
-
-  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
