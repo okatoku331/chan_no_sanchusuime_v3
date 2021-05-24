@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:ui';
 //import 'dart:io';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -214,6 +215,21 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            Container(
+              height: 100,
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter a search term'
+                ),
+                onChanged: (text) {
+                  print('First text field: $text');
+                  _birthday1 = text;
+                  print('_birthday1:$_birthday1');
+                },
+
+              ),
+            ),
             //バナー広告追加
             if (banner == null)
               SizedBox(height: 50) // Ads
