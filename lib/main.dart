@@ -19,6 +19,7 @@ import 'nikkan/nikkan_mizunoe.dart';
 import 'nikkan/nikkan_mizunoto.dart';
 import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
+import 'touroku.dart';
 
 void main() {
   //google_mobile_adsを配置するため追加 2021.5.24
@@ -278,10 +279,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SeinengappiInput(),
+                      builder: (context) => Touroku(),
                     ));
               },
-              child: Text('生年月日を入力して日干を求める'),
+              child: Text('占う'),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

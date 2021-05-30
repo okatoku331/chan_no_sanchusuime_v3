@@ -18,7 +18,8 @@ dependencies:
   # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる
   provider: ^5.0.0
   cupertino_icons: ^1.0.3
-  shared_preferences: ^2.0.5 # 再起動したとき前回の設定を残して置くため
+  shared_preferences: ^2.0.5
+  # 再起動したとき前回の設定を残して置くため
   intl: ^0.17.0
 
   # Add the dependency for the Firebase Core Flutter SDK(2021.3.31)
