@@ -60,7 +60,7 @@ class Touroku extends StatelessWidget {
         ),
       ),
       floatingActionButton: Icon(Icons.arrow_forward),
-      drawer: Drawer(),
+      //drawer: Drawer(),
     );
   }
 }

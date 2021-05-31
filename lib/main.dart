@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
@@ -96,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _memo3 = '';
   String _memo4 = '';
   BannerAd banner ;
+  DateTime newDate = DateTime.now();//DateTime(1957,3,31);//
 
   void _incrementCounter() async {
     setState(() {
@@ -197,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('三柱推命(生年月日占い/今日の運勢)'),
+        title: Text('天運三柱推命'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.navigate_next),
@@ -216,6 +218,68 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            //
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                            width: 180,
+                            child: TextButton(
+                              child: Text(
+                              '1 : 1957/03/31 生',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 20,
+                              ),
+                              ),
+                              onPressed: () {
+                                _showCupertinoDatePicker(context);
+                              },
+                            )
+                        ),
+                        Container(
+                            alignment: Alignment.center,
+                            width: 100,
+                            child: Text('岡照浩',
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),)
+                        ),
+
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        Icon(Icons.bar_chart),
+                        Container(
+                          width: 8,
+                        ),
+                        Icon(Icons.arrow_forward_ios),
+                      ],
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+
+            //
+
+
+
+
+
+
+
             Container(
               height: 100,
               child: TextField(
@@ -231,16 +295,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
               ),
             ),
-            //バナー広告追加
-            if (banner == null)
-              SizedBox(height: 50) // Ads
-            else
-              Container(
-                height: 50,
-                child: AdWidget(ad: banner),
-              ),
-            //バナー広告ここまで*/
-            Image.asset('$aaa'),
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text('あなたの日干はなんですか？'),
@@ -308,5 +362,55 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  void _showCupertinoDatePicker(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context){
+          return Container(
+            height: 260,
+            child: Column(
+              children: [
+                Container(
+                  height: 200,
+                  child: CupertinoDatePicker(
+                    initialDateTime: DateTime.now(),
+                    onDateTimeChanged: (DateTime newDate){},
+                    minimumYear: 2015,
+                    maximumYear: 2025,
+                    mode: CupertinoDatePickerMode.date,
+                  ),
+                ),
+                Container(
+                  height: 40,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue,
+                          elevation: 4,
+                          shadowColor: Colors.red,
+                        ),
+                        onPressed: () {},
+                        child: Text('キャンセル'),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue,
+                          elevation: 4,
+                          shadowColor: Colors.red,
+                        ),
+                        onPressed: () {},
+                        child: Text('登録'),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
