@@ -5,7 +5,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+//import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'services/ad_state.dart';
@@ -86,16 +88,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   int _counter = 0;
-  String _birthday0 = '';
-  String _birthday1 = '';
-  String _birthday2 = '';
-  String _birthday3 = '';
-  String _birthday4 = '';
+  String _birthday0 = '';//_***:この中で使う変数　　***:端末に記憶している変数
+  String birthdayHouji ;
   String _memo0 = '';
-  String _memo1 = '';
-  String _memo2 = '';
-  String _memo3 = '';
-  String _memo4 = '';
   BannerAd banner ;
   DateTime newDate = DateTime.now();//DateTime(1957,3,31);//
 
@@ -134,15 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter = prefs.getInt('counter') ?? 0;
       _birthday0 = prefs.getString('birthday0') ?? '';
-      _birthday1 = prefs.getString('birthday1') ?? '';
-      _birthday2 = prefs.getString('birthday2') ?? '';
-      _birthday3 = prefs.getString('birthday3') ?? '';
-      _birthday4 = prefs.getString('birthday4') ?? '';
       _memo0 = prefs.getString('memo0') ?? '';
-      _memo1 = prefs.getString('memo1') ?? '';
-      _memo2 = prefs.getString('memo2') ?? '';
-      _memo3 = prefs.getString('memo3') ?? '';
-      _memo4 = prefs.getString('memo4') ?? '';
     });
   }
 
@@ -152,15 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //
     prefs.setInt('counter', _counter);
     prefs.setString('birthday0', _birthday0);
-    prefs.setString('birthday1', _birthday1);
-    prefs.setString('birthday2', _birthday2);
-    prefs.setString('birthday3', _birthday3);
-    prefs.setString('birthday4', _birthday4);
     prefs.setString('memo0', _memo0);
-    prefs.setString('memo1', _memo1);
-    prefs.setString('memo2', _memo2);
-    prefs.setString('memo3', _memo3);
-    prefs.setString('memo4', _memo4);
   }
 
   //データを削除する
@@ -170,15 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter = 0;
       _birthday0 = '';
-      _birthday1 = '';
-      _birthday2 = '';
-      _birthday3 = '';
-      _birthday4 = '';
       _memo0 = '';
-      _memo1 = '';
-      _memo2 = '';
-      _memo3 = '';
-      _memo4 = '';
       //
       prefs.remove('counter');
       prefs.remove('birthday0');
@@ -193,6 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
     var aaa = 'images/main/hana1.jpg';
+  //String birthdayHyouji = _birthday0;
 
 
   @override
@@ -233,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             width: 180,
                             child: TextButton(
                               child: Text(
-                              '1 : 1957/03/31 生',
+                              '1 : $birthdayHouji 生',
                               style: TextStyle(
                                 color: Colors.black87,
                                 fontSize: 20,
@@ -241,16 +213,27 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                               onPressed: () {
                                 _showCupertinoDatePicker(context);
+                                setState(() {
+
+                                });
                               },
                             )
                         ),
                         Container(
                             alignment: Alignment.center,
                             width: 100,
-                            child: Text('岡照浩',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),)
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'メモ'
+                              ),
+                              onChanged: (text) {
+                                print('First text field: $text');
+                                _memo0 = text;
+                                print('_memo0:$_memo0');
+                              },
+
+                            ),
                         ),
 
                       ],
@@ -280,25 +263,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-            Container(
-              height: 100,
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter a search term'
-                ),
-                onChanged: (text) {
-                  print('First text field: $text');
-                  _birthday1 = text;
-                  print('_birthday1:$_birthday1');
-                },
-
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('あなたの日干はなんですか？'),
-            ),
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text('$_counter : $_birthday0'),
@@ -306,22 +270,6 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text('1: $_birthday0 生： $_memo0'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('2: $_birthday1 生： $_memo1'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('3: $_birthday2 生： $_memo2'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('4: $_birthday3 生： $_memo3'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('5: $_birthday4 生： $_memo4'),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -375,8 +323,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   height: 200,
                   child: CupertinoDatePicker(
-                    initialDateTime: DateTime.now(),
-                    onDateTimeChanged: (DateTime newDate){},
+                    initialDateTime: DateTime(
+                        int.parse(birthdayHouji.substring(0, 4)),
+                        int.parse(birthdayHouji.substring(5, 7)),
+                        int.parse(birthdayHouji.substring(8, 10))
+                    ),
+                    onDateTimeChanged: (DateTime newDate){
+                      print(newDate);
+                      birthdayHouji = DateFormat('yyyy/MM/dd').format(newDate);
+                      setState(() {
+
+                      });
+                    },
                     minimumYear: 2015,
                     maximumYear: 2025,
                     mode: CupertinoDatePickerMode.date,
@@ -402,7 +360,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           elevation: 4,
                           shadowColor: Colors.red,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          //birthdayHouji = DateFormat('yyyy/MM/dd').format(newDate);
+                          //print('$birthdayHouji');
+                          //setState(() {
+
+                          //});
+                          Navigator.of(context).pop();
+                        },
                         child: Text('登録'),
                       ),
                     ],
@@ -414,3 +379,8 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 }
+
+
+//TODO: DatePicker を　登録ボタンをおしたあと消すには
+//TODO:   〃　　　　　　　キャンセルをおしたあと消すには
+
