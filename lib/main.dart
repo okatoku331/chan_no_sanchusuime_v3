@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'dart:ui';
 //import 'dart:io';
+import 'package:chan_no_sanchusuimei_v3/kyou_unsei.dart';
+import 'package:chan_no_sanchusuimei_v3/output.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,8 @@ import 'nikkan/nikkan_mizunoe.dart';
 import 'nikkan/nikkan_mizunoto.dart';
 import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
+import 'kyou_unsei.dart';
+import 'output.dart';
 import 'touroku.dart';
 
 void main() {
@@ -89,10 +93,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _counter = 0;
   String _birthday0 = '';//_***:この中で使う変数　　***:端末に記憶している変数
-  String birthdayHouji ;
+  String birthdayOld0 = '';
+  String birthdayHyouji0 = '';
   String _memo0 = '';
+  String seinengappiMojia = '';
   BannerAd banner ;
   DateTime newDate = DateTime.now();//DateTime(1957,3,31);//
+  DateTime date9 = DateTime.now();
+  //DateTime newDate = DateTime.now();
 
   void _incrementCounter() async {
     setState(() {
@@ -149,6 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter = 0;
       _birthday0 = '';
+      birthdayOld0 = '';
       _memo0 = '';
       //
       prefs.remove('counter');
@@ -161,13 +170,29 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     //
     _getPrefItems();
-  }
+    birthdayOld0 = _birthday0;
+    seinengappiMojia = _birthday0;
+    if (_birthday0 == ''){
+      birthdayHyouji0 = '1 : yyyy/mm/dd ?';
+    } else{
+      birthdayHyouji0 = '1 : $_birthday0 生';
+    }
+    print('_birthday0:$_birthday0');
+    print('bithdayHuouji0:$birthdayHyouji0');
+    if ( _birthday0 == ''){
 
-    var aaa = 'images/main/hana1.jpg';
-  //String birthdayHyouji = _birthday0;
+    } else {
+      DateTime date9 = DateTime(
+          int.parse(_birthday0.substring(0, 4)),
+          int.parse(_birthday0.substring(5, 7)),
+          int.parse(_birthday0.substring(8, 10)));
+    }
+  }
 
 
   @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -194,64 +219,110 @@ class _MyHomePageState extends State<MyHomePage> {
 
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                            width: 180,
-                            child: TextButton(
-                              child: Text(
-                              '1 : $birthdayHouji 生',
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 20,
-                              ),
-                              ),
-                              onPressed: () {
-                                _showCupertinoDatePicker(context);
-                                setState(() {
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white38,
 
-                                });
-                              },
-                            )
+                      borderRadius: BorderRadius.circular(16
+                      ),
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 1,
+                  )
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                        width: 170,
+                        child: TextButton(
+                          child: Text(
+                          '$birthdayHyouji0',
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 18,
+                          ),
+                          ),
+                          onPressed: () {
+                            _showCupertinoDatePicker(context);
+                            setState(() {
+
+                            });
+                          },
+                        )
+                    ),
+                    SizedBox(
+                      width: 70,
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'メモ'
                         ),
-                        Container(
-                            alignment: Alignment.center,
-                            width: 100,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'メモ'
-                              ),
-                              onChanged: (text) {
-                                print('First text field: $text');
-                                _memo0 = text;
-                                print('_memo0:$_memo0');
-                              },
+                        onChanged: (text) {
+                          print('First text field: $text');
+                          _memo0 = text;
+                          print('_memo0:$_memo0');
+                        },
 
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                      width: 40,
+                      child: ElevatedButton(
+
+                        style: ElevatedButton.styleFrom(
+
+                          primary: Colors.lightBlue,
+                          elevation: 0,
+                          shadowColor: Colors.red,
+                        ),
+                        child: Icon(Icons.bar_chart,size:24),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => KyouUnsei(
+                                titleSeinengappi: seinengappiMojia,
+                              ),
                             ),
-                        ),
-
-                      ],
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(Icons.bar_chart),
-                        Container(
-                          width: 8,
-                        ),
-                        Icon(Icons.arrow_forward_ios),
-                      ],
+                    SizedBox(
+                      width: 8,
                     ),
-                  ),
+                    SizedBox(
+                      height: 30,
+                      width: 40,
+                      child: ElevatedButton(
 
-                ],
+                        style: ElevatedButton.styleFrom(
+
+
+                          primary: Colors.lightBlue,
+                          elevation: 0,
+                          shadowColor: Colors.red,
+                        ),
+                        child: Icon(Icons.arrow_forward_ios,size:24),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Output(
+                                titleSeinengappi: seinengappiMojia,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 0,
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -271,29 +342,54 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(4.0),
               child: Text('1: $_birthday0 生： $_memo0'),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                elevation: 4,
-                shadowColor: Colors.red,
-              ),
+            IconButton(
+              icon: Icon(Icons.remove),
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Touroku(),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => KyouUnsei(
+                      titleSeinengappi: seinengappiMojia,
+                    ),
+                  ),
+                );
               },
-              child: Text('占う'),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                elevation: 4,
-                shadowColor: Colors.red,
+            SizedBox(
+              height: 30,
+              width: 40,
+              child: ElevatedButton(
+
+                style: ElevatedButton.styleFrom(
+
+                  primary: Colors.blue,
+                  elevation: 4,
+                  shadowColor: Colors.red,
+                ),
+                child: Icon(Icons.bar_chart,size:20),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Touroku(),
+                      ));
+                },
+
               ),
-              onPressed: () => _removePrefItems(),
-              child: Text('削除する'),
+            ),
+            SizedBox(
+              height: 30,
+              width: 40,
+
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  elevation: 4,
+                  shadowColor: Colors.red,
+                ),
+                onPressed: () => _removePrefItems(),
+                child: Icon(Icons.arrow_forward,size: 20,),
+              ),
             ),
             Container(
               width: double.infinity,
@@ -323,20 +419,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   height: 200,
                   child: CupertinoDatePicker(
-                    initialDateTime: DateTime(
-                        int.parse(birthdayHouji.substring(0, 4)),
-                        int.parse(birthdayHouji.substring(5, 7)),
-                        int.parse(birthdayHouji.substring(8, 10))
-                    ),
-                    onDateTimeChanged: (DateTime newDate){
+                      initialDateTime: date9 ,
+                      onDateTimeChanged: (newDate){
                       print(newDate);
-                      birthdayHouji = DateFormat('yyyy/MM/dd').format(newDate);
+                      _birthday0 = DateFormat('yyyy/MM/dd').format(newDate);
+                      birthdayHyouji0 = '1 : $_birthday0 生';
+                      print('DP:_birthday0:$_birthday0');
                       setState(() {
-
                       });
                     },
-                    minimumYear: 2015,
-                    maximumYear: 2025,
+                    minimumYear: 1900,
+                    maximumYear: DateTime.now().year + 10,
                     mode: CupertinoDatePickerMode.date,
                   ),
                 ),
@@ -345,30 +438,171 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      ElevatedButton(
+                      ElevatedButton(child: Text('キャンセル'),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.blue,
                           elevation: 4,
                           shadowColor: Colors.red,
                         ),
-                        onPressed: () {},
-                        child: Text('キャンセル'),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          elevation: 4,
-                          shadowColor: Colors.red,
-                        ),
+
                         onPressed: () {
+                          //_getPrefItems();
+                          _birthday0 = birthdayOld0;
+                          if (_birthday0 == ''){
+                            birthdayHyouji0 = '1 : yyyy/mm/dd ?';
+                          } else{
+                            birthdayHyouji0 = '1 : $_birthday0 生';
+                          }
+                          print('_birthday0:$_birthday0');
+                          print('bithdayHuouji0:$birthdayHyouji0');
+                          if ( _birthday0 == ''){
+                            DateTime date9 = DateTime.now();
+                          } else {
+                            DateTime date9 = DateTime(
+                                int.parse(_birthday0.substring(0, 4)),
+                                int.parse(_birthday0.substring(5, 7)),
+                                int.parse(_birthday0.substring(8, 10)));
+                          }
+                          setState(() {});
+                          Navigator.of(context).pop();
+                        },
+
+                      ),
+                      ElevatedButton(child: Text('削除'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue,
+                          elevation: 4,
+                          shadowColor: Colors.red,
+                        ),
+
+                          onPressed: () async {
+                            var result = await showDialog<int>(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('確認'),
+                                  content: Text('$_birthday0 を削除しますか？'),
+                                  actions: <Widget>[
+                                    ElevatedButton(child: Text('Cancel'),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.blue,
+                                          elevation: 4,
+                                          shadowColor: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        }
+                                    ),
+                                    ElevatedButton(child: Text('OK'),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.blue,
+                                          elevation: 4,
+                                          shadowColor: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                          //_birthday0 =  DateFormat('yyyy/MM/dd').format(newDate);
+                                          birthdayHyouji0 = '1 : yyyy/mm/dd 生';
+                                          DateTime date9 = DateTime.now();
+                                          print('OK:_birthday0:$_birthday0');
+                                          print(date9);
+                                          _removePrefItems();
+                                          setState(() {
+
+                                          });
+                                          Navigator.of(context).pop();
+                                          Navigator.of(context).pop();
+                                        }
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            print('dialog result: $result');
+                            //Navigator.of(context).pop(); // --
+
+                          }
+
+                      ),
+                      ElevatedButton(child: Text('登録'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue,
+                          elevation: 4,
+                          shadowColor: Colors.red,
+                        ),
+                          onPressed: () async {
+                        //TODO;
+                            if (_birthday0 == ''){
+                              _birthday0 = DateFormat('yyyy/MM/dd').format(DateTime.now());
+                            }else{
+
+                            };
+                            var result = await showDialog<int>(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('確認'),
+                                content: Text('$_birthday0 で登録しますか？'),
+                                actions: <Widget>[
+                                  ElevatedButton(child: Text('Cancel'),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.blue,
+                                        elevation: 4,
+                                        shadowColor: Colors.red,
+                                      ),
+                                    onPressed: () {
+
+                                      _birthday0 = birthdayOld0;
+                                      setState(() {});
+                                      Navigator.of(context).pop();
+                                    }
+                                  ),
+                                  ElevatedButton(child: Text('OK'),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.blue,
+                                        elevation: 4,
+                                        shadowColor: Colors.red,
+                                      ),
+                                    onPressed: () {
+                                      //_birthday0 =  DateFormat('yyyy/MM/dd').format(newDate);
+                                      birthdayHyouji0 = '1 : $_birthday0 生';
+                                      birthdayOld0 = _birthday0;
+                                      seinengappiMojia = _birthday0;
+                                      DateTime date9 = DateTime(
+                                          int.parse(_birthday0.substring(0, 4)),
+                                          int.parse(_birthday0.substring(5, 7)),
+                                          int.parse(_birthday0.substring(8, 10)));
+                                      print('OK:_birthday0:$_birthday0');
+                                      print(date9);
+                                      _setPrefItems();
+                                      setState(() {
+
+                                      });
+                                      Navigator.of(context).pop();
+                                      Navigator.of(context).pop();
+                                    }
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          print('dialog result: $result');
+                          //Navigator.of(context).pop(); // --
+
+                          }
+    // ダイアログを表示------------------------------------
+
+
+                          /*onPressed: () {
                           //birthdayHouji = DateFormat('yyyy/MM/dd').format(newDate);
                           //print('$birthdayHouji');
                           //setState(() {
 
                           //});
                           Navigator.of(context).pop();
-                        },
-                        child: Text('登録'),
+                        },*/
+
                       ),
                     ],
                   ),
@@ -381,6 +615,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 
+//TODO: DatePickerダイアログ　を表示する
 //TODO: DatePicker を　登録ボタンをおしたあと消すには
 //TODO:   〃　　　　　　　キャンセルをおしたあと消すには
-
+//TODO: _birthday0　が　null のとき　登録画面
+//TODO: DatePicke の最小・最大年月日の決定
+//TODO: DatePicker の初期年月日　null なら今日、そうでないならOld誕生日
