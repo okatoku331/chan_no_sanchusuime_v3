@@ -353,7 +353,7 @@ class KyouUnsei extends StatelessWidget {
           ),
 
           ListTile(
-            title: Text('１．「日干」のからみた今日の運勢'),
+            title: Text('１．「日干」からみた今日の運勢'),
           ),
 
 
@@ -376,7 +376,7 @@ class KyouUnsei extends StatelessWidget {
           ),
 
           ListTile(
-            title: Text('２．「日支」のからみた今日の運勢'),
+            title: Text('２．「日支」からみた今日の運勢'),
           ),
           ListTile(
             title: Text('　　生年月日の日支が、「$nissiMoji」、'
