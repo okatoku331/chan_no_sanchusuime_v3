@@ -93,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _counter = 0;
   String _birthday0 = '';//_***:この中で使う変数　　***:端末に記憶している変数
+  String _birthdaya0 = '2000-01-01';
   String birthdayOld0 = '';
   String birthdayHyouji0 = '';
   String _memo0 = '';
@@ -244,6 +245,24 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           ),
                           onPressed: () {
+
+
+
+                            if (_birthday0 == ''){
+                              date9 = DateTime.now();
+                              print('a:date9:$date9');
+                            } else {
+                              _birthdaya0 = _birthday0.substring(0, 4) + '-'
+                                  + _birthday0.substring(5, 7) + '-'
+                                  + _birthday0.substring(8, 10);
+                              date9 = DateTime.parse(_birthdaya0);
+                              print('b:date9:$date9');
+                            };
+                            print('d:_birthday0:$_birthday0');
+                            print('d:_birthdaya0:$_birthdaya0');
+
+                            print('c:date9:$date9');
+
                             _showCupertinoDatePicker(context);
                             setState(() {
 
