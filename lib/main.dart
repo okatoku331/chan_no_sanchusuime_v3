@@ -91,25 +91,25 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  int _counter = 0;
+  //int _counter = 0;
   String _birthday0 = '';//_***:この中で使う変数　　***:端末に記憶している変数
   String _birthdaya0 = '2000-01-01';
   String birthdayOld0 = '';
   String birthdayHyouji0 = '';
-  String _memo0 = '';
+  String _memo0 = 'メモ';
   String seinengappiMojia = '';
   BannerAd banner ;
   DateTime newDate = DateTime.now();//DateTime(1957,3,31);//
   DateTime date9 = DateTime.now();
   //DateTime newDate = DateTime.now();
 
-  void _incrementCounter() async {
+  /*void _incrementCounter() async {
     setState(() {
       _counter++;
       _birthday0 = _birthday0 + 'a';
       _setPrefItems(); //Shared Preference に値を保存する
     });
-  }
+  }*/
 
    //google_mobile_adsを配置するため追加 2021.5.24
   //BannerAd banner;
@@ -136,17 +136,25 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //
     setState(() {
-      _counter = prefs.getInt('counter') ?? 0;
+      //_counter = prefs.getInt('counter') ?? 0;
       _birthday0 = prefs.getString('birthday0') ?? '';
       _memo0 = prefs.getString('memo0') ?? '';
     });
+    birthdayOld0 = _birthday0;
+    seinengappiMojia = _birthday0;
+    if (_birthday0 == ''){
+      birthdayHyouji0 = '1 : yyyy/mm/dd ?';
+    } else{
+      birthdayHyouji0 = '1 : $_birthday0 生';
+    };
+    if (_memo0 == '') { _memo0 = 'メモ'; } else {};
   }
 
   //データを書き込む
   _setPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //
-    prefs.setInt('counter', _counter);
+    //prefs.setInt('counter', _counter);
     prefs.setString('birthday0', _birthday0);
     prefs.setString('memo0', _memo0);
   }
@@ -156,13 +164,14 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      _counter = 0;
+      //_counter = 0;
       _birthday0 = '';
       birthdayOld0 = '';
-      _memo0 = '';
+      _memo0 = 'メモ';
       //
-      prefs.remove('counter');
+      //prefs.remove('counter');
       prefs.remove('birthday0');
+      prefs.remove('memo0');
     });
   }
 
@@ -171,23 +180,23 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     //
     _getPrefItems();
-    birthdayOld0 = _birthday0;
+    /*birthdayOld0 = _birthday0;
     seinengappiMojia = _birthday0;
     if (_birthday0 == ''){
       birthdayHyouji0 = '1 : yyyy/mm/dd ?';
     } else{
       birthdayHyouji0 = '1 : $_birthday0 生';
-    }
-    print('_birthday0:$_birthday0');
-    print('bithdayHuouji0:$birthdayHyouji0');
-    if ( _birthday0 == ''){
+    }*/
+    //print('_birthday0:$_birthday0');
+    //print('bithdayHuouji0:$birthdayHyouji0');
+    /*if ( _birthday0 == ''){
 
     } else {
       DateTime date9 = DateTime(
           int.parse(_birthday0.substring(0, 4)),
           int.parse(_birthday0.substring(5, 7)),
           int.parse(_birthday0.substring(8, 10)));
-    }
+    }*/
   }
 
 
@@ -264,9 +273,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             print('c:date9:$date9');
 
                             _showCupertinoDatePicker(context);
-                            setState(() {
-
-                            });
+                            //setState(() {});
                           },
                         )
                     ),
@@ -275,11 +282,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: TextField(
                         decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'メモ'
+                            hintText: _memo0
                         ),
                         onChanged: (text) {
                           print('First text field: $text');
                           _memo0 = text;
+                          _setPrefItems();
                           print('_memo0:$_memo0');
                         },
 
@@ -353,15 +361,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-            Padding(
+            /*Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text('$_counter : $_birthday0'),
-            ),
+            ),*/
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text('1: $_birthday0 生： $_memo0'),
             ),
-            IconButton(
+            /*IconButton(
               icon: Icon(Icons.remove),
               onPressed: () {
                 Navigator.push(
@@ -373,8 +381,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-            ),
-            SizedBox(
+            ),*/
+            /*SizedBox(
               height: 30,
               width: 40,
               child: ElevatedButton(
@@ -395,8 +403,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
 
               ),
-            ),
-            SizedBox(
+            ),*/
+            /*SizedBox(
               height: 30,
               width: 40,
 
@@ -409,7 +417,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () => _removePrefItems(),
                 child: Icon(Icons.arrow_forward,size: 20,),
               ),
-            ),
+            ),*/
             Container(
               width: double.infinity,
               height: 4,
@@ -419,11 +427,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ),
+      ),*/
     );
   }
 
@@ -634,9 +642,10 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 
-//TODO: DatePickerダイアログ　を表示する
-//TODO: DatePicker を　登録ボタンをおしたあと消すには
-//TODO:   〃　　　　　　　キャンセルをおしたあと消すには
-//TODO: _birthday0　が　null のとき　登録画面
-//TODO: DatePicke の最小・最大年月日の決定
-//TODO: DatePicker の初期年月日　null なら今日、そうでないならOld誕生日
+//okTODO: DatePickerダイアログ　を表示する
+//okTODO: DatePicker を　登録ボタンをおしたあと消すには
+//okTODO:   〃　　　　　　　キャンセルをおしたあと消すには
+//okTODO: _birthday0　が　null のとき　登録画面
+//okODO: DatePicke の最小・最大年月日の決定
+//okTODO: DatePicker の初期年月日　null なら今日、そうでないならOld誕生日
+//TODO: 生年月日削除したのにメモが消えない
