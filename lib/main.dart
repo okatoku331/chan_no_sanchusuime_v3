@@ -1,13 +1,10 @@
-import 'dart:developer';
 import 'dart:ui';
-//import 'dart:io';
 import 'package:chan_no_sanchusuimei_v3/kyou_unsei.dart';
 import 'package:chan_no_sanchusuimei_v3/output.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-//import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,7 +23,6 @@ import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
 import 'kyou_unsei.dart';
 import 'output.dart';
-import 'touroku.dart';
 
 void main() {
   //google_mobile_adsを配置するため追加 2021.5.24
@@ -46,6 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      // DatePickerを日本語化する
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -55,6 +52,8 @@ class MyApp extends StatelessWidget {
         const Locale('en'),
         const Locale('ja'),
       ],
+      locale:  Locale('ja', 'JP'),
+      //　日本語化ここまで
       title: '三柱推命【生年月日占い】', //Flutter Demo', //三柱推命【生年月日占い】',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -92,6 +91,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   //int _counter = 0;
+
+
   String _birthday0 = '';//_***:この中で使う変数　　***:端末に記憶している変数
   String _birthdaya0 = '2000-01-01';
   String birthdayOld0 = '';
@@ -101,15 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
   BannerAd banner ;
   DateTime newDate = DateTime.now();//DateTime(1957,3,31);//
   DateTime date9 = DateTime.now();
-  //DateTime newDate = DateTime.now();
-
-  /*void _incrementCounter() async {
-    setState(() {
-      _counter++;
-      _birthday0 = _birthday0 + 'a';
-      _setPrefItems(); //Shared Preference に値を保存する
-    });
-  }*/
 
    //google_mobile_adsを配置するため追加 2021.5.24
   //BannerAd banner;
@@ -136,7 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //
     setState(() {
-      //_counter = prefs.getInt('counter') ?? 0;
       _birthday0 = prefs.getString('birthday0') ?? '';
       _memo0 = prefs.getString('memo0') ?? '';
     });
@@ -154,7 +145,6 @@ class _MyHomePageState extends State<MyHomePage> {
   _setPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //
-    //prefs.setInt('counter', _counter);
     prefs.setString('birthday0', _birthday0);
     prefs.setString('memo0', _memo0);
   }
@@ -164,12 +154,10 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      //_counter = 0;
       _birthday0 = '';
       birthdayOld0 = '';
       _memo0 = 'メモ';
       //
-      //prefs.remove('counter');
       prefs.remove('birthday0');
       prefs.remove('memo0');
     });
@@ -180,23 +168,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     //
     _getPrefItems();
-    /*birthdayOld0 = _birthday0;
-    seinengappiMojia = _birthday0;
-    if (_birthday0 == ''){
-      birthdayHyouji0 = '1 : yyyy/mm/dd ?';
-    } else{
-      birthdayHyouji0 = '1 : $_birthday0 生';
-    }*/
-    //print('_birthday0:$_birthday0');
-    //print('bithdayHuouji0:$birthdayHyouji0');
-    /*if ( _birthday0 == ''){
-
-    } else {
-      DateTime date9 = DateTime(
-          int.parse(_birthday0.substring(0, 4)),
-          int.parse(_birthday0.substring(5, 7)),
-          int.parse(_birthday0.substring(8, 10)));
-    }*/
   }
 
 
@@ -353,71 +324,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
-            //
-
-
-
-
-
-
-
-            /*Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text('$_counter : $_birthday0'),
-            ),*/
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text('1: $_birthday0 生： $_memo0'),
             ),
-            /*IconButton(
-              icon: Icon(Icons.remove),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => KyouUnsei(
-                      titleSeinengappi: seinengappiMojia,
-                    ),
-                  ),
-                );
-              },
-            ),*/
-            /*SizedBox(
-              height: 30,
-              width: 40,
-              child: ElevatedButton(
-
-                style: ElevatedButton.styleFrom(
-
-                  primary: Colors.blue,
-                  elevation: 4,
-                  shadowColor: Colors.red,
-                ),
-                child: Icon(Icons.bar_chart,size:20),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Touroku(),
-                      ));
-                },
-
-              ),
-            ),*/
-            /*SizedBox(
-              height: 30,
-              width: 40,
-
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
-                  elevation: 4,
-                  shadowColor: Colors.red,
-                ),
-                onPressed: () => _removePrefItems(),
-                child: Icon(Icons.arrow_forward,size: 20,),
-              ),
-            ),*/
             Container(
               width: double.infinity,
               height: 4,
@@ -427,11 +337,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      /*floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),*/
     );
   }
 
@@ -528,7 +433,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                           shadowColor: Colors.red,
                                         ),
                                         onPressed: () {
-                                          //_birthday0 =  DateFormat('yyyy/MM/dd').format(newDate);
                                           birthdayHyouji0 = '1 : yyyy/mm/dd 生';
                                           DateTime date9 = DateTime.now();
                                           print('OK:_birthday0:$_birthday0');
@@ -592,7 +496,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         shadowColor: Colors.red,
                                       ),
                                     onPressed: () {
-                                      //_birthday0 =  DateFormat('yyyy/MM/dd').format(newDate);
                                       birthdayHyouji0 = '1 : $_birthday0 生';
                                       birthdayOld0 = _birthday0;
                                       seinengappiMojia = _birthday0;
@@ -615,21 +518,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                           );
                           print('dialog result: $result');
-                          //Navigator.of(context).pop(); // --
-
                           }
-    // ダイアログを表示------------------------------------
-
-
-                          /*onPressed: () {
-                          //birthdayHouji = DateFormat('yyyy/MM/dd').format(newDate);
-                          //print('$birthdayHouji');
-                          //setState(() {
-
-                          //});
-                          Navigator.of(context).pop();
-                        },*/
-
                       ),
                     ],
                   ),
