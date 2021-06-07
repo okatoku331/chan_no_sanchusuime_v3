@@ -1,8 +1,6 @@
 import 'dart:ui';
-import 'package:chan_no_sanchusuimei_v3/kyou_unsei.dart';
-import 'package:chan_no_sanchusuimei_v3/output.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:chan_no_sanchusuimei_v3/osirase/update.dart';
+import 'osirase/update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -90,9 +88,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  //int _counter = 0;
-
-
   String _birthday0 = '';//_***:この中で使う変数　　***:端末に記憶している変数
   String _birthdaya0 = '2000-01-01';
   String birthdayOld0 = '';
@@ -122,7 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   //追加ここまで*/
 
-
   // shareed Preference に保存されているデータを読み込んで、_counterにセットする
   _getPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -137,8 +131,8 @@ class _MyHomePageState extends State<MyHomePage> {
       birthdayHyouji0 = '1 : yyyy/mm/dd ?';
     } else{
       birthdayHyouji0 = '1 : $_birthday0 生';
-    };
-    if (_memo0 == '') { _memo0 = 'メモ'; } else {};
+    }
+    if (_memo0 == '') { _memo0 = 'メモ'; } else {}
   }
 
   //データを書き込む
@@ -157,6 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _birthday0 = '';
       birthdayOld0 = '';
       _memo0 = 'メモ';
+      seinengappiMojia ='';
       //
       prefs.remove('birthday0');
       prefs.remove('memo0');
@@ -170,12 +165,11 @@ class _MyHomePageState extends State<MyHomePage> {
     _getPrefItems();
   }
 
-
   @override
-
 
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: Text('天運三柱推命'),
         actions: <Widget>[
@@ -196,8 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            //
-
+            // 一行目の表示
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -214,6 +207,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
+                    // 生年月日表示欄
                     SizedBox(
                         width: 170,
                         child: TextButton(
@@ -225,29 +220,21 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           ),
                           onPressed: () {
-
-
-
                             if (_birthday0 == ''){
                               date9 = DateTime.now();
-                              print('a:date9:$date9');
                             } else {
                               _birthdaya0 = _birthday0.substring(0, 4) + '-'
                                   + _birthday0.substring(5, 7) + '-'
                                   + _birthday0.substring(8, 10);
                               date9 = DateTime.parse(_birthdaya0);
                               print('b:date9:$date9');
-                            };
-                            print('d:_birthday0:$_birthday0');
-                            print('d:_birthdaya0:$_birthdaya0');
-
-                            print('c:date9:$date9');
-
+                            }
                             _showCupertinoDatePicker(context);
-                            //setState(() {});
                           },
                         )
                     ),
+
+                    // メモ　欄　の表示
                     SizedBox(
                       width: 70,
                       child: TextField(
@@ -256,55 +243,58 @@ class _MyHomePageState extends State<MyHomePage> {
                             hintText: _memo0
                         ),
                         onChanged: (text) {
-                          print('First text field: $text');
                           _memo0 = text;
                           _setPrefItems();
-                          print('_memo0:$_memo0');
                         },
-
                       ),
                     ),
+
+                    // 今日の運勢　ボタン
                     SizedBox(
                       height: 30,
                       width: 40,
                       child: ElevatedButton(
-
                         style: ElevatedButton.styleFrom(
-
                           primary: Colors.lightBlue,
                           elevation: 0,
                           shadowColor: Colors.red,
                         ),
                         child: Icon(Icons.bar_chart,size:24),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => KyouUnsei(
-                                titleSeinengappi: seinengappiMojia,
+                          if (seinengappiMojia == '') {
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => KyouUnsei(
+                                  titleSeinengappi: seinengappiMojia,
+                                ),
                               ),
-                            ),
-                          );
+                            );
+                          }
                         },
                       ),
                     ),
+
+                    // スペース
                     SizedBox(
                       width: 8,
                     ),
+
+                    // 性格・天地徳合　ボタン
                     SizedBox(
                       height: 30,
                       width: 40,
                       child: ElevatedButton(
-
                         style: ElevatedButton.styleFrom(
-
-
                           primary: Colors.lightBlue,
                           elevation: 0,
                           shadowColor: Colors.red,
                         ),
                         child: Icon(Icons.arrow_forward_ios,size:24),
                         onPressed: () {
+                          if (seinengappiMojia == '') {
+                          } else {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -313,6 +303,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                           );
+                          }
                         },
                       ),
                     ),
@@ -340,6 +331,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
+  // 画面下からDatePickerを表示する
   void _showCupertinoDatePicker(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -348,15 +341,15 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 260,
             child: Column(
               children: [
+
+                // iOS タイプのDatePickerを表示
                 Container(
                   height: 200,
                   child: CupertinoDatePicker(
                       initialDateTime: date9 ,
                       onDateTimeChanged: (newDate){
-                      print(newDate);
                       _birthday0 = DateFormat('yyyy/MM/dd').format(newDate);
                       birthdayHyouji0 = '1 : $_birthday0 生';
-                      print('DP:_birthday0:$_birthday0');
                       setState(() {
                       });
                     },
@@ -365,18 +358,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     mode: CupertinoDatePickerMode.date,
                   ),
                 ),
+
+                // 「キャンセル」「削除」「登録」ボタン
                 Container(
                   height: 40,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
+
+                      // キャンセル　ボタン
                       ElevatedButton(child: Text('キャンセル'),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.blue,
                           elevation: 4,
                           shadowColor: Colors.red,
                         ),
-
                         onPressed: () {
                           //_getPrefItems();
                           _birthday0 = birthdayOld0;
@@ -385,141 +381,130 @@ class _MyHomePageState extends State<MyHomePage> {
                           } else{
                             birthdayHyouji0 = '1 : $_birthday0 生';
                           }
-                          print('_birthday0:$_birthday0');
-                          print('bithdayHuouji0:$birthdayHyouji0');
-                          if ( _birthday0 == ''){
-                            DateTime date9 = DateTime.now();
-                          } else {
-                            DateTime date9 = DateTime(
-                                int.parse(_birthday0.substring(0, 4)),
-                                int.parse(_birthday0.substring(5, 7)),
-                                int.parse(_birthday0.substring(8, 10)));
-                          }
                           setState(() {});
                           Navigator.of(context).pop();
                         },
-
                       ),
-                      ElevatedButton(child: Text('削除'),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          elevation: 4,
-                          shadowColor: Colors.red,
-                        ),
 
+                      // 「削除」ボタン
+                      ElevatedButton(
+                          child: Text('削除'),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blue,
+                            elevation: 4,
+                            shadowColor: Colors.red,
+                          ),
                           onPressed: () async {
+                            if (_birthday0 == '') {
+                            } else {
+                              var result = await showDialog<int>(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (BuildContext context) {
+
+                                  // 削除のダイアログを表示
+                                  return AlertDialog(
+                                    title: Text('確認'),
+                                    content: Text('$_birthday0 を削除しますか？'),
+                                    actions: <Widget>[
+
+                                      // 「Cancel」ボタン
+                                      ElevatedButton(
+                                          child: Text('Cancel'),
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.blue,
+                                            elevation: 4,
+                                            shadowColor: Colors.red,
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          }),
+
+                                      // 「OK」ボタン
+                                      ElevatedButton(
+                                          child: Text('OK'),
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.blue,
+                                            elevation: 4,
+                                            shadowColor: Colors.red,
+                                          ),
+                                          onPressed: () {
+                                            birthdayHyouji0 =
+                                                '1 : yyyy/mm/dd 生';
+                                            _removePrefItems();
+                                            Navigator.of(context).pop();
+                                            Navigator.of(context).pop();
+                                          }),
+                                    ],
+                                  );
+                                },
+                              );
+                              print('dialog result: $result');
+                            }
+                          }),
+
+                      // 「登録」　ボタン
+                      ElevatedButton(
+                          child: Text('登録'),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blue,
+                            elevation: 4,
+                            shadowColor: Colors.red,
+                          ),
+                          onPressed: () async {
+                            //TODO;
+                            if (_birthday0 == '') {
+                              _birthday0 = DateFormat('yyyy/MM/dd')
+                                  .format(DateTime.now());
+                            } else {}
                             var result = await showDialog<int>(
                               context: context,
                               barrierDismissible: false,
                               builder: (BuildContext context) {
+
+                                // 登録　ダイアログを表示する
                                 return AlertDialog(
                                   title: Text('確認'),
-                                  content: Text('$_birthday0 を削除しますか？'),
+                                  content: Text('$_birthday0 で登録しますか？'),
                                   actions: <Widget>[
-                                    ElevatedButton(child: Text('Cancel'),
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.blue,
-                                          elevation: 4,
-                                          shadowColor: Colors.red,
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        }
-                                    ),
-                                    ElevatedButton(child: Text('OK'),
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.blue,
-                                          elevation: 4,
-                                          shadowColor: Colors.red,
-                                        ),
-                                        onPressed: () {
-                                          birthdayHyouji0 = '1 : yyyy/mm/dd 生';
-                                          DateTime date9 = DateTime.now();
-                                          print('OK:_birthday0:$_birthday0');
-                                          print(date9);
-                                          _removePrefItems();
-                                          setState(() {
 
-                                          });
+                                    //「Cancel」ボタン
+                                    ElevatedButton(
+                                        child: Text('Cancel'),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.blue,
+                                          elevation: 4,
+                                          shadowColor: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                          _birthday0 = birthdayOld0;
+                                          setState(() {});
+                                          Navigator.of(context).pop();
+                                        }),
+
+                                    // 「OK」ボタン
+                                    ElevatedButton(
+                                        child: Text('OK'),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.blue,
+                                          elevation: 4,
+                                          shadowColor: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                          birthdayHyouji0 = '1 : $_birthday0 生';
+                                          birthdayOld0 = _birthday0;
+                                          seinengappiMojia = _birthday0;
+                                          _setPrefItems();
+                                          setState(() {});
                                           Navigator.of(context).pop();
                                           Navigator.of(context).pop();
-                                        }
-                                    ),
+                                        }),
                                   ],
                                 );
                               },
                             );
-                            print('dialog result: $result');
-                            //Navigator.of(context).pop(); // --
-
-                          }
-
-                      ),
-                      ElevatedButton(child: Text('登録'),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          elevation: 4,
-                          shadowColor: Colors.red,
-                        ),
-                          onPressed: () async {
-                        //TODO;
-                            if (_birthday0 == ''){
-                              _birthday0 = DateFormat('yyyy/MM/dd').format(DateTime.now());
-                            }else{
-
-                            };
-                            var result = await showDialog<int>(
-                            context: context,
-                            barrierDismissible: false,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('確認'),
-                                content: Text('$_birthday0 で登録しますか？'),
-                                actions: <Widget>[
-                                  ElevatedButton(child: Text('Cancel'),
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.blue,
-                                        elevation: 4,
-                                        shadowColor: Colors.red,
-                                      ),
-                                    onPressed: () {
-
-                                      _birthday0 = birthdayOld0;
-                                      setState(() {});
-                                      Navigator.of(context).pop();
-                                    }
-                                  ),
-                                  ElevatedButton(child: Text('OK'),
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.blue,
-                                        elevation: 4,
-                                        shadowColor: Colors.red,
-                                      ),
-                                    onPressed: () {
-                                      birthdayHyouji0 = '1 : $_birthday0 生';
-                                      birthdayOld0 = _birthday0;
-                                      seinengappiMojia = _birthday0;
-                                      DateTime date9 = DateTime(
-                                          int.parse(_birthday0.substring(0, 4)),
-                                          int.parse(_birthday0.substring(5, 7)),
-                                          int.parse(_birthday0.substring(8, 10)));
-                                      print('OK:_birthday0:$_birthday0');
-                                      print(date9);
-                                      _setPrefItems();
-                                      setState(() {
-
-                                      });
-                                      Navigator.of(context).pop();
-                                      Navigator.of(context).pop();
-                                    }
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          print('dialog result: $result');
-                          }
-                      ),
+                            //print('dialog result: $result');
+                          }),
                     ],
                   ),
                 ),
@@ -530,7 +515,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
 //okTODO: DatePickerダイアログ　を表示する
 //okTODO: DatePicker を　登録ボタンをおしたあと消すには
 //okTODO:   〃　　　　　　　キャンセルをおしたあと消すには
@@ -538,3 +522,5 @@ class _MyHomePageState extends State<MyHomePage> {
 //okODO: DatePicke の最小・最大年月日の決定
 //okTODO: DatePicker の初期年月日　null なら今日、そうでないならOld誕生日
 //TODO: 生年月日削除したのにメモが消えない
+//TODO: 生年月日、未入力時に、鑑定ボタンを押すと赤面エラーになる
+//TODO: 生年月日、無入力時に、削除ボタンを押すと「生年月日は登録されていません」と表示する
