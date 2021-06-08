@@ -367,12 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
 
                       // キャンセル　ボタン
-                      ElevatedButton(child: Text('キャンセル'),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          elevation: 4,
-                          shadowColor: Colors.red,
-                        ),
+                      TextButton(child: Text('キャンセル'),
                         onPressed: () {
                           //_getPrefItems();
                           _birthday0 = birthdayOld0;
@@ -387,13 +382,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
 
                       // 「削除」ボタン
-                      ElevatedButton(
+                      TextButton(
                           child: Text('削除'),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.blue,
-                            elevation: 4,
-                            shadowColor: Colors.red,
-                          ),
                           onPressed: () async {
                             if (_birthday0 == '') {
                             } else {
@@ -404,30 +394,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
                                   // 削除のダイアログを表示
                                   return AlertDialog(
-                                    title: Text('確認'),
                                     content: Text('$_birthday0 を削除しますか？'),
                                     actions: <Widget>[
 
                                       // 「Cancel」ボタン
-                                      ElevatedButton(
+                                      TextButton(
                                           child: Text('Cancel'),
-                                          style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue,
-                                            elevation: 4,
-                                            shadowColor: Colors.red,
-                                          ),
                                           onPressed: () {
                                             Navigator.of(context).pop();
                                           }),
 
                                       // 「OK」ボタン
-                                      ElevatedButton(
+                                      TextButton(
                                           child: Text('OK'),
-                                          style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue,
-                                            elevation: 4,
-                                            shadowColor: Colors.red,
-                                          ),
                                           onPressed: () {
                                             birthdayHyouji0 =
                                                 '1 : yyyy/mm/dd 生';
@@ -444,13 +423,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           }),
 
                       // 「登録」　ボタン
-                      ElevatedButton(
+                      TextButton(
                           child: Text('登録'),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.blue,
-                            elevation: 4,
-                            shadowColor: Colors.red,
-                          ),
                           onPressed: () async {
                             //TODO;
                             if (_birthday0 == '') {
@@ -464,18 +438,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
                                 // 登録　ダイアログを表示する
                                 return AlertDialog(
-                                  title: Text('確認'),
                                   content: Text('$_birthday0 で登録しますか？'),
                                   actions: <Widget>[
 
                                     //「Cancel」ボタン
-                                    ElevatedButton(
+                                    TextButton(
                                         child: Text('Cancel'),
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.blue,
-                                          elevation: 4,
-                                          shadowColor: Colors.red,
-                                        ),
                                         onPressed: () {
                                           _birthday0 = birthdayOld0;
                                           setState(() {});
@@ -483,13 +451,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         }),
 
                                     // 「OK」ボタン
-                                    ElevatedButton(
+                                    TextButton(
                                         child: Text('OK'),
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.blue,
-                                          elevation: 4,
-                                          shadowColor: Colors.red,
-                                        ),
                                         onPressed: () {
                                           birthdayHyouji0 = '1 : $_birthday0 生';
                                           birthdayOld0 = _birthday0;
