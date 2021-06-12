@@ -210,7 +210,7 @@ class Output extends StatelessWidget {
               child: AdWidget(ad: banner),
             ),
           //バナー広告ここまで*/
-          Image.asset('images/main/hana_sakura.jpg'),
+          Image.asset('images/main/kouhukukan.jpg'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
