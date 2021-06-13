@@ -274,9 +274,9 @@ class _MyHomePageState extends State<MyHomePage> {
     seinengappiMojia = ''; //TODO: このコード気になる
     int j = item + 1;
     _birthD.removeAt(item);
-    _birthD.insert(item, '');
+    _birthD.insert(item, 'yyyy/mm/dd');
     _birthO.removeAt(item);
-    _birthO.insert(item, '');
+    _birthO.insert(item, 'yyyy/mm/dd');
     _birthH.removeAt(item);
     _birthH.insert(item, '$j : yyyy/mm/dd 生');
     _memoH.removeAt(item);
@@ -351,7 +351,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Container(
-                      height: 40,
+                      height: 44,
                       decoration: BoxDecoration(
                           color: Colors.white38,
                           borderRadius: BorderRadius.circular(12),
@@ -376,7 +376,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 onPressed: () {
                                   _birthday = _birthD[index];
-                                  if (_birthday == '') {
+                                  if (_birthday == 'yyyy/mm/dd') {
+                                    date9 = DateTime.now();
+                                    print('a:date9:$date9');
+                                  } else if (_birthday == '') {
                                     date9 = DateTime.now();
                                     print('b:date9:$date9');
                                   } else {
@@ -386,9 +389,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                         '-' +
                                         _birthday.substring(8, 10);
                                     date9 = DateTime.parse(_birthdaya);
+                                    print('c:date9:$date9');
                                   }
-                                  print('item:$index');
+                                  print('T1:birthD:$_birthD');
+                                  print('T1:birthO:$_birthO');
+                                  print('T1:birthH:$_birthH');
+                                  print('T1::memoH:$_memoH');
+                                  print('T1:item:$index');
                                   _showCupertinoDatePicker(context, index);
+                                  setState(() {
+
+                                  });
                                 },
                               )),
 
@@ -507,10 +518,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // 画面下からDatePickerを表示する
   void _showCupertinoDatePicker(BuildContext context, int i) {
     int j = i + 1;
-    print('i:$i');
-    String iMoji = (i + 1).toString();
     _birthday = _birthD[i];
-    //birthdayHyouji = 'birthdayHyouji' + i.toString();
     birthdayOld = _birthD[i];
     showModalBottomSheet(
         context: context,
@@ -524,16 +532,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 200,
                   child: CupertinoDatePicker(
                     initialDateTime: date9,
-                    onDateTimeChanged: (newDate) {
-                      //_birthday = '_birthday' + i.toString();
-                      //birthdayHyouji = 'birthdayHyouji' + i.toString();
-                      _birthday = DateFormat('yyyy/MM/dd').format(newDate);
-                      birthdayHyouji = '($iMoji : $_birthday 生';
-                      setState(() {});
-                    },
                     minimumYear: 1900,
                     maximumYear: DateTime.now().year + 10,
                     mode: CupertinoDatePickerMode.date,
+                    onDateTimeChanged: (newDate) {
+                      _birthday = DateFormat('yyyy/MM/dd').format(newDate);
+                      birthdayHyouji = '($j : $_birthday 生';
+                      print('newDate:$newDate');
+                      setState(() {});
+                    },
                   ),
                 ),
 
@@ -547,12 +554,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       TextButton(
                         child: Text('キャンセル'),
                         onPressed: () {
-                          //_getPrefItems();
                           _birthday = birthdayOld;
-                          if (_birthday == '') {
-                            birthdayHyouji = '$iMoji : yyyy/mm/dd ?';
+                          if (_birthday == 'yyyy/mm/dd') {
+                            birthdayHyouji = '$j : yyyy/mm/dd ?';
                           } else {
-                            birthdayHyouji = '$iMoji : $_birthday 生';
+                            birthdayHyouji = '$j : $_birthday 生';
                           }
                           setState(() {});
                           Navigator.of(context).pop();
@@ -563,7 +569,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       TextButton(
                           child: Text('削除'),
                           onPressed: () async {
-                            if (_birthday == '') {
+                            _birthday = _birthO[i];
+                            if (_birthday == 'yyyy/mm/dd') {
                             } else {
                               var result = await showDialog<int>(
                                 context: context,
@@ -584,8 +591,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       TextButton(
                                           child: Text('OK'),
                                           onPressed: () {
-                                            birthdayHyouji =
-                                                '$j : yyyy/mm/dd 生';
+                                            //birthdayHyouji =
+                                             //   '$j : yyyy/mm/dd 生';
                                             //TODO: 削除処理検討する必要あり
                                             _removePrefItems(i);
                                             Navigator.of(context).pop();
@@ -607,7 +614,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Text('登録'),
                           onPressed: () async {
                             //TODO;
-                            if (_birthday == '') {
+                            if (_birthday == 'yyyy/mm/dd') {
                               _birthday = DateFormat('yyyy/MM/dd')
                                   .format(DateTime.now());
                             } else {}
@@ -623,7 +630,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     TextButton(
                                         child: Text('Cancel'),
                                         onPressed: () {
-                                          _birthday = birthdayOld;
                                           setState(() {});
                                           Navigator.of(context).pop();
                                         }),
@@ -647,7 +653,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 );
                               },
                             );
-                            //print('dialog result: $result');
+                            print('dialog result: $result');
                           }),
                     ],
                   ),
