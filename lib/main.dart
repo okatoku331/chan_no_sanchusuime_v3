@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _memo2 = 'メモ';
   String _memo3 = 'メモ';
   String _memo4 = 'メモ';
-  String _memo = '';
+  String _memo = 'メモ';
   String seinengappiMojia = '';
 
   //int item = 0;
@@ -360,7 +360,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             width: 1,
                           )),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           // 生年月日表示欄
@@ -407,6 +407,23 @@ class _MyHomePageState extends State<MyHomePage> {
                           SizedBox(
                             //height: 24,
                             width: 70,
+                            child: TextButton(
+                              child: Text(_memoH[index],
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              onPressed: (){
+                                _showInputDialog(context, index);
+                              },
+                            ),
+                          ),
+
+                          /*// メモ　欄　の表示
+                          SizedBox(
+                            //height: 24,
+                            width: 70,
                             child: TextField(
                               style: TextStyle(
                                 fontSize: 12,
@@ -424,7 +441,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 setState(() {});
                               },
                             ),
-                          ),
+                          ),*/
 
                           // 今日の運勢　ボタン
                           SizedBox(
@@ -663,14 +680,128 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         });
   }
+
+  // 画面下からDatePickerを表示する
+  void _showInputDialog(BuildContext context, int i) {
+    //int j = i + 1;
+    //_birthday = _birthD[i];
+    //birthdayOld = _birthD[i];
+    print('RPI:birthD:$_birthD');
+    print('RPI:birthO:$_birthO');
+    print('RPI:birthH:$_birthH');
+    print('RPI:memoH:$_memoH');
+    String _memo = _memoH[i];
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          //title: Text('タイトル'),
+          content: TextField(
+            decoration: InputDecoration(
+              hintText: _memo,
+            ),
+              onChanged: (text) {
+                _memo = text;
+                //_memoH.removeAt(index);
+                //_memoH.insert(index, _memo);
+                //_setPrefMemo(index);
+                //setState(() {});
+              },
+          ),
+          actions: <Widget>[
+            TextButton(
+                child: Text('Cancel'),
+                onPressed: () {
+                  //setState(() {});
+                  Navigator.of(context).pop();
+                }),
+            TextButton(
+                child: Text('削除'),
+                onPressed: () {
+                  _memo = 'メモ';
+                  _memoH.removeAt(i);
+                  _memoH.insert(i, _memo);
+                  _setPrefMemo(i);
+                  //setState(() {});
+                  Navigator.of(context).pop();
+                }),
+            TextButton(
+                child: Text('登録'),
+                onPressed: () {
+                  _memoH.removeAt(i);
+                  _memoH.insert(i, _memo);
+                  _setPrefMemo(i);
+                  //setState(() {});
+                  //setState(() {});
+                  Navigator.of(context).pop();
+                }),
+          ],
+        );
+
+        //decoration: InputDecoration(
+        //  border: InputBorder.none,
+        // hintText: '_memoH[index]',
+        //),
+        //onChanged: (text) {
+        //_memo = text;
+        //_memoH.removeAt(index);
+        //_memoH.insert(index, _memo);
+        //_setPrefMemo(index);
+        //setState(() {});
+      },
+    );
+  }
+
+
+
 }
 
-//okTODO: DatePickerダイアログ　を表示する
-//okTODO: DatePicker を　登録ボタンをおしたあと消すには
-//okTODO:   〃　　　　　　　キャンセルをおしたあと消すには
-//okTODO: _birthday0　が　null のとき　登録画面
-//okODO: DatePicke の最小・最大年月日の決定
-//okTODO: DatePicker の初期年月日　null なら今日、そうでないならOld誕生日
-//TODO: 生年月日削除したのにメモが消えない
-//TODO: 生年月日、未入力時に、鑑定ボタンを押すと赤面エラーになる
-//TODO: 生年月日、無入力時に、削除ボタンを押すと「生年月日は登録されていません」と表示する
+/*// 画面下からDatePickerを表示する
+void _showInputDialog(BuildContext context, int i) {
+  //int j = i + 1;
+  //_birthday = _birthD[i];
+  //birthdayOld = _birthD[i];
+  print('RPI:birthD:$_birthD');
+  print('RPI:birthO:$_birthO');
+  print('RPI:birthH:$_birthH');
+  print('RPI:memoH:$_memoH');
+  String _memo = _memo[i];
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('タイトル'),
+        content: TextField(
+          decoration: InputDecoration(
+            hintText: _memo,
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                //setState(() {});
+                Navigator.of(context).pop();
+              }),
+          TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                //setState(() {});
+                Navigator.of(context).pop();
+              }),
+        ],
+      );
+
+      //decoration: InputDecoration(
+      //  border: InputBorder.none,
+      // hintText: '_memoH[index]',
+      //),
+      //onChanged: (text) {
+        //_memo = text;
+        //_memoH.removeAt(index);
+        //_memoH.insert(index, _memo);
+        //_setPrefMemo(index);
+        //setState(() {});
+      },
+    );
+  }*/
