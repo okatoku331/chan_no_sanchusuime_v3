@@ -90,10 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
   String _birthdaya = '2000-01-01';
   String birthdayHyouji = '';
   String birthdayOld = '';
-  List<String> _birthD = [];
-  List<String> _birthH = [];
-  List<String> _birthO = [];
-  List<String> _memoH = [];
+  List<String> _birthD = ['yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd'];
+  List<String> _birthH = ['1 : yyyy/mm/dd ?','2 : yyyy/mm/dd ?','3 : yyyy/mm/dd ?','4 : yyyy/mm/dd ?','5 : yyyy/mm/dd ?'];
+  List<String> _birthO = ['yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd'];
+  List<String> _memoH = ['メモ','メモ','メモ','メモ','メモ'];
 
   String _birthday0 = '';
   String _birthday1 = '';
@@ -156,52 +156,68 @@ class _MyHomePageState extends State<MyHomePage> {
     //
 
     setState(() {
-      //for ( int i = 0; i < 2 ; i++ ){
-      _birthday0 = prefs.getString('birthday0') ?? '';
-      _birthD.add(_birthday0);
-      _birthday1 = prefs.getString('birthday1') ?? '';
-      _birthD.add(_birthday1);
-      _birthday2 = prefs.getString('birthday2') ?? '';
-      _birthD.add(_birthday2);
-      _birthday3 = prefs.getString('birthday3') ?? '';
-      _birthD.add(_birthday3);
-      _birthday4 = prefs.getString('birthday4') ?? '';
-      _birthD.add(_birthday4);
-      print('birthD:$_birthD');
-
+      _birthday0 = prefs.getString('birthday0') ?? 'yyyy/mm/dd';
+      _birthday1 = prefs.getString('birthday1') ?? 'yyyy/mm/dd';
+      _birthday2 = prefs.getString('birthday2') ?? 'yyyy/mm/dd';
+      _birthday3 = prefs.getString('birthday3') ?? 'yyyy/mm/dd';
+      _birthday4 = prefs.getString('birthday4') ?? 'yyyy/mm/dd';
       _memo0 = prefs.getString('memo0') ?? 'メモ';
-      _memoH.add(_memo0);
       _memo1 = prefs.getString('memo1') ?? 'メモ';
-      _memoH.add(_memo1);
       _memo2 = prefs.getString('memo2') ?? 'メモ';
-      _memoH.add(_memo2);
       _memo3 = prefs.getString('memo3') ?? 'メモ';
-      _memoH.add(_memo3);
       _memo4 = prefs.getString('memo4') ?? 'メモ';
-      _memoH.add(_memo4);
+    });
+    //for ( int i = 0; i < 2 ; i++ ){
+    _birthD.removeAt(0);
+    _birthD.insert(0, _birthday0);
+    _birthD.removeAt(1);
+    _birthD.insert(1, _birthday1);
+    _birthD.removeAt(2);
+    _birthD.insert(2, _birthday2);
+    _birthD.removeAt(3);
+    _birthD.insert(3, _birthday3);
+    _birthD.removeAt(4);
+    _birthD.insert(4, _birthday4);
+    print('GPI:birthD:$_birthD');
+
+    _memoH.removeAt(0);
+    _memoH.insert(0,_memo0);
+    _memoH.removeAt(1);
+    _memoH.insert(1,_memo1);
+    _memoH.removeAt(2);
+    _memoH.insert(2,_memo2);
+    _memoH.removeAt(3);
+    _memoH.insert(3,_memo3);
+    _memoH.removeAt(4);
+    _memoH.insert(4,_memo4);
+    print('memoH:$_memoH');
 
       for (int i = 0; i < 5; i++) {
         int j = i + 1;
         _birthday = _birthD[i];
-        if (_birthday == '') {
+        if (_birthday == 'yyyy/mm/dd') {
           birthdayHyouji = '$j : yyyy/mm/dd ?';
         } else {
           birthdayHyouji = '$j : $_birthday 生';
         }
+        _birthH.removeAt(i);
+        _birthH.insert(i, birthdayHyouji);
+        _birthO.removeAt(i);
+        _birthO.insert(i, _birthday);
 
-        _birthH.add(birthdayHyouji);
-        _birthO.add(_birthday);
+
+        //_birthH.add(birthdayHyouji);
+        //_birthO.add(_birthday);
       }
-      birthdayHyouji0 = _birthH[0];
-      birthdayHyouji1 = _birthH[1];
-      birthdayHyouji2 = _birthH[2];
-      birthdayHyouji3 = _birthH[3];
-      birthdayHyouji4 = _birthH[4];
+      //birthdayHyouji0 = _birthH[0];
+      //birthdayHyouji1 = _birthH[1];
+      //birthdayHyouji2 = _birthH[2];
+      //birthdayHyouji3 = _birthH[3];
+      //birthdayHyouji4 = _birthH[4];
       print('GPI:birthD:$_birthD');
       print('GPI:birthO:$_birthO');
       print('GPI:birthH:$_birthH');
       print('GPI:memoH:$_memoH');
-    });
     setState(() {});
     //
   }
@@ -209,27 +225,26 @@ class _MyHomePageState extends State<MyHomePage> {
   //データを書き込む
   _setPrefMemo(int item) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    int j = item + 1;
+    setState(() {
+      if (item == 0) {
+        prefs.setString('memo0', _memoH[item]);
+      } else if (item == 1) {
+        prefs.setString('memo1', _memoH[item]);
+      } else if (item == 2) {
+        prefs.setString('memo2', _memoH[item]);
+      } else if (item == 3) {
+        prefs.setString('memo3', _memoH[item]);
+      } else if (item == 4) {
+        prefs.setString('memo4', _memoH[item]);
+      } else {}
+    });
 
-    _memoH.insert(item, _memo);
-    _memoH.removeAt(j);
-    if (item == 0) {
-      prefs.setString('memo0', _memo0);
-    } else if (item == 1) {
-      prefs.setString('memo1', _memo1);
-    } else if (item == 2) {
-      prefs.setString('memo2', _memo2);
-    } else if (item == 3) {
-      prefs.setString('memo3', _memo3);
-    } else if (item == 4) {
-      prefs.setString('memo4', _memo4);
-    } else {}
     print('SPM:birthD:$_birthD');
     print('SPM:birthO:$_birthO');
     print('SPM:birthH:$_birthH');
     print('SPM:memoH:$_memoH');
 
-    setState(() {});
+    //setState(() {});
   }
 
   //データを書き込む
@@ -248,19 +263,19 @@ class _MyHomePageState extends State<MyHomePage> {
     //_memoH.insert(item, _memo);
     if (item == 0) {
       _birthday0 = _birthday;
-      prefs.setString('birthday0', _birthday0);
+      prefs.setString('birthday0', _birthD[item]);
       //prefs.setString('memo0', _memo0);
     } else if (item == 1) {
-      prefs.setString('birthday1', _birthday1);
+      prefs.setString('birthday1', _birthD[item]);
       //prefs.setString('memo1', _memo1);
     } else if (item == 2) {
-      prefs.setString('birthday2', _birthday2);
+      prefs.setString('birthday2', _birthD[item]);
       //prefs.setString('memo2', _memo2);
     } else if (item == 3) {
-      prefs.setString('birthday3', _birthday3);
+      prefs.setString('birthday3', _birthD[item]);
       //prefs.setString('memo3', _memo3);
     } else if (item == 4) {
-      prefs.setString('birthday4', _birthday4);
+      prefs.setString('birthday4', _birthD[item]);
       //prefs.setString('memo4', _memo4);
     } else {}
 
@@ -292,41 +307,41 @@ class _MyHomePageState extends State<MyHomePage> {
     _memoH.insert(item, 'メモ');
     if (item == 0) {
       setState(() {
-        _birthday0 = '';
-        birthdayOld0 = '';
-        _memo0 = 'メモ';
+        //_birthday0 = '';
+        //birthdayOld0 = '';
+        //_memo0 = 'メモ';
         prefs.remove('birthday0');
         prefs.remove('memo0');
       });
     } else if (item == 1) {
       setState(() {
-        _birthday1 = '';
-        birthdayOld1 = '';
-        _memo1 = 'メモ';
+        //_birthday1 = '';
+        //birthdayOld1 = '';
+        //_memo1 = 'メモ';
         prefs.remove('birthday1');
         prefs.remove('memo1');
       });
     } else if (item == 2) {
       setState(() {
-        _birthday2 = '';
-        birthdayOld2 = '';
-        _memo2 = 'メモ';
+        //_birthday2 = '';
+       // birthdayOld2 = '';
+        //_memo2 = 'メモ';
         prefs.remove('birthday2');
         prefs.remove('memo2');
       });
     } else if (item == 3) {
       setState(() {
-        _birthday3 = '';
-        birthdayOld3 = '';
-        _memo3 = 'メモ';
+        //_birthday3 = '';
+       // birthdayOld3 = '';
+        //_memo3 = 'メモ';
         prefs.remove('birthday3');
         prefs.remove('memo3');
       });
     } else if (item == 4) {
       setState(() {
-        _birthday4 = '';
-        birthdayOld4 = '';
-        _memo4 = 'メモ';
+        //_birthday4 = '';
+       // birthdayOld4 = '';
+       // _memo4 = 'メモ';
         prefs.remove('birthday4');
         prefs.remove('memo4');
       });
@@ -423,6 +438,11 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                               onChanged: (text) {
                                 _memo = text;
+                                //int j = index + 1;
+                                _memoH.removeAt(index);
+
+                                _memoH.insert(index, _memo);
+                                //_memoH.removeAt(j);
                                 _setPrefMemo(index);
                                 setState(() {});
                               },
