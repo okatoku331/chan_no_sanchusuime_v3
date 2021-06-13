@@ -215,7 +215,11 @@ class Output extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Text('$titleSeinengappi 生まれの'),
+                Text('$titleSeinengappi 生まれの',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
                 Text('あなたの日干は、$jukkanNameYomiです。'),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

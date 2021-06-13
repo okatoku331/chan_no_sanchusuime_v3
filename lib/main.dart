@@ -100,16 +100,16 @@ class _MyHomePageState extends State<MyHomePage> {
   String _birthday2 = '';
   String _birthday3 = '';
   String _birthday4 = '';
-  String birthdayOld0 = '';
+  /*String birthdayOld0 = '';
   String birthdayOld1 = '';
   String birthdayOld2 = '';
   String birthdayOld3 = '';
-  String birthdayOld4 = '';
-  String birthdayHyouji0 = '';
+  String birthdayOld4 = '';*/
+  /*String birthdayHyouji0 = '';
   String birthdayHyouji1 = '';
   String birthdayHyouji2 = '';
   String birthdayHyouji3 = '';
-  String birthdayHyouji4 = '';
+  String birthdayHyouji4 = '';*/
   String _memo0 = 'メモ';
   String _memo1 = 'メモ';
   String _memo2 = 'メモ';
@@ -167,7 +167,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _memo3 = prefs.getString('memo3') ?? 'メモ';
       _memo4 = prefs.getString('memo4') ?? 'メモ';
     });
-    //for ( int i = 0; i < 2 ; i++ ){
     _birthD.removeAt(0);
     _birthD.insert(0, _birthday0);
     _birthD.removeAt(1);
@@ -204,22 +203,12 @@ class _MyHomePageState extends State<MyHomePage> {
         _birthH.insert(i, birthdayHyouji);
         _birthO.removeAt(i);
         _birthO.insert(i, _birthday);
-
-
-        //_birthH.add(birthdayHyouji);
-        //_birthO.add(_birthday);
       }
-      //birthdayHyouji0 = _birthH[0];
-      //birthdayHyouji1 = _birthH[1];
-      //birthdayHyouji2 = _birthH[2];
-      //birthdayHyouji3 = _birthH[3];
-      //birthdayHyouji4 = _birthH[4];
       print('GPI:birthD:$_birthD');
       print('GPI:birthO:$_birthO');
       print('GPI:birthH:$_birthH');
       print('GPI:memoH:$_memoH');
     setState(() {});
-    //
   }
 
   //データを書き込む
@@ -244,7 +233,6 @@ class _MyHomePageState extends State<MyHomePage> {
     print('SPM:birthH:$_birthH');
     print('SPM:memoH:$_memoH');
 
-    //setState(() {});
   }
 
   //データを書き込む
@@ -259,31 +247,19 @@ class _MyHomePageState extends State<MyHomePage> {
     _birthO.insert(item, _birthday);
     _birthH.removeAt(item);
     _birthH.insert(item, '$j : $_birthday 生');
-    //_memoH.removeAt(item);
-    //_memoH.insert(item, _memo);
     if (item == 0) {
       _birthday0 = _birthday;
       prefs.setString('birthday0', _birthD[item]);
-      //prefs.setString('memo0', _memo0);
     } else if (item == 1) {
       prefs.setString('birthday1', _birthD[item]);
-      //prefs.setString('memo1', _memo1);
     } else if (item == 2) {
       prefs.setString('birthday2', _birthD[item]);
-      //prefs.setString('memo2', _memo2);
     } else if (item == 3) {
       prefs.setString('birthday3', _birthD[item]);
-      //prefs.setString('memo3', _memo3);
     } else if (item == 4) {
       prefs.setString('birthday4', _birthD[item]);
-      //prefs.setString('memo4', _memo4);
     } else {}
 
-    //birthdayHyouji0 = _birthH[0];
-    //birthdayHyouji1 = _birthH[1];
-    //birthdayHyouji2 = _birthH[2];
-    //birthdayHyouji3 = _birthH[3];
-    //birthdayHyouji4 = _birthH[4];
     print('SPI:birthD:$_birthD');
     print('SPI:birthO:$_birthO');
     print('SPI:birthH:$_birthH');
@@ -307,41 +283,26 @@ class _MyHomePageState extends State<MyHomePage> {
     _memoH.insert(item, 'メモ');
     if (item == 0) {
       setState(() {
-        //_birthday0 = '';
-        //birthdayOld0 = '';
-        //_memo0 = 'メモ';
         prefs.remove('birthday0');
         prefs.remove('memo0');
       });
     } else if (item == 1) {
       setState(() {
-        //_birthday1 = '';
-        //birthdayOld1 = '';
-        //_memo1 = 'メモ';
         prefs.remove('birthday1');
         prefs.remove('memo1');
       });
     } else if (item == 2) {
       setState(() {
-        //_birthday2 = '';
-       // birthdayOld2 = '';
-        //_memo2 = 'メモ';
         prefs.remove('birthday2');
         prefs.remove('memo2');
       });
     } else if (item == 3) {
       setState(() {
-        //_birthday3 = '';
-       // birthdayOld3 = '';
-        //_memo3 = 'メモ';
         prefs.remove('birthday3');
         prefs.remove('memo3');
       });
     } else if (item == 4) {
       setState(() {
-        //_birthday4 = '';
-       // birthdayOld4 = '';
-       // _memo4 = 'メモ';
         prefs.remove('birthday4');
         prefs.remove('memo4');
       });
@@ -388,20 +349,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: 5,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Container(
+                      height: 40,
                       decoration: BoxDecoration(
                           color: Colors.white38,
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             color: Colors.blue,
                             width: 1,
                           )),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           // 生年月日表示欄
                           SizedBox(
+                            height: 44,
                               width: 174,
                               child: TextButton(
                                 child: Text(_birthH[index],
@@ -430,19 +394,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
                           // メモ　欄　の表示
                           SizedBox(
+                            //height: 24,
                             width: 70,
                             child: TextField(
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: _memoH[index],
                               ),
                               onChanged: (text) {
                                 _memo = text;
-                                //int j = index + 1;
                                 _memoH.removeAt(index);
-
                                 _memoH.insert(index, _memo);
-                                //_memoH.removeAt(j);
                                 _setPrefMemo(index);
                                 setState(() {});
                               },
@@ -451,7 +417,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                           // 今日の運勢　ボタン
                           SizedBox(
-                            height: 30,
+                            height: 24,
                             width: 40,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -459,9 +425,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 elevation: 0,
                                 shadowColor: Colors.red,
                               ),
-                              child: Icon(Icons.bar_chart, size: 24),
+                              child: Icon(Icons.bar_chart, size: 16),
                               onPressed: () {
-                                //item = 0;
                                 seinengappiMojia = _birthD[index];
                                 if (seinengappiMojia == '') {
                                 } else {
@@ -485,7 +450,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                           // 性格・天地徳合　ボタン
                           SizedBox(
-                            height: 30,
+                            height: 24,
                             width: 40,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -493,9 +458,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 elevation: 0,
                                 shadowColor: Colors.red,
                               ),
-                              child: Icon(Icons.arrow_forward_ios, size: 24),
+                              child: Icon(Icons.arrow_forward_ios, size: 16),
                               onPressed: () {
-                                //item = 0;
                                 seinengappiMojia = _birthD[index];
                                 if (seinengappiMojia == '') {
                                 } else {
