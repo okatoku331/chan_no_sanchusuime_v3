@@ -35,12 +35,18 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.9.0
+  #flutter_launcher_icons: ^0.9.0
+  # splash
+  flutter_native_splash: ^1.2.0
 
 flutter_icons:
   android: true
   ios: true
   image_path: 'lib/assets/icon_uranai.png'
+
+flutter_native_splash:
+  image: images/main/icon_uranai.png
+  color: "000000"
 
 
 flutter:
