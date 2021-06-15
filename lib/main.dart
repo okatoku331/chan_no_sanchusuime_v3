@@ -90,26 +90,35 @@ class _MyHomePageState extends State<MyHomePage> {
   String _birthdaya = '2000-01-01';
   String birthdayHyouji = '';
   String birthdayOld = '';
-  List<String> _birthD = ['yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd'];
-  List<String> _birthH = ['1 : yyyy/mm/dd ?','2 : yyyy/mm/dd ?','3 : yyyy/mm/dd ?','4 : yyyy/mm/dd ?','5 : yyyy/mm/dd ?'];
-  List<String> _birthO = ['yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd','yyyy/mm/dd'];
-  List<String> _memoH = ['メモ','メモ','メモ','メモ','メモ'];
+  List<String> _birthD = [
+    'yyyy/mm/dd',
+    'yyyy/mm/dd',
+    'yyyy/mm/dd',
+    'yyyy/mm/dd',
+    'yyyy/mm/dd'
+  ];
+  List<String> _birthH = [
+    '1 : yyyy/mm/dd ?',
+    '2 : yyyy/mm/dd ?',
+    '3 : yyyy/mm/dd ?',
+    '4 : yyyy/mm/dd ?',
+    '5 : yyyy/mm/dd ?'
+  ];
+  List<String> _birthO = [
+    'yyyy/mm/dd',
+    'yyyy/mm/dd',
+    'yyyy/mm/dd',
+    'yyyy/mm/dd',
+    'yyyy/mm/dd'
+  ];
+  List<String> _memoH = ['メモ', 'メモ', 'メモ', 'メモ', 'メモ'];
 
   String _birthday0 = '';
   String _birthday1 = '';
   String _birthday2 = '';
   String _birthday3 = '';
   String _birthday4 = '';
-  /*String birthdayOld0 = '';
-  String birthdayOld1 = '';
-  String birthdayOld2 = '';
-  String birthdayOld3 = '';
-  String birthdayOld4 = '';*/
-  /*String birthdayHyouji0 = '';
-  String birthdayHyouji1 = '';
-  String birthdayHyouji2 = '';
-  String birthdayHyouji3 = '';
-  String birthdayHyouji4 = '';*/
+
   String _memo0 = 'メモ';
   String _memo1 = 'メモ';
   String _memo2 = 'メモ';
@@ -118,17 +127,11 @@ class _MyHomePageState extends State<MyHomePage> {
   String _memo = 'メモ';
   String seinengappiMojia = '';
 
-  //int item = 0;
-  //int item1 = item + 1;
   BannerAd banner;
 
   DateTime newDate = DateTime.now();
   DateTime date9 = DateTime.now();
   int item = 0;
-
-
-
-  //String iMoji = item.toString();
 
   //google_mobile_adsを配置するため追加 2021.5.24
   //BannerAd banner;
@@ -147,14 +150,11 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
   }
-
   //追加ここまで*/
 
   // shareed Preference に保存されているデータを読み込んで、_counterにセットする
   _getPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    //
-
     setState(() {
       _birthday0 = prefs.getString('birthday0') ?? 'yyyy/mm/dd';
       _birthday1 = prefs.getString('birthday1') ?? 'yyyy/mm/dd';
@@ -180,34 +180,34 @@ class _MyHomePageState extends State<MyHomePage> {
     print('GPI:birthD:$_birthD');
 
     _memoH.removeAt(0);
-    _memoH.insert(0,_memo0);
+    _memoH.insert(0, _memo0);
     _memoH.removeAt(1);
-    _memoH.insert(1,_memo1);
+    _memoH.insert(1, _memo1);
     _memoH.removeAt(2);
-    _memoH.insert(2,_memo2);
+    _memoH.insert(2, _memo2);
     _memoH.removeAt(3);
-    _memoH.insert(3,_memo3);
+    _memoH.insert(3, _memo3);
     _memoH.removeAt(4);
-    _memoH.insert(4,_memo4);
+    _memoH.insert(4, _memo4);
     print('memoH:$_memoH');
 
-      for (int i = 0; i < 5; i++) {
-        int j = i + 1;
-        _birthday = _birthD[i];
-        if (_birthday == 'yyyy/mm/dd') {
-          birthdayHyouji = '$j : yyyy/mm/dd ?';
-        } else {
-          birthdayHyouji = '$j : $_birthday 生';
-        }
-        _birthH.removeAt(i);
-        _birthH.insert(i, birthdayHyouji);
-        _birthO.removeAt(i);
-        _birthO.insert(i, _birthday);
+    for (int i = 0; i < 5; i++) {
+      int j = i + 1;
+      _birthday = _birthD[i];
+      if (_birthday == 'yyyy/mm/dd') {
+        birthdayHyouji = '$j : yyyy/mm/dd ?';
+      } else {
+        birthdayHyouji = '$j : $_birthday 生';
       }
-      print('GPI:birthD:$_birthD');
-      print('GPI:birthO:$_birthO');
-      print('GPI:birthH:$_birthH');
-      print('GPI:memoH:$_memoH');
+      _birthH.removeAt(i);
+      _birthH.insert(i, birthdayHyouji);
+      _birthO.removeAt(i);
+      _birthO.insert(i, _birthday);
+    }
+    print('GPI:birthD:$_birthD');
+    print('GPI:birthO:$_birthO');
+    print('GPI:birthH:$_birthH');
+    print('GPI:memoH:$_memoH');
     setState(() {});
   }
 
@@ -232,7 +232,6 @@ class _MyHomePageState extends State<MyHomePage> {
     print('SPM:birthO:$_birthO');
     print('SPM:birthH:$_birthH');
     print('SPM:memoH:$_memoH');
-
   }
 
   //データを書き込む
@@ -339,194 +338,167 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            // 一行目の表示
-            Expanded(
-              child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      height: 44,
-                      decoration: BoxDecoration(
-                          color: Colors.white38,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: Colors.blue,
-                            width: 1,
-                          )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          // 生年月日表示欄
-                          SizedBox(
-                            height: 44,
-                              width: 174,
+      body: Container(
+        color: Colors.black87,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              // 一行目の表示
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Container(
+                        height: 44,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Colors.blue,
+                              width: 1,
+                            )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            // 生年月日表示欄
+                            SizedBox(
+                                height: 44,
+                                width: 174,
+                                child: TextButton(
+                                  child: Text(
+                                    _birthH[index],
+                                    style: TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    _birthday = _birthD[index];
+                                    if (_birthday == 'yyyy/mm/dd') {
+                                      date9 = DateTime.now();
+                                      print('a:date9:$date9');
+                                    } else if (_birthday == '') {
+                                      date9 = DateTime.now();
+                                      print('b:date9:$date9');
+                                    } else {
+                                      _birthdaya = _birthday.substring(0, 4) +
+                                          '-' +
+                                          _birthday.substring(5, 7) +
+                                          '-' +
+                                          _birthday.substring(8, 10);
+                                      date9 = DateTime.parse(_birthdaya);
+                                      print('c:date9:$date9');
+                                    }
+                                    print('T1:birthD:$_birthD');
+                                    print('T1:birthO:$_birthO');
+                                    print('T1:birthH:$_birthH');
+                                    print('T1::memoH:$_memoH');
+                                    print('T1:item:$index');
+                                    _showCupertinoDatePicker(context, index);
+                                    setState(() {});
+                                  },
+                                )),
+
+                            // メモ　欄　の表示
+                            SizedBox(
+                              //height: 24,
+                              width: 70,
                               child: TextButton(
-                                child: Text(_birthH[index],
+                                child: Text(
+                                  _memoH[index],
                                   style: TextStyle(
                                     color: Colors.black87,
-                                    fontSize: 18,
+                                    fontSize: 12,
                                   ),
                                 ),
                                 onPressed: () {
-                                  _birthday = _birthD[index];
-                                  if (_birthday == 'yyyy/mm/dd') {
-                                    date9 = DateTime.now();
-                                    print('a:date9:$date9');
-                                  } else if (_birthday == '') {
-                                    date9 = DateTime.now();
-                                    print('b:date9:$date9');
-                                  } else {
-                                    _birthdaya = _birthday.substring(0, 4) +
-                                        '-' +
-                                        _birthday.substring(5, 7) +
-                                        '-' +
-                                        _birthday.substring(8, 10);
-                                    date9 = DateTime.parse(_birthdaya);
-                                    print('c:date9:$date9');
-                                  }
-                                  print('T1:birthD:$_birthD');
-                                  print('T1:birthO:$_birthO');
-                                  print('T1:birthH:$_birthH');
-                                  print('T1::memoH:$_memoH');
-                                  print('T1:item:$index');
-                                  _showCupertinoDatePicker(context, index);
-                                  setState(() {
-
-                                  });
+                                  _showInputDialog(context, index);
                                 },
-                              )),
+                              ),
+                            ),
 
-                          // メモ　欄　の表示
-                          SizedBox(
-                            //height: 24,
-                            width: 70,
-                            child: TextButton(
-                              child: Text(_memoH[index],
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 12,
+                            // 今日の運勢　ボタン
+                            SizedBox(
+                              height: 24,
+                              width: 40,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.lightBlue,
+                                  elevation: 0,
+                                  shadowColor: Colors.red,
                                 ),
-                              ),
-                              onPressed: (){
-                                _showInputDialog(context, index);
-                              },
-                            ),
-                          ),
-
-                          /*// メモ　欄　の表示
-                          SizedBox(
-                            //height: 24,
-                            width: 70,
-                            child: TextField(
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: _memoH[index],
-                              ),
-                              onChanged: (text) {
-                                _memo = text;
-                                _memoH.removeAt(index);
-                                _memoH.insert(index, _memo);
-                                _setPrefMemo(index);
-                                setState(() {});
-                              },
-                            ),
-                          ),*/
-
-                          // 今日の運勢　ボタン
-                          SizedBox(
-                            height: 24,
-                            width: 40,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.lightBlue,
-                                elevation: 0,
-                                shadowColor: Colors.red,
-                              ),
-                              child: Icon(Icons.bar_chart, size: 16),
-                              onPressed: () {
-                                seinengappiMojia = _birthD[index];
-                                if (seinengappiMojia == '') {
-                                } else {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => KyouUnsei(
-                                        titleSeinengappi: seinengappiMojia,
+                                child: Icon(Icons.bar_chart, size: 16),
+                                onPressed: () {
+                                  seinengappiMojia = _birthD[index];
+                                  if (seinengappiMojia == 'yyyy/mm/dd') {
+                                  } else {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => KyouUnsei(
+                                          titleSeinengappi: seinengappiMojia,
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }
-                              },
-                            ),
-                          ),
-
-                          // スペース
-                          SizedBox(
-                            width: 8,
-                          ),
-
-                          // 性格・天地徳合　ボタン
-                          SizedBox(
-                            height: 24,
-                            width: 40,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.lightBlue,
-                                elevation: 0,
-                                shadowColor: Colors.red,
+                                    );
+                                  }
+                                },
                               ),
-                              child: Icon(Icons.arrow_forward_ios, size: 16),
-                              onPressed: () {
-                                seinengappiMojia = _birthD[index];
-                                if (seinengappiMojia == '') {
-                                } else {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Output(
-                                        titleSeinengappi: seinengappiMojia,
-                                      ),
-                                    ),
-                                  );
-                                }
-                              },
                             ),
-                          ),
-                          SizedBox(
-                            width: 0,
-                          ),
-                        ],
+
+                            // スペース
+                            SizedBox(
+                              width: 8,
+                            ),
+
+                            // 性格・天地徳合　ボタン
+                            SizedBox(
+                              height: 24,
+                              width: 40,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.lightBlue,
+                                  elevation: 0,
+                                  shadowColor: Colors.red,
+                                ),
+                                child: Icon(Icons.arrow_forward_ios, size: 16),
+                                onPressed: () {
+                                  seinengappiMojia = _birthD[index];
+                                  if (seinengappiMojia == 'yyyy/mm/dd') {
+                                  } else {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Output(
+                                          titleSeinengappi: seinengappiMojia,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              width: 0,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-            // 1行目の表示　ここまで
+              // 1行目の表示　ここまで
 
-            //Padding(
-              //padding: const EdgeInsets.all(4.0),
-              //child: Text('1: $_birthday0 生： $_memo0'),
-            //),
-            //Container(
-              //width: double.infinity,
-              //height: 4,
-              //color: Colors.white70,
-              //child: Text(''),
-            //),
-            //Image.asset('images/main/wagou.jpeg'),
-          ],
+              Container(
+                child: Image.asset('images/main/wagou.jpeg'),
+                height: 300,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -609,14 +581,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text('OK'),
                                           onPressed: () {
                                             //birthdayHyouji =
-                                             //   '$j : yyyy/mm/dd 生';
+                                            //   '$j : yyyy/mm/dd 生';
                                             //TODO: 削除処理検討する必要あり
                                             _removePrefItems(i);
                                             Navigator.of(context).pop();
                                             Navigator.of(context).pop();
-                                            setState(() {
-
-                                            });
+                                            setState(() {});
                                           }),
                                     ],
                                   );
@@ -683,9 +653,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // 画面下からDatePickerを表示する
   void _showInputDialog(BuildContext context, int i) {
-    //int j = i + 1;
-    //_birthday = _birthD[i];
-    //birthdayOld = _birthD[i];
     print('RPI:birthD:$_birthD');
     print('RPI:birthO:$_birthO');
     print('RPI:birthH:$_birthH');
@@ -700,19 +667,14 @@ class _MyHomePageState extends State<MyHomePage> {
             decoration: InputDecoration(
               hintText: _memo,
             ),
-              onChanged: (text) {
-                _memo = text;
-                //_memoH.removeAt(index);
-                //_memoH.insert(index, _memo);
-                //_setPrefMemo(index);
-                //setState(() {});
-              },
+            onChanged: (text) {
+              _memo = text;
+            },
           ),
           actions: <Widget>[
             TextButton(
                 child: Text('Cancel'),
                 onPressed: () {
-                  //setState(() {});
                   Navigator.of(context).pop();
                 }),
             TextButton(
@@ -722,7 +684,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   _memoH.removeAt(i);
                   _memoH.insert(i, _memo);
                   _setPrefMemo(i);
-                  //setState(() {});
                   Navigator.of(context).pop();
                 }),
             TextButton(
@@ -731,77 +692,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   _memoH.removeAt(i);
                   _memoH.insert(i, _memo);
                   _setPrefMemo(i);
-                  //setState(() {});
-                  //setState(() {});
                   Navigator.of(context).pop();
                 }),
           ],
         );
-
-        //decoration: InputDecoration(
-        //  border: InputBorder.none,
-        // hintText: '_memoH[index]',
-        //),
-        //onChanged: (text) {
-        //_memo = text;
-        //_memoH.removeAt(index);
-        //_memoH.insert(index, _memo);
-        //_setPrefMemo(index);
-        //setState(() {});
       },
     );
   }
-
-
-
 }
-
-/*// 画面下からDatePickerを表示する
-void _showInputDialog(BuildContext context, int i) {
-  //int j = i + 1;
-  //_birthday = _birthD[i];
-  //birthdayOld = _birthD[i];
-  print('RPI:birthD:$_birthD');
-  print('RPI:birthO:$_birthO');
-  print('RPI:birthH:$_birthH');
-  print('RPI:memoH:$_memoH');
-  String _memo = _memo[i];
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('タイトル'),
-        content: TextField(
-          decoration: InputDecoration(
-            hintText: _memo,
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                //setState(() {});
-                Navigator.of(context).pop();
-              }),
-          TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                //setState(() {});
-                Navigator.of(context).pop();
-              }),
-        ],
-      );
-
-      //decoration: InputDecoration(
-      //  border: InputBorder.none,
-      // hintText: '_memoH[index]',
-      //),
-      //onChanged: (text) {
-        //_memo = text;
-        //_memoH.removeAt(index);
-        //_memoH.insert(index, _memo);
-        //_setPrefMemo(index);
-        //setState(() {});
-      },
-    );
-  }*/
