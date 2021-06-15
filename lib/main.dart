@@ -344,6 +344,9 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              Container(
+                height: 4,
+              ),
               // 一行目の表示
               Expanded(
                 child: ListView.builder(
@@ -494,9 +497,30 @@ class _MyHomePageState extends State<MyHomePage> {
               // 1行目の表示　ここまで
 
               Container(
-                child: Image.asset('images/main/wagou.jpeg'),
-                height: 300,
+                height: 8,
               ),
+              Container(
+                child: Image.asset('images/main/wagou.jpeg'),
+                height: 260,
+              ),
+              Container(
+                height: 8,
+              ),
+
+              //バナー広告追加
+              if (banner == null)
+                SizedBox(height: 50) // Ads
+              else
+                Container(
+                  height: 50,
+                  child: AdWidget(ad: banner),
+                ),
+              //バナー広告ここまで*/
+
+              Container(
+                height: 8,
+              ),
+
             ],
           ),
         ),
