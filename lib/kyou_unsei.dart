@@ -130,6 +130,9 @@ class KyouUnsei extends StatelessWidget {
     String sigouKaisetu = '';
     String tuuhenbosiNowKaisetu = '';
     String nikkanInYou = '';
+    String kitiKyou = '平';
+    String kitiPlus = 'プラスマイナス';
+    int kitiP = 0;
     int kitiPoint = 0;
     int kitiPointNikann = 0;
     int kitiPointNissi = 0;
@@ -191,43 +194,43 @@ class KyouUnsei extends StatelessWidget {
     //　通変星の解説文作成
     if (tuuhenbosiNow == '比肩') {
       tuuhenbosiNowKaisetu = '比肩　の持つ意味は・・・'
-          '';
-      kitiPointNikann = 10;
+          '吉ポイントは、プラスマイナス０です。';
+      kitiPointNikann = 0;
     } else if (tuuhenbosiNow == '劫敗') {
       tuuhenbosiNowKaisetu = '劫敗　の持つ意味は・・・'
-          '';
-      kitiPointNikann = 5;
+          '吉ポイントは、マイナス10です。';
+      kitiPointNikann = -10;
     } else if (tuuhenbosiNow == '食神') {
       tuuhenbosiNowKaisetu = '食神　の持つ意味は・・・'
-          '';
+          '吉ポイントは、プラス10です。';
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '傷官') {
       tuuhenbosiNowKaisetu = '傷官　の持つ意味は・・・'
-          '';
+          '吉ポイントは、マイナス10です。';
       kitiPointNikann = -10;
     } else if (tuuhenbosiNow == '偏財') {
       tuuhenbosiNowKaisetu = '偏財　の持つ意味は・・・'
-          '';
+          '吉ポイントは、プラス10です。';
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '正財') {
       tuuhenbosiNowKaisetu = '正財　の持つ意味は・・・'
-          '';
+          '吉ポイントは、プラス10です。';
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '偏官') {
       tuuhenbosiNowKaisetu = '偏官　の持つ意味は・・・'
-          '';
+          '吉ポイントは、マイナス10です。';
       kitiPointNikann = -10;
     } else if (tuuhenbosiNow == '正官') {
       tuuhenbosiNowKaisetu = '正官　の持つ意味は・・・'
-          '';
+          '吉ポイントは、プラス10です。';
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '倒食') {
       tuuhenbosiNowKaisetu = '倒食　の持つ意味は・・・'
-          '';
+          '吉ポイントは、プラス10です。';
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '印綬') {
       tuuhenbosiNowKaisetu = '印綬　の持つ意味は・・・'
-          '';
+          '吉ポイントは、プラス10です。';
       kitiPointNikann = 10;
 
     }
@@ -242,8 +245,8 @@ class KyouUnsei extends StatelessWidget {
     if (kangouNow == '合') {
       kangouMoji = '干合(かんごう）があります。干合は、男（＋）と女（ー）の発想の違うカップルが'
           '一緒になると新しいエネルギーが生じ、さらに変化したエネルギーも生じるという意味があります。'
-          '吉ポイントは、プラス10です。';
-      kitiPointKangou = 10;
+          '吉ポイントは、プラス20です。';
+      kitiPointKangou = 20;
 
     } else {}
 
@@ -336,7 +339,39 @@ class KyouUnsei extends StatelessWidget {
     //  sigouMoji2 = '・刑';
     //} else {}
 
+    //吉凶ポイント算出
     kitiPoint = kitiPointNikann + kitiPointNissi + kitiPointKangou;
+    if (kitiPoint > 24){
+      kitiKyou = '大吉';
+      kitiPlus = 'プラス';
+      kitiP = kitiPoint;
+    } else if (kitiPoint > 14){
+      kitiKyou = '中吉';
+      kitiPlus = 'プラス';
+      kitiP = kitiPoint;
+    } else if (kitiPoint > 4){
+      kitiKyou = '小吉';
+      kitiPlus = 'プラス';
+      kitiP = kitiPoint;
+    } else if (kitiPoint > -5){
+      kitiKyou = '平';
+      kitiPlus = 'プラスマイナス';
+      kitiP = 0;
+    } else if (kitiPoint > -15){
+      kitiKyou = '小凶';
+      kitiPlus = 'マイナス';
+      kitiP = kitiPoint * -1;
+    } else if (kitiPoint > -25){
+      kitiKyou = '中凶';
+      kitiPlus = 'マイナス';
+      kitiP = kitiPoint * -1;
+    } else {
+      kitiKyou = '大凶';
+      kitiPlus = 'マイナス';
+      kitiP = kitiPoint * -1;
+    }
+
+
 
 
     //■■　画面を生成する　■■
@@ -372,7 +407,7 @@ class KyouUnsei extends StatelessWidget {
             title: Text('　$tuuhenbosiNowKaisetu'),
           ),
           ListTile(
-            title: Text('　　　　　$kangouMoji'),
+            title: Text('　$kangouMoji'),
           ),
 
           ListTile(
@@ -398,7 +433,19 @@ class KyouUnsei extends StatelessWidget {
             title: Text('３．総合ポイント'),
           ),
           ListTile(
-            title: Text('　本日の吉凶ポイント：　$kitiPoint'),
+            title: Text('　吉凶ポイント：　$kitiPlus$kitiP'),
+          ),
+          ListTile(
+            title: Center(
+              child: Text('$kitiKyou',
+                style: TextStyle(
+                  fontSize: 60,
+                  color: Colors.purpleAccent,
+
+                ),
+              ),
+            )
+            ,
           ),
           ListTile(
             title: Text('　'),

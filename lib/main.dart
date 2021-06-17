@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:chan_no_sanchusuimei_v3/quiz/quiz001.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'osirase/update.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ import 'nikkan/nikkan_mizunoe.dart';
 import 'nikkan/nikkan_mizunoto.dart';
 import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
+import 'quiz/quiz001.dart';
 import 'kyou_unsei.dart';
 import 'output.dart';
 
@@ -430,7 +432,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               width: 40,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.lightBlue,
+                                  primary: Colors.blue,
                                   elevation: 0,
                                   shadowColor: Colors.red,
                                 ),
@@ -463,7 +465,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               width: 40,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.lightBlue,
+                                  primary: Colors.blue,
                                   elevation: 0,
                                   shadowColor: Colors.red,
                                 ),
@@ -496,12 +498,43 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               // 1行目の表示　ここまで
 
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+
+                  height: 44,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 1,
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        child: Text('易占クイズ'),
+                        onPressed: (){
+                          //TODO: 易占クイズ画面へ飛ぶ
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Quiz001(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Container(
                 height: 8,
               ),
               Container(
                 child: Image.asset('images/main/wagou.jpeg'),
-                height: 260,
+                height: 216,
               ),
               Container(
                 height: 8,
