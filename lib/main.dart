@@ -1,5 +1,7 @@
 import 'dart:ui';
-import 'package:chan_no_sanchusuimei_v3/quiz/quiz001.dart';
+import 'package:chan_no_sanchusuimei_v3/quiz/Quiz001.dart';
+//import 'package:chan_no_sanchusuimei_v3/quiz/quiz001b.dart';
+//import 'package:chan_no_sanchusuimei_v3/quiz/quiz001a.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'osirase/update.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,7 @@ import 'nikkan/nikkan_mizunoe.dart';
 import 'nikkan/nikkan_mizunoto.dart';
 import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
-import 'quiz/quiz001.dart';
+//import 'quiz/quiz001a.dart';
 import 'kyou_unsei.dart';
 import 'output.dart';
 
