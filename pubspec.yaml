@@ -21,9 +21,6 @@ dependencies:
   shared_preferences: ^2.0.5
   # 再起動したとき前回の設定を残して置くため
   intl: ^0.17.0
-  # Add the dependency for the Firebase Core Flutter SDK
-  #firebase_core: ^0.4.0+9
-
   # Add the dependency for the Firebase Core Flutter SDK(2021.3.31)
   firebase_core: ^1.3.0
   # Add the dependency for the FlutterFire plugin for Google Analytics

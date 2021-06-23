@@ -1,5 +1,7 @@
 import 'dart:ui';
+import 'package:chan_no_sanchusuimei_v3/book_list_page.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/Quiz001.dart';
+import 'package:firebase_core/firebase_core.dart';
 //import 'package:chan_no_sanchusuimei_v3/quiz/quiz001b.dart';
 //import 'package:chan_no_sanchusuimei_v3/quiz/quiz001a.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -320,6 +322,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     //
+    Firebase.initializeApp().whenComplete((){
+      setState(() {
+        print('イニシャライズ完了');
+      });
+    });
     _getPrefItems();
   }
 
@@ -522,7 +529,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Quiz001(),
+                              builder: (context) => BookList(),
                             ),
                           );
                         },
