@@ -13,13 +13,19 @@ class BookList extends StatelessWidget {
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('books').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          return ListView(
-            children: snapshot.data.docs.map((DocumentSnapshot document){
-              return ListTile(
-                title: Text(document['title']),
+          if (snapshot.hasError)
+            return Text('Error: ${snapshot.error}');
+          switch (snapshot.connectionState){
+            case ConnectionState.waiting: return Text('Loading...');
+            default:
+              return ListView(
+                children: snapshot.data.docs.map((DocumentSnapshot document){
+                  return ListTile(
+                    title: Text(document['title']),
+                  );
+                }).toList(),
               );
-            }).toList(),
-          );
+          }
         },
       ),
     );
