@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:chan_no_sanchusuimei_v3/book_list_page.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/Quiz001.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 //import 'package:chan_no_sanchusuimei_v3/quiz/quiz001b.dart';
 //import 'package:chan_no_sanchusuimei_v3/quiz/quiz001a.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -24,6 +25,7 @@ import 'nikkan/nikkan_mizunoe.dart';
 import 'nikkan/nikkan_mizunoto.dart';
 import 'nikkan/nikkan_tsutinoe.dart';
 import 'nikkan/nikkan_tsutinoto.dart';
+
 //import 'quiz/quiz001a.dart';
 import 'kyou_unsei.dart';
 import 'output.dart';
@@ -156,6 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
   }
+
   //追加ここまで*/
 
   // shareed Preference に保存されているデータを読み込んで、_counterにセットする
@@ -322,7 +325,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     //
-    Firebase.initializeApp().whenComplete((){
+    Firebase.initializeApp().whenComplete(() {
       setState(() {
         print('イニシャライズ完了');
       });
@@ -510,7 +513,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-
                   height: 44,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -524,12 +526,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       TextButton(
                         child: Text('易占クイズ'),
-                        onPressed: (){
+                        onPressed: () {
                           //TODO: 易占クイズ画面へ飛ぶ
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => BookList(),
+                              builder: (context) => Quiz001(),
                             ),
                           );
                         },
@@ -562,7 +564,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 height: 8,
               ),
-
             ],
           ),
         ),
@@ -586,6 +587,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   height: 200,
                   child: CupertinoDatePicker(
+                    //backgroundColor: Colors.blue,
                     initialDateTime: date9,
                     minimumYear: 1900,
                     maximumYear: DateTime.now().year + 10,
@@ -601,6 +603,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 // 「キャンセル」「削除」「登録」ボタン
                 Container(
+                  //color: Colors.blue,
                   height: 40,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
