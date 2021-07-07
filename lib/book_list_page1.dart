@@ -9,14 +9,24 @@ class BookListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<BookListModel>(
-      create: (_) => BookListModel(),
+      create: (_) => BookListModel()..fetchBooks(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('本一覧'),
+          title: Text('本一覧(providerモデル）'),
         ),
         body: Consumer<BookListModel>(
           builder: (context, model, child) {
-            return Container();
+            final books = model.books;
+            final listTiles = books
+                .map(
+                  (book) => ListTile(
+                    title: Text(book.title),
+                  ),
+                )
+                .toList();
+            return ListView(
+              children: listTiles,
+            );
           },
         ),
       ),
