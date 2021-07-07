@@ -1,12 +1,12 @@
 //import 'package:admob_flutter/admob_flutter.dart';
 //import 'dart:js';
 
-import 'kaisetu_tentitokugou1.dart';
+import '../kaisetu/kaisetu_tentitokugou1.dart';
 import 'kyou_unsei.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'services/ad_state.dart';
+import '../services/ad_state.dart';
 //import 'main.dart';
 //import 'services/admob.dart';
 
@@ -36,13 +36,10 @@ class Output extends StatelessWidget {
   final List nitikansiHeirin = [0, 0, 0, 0, 0, 0];
   final List kansiHeirinList = [0, 0, 0, 0, 0, 0];
 
-
-
   //google_mobile_adsを配置するため追加 2021.5.24
   //WidgetsFlutterBinding.ensureInitialized();
   //final initFuture = MobileAds.instance.initialize();
   //final adSate =AdState(initFuture);
-
 
   /*/google_mobile_adsを配置するため追加 2021.5.24
   BannerAd banner;
@@ -215,7 +212,8 @@ class Output extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Text('$titleSeinengappi 生まれの',
+                Text(
+                  '$titleSeinengappi 生まれの',
                   style: TextStyle(
                     fontSize: 18,
                   ),

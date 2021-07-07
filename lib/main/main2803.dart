@@ -7,37 +7,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
-import 'services/ad_state.dart';
-import 'seinengappi_input.dart';
-import 'nikkan/nikkan_hinoe.dart';
-import 'nikkan/nikkan_hinoto.dart';
-import 'nikkan/nikkan_kanoe.dart';
-import 'nikkan/nikkan_kanoto.dart';
-import 'nikkan/nikkan_kinoe.dart';
-import 'nikkan/nikkan_kinoto.dart';
-import 'nikkan/nikkan_mizunoe.dart';
-import 'nikkan/nikkan_mizunoto.dart';
-import 'nikkan/nikkan_tsutinoe.dart';
-import 'nikkan/nikkan_tsutinoto.dart';
-import 'touroku.dart';
+import '../services/ad_state.dart';
+import '../input/seinengappi_input.dart';
+import '../nikkan/nikkan_hinoe.dart';
+import '../nikkan/nikkan_hinoto.dart';
+import '../nikkan/nikkan_kanoe.dart';
+import '../nikkan/nikkan_kanoto.dart';
+import '../nikkan/nikkan_kinoe.dart';
+import '../nikkan/nikkan_kinoto.dart';
+import '../nikkan/nikkan_mizunoe.dart';
+import '../nikkan/nikkan_mizunoto.dart';
+import '../nikkan/nikkan_tsutinoe.dart';
+import '../nikkan/nikkan_tsutinoto.dart';
+import '../input/touroku.dart';
 
 void main2803() {
   //google_mobile_adsを配置するため追加 2021.5.24
   WidgetsFlutterBinding.ensureInitialized();
   final initFuture = MobileAds.instance.initialize();
-  final adSate =AdState(initFuture);
+  final adSate = AdState(initFuture);
   runApp(Provider.value(
     value: adSate,
-    builder: (context,child) => MyApp(),
+    builder: (context, child) => MyApp(),
   ));
   //追加ここまで
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -83,7 +81,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   int _counter = 0;
   String _birthday0 = '';
   String _birthday1 = '';
@@ -95,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _memo2 = '';
   String _memo3 = '';
   String _memo4 = '';
-  BannerAd banner ;
+  BannerAd banner;
 
   void _incrementCounter() async {
     setState(() {
@@ -123,7 +120,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   //追加ここまで*/
-
 
   // shareed Preference に保存されているデータを読み込んで、_counterにセットする
   _getPrefItems() async {
@@ -192,7 +188,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var aaa = 'images/main/hana1.jpg';
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -221,14 +216,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter a search term'
-                ),
+                    hintText: 'Enter a search term'),
                 onChanged: (text) {
                   print('First text field: $text');
                   _birthday1 = text;
                   print('_birthday1:$_birthday1');
                 },
-
               ),
             ),
             //バナー広告追加

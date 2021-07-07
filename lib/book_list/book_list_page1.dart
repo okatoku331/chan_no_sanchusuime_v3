@@ -1,4 +1,4 @@
-import 'package:chan_no_sanchusuimei_v3/book_list_model.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list//book_list_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

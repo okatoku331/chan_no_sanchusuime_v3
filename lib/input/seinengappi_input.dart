@@ -1,5 +1,5 @@
 //import 'package:admob_flutter/admob_flutter.dart';
-import 'package:chan_no_sanchusuimei_v3/output.dart';
+import 'package:chan_no_sanchusuimei_v3/output/output.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import "package:intl/intl.dart";
@@ -9,8 +9,6 @@ import "package:intl/intl.dart";
 class SeinengappiInput extends StatelessWidget {
   DateTime date9 = DateTime(1957, 3, 1);
   //int _counter = 0;
-
-
 
   @override
   Widget build(BuildContext context) {
