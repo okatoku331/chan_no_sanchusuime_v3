@@ -30,9 +30,12 @@ import '../nikkan/nikkan_tsutinoto.dart';
 import '../output/kyou_unsei.dart';
 import '../output/output.dart';
 
-void main() {
+void main() async {
   //google_mobile_adsを配置するため追加 2021.5.24
   WidgetsFlutterBinding.ensureInitialized();
+  // FireBase core 0.5.0 以降ここで初期化することが必要
+  await Firebase.initializeApp();
+  // 追加以上
   final initFuture = MobileAds.instance.initialize();
   final adSate = AdState(initFuture);
   runApp(Provider.value(
@@ -353,7 +356,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Container(
-        color: Colors.black87,
+        //color: Colors.black87,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

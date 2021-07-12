@@ -13,7 +13,7 @@ class JikoSyoukai extends StatelessWidget {
         title: Text('プロフィール'),
         actions: <Widget>[
           TextButton(
-            onLongPressPressed: () {
+            onLongPress: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
