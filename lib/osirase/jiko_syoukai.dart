@@ -1,4 +1,5 @@
 //import 'package:admob_flutter/admob_flutter.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list/book_list_page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,20 @@ class JikoSyoukai extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('プロフィール'),
+        actions: <Widget>[
+          TextButton(
+            onLongPressPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BookListPage(),
+                  ));
+            },
+            child: Text(''),
+          ),
+          //icon: const Icon(Icons.navigate_next),
+          //tooltip: 'Next page',
+        ],
       ),
       body: ListView(
         children: <Widget>[
