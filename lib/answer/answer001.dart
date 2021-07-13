@@ -30,7 +30,7 @@ class _Answer001State extends State<Answer001> {
                 title: Image.asset('images/quiz/a0011.png'),
               ),
               //ListTile(
-                //title: Text(''),
+              //title: Text(''),
               //),
               ElevatedButton(
                 child: Text('次のクイズに挑戦する'),
@@ -55,9 +55,8 @@ class _Answer001State extends State<Answer001> {
               ),
             ],
           ),
-        ),//containe
+        ), //containe
       ),
     );
-    ;
   }
 }

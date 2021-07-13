@@ -55,9 +55,8 @@ class _AnswerState extends State<Answer> {
               ),
             ],
           ),
-        ),//containe
+        ), //containe
       ),
     );
-    ;
   }
 }

@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:chan_no_sanchusuimei_v3/book_list/book_list_page.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list/book_list_page0.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/Quiz001.dart';
 import 'package:firebase_core/firebase_core.dart';
 
