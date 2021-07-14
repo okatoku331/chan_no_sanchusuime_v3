@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BookListPage extends StatelessWidget {
-  //const BookList({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<BookListModel>(
@@ -22,6 +20,21 @@ class BookListPage extends StatelessWidget {
                 .map(
                   (book) => ListTile(
                     title: Text(book.title),
+                    trailing: IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddBookPage(
+                              book: book,
+                            ),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                        model.fetchBooks();
+                      },
+                    ),
                   ),
                 )
                 .toList();
