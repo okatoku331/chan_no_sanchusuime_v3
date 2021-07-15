@@ -1,5 +1,7 @@
 import 'package:chan_no_sanchusuimei_v3/book_list//book_list_model.dart';
 import 'package:chan_no_sanchusuimei_v3/book_list/add_book/add_book_page.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list/book.dart';
+//import 'package:chan_no_sanchusuimei_v3/book_list/book_list_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +37,34 @@ class BookListPage extends StatelessWidget {
                         model.fetchBooks();
                       },
                     ),
+                    onLongPress: () {
+                      //TODO:削除する
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('${book.title} を削除しますか？'),
+                            actions: [
+                              TextButton(
+                                child: Text('cansel'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              TextButton(
+                                child: Text('OK'),
+                                onPressed: () {
+                                  //TODO:削除するを実行する
+                                  deleteBook(context, model, book);
+
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
                   ),
                 )
                 .toList();
@@ -62,5 +92,30 @@ class BookListPage extends StatelessWidget {
         }),
       ),
     );
+  }
+
+  Future deleteBook(
+      BuildContext context, BookListModel model, Book book) async {
+    try {
+      await model.deleteBook(book);
+      await model.fetchBooks();
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(e.toString()),
+            actions: [
+              TextButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        },
+      );
+    }
   }
 }
