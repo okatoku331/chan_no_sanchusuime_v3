@@ -27,6 +27,8 @@ class AddBookPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
+                  Image.network(
+                      'https://thumb.ac-illust.com/aa/aa0c379d4ee2cf368094aec8592c4906_t.jpeg'),
                   TextField(
                     controller: textEditingController,
                     onChanged: (text) {

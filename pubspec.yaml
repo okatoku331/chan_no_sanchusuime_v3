@@ -15,28 +15,25 @@ dependencies:
     sdk: flutter
   google_fonts: ^2.1.0
   google_mobile_ads: ^0.11.0+4
-  # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる
+  # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる.（^0.11.0+4に固定せよ。）
   provider: ^5.0.0
   cupertino_icons: ^1.0.3
   shared_preferences: ^2.0.6
   # 再起動したとき前回の設定を残して置くため
   intl: ^0.17.0
-  # Add the dependency for the Firebase Core Flutter SDK(2021.3.31)
   firebase_core: ^1.4.0
-  # Add the dependency for the FlutterFire plugin for Google Analytics
   #firebase_analytics: ^7.1.1
-  # Add the dependencies for any other Firebase products you want to use in your app
-  # For example, to use Firebase Authentication and Cloud Firestore
   #firebase_auth: ^1.0.1
   cloud_firestore: ^2.4.0
-  #admob_flutter: ^1.0.1
+  image_picker: ^0.8.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   #flutter_launcher_icons: ^0.9.0
-  # splash
-  flutter_native_splash: ^1.2.0
+  #アプリアイコンを作成するときだけ、「#」を外して使う。
+  #flutter_native_splash: ^1.2.0
+  # splash画面を作成するときだけ、「#」を外して使う。
 
 flutter_icons:
   android: true
