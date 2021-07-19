@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
   google_fonts: ^2.1.0
   google_mobile_ads: ^0.11.0+4
-  # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる.（^0.11.0+4に固定せよ。）
+  # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる.（^0.11.0+4に固定せよ。）,
   provider: ^5.0.0
   cupertino_icons: ^1.0.3
   shared_preferences: ^2.0.6
