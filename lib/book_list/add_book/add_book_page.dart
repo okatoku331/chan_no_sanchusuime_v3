@@ -6,6 +6,7 @@ import '../book.dart';
 
 class AddBookPage extends StatelessWidget {
   AddBookPage({this.book});
+
   final Book book;
 
   @override
@@ -27,8 +28,23 @@ class AddBookPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Image.network(
-                      'https://thumb.ac-illust.com/aa/aa0c379d4ee2cf368094aec8592c4906_t.jpeg'),
+                  SizedBox(
+                    height: 180,
+                    width: 180,
+                    child: InkWell(
+                      onTap: () async {
+                        //TODO:カメラロールを開く
+                        await model.showImagePicker();
+                      },
+                      child: model.imageFile != null
+                          ? Image.file(model.imageFile)
+                          //: Image.network(
+                          //    'https://firebasestorage.googleapis.com/v0/b/sanchusuimei-2a245.appspot.com/o/q001.png?alt=media&token=daca2a3d-f2c5-4167-aa74-9d84152be34c')
+                          : Container(
+                              color: Colors.grey,
+                            ),
+                    ),
+                  ),
                   TextField(
                     controller: textEditingController,
                     onChanged: (text) {
