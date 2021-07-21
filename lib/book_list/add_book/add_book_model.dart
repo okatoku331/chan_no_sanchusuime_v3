@@ -14,9 +14,10 @@ class AddBookModel extends ChangeNotifier {
   File imageFile;
 
   Future showImagePicker() async {
-    final picker = ImagePicker();
+    final picker = await ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     imageFile = File(pickedFile.path);
+    print('imageFile$imageFile');
     notifyListeners();
   }
 
@@ -45,9 +46,9 @@ class AddBookModel extends ChangeNotifier {
 
   Future<String> _uploadImage() async {
     //TODO: strage へのアップロード
-    final storage = FirebaseStorage.instance;
+    final storage = await FirebaseStorage.instance;
     TaskSnapshot snapshot =
-        await storage.ref().child("books/bookTitle").putFile(imageFile);
+        await storage.ref().child(bookTitle).putFile(imageFile);
     final String downloadURL = await snapshot.ref.getDownloadURL();
 
     return downloadURL;
