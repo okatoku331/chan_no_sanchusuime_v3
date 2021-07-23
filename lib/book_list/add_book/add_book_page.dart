@@ -18,55 +18,73 @@ class AddBookPage extends StatelessWidget {
     }
     return ChangeNotifierProvider<AddBookModel>(
       create: (_) => AddBookModel(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(isUpdate ? '本を変更' : '本を追加.'),
-        ),
-        body: Consumer<AddBookModel>(
-          builder: (context, model, child) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 180,
-                    width: 180,
-                    child: InkWell(
-                      onTap: () async {
-                        //TODO:カメラロールを開く
-                        await model.showImagePicker();
-                      },
-                      child: model.imageFile != null
-                          ? Image.file(model.imageFile)
-                          //: Image.network(
-                          //    'https://firebasestorage.googleapis.com/v0/b/sanchusuimei-2a245.appspot.com/o/q001.png?alt=media&token=daca2a3d-f2c5-4167-aa74-9d84152be34c')
-                          : Container(
-                              color: Colors.grey,
-                            ),
-                    ),
+      child: Stack(
+        children: [
+          Scaffold(
+            appBar: AppBar(
+              title: Text(isUpdate ? '本を変更' : '本を追加.'),
+            ),
+            body: Consumer<AddBookModel>(
+              builder: (context, model, child) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 180,
+                        width: 180,
+                        child: InkWell(
+                          onTap: () async {
+                            //TODO:カメラロールを開く
+                            await model.showImagePicker();
+                          },
+                          child: model.imageFile != null
+                              ? Image.file(model.imageFile)
+                              //: Image.network(
+                              //    'https://firebasestorage.googleapis.com/v0/b/sanchusuimei-2a245.appspot.com/o/q001.png?alt=media&token=daca2a3d-f2c5-4167-aa74-9d84152be34c')
+                              : Container(
+                                  color: Colors.grey,
+                                ),
+                        ),
+                      ),
+                      TextField(
+                        controller: textEditingController,
+                        onChanged: (text) {
+                          model.bookTitle = text;
+                        },
+                      ),
+                      ElevatedButton(
+                        child: Text(isUpdate ? '更新する' : '追加する'),
+                        onPressed: () async {
+                          model.startLoading();
+                          //TODO: FireStoreに本を追加する
+                          if (isUpdate) {
+                            await updateBook(model, context);
+                          } else {
+                            await addBook(model, context);
+                          }
+                          model.endLoading();
+                        },
+                      ),
+                    ],
                   ),
-                  TextField(
-                    controller: textEditingController,
-                    onChanged: (text) {
-                      model.bookTitle = text;
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Text(isUpdate ? '更新する' : '追加する'),
-                    onPressed: () async {
-                      //TODO: FireStoreに本を追加する
-                      if (isUpdate) {
-                        await updateBook(model, context);
-                      } else {
-                        await addBook(model, context);
-                      }
-                    },
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
+                );
+              },
+            ),
+          ),
+          Consumer<AddBookModel>(
+            builder: (context, model, child) {
+              return model.isLoading
+                  ? Container(
+                      color: Colors.grey.withOpacity(0.7),
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : SizedBox();
+            },
+          )
+        ],
       ),
     );
   }

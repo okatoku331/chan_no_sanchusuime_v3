@@ -12,6 +12,17 @@ import '../book.dart';
 class AddBookModel extends ChangeNotifier {
   String bookTitle = '';
   File imageFile;
+  bool isLoading = false;
+
+  startLoading() {
+    isLoading = true;
+    notifyListeners();
+  }
+
+  endLoading() {
+    isLoading = false;
+    notifyListeners();
+  }
 
   Future showImagePicker() async {
     final picker = await ImagePicker();
