@@ -22,7 +22,7 @@ dependencies:
   # 再起動したとき前回の設定を残して置くため
   intl: ^0.17.0
   firebase_core: ^1.4.0
-  firebase_analytics: ^8.2.0
+  #firebase_analytics: ^8.2.0
   cloud_firestore: ^2.4.0
   firebase_storage: ^10.0.1
   firebase_auth: ^3.0.1
