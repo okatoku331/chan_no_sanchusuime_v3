@@ -13,7 +13,7 @@ class SignUpModel extends ChangeNotifier {
     try {
       //UserCredential user =
       await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: mail, password: mail);
+          .createUserWithEmailAndPassword(email: mail, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');

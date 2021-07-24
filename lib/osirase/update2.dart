@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list/login_page.dart';
 
 class Update2 extends StatelessWidget {
   @override
@@ -7,6 +8,20 @@ class Update2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('第2版（2021.3.31）'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ));
+            },
+            child: Text(''),
+          ),
+          //icon: const Icon(Icons.navigate_next),
+          //tooltip: 'Next page',
+        ],
       ),
       body: ListView(
         children: <Widget>[
