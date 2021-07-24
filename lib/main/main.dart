@@ -189,7 +189,6 @@ class _MyHomePageState extends State<MyHomePage> {
     _birthD.insert(3, _birthday3);
     _birthD.removeAt(4);
     _birthD.insert(4, _birthday4);
-    print('GPI:birthD:$_birthD');
 
     _memoH.removeAt(0);
     _memoH.insert(0, _memo0);
@@ -201,7 +200,6 @@ class _MyHomePageState extends State<MyHomePage> {
     _memoH.insert(3, _memo3);
     _memoH.removeAt(4);
     _memoH.insert(4, _memo4);
-    print('memoH:$_memoH');
 
     for (int i = 0; i < 5; i++) {
       int j = i + 1;
@@ -216,10 +214,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _birthO.removeAt(i);
       _birthO.insert(i, _birthday);
     }
-    print('GPI:birthD:$_birthD');
-    print('GPI:birthO:$_birthO');
-    print('GPI:birthH:$_birthH');
-    print('GPI:memoH:$_memoH');
     setState(() {});
   }
 
@@ -239,11 +233,6 @@ class _MyHomePageState extends State<MyHomePage> {
         prefs.setString('memo4', _memoH[item]);
       } else {}
     });
-
-    print('SPM:birthD:$_birthD');
-    print('SPM:birthO:$_birthO');
-    print('SPM:birthH:$_birthH');
-    print('SPM:memoH:$_memoH');
   }
 
   //データを書き込む
@@ -271,10 +260,6 @@ class _MyHomePageState extends State<MyHomePage> {
       prefs.setString('birthday4', _birthD[item]);
     } else {}
 
-    print('SPI:birthD:$_birthD');
-    print('SPI:birthO:$_birthO');
-    print('SPI:birthH:$_birthH');
-    print('SPI:memoH:$_memoH');
     setState(() {});
   }
 
@@ -318,10 +303,6 @@ class _MyHomePageState extends State<MyHomePage> {
         prefs.remove('memo4');
       });
     } else {}
-    print('RPI:birthD:$_birthD');
-    print('RPI:birthO:$_birthO');
-    print('RPI:birthH:$_birthH');
-    print('RPI:memoH:$_memoH');
   }
 
   @override
@@ -330,7 +311,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //
     Firebase.initializeApp().whenComplete(() {
       setState(() {
-        print('イニシャライズ完了');
+        print('■■■■■■■■イニシャライズ完了■■■■■■■■');
       });
     });
     _getPrefItems();
@@ -400,10 +381,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     _birthday = _birthD[index];
                                     if (_birthday == 'yyyy/mm/dd') {
                                       date9 = DateTime.now();
-                                      print('a:date9:$date9');
+                                      //print('a:date9:$date9');
                                     } else if (_birthday == '') {
                                       date9 = DateTime.now();
-                                      print('b:date9:$date9');
+                                      //print('b:date9:$date9');
                                     } else {
                                       _birthdaya = _birthday.substring(0, 4) +
                                           '-' +
@@ -411,13 +392,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           '-' +
                                           _birthday.substring(8, 10);
                                       date9 = DateTime.parse(_birthdaya);
-                                      print('c:date9:$date9');
+                                      //print('c:date9:$date9');
                                     }
-                                    print('T1:birthD:$_birthD');
-                                    print('T1:birthO:$_birthO');
-                                    print('T1:birthH:$_birthH');
-                                    print('T1::memoH:$_memoH');
-                                    print('T1:item:$index');
                                     _showCupertinoDatePicker(context, index);
                                     setState(() {});
                                   },
@@ -598,7 +574,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onDateTimeChanged: (newDate) {
                       _birthday = DateFormat('yyyy/MM/dd').format(newDate);
                       birthdayHyouji = '($j : $_birthday 生';
-                      print('newDate:$newDate');
+                      //print('newDate:$newDate');
                       setState(() {});
                     },
                   ),
@@ -664,7 +640,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   );
                                 },
                               );
-                              print('dialog result: $result');
+                              //print('dialog result: $result');
                             }
                           }),
 
@@ -712,7 +688,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 );
                               },
                             );
-                            print('dialog result: $result');
+                            //print('dialog result: $result');
                           }),
                     ],
                   ),
@@ -725,10 +701,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // 画面下からDatePickerを表示する
   void _showInputDialog(BuildContext context, int i) {
-    print('RPI:birthD:$_birthD');
-    print('RPI:birthO:$_birthO');
-    print('RPI:birthH:$_birthH');
-    print('RPI:memoH:$_memoH');
     String _memo = _memoH[i];
     showDialog(
       context: context,

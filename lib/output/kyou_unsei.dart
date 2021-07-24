@@ -18,23 +18,20 @@ class KyouUnsei extends StatelessWidget {
   final String jukkan = "甲乙丙丁戊己庚辛壬癸"; //十干リスト
   final String jukkanYomi = "甲【きのえ】　乙【きのと】　丙【ひのえ】　丁【ひのと】　戊【つちのえ】"
       "己【つちのと】庚【かのえ】　辛【かのと】　壬【みずのえ】癸【みずのと】"; //十干リスト【よみ】
-  final String gogyou = "木＋木ー火＋火ー土＋土ー金＋金ー水＋水ー";// 五行リスト
+  final String gogyou = "木＋木ー火＋火ー土＋土ー金＋金ー水＋水ー"; // 五行リスト
   final String juunisi = "子丑寅卯辰巳午未申酉戌亥"; //十二支リスト
   final String juunisiMoji = "0123456789ab"; //十二支数リスト
   final String juunisiYomi = "ね　　うし　とら　う　　たつ　み　　うま　ひつじさる　とり　いぬ　い　　";
-  final String rokujukkansi =
-      "甲子乙丑丙寅丁卯戊辰己巳庚午辛未壬申癸酉"
+  final String rokujukkansi = "甲子乙丑丙寅丁卯戊辰己巳庚午辛未壬申癸酉"
       "甲戌乙亥丙子丁丑戊寅己卯庚辰辛巳壬午癸未"
       "甲申乙酉丙戌丁亥戊子己丑庚寅辛卯壬辰癸巳"
       "甲午乙未丙申丁酉戊戌己亥庚子辛丑壬寅癸卯"
       "甲辰乙巳丙午丁未戊申己酉庚戌辛亥壬子癸丑"
       "甲寅乙卯丙辰丁巳戊午己未庚申辛酉壬戌癸亥"; //
-  final String tuuhenbosiKanji =
-      "比肩劫敗食神傷官偏財正財偏官正官倒食印綬";
+  final String tuuhenbosiKanji = "比肩劫敗食神傷官偏財正財偏官正官倒食印綬";
   final String tuuhenbosiYomi =
       "ひけん　　ごうはい　しょくしんしょうかんへんざい　せいざい　へんがん　せいがん　とうしょくいんじゅ　";
-  final String tuuhenbosi =
-      "比肩劫敗食神傷官偏財正財偏官正官倒食印綬"
+  final String tuuhenbosi = "比肩劫敗食神傷官偏財正財偏官正官倒食印綬"
       "劫敗比肩傷官食神正財偏財正官偏官印綬倒食"
       "倒食印綬比肩劫敗食神傷官偏財正財偏官正官"
       "印綬倒食劫敗比肩傷官食神正財偏財正官偏官"
@@ -44,8 +41,7 @@ class KyouUnsei extends StatelessWidget {
       "正財偏財正官偏官印綬倒食劫敗比肩傷官食神"
       "食神傷官偏財正財偏官正官倒食印綬比肩劫敗"
       "傷官食神正財偏財正官偏官印綬倒食劫敗比肩";
-  final String tuuhenbosizu =
-      "00010203040506070809"
+  final String tuuhenbosizu = "00010203040506070809"
       "01000302050407060908"
       "18191011121314151617"
       "19181110131215141716"
@@ -91,8 +87,7 @@ class KyouUnsei extends StatelessWidget {
       "　三　冲合三　　　　害　"
       "　　三合冲　三　　害　　"
       "　　合三　冲　三害　　　";*/
-  final String sigouKei =
-      "　合　刑三　冲害三　　　"
+  final String sigouKei = "　合　刑三　冲害三　　　"
       "合　　　　三害一　三刑　"
       "　　　　　二三　一　三合"
       "刑　　　五　　三　冲合三"
@@ -151,15 +146,14 @@ class KyouUnsei extends StatelessWidget {
     DateTime now = DateTime.now();
     DateFormat outputFormat = DateFormat('yyyy.MM.dd');
     String dateNow = outputFormat.format(now);
-    print(dateNow);
+    //print(dateNow);
     //　1900.1.1 (甲辰）から今日までの日数を算出する
     var nissuuNow = now.difference(date0).inDays;
     //  今日の日干を算出する
     var nikkanNow = nissuuNow % 10;
     var jukkanNow = jukkan.substring(nikkanNow, nikkanNow + 1);
     //　今日の五行を算出する
-    var gogyouNow = gogyou.substring(
-        nikkanNow * 2, nikkanNow * 2 + 2);
+    var gogyouNow = gogyou.substring(nikkanNow * 2, nikkanNow * 2 + 2);
 
     //　1900.1.1 (甲辰）から誕生日までの日数を算出する
     var nissuu = datetSeinengappi.difference(date0).inDays;
@@ -167,16 +161,13 @@ class KyouUnsei extends StatelessWidget {
     var nikkan = nissuu % 10;
     var jukkanMoji = jukkan.substring(nikkan, nikkan + 1);
     //　五行を算出する
-    var gogyouMoji = gogyou.substring(
-        nikkan * 2, nikkan * 2 + 2);
-    var nikkanYouIn = gogyou.substring(
-        nikkan * 2 + 1, nikkan * 2 + 2);
-    if (nikkanYouIn == '＋'){
+    var gogyouMoji = gogyou.substring(nikkan * 2, nikkan * 2 + 2);
+    var nikkanYouIn = gogyou.substring(nikkan * 2 + 1, nikkan * 2 + 2);
+    if (nikkanYouIn == '＋') {
       nikkanInYou = 'ー';
-    }else{
+    } else {
       nikkanInYou = '＋';
     }
-
 
     //　今日の通変星を算出する
     var tuuhenbosiNow = tuuhenbosi.substring(
@@ -187,9 +178,10 @@ class KyouUnsei extends StatelessWidget {
         nikkan * 20 + nikkanNow * 2, nikkan * 20 + nikkanNow * 2 + 2);
 
     //　今日の通変星のふりがなを算出する
-    var tuuhenbosiSuu = nanmojimea(tuuhenbosiKanji,tuuhenbosiNow,10 );
-    var tuuhenbosiYomiNow = tuuhenbosiYomi.substring(
-        tuuhenbosiSuu * 5,  tuuhenbosiSuu * 5 + 5).trimRight();
+    var tuuhenbosiSuu = nanmojimea(tuuhenbosiKanji, tuuhenbosiNow, 10);
+    var tuuhenbosiYomiNow = tuuhenbosiYomi
+        .substring(tuuhenbosiSuu * 5, tuuhenbosiSuu * 5 + 5)
+        .trimRight();
 
     //　通変星の解説文作成
     if (tuuhenbosiNow == '比肩') {
@@ -232,12 +224,7 @@ class KyouUnsei extends StatelessWidget {
       tuuhenbosiNowKaisetu = '印綬　の持つ意味は・・・'
           '吉ポイントは、プラス10です。';
       kitiPointNikann = 10;
-
     }
-
-
-
-
 
     //　干合を算出する
     var kangouNow = kangou.substring(
@@ -247,7 +234,6 @@ class KyouUnsei extends StatelessWidget {
           '一緒になると新しいエネルギーが生じ、さらに変化したエネルギーも生じるという意味があります。'
           '吉ポイントは、プラス20です。';
       kitiPointKangou = 20;
-
     } else {}
 
     //　今日の日支を算出する
@@ -284,52 +270,44 @@ class KyouUnsei extends StatelessWidget {
       kitiPointNissi = -20;
     } else if (sigouNow == '害') {
       sigouMoji = '害（がい）があります';
-      sigouKaisetu = '害は、トラブルを意味します。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなので気はやはりうばわれます。'
+      sigouKaisetu =
+          '害は、トラブルを意味します。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなので気はやはりうばわれます。'
           '凶です。吉ポイントは、マイナス10です。';
       kitiPointNissi = -10;
-
     } else if (sigouNow == '刑') {
       sigouMoji = '刑（けい）があります';
-      sigouKaisetu = '刑は、トラブルを意味します。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。'
+      sigouKaisetu =
+          '刑は、トラブルを意味します。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。'
           '凶です。吉ポイントは、マイナス10です。';
       kitiPointNissi = -10;
-
     } else if (sigouNow == '一') {
       sigouMoji = '冲（ちゅう）と刑（けい）があります';
       sigouKaisetu = '悪い作用が重なるのではなく、あるときは冲になり、あるときは刑になります。冲は、同性同士の殴り合いを意味します。'
           '刑は冲に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。'
           '凶です。吉ポイントは、マイナス15です。　';
       kitiPointNissi = -15;
-
-
     } else if (sigouNow == '二') {
       sigouMoji = '害（がい）と刑（けい）があります';
       sigouKaisetu = '悪い作用が重なるのではなく、あるときは害になり、あるときは刑になります。'
           '刑は重いトラブル、害は軽いトラブルを意味します。トラブルなのでやはり気はうばわれます。'
           '凶です。吉ポイントは、マイナス10です。　';
       kitiPointNissi = -10;
-
-
     } else if (sigouNow == '四') {
       sigouMoji = '支合（しごう）と刑（けい）があります';
       sigouKaisetu = '良い作用の支合と悪い作用の刑が重なります。普段は仲のいい夫婦が急に大げんかするようなような意味です。'
           '仲がいいときは気を発生しますが、喧嘩して気がうばわれます。'
           '吉です。吉ポイントは、プラス10です。　';
       kitiPointNissi = 10;
-
-
     } else if (sigouNow == '五') {
       sigouMoji = '卯辰の害があります';
       sigouKaisetu = '害（がい）は、トラブルを意味しますが、卯辰の害は、冲（ちゅう）のなぐりあいに匹敵する喧嘩を意味します。'
           '夫婦の激しい喧嘩の意味です。気は激しくうばわれます。'
           '中凶です。吉ポイントは、マイナス15です。';
       kitiPointNissi = -15;
-
     } else {
       sigouMoji = '支合・三合・冲・害・刑はありません';
       sigouKaisetu = '吉ポイントは、プラスマイナス０です。';
       kitiPointNissi = 0;
-
     }
 
     //　支刑を算出する
@@ -341,27 +319,27 @@ class KyouUnsei extends StatelessWidget {
 
     //吉凶ポイント算出
     kitiPoint = kitiPointNikann + kitiPointNissi + kitiPointKangou;
-    if (kitiPoint > 24){
+    if (kitiPoint > 24) {
       kitiKyou = '大吉';
       kitiPlus = 'プラス';
       kitiP = kitiPoint;
-    } else if (kitiPoint > 14){
+    } else if (kitiPoint > 14) {
       kitiKyou = '中吉';
       kitiPlus = 'プラス';
       kitiP = kitiPoint;
-    } else if (kitiPoint > 4){
+    } else if (kitiPoint > 4) {
       kitiKyou = '小吉';
       kitiPlus = 'プラス';
       kitiP = kitiPoint;
-    } else if (kitiPoint > -5){
+    } else if (kitiPoint > -5) {
       kitiKyou = '平';
       kitiPlus = 'プラスマイナス';
       kitiP = 0;
-    } else if (kitiPoint > -15){
+    } else if (kitiPoint > -15) {
       kitiKyou = '小凶';
       kitiPlus = 'マイナス';
       kitiP = kitiPoint * -1;
-    } else if (kitiPoint > -25){
+    } else if (kitiPoint > -25) {
       kitiKyou = '中凶';
       kitiPlus = 'マイナス';
       kitiP = kitiPoint * -1;
@@ -371,9 +349,6 @@ class KyouUnsei extends StatelessWidget {
       kitiP = kitiPoint * -1;
     }
 
-
-
-
     //■■　画面を生成する　■■
 
     return Scaffold(
@@ -382,16 +357,12 @@ class KyouUnsei extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-
           ListTile(
             title: Text('　今日（$dateNow）の運勢は・・・'),
           ),
-
           ListTile(
             title: Text('１．「日干」からみた今日の運勢'),
           ),
-
-
           ListTile(
             title: Text('　生年月日の日干が、「$jukkanMoji（$gogyouMoji）」、'
                 '今日の日干が、「$jukkanNow（$gogyouNow）」なので、'
@@ -409,7 +380,6 @@ class KyouUnsei extends StatelessWidget {
           ListTile(
             title: Text('　$kangouMoji'),
           ),
-
           ListTile(
             title: Text('２．「日支」からみた今日の運勢'),
           ),
@@ -421,14 +391,12 @@ class KyouUnsei extends StatelessWidget {
           ListTile(
             title: Image.asset('images/sigou/s$juunisia$juunisiaNow.jpg'),
           ),
-
           ListTile(
             title: Text('　$sigouMoji。$sigouKaisetu　'),
           ),
           ListTile(
             title: Text('　'),
           ),
-
           ListTile(
             title: Text('３．総合ポイント'),
           ),
@@ -437,15 +405,14 @@ class KyouUnsei extends StatelessWidget {
           ),
           ListTile(
             title: Center(
-              child: Text('$kitiKyou',
+              child: Text(
+                '$kitiKyou',
                 style: TextStyle(
                   fontSize: 60,
                   color: Colors.purpleAccent,
-
                 ),
               ),
-            )
-            ,
+            ),
           ),
           ListTile(
             title: Text('　'),
@@ -490,7 +457,7 @@ class KyouUnsei extends StatelessWidget {
 int nanmojimea(String mojilist, String kensaku2moji, int yousosuu) {
   int nanbanme = -1;
   int ittisuu = 0;
-  for (int i = 0; i < yousosuu ; i++) {
+  for (int i = 0; i < yousosuu; i++) {
     String nimoji = mojilist.substring(i * 2, i * 2 + 2);
     if (nimoji == kensaku2moji) {
       nanbanme = i;
