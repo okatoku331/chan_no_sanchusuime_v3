@@ -1,18 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpModel extends ChangeNotifier {
   String mail = '';
   String password = '';
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  //final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future signUp() async {
     //TODO:
     try {
-      UserCredential user = await FirebaseAuth.instance
+      //UserCredential user =
+      await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: mail, password: mail);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

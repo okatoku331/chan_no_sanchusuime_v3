@@ -1,7 +1,5 @@
-//import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-//import 'services/admob.dart';
 
 class KyouUnsei extends StatelessWidget {
   final String titleSeinengappi;

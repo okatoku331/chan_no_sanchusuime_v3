@@ -1,10 +1,7 @@
-//import 'package:admob_flutter/admob_flutter.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update1.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update2a.dart';
-//import 'package:chan_no_sanchusuimei_v3/services/admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'jiko_syoukai.dart';
 import 'update2.dart';
 

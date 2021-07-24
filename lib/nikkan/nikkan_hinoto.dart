@@ -1,8 +1,5 @@
-//import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-//import '../services/admob.dart';
 
 class NikkanHinoto extends StatelessWidget {
   @override

@@ -1,13 +1,9 @@
-//import 'dart:html';
-
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../book.dart';
+import 'book.dart';
 
 class AddBookModel extends ChangeNotifier {
   String bookTitle = '';
@@ -25,7 +21,7 @@ class AddBookModel extends ChangeNotifier {
   }
 
   Future showImagePicker() async {
-    final picker = await ImagePicker();
+    final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     imageFile = File(pickedFile.path);
     print('imageFile$imageFile');
@@ -57,7 +53,7 @@ class AddBookModel extends ChangeNotifier {
 
   Future<String> _uploadImage() async {
     //TODO: strage へのアップロード
-    final storage = await FirebaseStorage.instance;
+    final storage = FirebaseStorage.instance;
     TaskSnapshot snapshot =
         await storage.ref().child(bookTitle).putFile(imageFile);
     final String downloadURL = await snapshot.ref.getDownloadURL();

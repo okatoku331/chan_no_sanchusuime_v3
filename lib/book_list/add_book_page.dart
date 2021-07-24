@@ -1,8 +1,7 @@
-import 'package:chan_no_sanchusuimei_v3/book_list/add_book/add_book_model.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list/add_book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../book.dart';
+import 'book.dart';
 
 class AddBookPage extends StatelessWidget {
   AddBookPage({this.book});

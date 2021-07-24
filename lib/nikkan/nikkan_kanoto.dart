@@ -2,8 +2,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-//import '../services/admob.dart';
-
 class NikkanKanoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

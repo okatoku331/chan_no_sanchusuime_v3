@@ -1,10 +1,6 @@
 import 'dart:ui';
-import 'package:chan_no_sanchusuimei_v3/book_list/book_list_page0.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/Quiz001.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-//import 'package:chan_no_sanchusuimei_v3/quiz/quiz001b.dart';
-//import 'package:chan_no_sanchusuimei_v3/quiz/quiz001a.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../osirase/update.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +10,6 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import '../services/ad_state.dart';
-import '../input/seinengappi_input.dart';
 import '../nikkan/nikkan_hinoe.dart';
 import '../nikkan/nikkan_hinoto.dart';
 import '../nikkan/nikkan_kanoe.dart';
@@ -25,8 +20,6 @@ import '../nikkan/nikkan_mizunoe.dart';
 import '../nikkan/nikkan_mizunoto.dart';
 import '../nikkan/nikkan_tsutinoe.dart';
 import '../nikkan/nikkan_tsutinoto.dart';
-
-//import 'quiz/quiz001a.dart';
 import '../output/kyou_unsei.dart';
 import '../output/output.dart';
 
@@ -71,7 +64,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       // ルーティングの一覧を設定
       routes: {
-        '/seinengappiInput': (context) => SeinengappiInput(), //生年月日入力
+        //'/seinengappiInput': (context) => SeinengappiInput(), //生年月日入力
         '/nikkan0': (context) => NikkanKinoe(), //甲
         '/nikkan1': (context) => NikkanKinoto(), //乙
         '/nikkan2': (context) => NikkanHinoe(), //丙
@@ -135,7 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
   String _memo2 = 'メモ';
   String _memo3 = 'メモ';
   String _memo4 = 'メモ';
-  String _memo = 'メモ';
   String seinengappiMojia = '';
 
   BannerAd banner;
@@ -609,7 +601,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             _birthday = _birthO[i];
                             if (_birthday == 'yyyy/mm/dd') {
                             } else {
-                              var result = await showDialog<int>(
+                              //var result =
+                              await showDialog<int>(
                                 context: context,
                                 barrierDismissible: false,
                                 builder: (BuildContext context) {
@@ -653,7 +646,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               _birthday = DateFormat('yyyy/MM/dd')
                                   .format(DateTime.now());
                             } else {}
-                            var result = await showDialog<int>(
+                            //var result =
+                            await showDialog<int>(
                               context: context,
                               barrierDismissible: false,
                               builder: (BuildContext context) {
