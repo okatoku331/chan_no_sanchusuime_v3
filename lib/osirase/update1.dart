@@ -1,5 +1,6 @@
 //import 'package:admob_flutter/admob_flutter.dart';
 //import 'package:chan_no_sanchusuimei_v3/services/admob.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list/signup_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,20 @@ class Update1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('第1版（2021.2.22）'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SignUpPage(),
+                  ));
+            },
+            child: Text(''),
+          ),
+          //icon: const Icon(Icons.navigate_next),
+          //tooltip: 'Next page',
+        ],
       ),
       body: ListView(
         children: <Widget>[
