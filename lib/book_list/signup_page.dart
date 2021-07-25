@@ -42,8 +42,8 @@ class SignUpPage extends StatelessWidget {
                   ElevatedButton(
                     child: Text('登録する'),
                     onPressed: () async {
-                      //await model.signUp();
-                      await _signUp(model, context);
+                      await model.signUp();
+                      await _showSignUp(model, context);
                     },
                   ),
                 ],
@@ -55,9 +55,9 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Future _signUp(SignUpModel model, BuildContext context) async {
-    try {
-      await model.signUp();
+  Future _showSignUp(SignUpModel model, BuildContext context) async {
+    if (model.isSignUp == true) {
+      //await model.signUp();
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -75,12 +75,12 @@ class SignUpPage extends StatelessWidget {
           );
         },
       );
-    } catch (e) {
+    } else {
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(e.toString()),
+            title: Text(model.eCode),
             actions: [
               TextButton(
                 child: Text('OK'),
