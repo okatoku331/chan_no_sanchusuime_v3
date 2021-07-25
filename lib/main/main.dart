@@ -313,7 +313,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('天運三柱推命'),
+        title: Text('天運三柱推命 v3'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.navigate_next),
