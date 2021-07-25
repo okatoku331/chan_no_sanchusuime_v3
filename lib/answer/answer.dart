@@ -1,4 +1,4 @@
-//import 'package:chan_no_sanchusuimei_v3/quiz/Quiz001.dart';
+//import 'package:chan_no_sanchusuimei_v3/quiz/quiz001.dart';
 import 'package:flutter/material.dart';
 
 class Answer extends StatefulWidget {

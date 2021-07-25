@@ -23,7 +23,7 @@ import '../nikkan/nikkan_tsutinoto.dart';
 import '../output/kyou_unsei.dart';
 import '../output/output.dart';
 
-void main() async {
+void main3700() async {
   //google_mobile_adsを配置するため追加 2021.5.24
   WidgetsFlutterBinding.ensureInitialized();
   // FireBase core 0.5.0 以降ここで初期化することが必要
@@ -496,7 +496,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton(
-                        child: Text('易占検定'),
+                        child: Text('易占クイズ'),
                         onPressed: () {
                           //TODO: 易占クイズ画面へ飛ぶ
                           Navigator.push(
