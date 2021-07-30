@@ -1,4 +1,5 @@
 import 'package:chan_no_sanchusuimei_v3/book_list/book.dart';
+import 'package:chan_no_sanchusuimei_v3/quiz/quiza.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

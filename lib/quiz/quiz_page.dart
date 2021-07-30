@@ -1,170 +1,91 @@
-import 'package:chan_no_sanchusuimei_v3/answer/answer001.dart';
-import 'package:chan_no_sanchusuimei_v3/book_list/add_book_model.dart';
-import 'package:chan_no_sanchusuimei_v3/quiz/quiz_model.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list/book.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'quiz.dart';
+//import 'package:chan_no_sanchusuimei_v3/book_list/book.dart';
 
-class QuizPage extends StatelessWidget {
-  QuizPage({this.quize});
-
-  final Quiz quize;
-
-  String kotae = 'x';
-  String kaitou = 'x';
-  String kotaeMoji = '';
+class QuizPage extends StatefulWidget {
+  //const QuizPage({Key? key}) : super(key: key);
 
   @override
+  _QuizPageState createState() => _QuizPageState();
+}
+
+class _QuizPageState extends State<QuizPage> {
+  final List<String> imageURL = [
+    'https://thumb.ac-illust.com/e5/e58cc5ca94270acaceed13bc82dfedf7_w.jpg',
+    'https://thumb.ac-illust.com/06/06954109ebef088c4cf93bad9ecfa0bb_w.jpg',
+    'https://thumb.ac-illust.com/8c/8ce2f461f2ee67eaa3ac2baa082d28c3_w.jpg'
+  ];
+  double buttonSpace = 24.0;
+  List<String> buttonNo = ['1', '2', '3', '4', '5'];
+
+  List<Book> books = [];
+  //List<String> imageURL;
+  List<String> _emails;
+
+  @override
+  void initStated() {
+    fetchUserData();
+  }
+
   Widget build(BuildContext context) {
-    //final bool isUpdate = quize != null;
-    //final textEditingController = TextEditingController();
-    //if (isUpdate) {
-    // textEditingController.text = quize.quizTitle;
-    //}
-    return ChangeNotifierProvider<QuizModel>(
-      create: (_) => QuizModel(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('易占検定'),
-        ),
-        body: Consumer<QuizModel>(
-          builder: (context, model, child) {
-            return Container(
-              color: Colors.black87,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      height: 4,
-                    ),
-                    // 一行目の表示
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: 1,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Column(
-                            children: [
-                              ListTile(
-                                title: Image.asset('images/quiz/q001.png'),
-                              ),
-                              ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    ElevatedButton(
-                                        onPressed: () {
-                                          //TODO: 1 を選んだときの処理
-                                          kotae = 'x';
-                                          kaitou = 'o';
-                                          _showKotae(context);
-                                        },
-                                        child: Text('1')),
-                                    ElevatedButton(
-                                        onPressed: () {
-                                          //TODO: 2 を選んだときの処理
-                                          kotae = 'o';
-                                          kaitou = 'o';
-                                          _showKotae(context);
-                                        },
-                                        child: Text('2')),
-                                    ElevatedButton(
-                                        onPressed: () {
-                                          //TODO: 3 を選んだときの処理
-                                          kotae = 'x';
-                                          kaitou = 'o';
-                                          _showKotae(context);
-                                        },
-                                        child: Text('3')),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    ),
-                    // 1行目の表示　ここまで
-                  ],
-                ),
-              ),
-            ); //
-          }, //この前に
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('クイズ'),
+      ),
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 480,
+              child: ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      title: Text('いろは'),
+                    );
+                  }),
+            ),
+            SizedBox(
+              height: 60,
+              child: Container(
+                  constraints: BoxConstraints.expand(),
+                  color: Colors.black,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Row(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(padding: EdgeInsets.all(buttonSpace)),
+                            ElevatedButton(
+                              child: Text(buttonNo[index]),
+                              onPressed: () {
+                                buttonSpace = 24.0;
+                                fetchUserData();
+                                setState(() {});
+                              },
+                            ),
+                          ],
+                        );
+                      })),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  // 画面下からDatePickerを表示する
-  void _showKotae(BuildContext context) {
-    if (kotae == 'o') {
-      kotaeMoji = 'すばらしい！正解です。';
-    } else {
-      kotaeMoji = '残念！不正解です。';
+  void fetchUserData() async {
+    QuerySnapshot snapshot =
+        await FirebaseFirestore.instance.collection('books').get();
+    for (var i = 0; i < snapshot.docs.length; i++) {
+      _emails.add(snapshot.docs[i].data());
     }
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            color: Colors.blue,
-            height: 120,
-            child: Column(
-              children: [
-                Container(
-                  height: 50,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      // キャンセル　ボタン
-                      TextButton(
-                        child: Text(
-                          '$kotaeMoji',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                          ),
-                        ),
-                        onPressed: () {
-                          if (kotae == 'o') {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Answer001(),
-                              ),
-                            );
-                          } else {
-                            Navigator.of(context).pop();
-                          }
-                        },
-                      ),
-                      TextButton(
-                        child: Text(
-                          'OK',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                        onPressed: () {
-                          if (kotae == 'o') {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Answer001(),
-                              ),
-                            );
-                          } else {
-                            Navigator.of(context).pop();
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
+    print(_emails);
   }
 }
