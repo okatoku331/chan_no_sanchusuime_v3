@@ -17,6 +17,7 @@ class _QuizPageState extends State<QuizPage> {
     'https://thumb.ac-illust.com/06/06954109ebef088c4cf93bad9ecfa0bb_w.jpg',
     'https://thumb.ac-illust.com/8c/8ce2f461f2ee67eaa3ac2baa082d28c3_w.jpg'
   ];
+
   double buttonSpace = 24.0;
   List<String> buttonNo = ['1', '2', '3', '4', '5'];
 

@@ -19,4 +19,15 @@ class QuizaListModel extends ChangeNotifier {
         .doc(quiza.quizID)
         .delete();
   }
+
+  Future getQuiza(Quiza quiza) async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('quizas')
+        .doc(quiza.quizID)
+        .get();
+
+    print(snapshot);
+    ;
+    return snapshot;
+  }
 }
