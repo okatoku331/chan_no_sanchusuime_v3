@@ -1,4 +1,5 @@
 import 'package:chan_no_sanchusuimei_v3/book_list/book_list_page_a.dart';
+import 'package:chan_no_sanchusuimei_v3/book_list/book_list_page_b.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/quiza_list_page.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/quiza_list_page1.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +17,7 @@ class JikoSyoukai extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => QuizaListPage1(),
+                    builder: (context) => BookListPageB(),
                   ));
             },
             child: Text(''),
