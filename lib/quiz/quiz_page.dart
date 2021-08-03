@@ -1,24 +1,12 @@
 import 'package:chan_no_sanchusuimei_v3/answer/answer_page.dart';
-import 'package:chan_no_sanchusuimei_v3/book_list/book.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:chan_no_sanchusuimei_v3/book_list/book.dart';
 
 class QuizPage extends StatelessWidget {
   final String quizNoMoji = '1';
-  final List<String> imageURL = [
-    'https://thumb.ac-illust.com/e5/e58cc5ca94270acaceed13bc82dfedf7_w.jpg',
-    'https://thumb.ac-illust.com/06/06954109ebef088c4cf93bad9ecfa0bb_w.jpg',
-    'https://thumb.ac-illust.com/8c/8ce2f461f2ee67eaa3ac2baa082d28c3_w.jpg'
-  ];
-
   double buttonSpace = 24.0;
   List<String> buttonNo = ['1', '2', '3', '4', '5'];
-
-  List<Book> books = [];
-  //List<String> imageURL;
-  List<String> _emails;
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +57,6 @@ class QuizPage extends StatelessWidget {
                                           ),
                                         ),
                                       );
-                                      //buttonSpace = 24.0;
-                                      //setState(() {});
                                     },
                                   ),
                                 ],
