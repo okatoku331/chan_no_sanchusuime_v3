@@ -14,6 +14,9 @@ class QuizPage extends StatelessWidget {
   //final String quizNoMoji = '1';
   double buttonSpace = 24.0;
   List<String> buttonNo = ['1', '2', '3', '4', '5'];
+  String kotae;
+  String kotaeMoji;
+  String iro;
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +60,22 @@ class QuizPage extends StatelessWidget {
                                   ElevatedButton(
                                     child: Text(buttonNo[index]),
                                     onPressed: () {
-                                      Navigator.push(
+                                      if (buttonNo[index] ==
+                                          snapshot.data.docs[quizNo]['seikai']
+                                              .toString()) {
+                                        kotae = 'o';
+                                      } else {
+                                        kotae = 'x';
+                                      }
+                                      _showKotae(context);
+                                      /*Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => AnswerPage(
                                             quizNoMoji: quizNoMoji,
                                           ),
                                         ),
-                                      );
+                                      );*/
                                     },
                                   ),
                                 ],
@@ -73,6 +84,82 @@ class QuizPage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          );
+        });
+  }
+
+  // 画面下からDatePickerを表示する
+  void _showKotae(BuildContext context) {
+    if (kotae == 'o') {
+      kotaeMoji = 'すばらしい！正解です。';
+    } else {
+      kotaeMoji = '残念！不正解です。';
+    }
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            color: Colors.blue,
+            height: 120,
+            child: Column(
+              children: [
+                Container(
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      // キャンセル　ボタン
+                      TextButton(
+                        child: Text(
+                          '$kotaeMoji',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                          ),
+                        ),
+                        onPressed: () {
+                          if (kotae == 'o') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AnswerPage(
+                                  quizNoMoji: quizNoMoji,
+                                ),
+                              ),
+                            );
+                          } else {
+                            Navigator.of(context).pop();
+                          }
+                        },
+                      ),
+                      TextButton(
+                        child: Text(
+                          'OK',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                          ),
+                        ),
+                        onPressed: () {
+                          if (kotae == 'o') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AnswerPage(
+                                  quizNoMoji: quizNoMoji,
+                                ),
+                              ),
+                            );
+                          } else {
+                            Navigator.of(context).pop();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           );
         });
