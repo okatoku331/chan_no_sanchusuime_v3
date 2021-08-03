@@ -17,7 +17,7 @@ class BookListPageB extends StatelessWidget {
             body: Column(
               children: [
                 Image.network(snapshot.data.docs[0]['quizaURL']),
-                Text(snapshot.data.docs[1]['quizaTitle']),
+                Text(snapshot.data.docs[0]['quizaTitle']),
               ],
             ),
           );
