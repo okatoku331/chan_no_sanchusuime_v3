@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:chan_no_sanchusuimei_v3/quiz/quiz001.dart';
+//import 'package:chan_no_sanchusuimei_v3/quiz/quiz001.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/quiz_page.dart';
 //import 'package:chan_no_sanchusuimei_v3/quiz/quiz_page.dart';
 import 'package:firebase_core/firebase_core.dart';
