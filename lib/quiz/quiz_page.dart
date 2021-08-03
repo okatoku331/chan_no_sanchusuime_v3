@@ -11,7 +11,6 @@ class QuizPage extends StatelessWidget {
     this.quizNoMoji,
   }) : super(key: key);
 
-  //final String quizNoMoji = '1';
   double buttonSpace = 24.0;
   List<String> buttonNo = ['1', '2', '3', '4', '5'];
   String kotae;
@@ -53,7 +52,6 @@ class QuizPage extends StatelessWidget {
                             itemCount: snapshot.data.docs[quizNo]['sentakusi'],
                             itemBuilder: (BuildContext context, int index) {
                               return Row(
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(padding: EdgeInsets.all(buttonSpace)),
@@ -68,14 +66,6 @@ class QuizPage extends StatelessWidget {
                                         kotae = 'x';
                                       }
                                       _showKotae(context);
-                                      /*Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => AnswerPage(
-                                            quizNoMoji: quizNoMoji,
-                                          ),
-                                        ),
-                                      );*/
                                     },
                                   ),
                                 ],
@@ -89,7 +79,6 @@ class QuizPage extends StatelessWidget {
         });
   }
 
-  // 画面下からDatePickerを表示する
   void _showKotae(BuildContext context) {
     if (kotae == 'o') {
       kotaeMoji = 'すばらしい！正解です。';
@@ -109,7 +98,6 @@ class QuizPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      // キャンセル　ボタン
                       TextButton(
                         child: Text(
                           '$kotaeMoji',

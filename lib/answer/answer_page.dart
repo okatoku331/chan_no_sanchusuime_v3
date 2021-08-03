@@ -16,8 +16,6 @@ class AnswerPage extends StatelessWidget {
   String kotaeMoji;
 
   @override
-  //final int quizNo = int.parse(quizNoMoji) - 1;
-
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('quizas').snapshots(),
@@ -59,10 +57,6 @@ class AnswerPage extends StatelessWidget {
                                 builder: (context) => MyHomePage(),
                               ),
                             );
-                            /*Navigator.pop(context);
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                            Navigator.pop(context);*/
                           },
                         ),
                         ElevatedButton(
@@ -82,15 +76,6 @@ class AnswerPage extends StatelessWidget {
                                 ),
                               );
                             }
-
-                            /*Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => AnswerPage(),
-                                  ),
-                                );*/
-                            //Navigator.pop(context);
-                            //Navigator.pop(context);
                           },
                         ),
                       ],
@@ -103,7 +88,6 @@ class AnswerPage extends StatelessWidget {
         });
   }
 
-  // 画面下からDatePickerを表示する
   void _showQuizLast(BuildContext context) {
     kotaeMoji = '全問終了しました。';
 
@@ -120,7 +104,6 @@ class AnswerPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      // キャンセル　ボタン
                       TextButton(
                         child: Text(
                           '$kotaeMoji',
