@@ -92,6 +92,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String quizNoMoji = '1';
   String _birthday = '';
   String _birthdaya = '2000-01-01';
   String birthdayHyouji = '';
@@ -501,10 +502,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Text('易占検定'),
                         onPressed: () {
                           //TODO: 易占クイズ画面へ飛ぶ
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => QuizPage(),
+                              builder: (context) => QuizPage(
+                                quizNoMoji: quizNoMoji,
+                              ),
                             ),
                           );
                         },

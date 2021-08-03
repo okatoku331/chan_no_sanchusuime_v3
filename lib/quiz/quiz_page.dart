@@ -4,7 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class QuizPage extends StatelessWidget {
-  final String quizNoMoji = '1';
+  final String quizNoMoji;
+
+  QuizPage({
+    Key key,
+    this.quizNoMoji,
+  }) : super(key: key);
+
+  //final String quizNoMoji = '1';
   double buttonSpace = 24.0;
   List<String> buttonNo = ['1', '2', '3', '4', '5'];
 
@@ -13,9 +20,10 @@ class QuizPage extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('quizas').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          int quizNo = int.parse(quizNoMoji) - 1;
           return Scaffold(
             appBar: AppBar(
-              title: Text(snapshot.data.docs[0]['quizaTitle']),
+              title: Text(snapshot.data.docs[quizNo]['quizaTitle']),
             ),
             body: Container(
               color: Colors.white,
@@ -28,7 +36,7 @@ class QuizPage extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
                             title: Image.network(
-                                snapshot.data.docs[0]['quizaURL']),
+                                snapshot.data.docs[quizNo]['quizaURL']),
                           );
                         }),
                   ),
@@ -39,7 +47,7 @@ class QuizPage extends StatelessWidget {
                         color: Colors.black,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: snapshot.data.docs[0]['sentakusi'],
+                            itemCount: snapshot.data.docs[quizNo]['sentakusi'],
                             itemBuilder: (BuildContext context, int index) {
                               return Row(
                                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
