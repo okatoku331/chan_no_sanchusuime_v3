@@ -1,5 +1,6 @@
 import 'package:chan_no_sanchusuimei_v3/osirase/update1.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update2a.dart';
+import 'package:chan_no_sanchusuimei_v3/osirase/update3.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'jiko_syoukai.dart';
@@ -17,6 +18,23 @@ class Update extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
+              title: Text('第3版　今日の運勢がわかるようになりました。「易占検定」を追加しました。（2021/8/8 更新)'),
+              trailing: Icon(Icons.navigate_next),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Update3(),
+                    ));
+              },
+            ),
+          ),
+          Divider(
+            color: Colors.blue,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
               title: Text('第2.1版　軽微な修正（2021/4/18 更新)'),
               trailing: Icon(Icons.navigate_next),
               onTap: () {
@@ -27,6 +45,9 @@ class Update extends StatelessWidget {
                     ));
               },
             ),
+          ),
+          Divider(
+            color: Colors.blue,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -42,6 +63,9 @@ class Update extends StatelessWidget {
               },
             ),
           ),
+          Divider(
+            color: Colors.blue,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
@@ -56,6 +80,9 @@ class Update extends StatelessWidget {
               },
             ),
           ),
+          Divider(
+            color: Colors.blue,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
@@ -69,6 +96,9 @@ class Update extends StatelessWidget {
                     ));
               },
             ),
+          ),
+          Divider(
+            color: Colors.blue,
           ),
           ListTile(
             title: Text(' '),

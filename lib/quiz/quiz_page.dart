@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// 次の行は消すな！
+// ignore: must_be_immutable
 class QuizPage extends StatelessWidget {
   final String quizNoMoji;
 
@@ -28,7 +30,7 @@ class QuizPage extends StatelessWidget {
               title: Text(snapshot.data.docs[quizNo]['quizaTitle']),
             ),
             body: Container(
-              color: Colors.white,
+              color: Colors.black,
               child: Column(
                 children: [
                   SizedBox(
@@ -153,3 +155,6 @@ class QuizPage extends StatelessWidget {
         });
   }
 }
+
+//TODO:画面遷移後一瞬赤いエラー画面が出る
+//TODO:選択ボタンが２の時のスペース調整

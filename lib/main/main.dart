@@ -502,15 +502,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Text('易占検定'),
                         onPressed: () {
                           //TODO: 易占クイズ画面へ飛ぶ
+                          _showQuizBest(context);
 
-                          Navigator.push(
+                          /*Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => QuizPage(
                                 quizNoMoji: quizNoMoji,
                               ),
                             ),
-                          );
+                          );*/
                         },
                       ),
                     ],
@@ -742,5 +743,108 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       },
     );
+  }
+
+  void _showQuizBest(BuildContext context) {
+    //kotaeMoji = '全問終了しました。';
+
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            color: Colors.blue,
+            height: 230,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 130,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          '「２．占いとは」',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          'まで正解しています',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          'どこから挑戦しますか？',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        TextButton(
+                          child: Text(
+                            '<< 最初から',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                          onPressed: () {
+                            quizNoMoji = '1';
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => QuizPage(
+                                  quizNoMoji: quizNoMoji,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        TextButton(
+                          child: Text(
+                            '次から >',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                          onPressed: () {
+                            quizNoMoji = '2';
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => QuizPage(
+                                  quizNoMoji: quizNoMoji,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
