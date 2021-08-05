@@ -1,6 +1,7 @@
 import 'dart:ui';
 //import 'package:chan_no_sanchusuimei_v3/quiz/quiz001.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/quiz_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:chan_no_sanchusuimei_v3/quiz/quiz_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -133,6 +134,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String _memo4 = 'メモ';
   String seinengappiMojia = '';
 
+  var bestQuizNoMoji;
+
   BannerAd banner;
 
   DateTime newDate = DateTime.now();
@@ -173,6 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _memo2 = prefs.getString('memo2') ?? 'メモ';
       _memo3 = prefs.getString('memo3') ?? 'メモ';
       _memo4 = prefs.getString('memo4') ?? 'メモ';
+      bestQuizNoMoji = prefs.getString('bestQuizNoMojiP') ?? '0';
     });
     _birthD.removeAt(0);
     _birthD.insert(0, _birthday0);
@@ -498,22 +502,40 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextButton(
-                        child: Text('易占検定'),
-                        onPressed: () {
-                          //TODO: 易占クイズ画面へ飛ぶ
-                          _showQuizBest(context);
+                      StreamBuilder<QuerySnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('quizas')
+                              .snapshots(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<QuerySnapshot> snapshot) {
+                            String lastQuizNoMoji =
+                                (snapshot.data.docs.length).toString();
+                            print(lastQuizNoMoji);
+                            //int bestquizNo = int.parse(bestQuizNoMoji) - 1;
+                            return TextButton(
+                              child: Text('易占検定'),
+                              onPressed: () {
+                                //TODO: 易占検定画面へ飛ぶ
+                                if (bestQuizNoMoji == '0') {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => QuizPage(
+                                        quizNoMoji: quizNoMoji,
+                                        bestQuizNoMoji: bestQuizNoMoji,
+                                      ),
+                                    ),
+                                  );
+                                } else if (bestQuizNoMoji == lastQuizNoMoji) {
+                                  _showQuizBestLast(context);
+                                } else {
+                                  _showQuizBest(context);
+                                }
 
-                          /*Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => QuizPage(
-                                quizNoMoji: quizNoMoji,
-                              ),
-                            ),
-                          );*/
-                        },
-                      ),
+                                /**/
+                              },
+                            );
+                          }),
                     ],
                   ),
                 ),
@@ -765,13 +787,20 @@ class _MyHomePageState extends State<MyHomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          '「２．占いとは」',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
+                        StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('quizas')
+                                .snapshots(),
+                            builder: (BuildContext context, snapshot) {
+                              int bestQuizNo = int.parse(bestQuizNoMoji) - 1;
+                              return Text(
+                                snapshot.data.docs[bestQuizNo]['quizaTitle'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              );
+                            }),
                         Text(
                           'まで正解しています',
                           style: TextStyle(
@@ -813,6 +842,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               MaterialPageRoute(
                                 builder: (context) => QuizPage(
                                   quizNoMoji: quizNoMoji,
+                                  bestQuizNoMoji: bestQuizNoMoji,
                                 ),
                               ),
                             );
@@ -827,13 +857,123 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           onPressed: () {
-                            quizNoMoji = '2';
+                            quizNoMoji =
+                                (int.parse(bestQuizNoMoji) + 1).toString();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => QuizPage(
                                   quizNoMoji: quizNoMoji,
+                                  bestQuizNoMoji: bestQuizNoMoji,
                                 ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  void _showQuizBestLast(BuildContext context) {
+    //kotaeMoji = '全問終了しました。';
+
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            color: Colors.blue,
+            height: 230,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 130,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('quizas')
+                                .snapshots(),
+                            builder: (BuildContext context, snapshot) {
+                              int bestQuizNo = int.parse(bestQuizNoMoji) - 1;
+                              return Text(
+                                snapshot.data.docs[bestQuizNo]['quizaTitle'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              );
+                            }),
+                        Text(
+                          'まで全問正解しています',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          '再度挑戦しますか？',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        TextButton(
+                          child: Text(
+                            '<< 最初から',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                          onPressed: () {
+                            quizNoMoji = '1';
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => QuizPage(
+                                  quizNoMoji: quizNoMoji,
+                                  bestQuizNoMoji: bestQuizNoMoji,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        TextButton(
+                          child: Text(
+                            '<<< ホームページに戻る',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyHomePage(),
                               ),
                             );
                           },

@@ -2,16 +2,15 @@ import 'package:chan_no_sanchusuimei_v3/answer/answer_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // 次の行は消すな！
 // ignore: must_be_immutable
 class QuizPage extends StatelessWidget {
   final String quizNoMoji;
+  String bestQuizNoMoji;
 
-  QuizPage({
-    Key key,
-    this.quizNoMoji,
-  }) : super(key: key);
+  QuizPage({Key key, this.quizNoMoji, this.bestQuizNoMoji}) : super(key: key);
 
   double buttonSpace = 24.0;
   List<String> buttonNo = ['1', '2', '3', '4', '5'];
@@ -25,6 +24,7 @@ class QuizPage extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('quizas').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           int quizNo = int.parse(quizNoMoji) - 1;
+          int bestquizNo = int.parse(bestQuizNoMoji) - 1;
           return Scaffold(
             appBar: AppBar(
               title: Text(snapshot.data.docs[quizNo]['quizaTitle']),
@@ -59,11 +59,20 @@ class QuizPage extends StatelessWidget {
                                   Padding(padding: EdgeInsets.all(buttonSpace)),
                                   ElevatedButton(
                                     child: Text(buttonNo[index]),
-                                    onPressed: () {
+                                    onPressed: () async {
                                       if (buttonNo[index] ==
                                           snapshot.data.docs[quizNo]['seikai']
                                               .toString()) {
                                         kotae = 'o';
+                                        if (quizNo > bestquizNo) {
+                                          bestQuizNoMoji = quizNoMoji;
+                                          //TODO:端末にsetする
+                                          SharedPreferences prefs =
+                                              await SharedPreferences
+                                                  .getInstance();
+                                          prefs.setString('bestQuizNoMojiP',
+                                              bestQuizNoMoji);
+                                        } else {}
                                       } else {
                                         kotae = 'x';
                                       }
@@ -115,6 +124,7 @@ class QuizPage extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => AnswerPage(
                                   quizNoMoji: quizNoMoji,
+                                  bestQuizNoMoji: bestQuizNoMoji,
                                 ),
                               ),
                             );
@@ -138,6 +148,7 @@ class QuizPage extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => AnswerPage(
                                   quizNoMoji: quizNoMoji,
+                                  bestQuizNoMoji: bestQuizNoMoji,
                                 ),
                               ),
                             );

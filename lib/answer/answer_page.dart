@@ -8,10 +8,12 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class AnswerPage extends StatelessWidget {
   String quizNoMoji;
+  String bestQuizNoMoji;
 
   AnswerPage({
     Key key,
     this.quizNoMoji,
+    this.bestQuizNoMoji,
   }) : super(key: key);
 
   final List<String> answerURL = ['answerURL0', 'answerURL1', 'answerURL2'];
