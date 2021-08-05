@@ -969,11 +969,19 @@ class _MyHomePageState extends State<MyHomePage> {
                               fontSize: 16,
                             ),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setString('bestQuizNoMojiP', '0');
+                            quizNoMoji = '1';
+                            bestQuizNoMoji = '0';
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MyHomePage(),
+                                builder: (context) => QuizPage(
+                                  quizNoMoji: quizNoMoji,
+                                  bestQuizNoMoji: bestQuizNoMoji,
+                                ),
                               ),
                             );
                           },
@@ -987,6 +995,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           onPressed: () {
+                            quizNoMoji = '1';
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -1003,7 +1012,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               fontSize: 16,
                             ),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setString('bestQuizNoMojiP', '0');
+                            quizNoMoji = '1';
+                            bestQuizNoMoji = '0';
                             Navigator.push(
                               context,
                               MaterialPageRoute(
