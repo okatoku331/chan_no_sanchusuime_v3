@@ -888,7 +888,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (BuildContext context) {
           return Container(
             color: Colors.blue,
-            height: 230,
+            height: 400,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -933,19 +933,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Container(
-                  height: 100,
+                  height: 240,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Row(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         TextButton(
                           child: Text(
-                            '<< 最初から',
+                            '< 最初から',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 16,
                             ),
                           ),
                           onPressed: () {
@@ -963,10 +963,44 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         TextButton(
                           child: Text(
-                            '<<< ホームページに戻る',
+                            '< 正解履歴を削除して、最初から',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 16,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyHomePage(),
+                              ),
+                            );
+                          },
+                        ),
+                        TextButton(
+                          child: Text(
+                            '<< ホームページに戻る',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyHomePage(),
+                              ),
+                            );
+                          },
+                        ),
+                        TextButton(
+                          child: Text(
+                            '<< 正解履歴を削除して、ホームページに戻る',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
                             ),
                           ),
                           onPressed: () {
