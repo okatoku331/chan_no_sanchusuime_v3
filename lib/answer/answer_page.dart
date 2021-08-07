@@ -76,6 +76,7 @@ class AnswerPage extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) => QuizPage(
                                     quizNoMoji: quizNoMoji,
+                                    bestQuizNoMoji: bestQuizNoMoji,
                                   ),
                                 ),
                               );
