@@ -7,7 +7,7 @@ class Update3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('第3版（2021.8.9）'),
+        title: Text('第3版（2021.8.8）'),
         actions: <Widget>[
           TextButton(
             onPressed: () {
