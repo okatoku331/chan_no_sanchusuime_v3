@@ -888,12 +888,12 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (BuildContext context) {
           return Container(
             color: Colors.blue,
-            height: 400,
+            height: 360,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  height: 130,
+                  height: 110,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -905,6 +905,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 .collection('quizas')
                                 .snapshots(),
                             builder: (BuildContext context, snapshot) {
+                              if (!snapshot.hasData)
+                                return const Text('Loading...');
                               int bestQuizNo = int.parse(bestQuizNoMoji) - 1;
                               return Text(
                                 snapshot.data.docs[bestQuizNo]['quizaTitle'],
@@ -918,14 +920,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           'まで全問正解しています',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 16,
                           ),
                         ),
                         Text(
                           '再度挑戦しますか？',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 16,
                           ),
                         ),
                       ],

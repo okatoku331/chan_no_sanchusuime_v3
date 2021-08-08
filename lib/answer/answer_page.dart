@@ -24,6 +24,7 @@ class AnswerPage extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('quizas').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) return const Text('Loading...');
           int quizNo = int.parse(quizNoMoji) - 1;
           return Scaffold(
             appBar: AppBar(
