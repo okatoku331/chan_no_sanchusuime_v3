@@ -342,11 +342,10 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                height: 4,
+                height: 0,
               ),
               // 一行目の表示
-              SizedBox(
-                height: 260,
+              Expanded(
                 child: ListView.builder(
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
@@ -490,7 +489,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // 1行目の表示　ここまで
 
               Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Container(
                   height: 44,
                   decoration: BoxDecoration(
@@ -542,11 +541,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Container(
-                height: 0,
+                height: 8,
               ),
-              SizedBox(
-                child: Image.asset('images/main/gogyou.png'),
-                height: 142,
+              Container(
+                child: Image.asset('images/main/wagou.jpeg'),
+                height: 216,
               ),
               Container(
                 height: 8,
@@ -556,14 +555,14 @@ class _MyHomePageState extends State<MyHomePage> {
               if (banner == null)
                 SizedBox(height: 50) // Ads
               else
-                SizedBox(
+                Container(
                   height: 50,
                   child: AdWidget(ad: banner),
                 ),
               //バナー広告ここまで*/
 
               Container(
-                height: 0,
+                height: 8,
               ),
             ],
           ),
