@@ -342,7 +342,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                height: 4,
+                height: 0,
               ),
               // 一行目の表示
               Expanded(
