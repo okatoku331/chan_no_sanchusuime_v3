@@ -513,6 +513,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 (snapshot.data.docs.length).toString();
                             print(lastQuizNoMoji);
                             //int bestquizNo = int.parse(bestQuizNoMoji) - 1;
+                            if (!snapshot.hasData) return Text('易占検定');
                             return TextButton(
                               child: Text('易占検定'),
                               onPressed: () {
