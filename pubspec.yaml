@@ -16,17 +16,17 @@ dependencies:
   google_fonts: ^2.1.0
   google_mobile_ads: ^0.11.0+4
   # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる.（^0.11.0+4に固定せよ。）
-  provider: ^5.0.0
+  provider: ^6.0.0
   cupertino_icons: ^1.0.3
-  shared_preferences: ^2.0.6
+  shared_preferences: ^2.0.7
   # 再起動したとき前回の設定を残して置くため
   intl: ^0.17.0
-  firebase_core: ^1.4.0
+  firebase_core: ^1.6.0
   #firebase_analytics: ^8.2.0
-  cloud_firestore: ^2.4.0
-  firebase_storage: ^10.0.1
-  firebase_auth: ^3.0.1
-  image_picker: ^0.8.2
+  cloud_firestore: ^2.5.1
+  firebase_storage: ^10.0.3
+  firebase_auth: ^3.1.0
+  image_picker: ^0.8.3+3
 
 dev_dependencies:
   flutter_test:

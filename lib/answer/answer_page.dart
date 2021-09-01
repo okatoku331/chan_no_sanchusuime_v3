@@ -33,8 +33,8 @@ class AnswerPage extends StatelessWidget {
             body: Container(
               color: Colors.black,
               child: Column(children: [
-                SizedBox(
-                  height: 480,
+                Expanded(
+                  //height: 480,
                   child: ListView.builder(
                       itemCount: snapshot.data.docs[quizNo]['answerLength'],
                       itemBuilder: (BuildContext context, int index) {

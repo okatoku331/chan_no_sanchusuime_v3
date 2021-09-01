@@ -545,9 +545,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 height: 0,
               ),
-              SizedBox(
+              Expanded(
+                flex: 2,
                 child: Image.asset('images/main/gogyou.png'),
-                height: 142,
+                //height: 142,
               ),
               Container(
                 height: 8,
