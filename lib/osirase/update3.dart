@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:chan_no_sanchusuimei_v3/book_list/login_page.dart';
+//import 'package:chan_no_sanchusuimei_v3/book_list/login_page.dart';
 
 class Update3 extends StatelessWidget {
   @override

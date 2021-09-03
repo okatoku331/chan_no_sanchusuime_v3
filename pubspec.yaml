@@ -6,7 +6,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 2.1.0+6
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.11.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   google_fonts: ^2.1.0
-  google_mobile_ads: ^0.11.0+4
+  #google_mobile_ads: ^0.11.0+4
   # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる.（^0.11.0+4に固定せよ。）
   provider: ^6.0.0
   cupertino_icons: ^1.0.3
