@@ -1,4 +1,4 @@
-import 'package:chan_no_sanchusuimei_v3/book_list/signup_page.dart';
+//import 'package:chan_no_sanchusuimei_v3/book_list/signup_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ class Update1 extends StatelessWidget {
       appBar: AppBar(
         title: Text('第1版（2021.2.22）'),
         actions: <Widget>[
-          TextButton(
+          /*TextButton(
             onPressed: () {
               Navigator.push(
                   context,
@@ -18,7 +18,7 @@ class Update1 extends StatelessWidget {
                   ));
             },
             child: Text(''),
-          ),
+          ),*/
           //icon: const Icon(Icons.navigate_next),
           //tooltip: 'Next page',
         ],

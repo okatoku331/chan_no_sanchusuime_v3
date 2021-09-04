@@ -14,8 +14,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   google_fonts: ^2.1.0
-  #google_mobile_ads: ^0.11.0+4
-  # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる.（^0.11.0+4に固定せよ。）
+  google_mobile_ads: ^0.11.0+4
+  # google_mobile_ads: ^0.12.1+1 バージョンを上げるとエラーになる.（^.0.110+4に固定せよ。）
   provider: ^6.0.0
   cupertino_icons: ^1.0.3
   shared_preferences: ^2.0.7
@@ -24,9 +24,9 @@ dependencies:
   firebase_core: ^1.6.0
   #firebase_analytics: ^8.2.0
   cloud_firestore: ^2.5.1
-  firebase_storage: ^10.0.3
-  firebase_auth: ^3.1.0
-  image_picker: ^0.8.3+3
+  #firebase_storage: ^10.0.3
+  #firebase_auth: ^3.1.0
+  #image_picker: ^0.8.4
 
 dev_dependencies:
   flutter_test:

@@ -4,15 +4,15 @@ import 'package:chan_no_sanchusuimei_v3/quiz/quiz_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:chan_no_sanchusuimei_v3/quiz/quiz_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-//import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../osirase/update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-//import 'package:provider/provider.dart';
-//import '../services/ad_state.dart';
+import 'package:provider/provider.dart';
+import '../services/ad_state.dart';
 import '../nikkan/nikkan_hinoe.dart';
 import '../nikkan/nikkan_hinoto.dart';
 import '../nikkan/nikkan_kanoe.dart';
@@ -32,13 +32,15 @@ void main() async {
   // FireBase core 0.5.0 以降ここで初期化することが必要
   await Firebase.initializeApp();
   // 追加以上
-  //final initFuture = MobileAds.instance.initialize();
-  //final adSate = AdState(initFuture);
-  runApp(MyApp());
-  //Provider.value(
-  //value: adSate,
-  //builder: (context, child) => ,
-  //)
+  final initFuture = MobileAds.instance.initialize();
+  final adSate = AdState(initFuture);
+  runApp(Provider.value(
+    value: adSate,
+    builder: (context, child) => MyApp(),
+  ));
+  //
+  //
+  //
   //);
   //追加ここまで
 }
@@ -138,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var bestQuizNoMoji;
 
-  //BannerAd banner;
+  BannerAd banner;
 
   DateTime newDate = DateTime.now();
   DateTime date9 = DateTime.now();
@@ -149,17 +151,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    //final adState = Provider.of<AdState>(context);
-    //adState.initialization.then((status) {
-    setState(() {
-      /*banner = BannerAd(
+    final adState = Provider.of<AdState>(context);
+    adState.initialization.then((status) {
+      setState(() {
+        banner = BannerAd(
           adUnitId: adState.bannerAdUnitId,
-          //size: AdSize.banner,
-          //request: AdRequest(),
+          size: AdSize.banner,
+          request: AdRequest(),
           listener: adState.adListener,
-        )..load();*/
+        )..load();
+      });
     });
-    //}
   }
 
   //追加ここまで*/
@@ -557,17 +559,18 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
 
               //バナー広告追加
-              //if (banner == null)
-              SizedBox(height: 50), // Ads
-              //else
-              //SizedBox(
-              //height: 50,
-              //child: AdWidget(ad: banner),
-              //),
-              //バナー広告ここまで*/
+              if (banner == null)
+                SizedBox(height: 50) // Ads
+              else
+                SizedBox(
+                  height: 50,
+                  child: AdWidget(ad: banner),
+                ),
+
+              //バナー広告ここまで
 
               Container(
-                height: 0,
+                height: 30,
               ),
             ],
           ),
