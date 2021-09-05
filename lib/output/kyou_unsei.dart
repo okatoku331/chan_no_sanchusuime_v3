@@ -430,90 +430,120 @@ class KyouUnsei extends StatelessWidget {
       appBar: AppBar(
         title: Text('今日の運勢 ($titleSeinengappi 生) '),
       ),
-      body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('　今日（$dateNow）の運勢は・・・'),
-          ),
-          ListTile(
-            title: Text('１．「日干」からみた今日の運勢'),
-          ),
-          ListTile(
-            title: Text('　生年月日の日干が、「$jukkanMoji（$gogyouMoji）」、'
-                '今日の日干が、「$jukkanNow（$gogyouNow）」なので、'
-                '今日の通変星は、'
-                '$tuuhenbosiNow（$tuuhenbosiYomiNow）になります。　図で表すと'
-                '下図のようになります。薄い灰色の円のすぐ内側が（$nikkanYouIn）、'
-                'さらに内側が（$nikkanInYou）を表しています。'),
-          ),
-          ListTile(
-            title: Image.asset('images/tuuhenbosi/$tuuhendosizuNow.jpg'),
-          ),
-          ListTile(
-            title: Text('　$tuuhenbosiNowKaisetu'),
-          ),
-          ListTile(
-            title: Text('　$kangouMoji'),
-          ),
-          ListTile(
-            title: Text('２．「日支」からみた今日の運勢'),
-          ),
-          ListTile(
-            title: Text('　生年月日の日支が、「$nissiMoji」、'
-                '今日の日支が、「$nissiNowMoji」で、その関係性を表したのが、下図になります。'
-                'ピンクの矢印がさす部分が今日の運勢です。'),
-          ),
-          ListTile(
-            title: Image.asset('images/sigou/s$juunisia$juunisiaNow.jpg'),
-          ),
-          ListTile(
-            title: Text('　$sigouMoji。$sigouKaisetu　'),
-          ),
-          ListTile(
-            title: Text('　'),
-          ),
-          ListTile(
-            title: Text('３．総合ポイント'),
-          ),
-          ListTile(
-            title: Text('　吉凶ポイント：　$kitiPlus$kitiP'),
-          ),
-          ListTile(
-            title: Center(
-              child: Text(
-                '$kitiKyou',
-                style: TextStyle(
-                  fontSize: 60,
-                  color: Colors.purpleAccent,
+      body: Column(
+        children: [
+          Expanded(
+            //height: 400,
+            child: ListView(
+              children: <Widget>[
+                ListTile(
+                  title: Text('　今日（$dateNow）の運勢は・・・'),
                 ),
-              ),
+                ListTile(
+                  title: Text('１．「日干」からみた今日の運勢'),
+                ),
+                ListTile(
+                  title: Text('　生年月日の日干が、「$jukkanMoji（$gogyouMoji）」、'
+                      '今日の日干が、「$jukkanNow（$gogyouNow）」なので、'
+                      '今日の通変星は、'
+                      '$tuuhenbosiNow（$tuuhenbosiYomiNow）になります。　図で表すと'
+                      '下図のようになります。薄い灰色の円のすぐ内側が（$nikkanYouIn）、'
+                      'さらに内側が（$nikkanInYou）を表しています。'),
+                ),
+                ListTile(
+                  title: Image.asset('images/tuuhenbosi/$tuuhendosizuNow.jpg'),
+                ),
+                ListTile(
+                  title: Text('　$tuuhenbosiNowKaisetu'),
+                ),
+                ListTile(
+                  title: Text('　$kangouMoji'),
+                ),
+                ListTile(
+                  title: Text('２．「日支」からみた今日の運勢'),
+                ),
+                ListTile(
+                  title: Text('　生年月日の日支が、「$nissiMoji」、'
+                      '今日の日支が、「$nissiNowMoji」で、その関係性を表したのが、下図になります。'
+                      'ピンクの矢印がさす部分が今日の運勢です。'),
+                ),
+                ListTile(
+                  title: Image.asset('images/sigou/s$juunisia$juunisiaNow.jpg'),
+                ),
+                ListTile(
+                  title: Text('　$sigouMoji。$sigouKaisetu　'),
+                ),
+                ListTile(
+                  title: Text('　'),
+                ),
+                ListTile(
+                  title: Text('３．総合ポイント'),
+                ),
+                ListTile(
+                  title: Text('　吉凶ポイント：　$kitiPlus$kitiP'),
+                ),
+                ListTile(
+                  title: Center(
+                    child: Text(
+                      '$kitiKyou',
+                      style: TextStyle(
+                        fontSize: 60,
+                        color: Colors.purpleAccent,
+                      ),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text('　'),
+                ),
+                /*AdmobBanner(
+                    adUnitId: AdMobService().getBannerAdUnitId(),
+                    adSize: AdmobBannerSize(
+                      width: MediaQuery.of(context).size.width.toInt(),
+                      height: AdMobService().getHeight(context).toInt(),
+                      name: 'SMART_BANNER',
+                    )),*/
+                ListTile(
+                  title: Text(''),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SizedBox(
+                    width: 90,
+                    height: 36,
+                    child: ElevatedButton(
+                      child: Text('戻る'),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          ListTile(
-            title: Text('　'),
+          Container(
+            height: 8,
           ),
-          /*AdmobBanner(
-              adUnitId: AdMobService().getBannerAdUnitId(),
-              adSize: AdmobBannerSize(
-                width: MediaQuery.of(context).size.width.toInt(),
-                height: AdMobService().getHeight(context).toInt(),
-                name: 'SMART_BANNER',
-              )),*/
-          ListTile(
-            title: Text(''),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: 90,
-              height: 36,
-              child: ElevatedButton(
-                child: Text('戻る'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+
+          //バナー広告追加
+          //if (banner == null)
+          SizedBox(
+            height: 50,
+            child: Container(
+              color: Colors.white,
             ),
+          ), // Ads
+          //else
+          // SizedBox(
+          //   height: 50,
+          //  child: AdWidget(ad: banner),
+          // ),
+
+          //バナー広告ここまで
+
+          Container(
+            height: 30,
           ),
         ],
       ),

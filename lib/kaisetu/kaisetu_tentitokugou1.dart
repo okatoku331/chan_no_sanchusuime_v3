@@ -75,7 +75,7 @@ class KaisetuTentitokugou1 extends StatelessWidget {
           ListTile(
             title: Text('　表示されている年齢は、天地徳合/干支併臨の立春日の満年齢を示しています。'),
           ),
-          ListTile(
+          /*ListTile(
             title: Text(' '),
           ),
           ListTile(
@@ -90,7 +90,7 @@ class KaisetuTentitokugou1 extends StatelessWidget {
               )),*/
           ListTile(
             title: Text(''),
-          ),
+          ),*/
           ElevatedButton(
             child: Text('戻る'),
             onPressed: () {

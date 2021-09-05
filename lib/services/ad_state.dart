@@ -5,9 +5,16 @@ class AdState {
   Future<InitializationStatus> initialization;
   AdState(this.initialization);
   String get bannerAdUnitId => Platform.isAndroid
-      ? "ca-app-pub-3940256099942544/8865242552"
+      ? "ca-app-pub-6197150911254354/9679593401"
       : //android用バナー広告ID
-      "ca-app-pub-3940256099942544/4339318960"; //iOS用バナー広告ID
+      "ca-app-pub-6197150911254354/2241730709"; //iOS用バナー広告ID
+  //
+  //ca-app-pub-6197150911254354/9679593401  :リリース用android用バナー広告ID
+  //ca-app-pub-3940256099942544/8865242552  :デバッグ用android用バナー広告ID
+  //
+  //ca-app-pub-6197150911254354/2241730709  :リリース用iOS用バナー広告ID
+  //ca-app-pub-3940256099942544/4339318960  :デバッグ用iOS用バナー広告ID
+  //
 
   AdListener get adListener => _adListener;
   AdListener _adListener = AdListener(

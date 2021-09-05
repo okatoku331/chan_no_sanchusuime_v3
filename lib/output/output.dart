@@ -1,5 +1,5 @@
 import '../kaisetu/kaisetu_tentitokugou1.dart';
-import 'kyou_unsei.dart';
+//import 'kyou_unsei.dart';
 import 'package:flutter/material.dart';
 
 class Output extends StatelessWidget {
@@ -71,7 +71,7 @@ class Output extends StatelessWidget {
     var seinenMoji = titleSeinengappi.substring(0, 4);
     var seigatuMoji = titleSeinengappi.substring(5, 7);
     var seinitiMoji = titleSeinengappi.substring(8, 10);
-    var seinengappiMojia = '$seinenMoji．$seigatuMoji．$seinitiMoji';
+    //var seinengappiMojia = '$seinenMoji．$seigatuMoji．$seinitiMoji';
     var seinengappiMoji = '$seinenMoji-$seigatuMoji-$seinitiMoji';
     //　生年月日を　文字列から　DateTime型　に変換する
     DateTime datetSeinengappi = DateTime.parse(seinengappiMoji); // StringからDate
@@ -188,144 +188,208 @@ class Output extends StatelessWidget {
         title: Text('あなたの日干は'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          /*//バナー広告追加
-          if (banner == null)
-            SizedBox(height: 50) // Ads
-          else
-            Container(
-              height: 50,
-              child: AdWidget(ad: banner),
-            ),
-          //バナー広告ここまで*/
-          Image.asset('images/main/kouhukukan.jpg'),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          Expanded(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  '$titleSeinengappi 生まれの',
-                  style: TextStyle(
-                    fontSize: 18,
+                /*//バナー広告追加
+                if (banner == null)
+                  SizedBox(height: 50) // Ads
+                else
+                  Container(
+                    height: 50,
+                    child: AdWidget(ad: banner),
                   ),
-                ),
-                Text('あなたの日干は、$jukkanNameYomiです。'),
+                //バナー広告ここまで*/
+                //Image.asset('images/main/kouhukukan.jpg'),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: 180,
-                    height: 36,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        elevation: 4,
-                        shadowColor: Colors.red,
+                  child: Column(
+                    children: [
+                      Text(
+                        '$titleSeinengappi 生まれの',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, gamenNikkan);
-                      },
-                      child: Text('日干からみた性格'),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Text('天運の年は、'),
-                Text('$tenunText0'),
-                Text('$tenunText1'),
-                Text('$tenunText2'),
-                Text('$tenunText3'),
-                Text('$tenunText4'),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: 220,
-                    height: 36,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        elevation: 4,
-                        shadowColor: Colors.red,
+                      Text(
+                        'あなたの日干は、$jukkanNameYomiです。',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => KaisetuTentitokugou1(
-                                //titleSeinengappi: seinengappiMoji,
-                                ),
-                          ),
-                        );
-                      },
-                      child: Text('天地徳合/干支併臨とは'),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: 120,
-                    height: 36,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        elevation: 4,
-                        shadowColor: Colors.red,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => KyouUnsei(
-                              titleSeinengappi: seinengappiMojia,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: 180,
+                          height: 36,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.blue,
+                              elevation: 4,
+                              shadowColor: Colors.red,
                             ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, gamenNikkan);
+                            },
+                            child: Text('日干からみた性格は'),
                           ),
-                        );
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        '天運の年は、',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        '$tenunText0',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        '$tenunText1',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        '$tenunText2',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        '$tenunText3',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        '$tenunText4',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: 220,
+                          height: 36,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.blue,
+                              elevation: 4,
+                              shadowColor: Colors.red,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => KaisetuTentitokugou1(
+                                      //titleSeinengappi: seinengappiMoji,
+                                      ),
+                                ),
+                              );
+                            },
+                            child: Text('天地徳合/干支併臨とは'),
+                          ),
+                        ),
+                      ),
+                      /*Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: 120,
+                          height: 36,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.blue,
+                              elevation: 4,
+                              shadowColor: Colors.red,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => KyouUnsei(
+                                    titleSeinengappi: seinengappiMojia,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Text('今日の運勢'),
+                          ),
+                        ),
+                      ),*/
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SizedBox(
+                    width: 90,
+                    height: 36,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        elevation: 4,
+                        shadowColor: Colors.red,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
                       },
-                      child: Text('今日の運勢'),
+                      child: Text('戻る'),
                     ),
                   ),
                 ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: 90,
-              height: 36,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
-                  elevation: 4,
-                  shadowColor: Colors.red,
+                Container(
+                  width: double.infinity,
+                  height: 0, //　縦幅の低い端末はこの値を下げる
+                  color: Colors.white70,
+                  child: Text(''),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('戻る'),
-              ),
+                /*AdmobBanner(
+                    adUnitId: AdMobService().getBannerAdUnitId(),
+                    adSize: AdmobBannerSize(
+                      width: MediaQuery.of(context).size.width.toInt(),
+                      height: AdMobService().getHeight(context).toInt(),
+                      name: 'SMART_BANNER',
+                    )),*/
+              ],
             ),
           ),
           Container(
-            width: double.infinity,
-            height: 0, //　縦幅の低い端末はこの値を下げる
-            color: Colors.white70,
-            child: Text(''),
+            height: 8,
           ),
-          /*AdmobBanner(
-              adUnitId: AdMobService().getBannerAdUnitId(),
-              adSize: AdmobBannerSize(
-                width: MediaQuery.of(context).size.width.toInt(),
-                height: AdMobService().getHeight(context).toInt(),
-                name: 'SMART_BANNER',
-              )),*/
+
+          //バナー広告追加
+          //if (banner == null)
+          SizedBox(
+            height: 50,
+            child: Container(
+              color: Colors.white,
+            ),
+          ), // Ads
+          //else
+          // SizedBox(
+          //   height: 50,
+          //  child: AdWidget(ad: banner),
+          // ),
+
+          //バナー広告ここまで
+
+          Container(
+            height: 30,
+          ),
         ],
       ),
     );

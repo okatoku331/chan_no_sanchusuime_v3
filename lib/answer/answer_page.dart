@@ -88,6 +88,24 @@ class AnswerPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                Container(
+                  height: 8,
+                ),
+
+                //バナー広告追加
+                //if (banner == null)
+                SizedBox(height: 50), // Ads
+                //else
+                //SizedBox(
+                // height: 50,
+                //  child: AdWidget(ad: banner),
+                // ),
+
+                //バナー広告ここまで
+
+                Container(
+                  height: 30,
+                ),
               ]),
             ),
           );
