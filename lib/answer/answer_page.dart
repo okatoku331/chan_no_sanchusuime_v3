@@ -1,4 +1,4 @@
-import 'package:chan_no_sanchusuimei_v3/main/main.dart';
+import 'package:chan_no_sanchusuimei_v3/main.dart';
 import 'package:chan_no_sanchusuimei_v3/quiz/quiz_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
