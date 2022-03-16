@@ -515,7 +515,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               AsyncSnapshot<QuerySnapshot> snapshot) {
                             String lastQuizNoMoji =
                                 (snapshot.data.docs.length).toString();
-                            print(lastQuizNoMoji);
+                            //print(lastQuizNoMoji);
                             //int bestquizNo = int.parse(bestQuizNoMoji) - 1;
                             if (!snapshot.hasData) return Text('易占検定');
                             return TextButton(
