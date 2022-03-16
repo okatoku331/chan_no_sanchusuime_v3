@@ -324,7 +324,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('天運三柱推命 v3'),
+        title: Text('易占クイズ'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.navigate_next),
@@ -347,6 +347,72 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Container(
                 height: 4,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Container(
+                  height: 44,
+                  decoration: BoxDecoration(
+                      color: Colors.tealAccent,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 1,
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      StreamBuilder<QuerySnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('quizas')
+                              .snapshots(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<QuerySnapshot> snapshot) {
+                            String lastQuizNoMoji =
+                                (snapshot.data.docs.length).toString();
+                            //print(lastQuizNoMoji);
+                            //int bestquizNo = int.parse(bestQuizNoMoji) - 1;
+                            if (!snapshot.hasData) return Text('易占クイズ');
+                            return TextButton(
+                              style: ButtonStyle(
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.black),
+                              ),
+                              child: Text('易占クイズに挑戦する'),
+                              onPressed: () {
+                                //TODO: 易占検定画面へ飛ぶ
+                                if (bestQuizNoMoji == '0') {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => QuizPage(
+                                        quizNoMoji: quizNoMoji,
+                                        bestQuizNoMoji: bestQuizNoMoji,
+                                      ),
+                                    ),
+                                  );
+                                } else if (bestQuizNoMoji == lastQuizNoMoji) {
+                                  _showQuizBestLast(context);
+                                } else {
+                                  _showQuizBest(context);
+                                }
+
+                                /**/
+                              },
+                            );
+                          }),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                height: 60,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                      '天運の年を算出するには、yyyy/mm/dd ? をタップして、生年月日を入力後、＞　ボタンをタップして下さい。'),
+                ),
               ),
               // 一行目の表示
               SizedBox(
@@ -493,59 +559,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               // 1行目の表示　ここまで
 
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Container(
-                  height: 44,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Colors.blue,
-                        width: 1,
-                      )),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      StreamBuilder<QuerySnapshot>(
-                          stream: FirebaseFirestore.instance
-                              .collection('quizas')
-                              .snapshots(),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<QuerySnapshot> snapshot) {
-                            String lastQuizNoMoji =
-                                (snapshot.data.docs.length).toString();
-                            //print(lastQuizNoMoji);
-                            //int bestquizNo = int.parse(bestQuizNoMoji) - 1;
-                            if (!snapshot.hasData) return Text('易占検定');
-                            return TextButton(
-                              child: Text('易占検定'),
-                              onPressed: () {
-                                //TODO: 易占検定画面へ飛ぶ
-                                if (bestQuizNoMoji == '0') {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => QuizPage(
-                                        quizNoMoji: quizNoMoji,
-                                        bestQuizNoMoji: bestQuizNoMoji,
-                                      ),
-                                    ),
-                                  );
-                                } else if (bestQuizNoMoji == lastQuizNoMoji) {
-                                  _showQuizBestLast(context);
-                                } else {
-                                  _showQuizBest(context);
-                                }
-
-                                /**/
-                              },
-                            );
-                          }),
-                    ],
-                  ),
-                ),
-              ),
               Container(
                 height: 0,
               ),
