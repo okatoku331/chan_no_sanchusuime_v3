@@ -10,8 +10,15 @@ class Update extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('アップデート情報'),
+        title: Text(
+          'アップデート情報',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Column(
         children: [

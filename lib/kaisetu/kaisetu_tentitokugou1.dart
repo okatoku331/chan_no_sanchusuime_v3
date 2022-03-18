@@ -5,8 +5,15 @@ class KaisetuTentitokugou1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('天地徳合/干支併臨とは'),
+        title: Text(
+          '天地徳合/干支併臨とは',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: ListView(
         children: <Widget>[

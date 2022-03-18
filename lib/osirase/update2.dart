@@ -6,8 +6,15 @@ class Update2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('第2版（2021.3.31）'),
+        title: Text(
+          '第2版（2021.3.31）',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         actions: <Widget>[
           /*TextButton(
             onPressed: () {

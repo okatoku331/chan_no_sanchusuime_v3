@@ -9,8 +9,15 @@ class JikoSyoukai extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('プロフィール'),
+        title: Text(
+          'プロフィール',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         actions: <Widget>[
           /*TextButton(
             onPressed: () {

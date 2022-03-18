@@ -184,8 +184,15 @@ class Output extends StatelessWidget {
     //■■　画面を生成する　■■
 
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('あなたの日干は'),
+        title: Text(
+          'あなたの日干は',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -376,7 +383,7 @@ class Output extends StatelessWidget {
           SizedBox(
             height: 50,
             child: Container(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ), // Ads
           //else

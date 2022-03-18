@@ -5,12 +5,19 @@ class NikkanKanoe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('日干：庚（かのえ）'),
+        title: Text(
+          '日干：庚（かのえ）',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Container(
         height: double.infinity,
-        color: Colors.white70,
+        //color: Colors.white70,
         child: ListView(
           children: <Widget>[
             ListTile(
@@ -19,7 +26,7 @@ class NikkanKanoe extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 250,
-              color: Colors.white70,
+              //color: Colors.white70,
               child: ListTile(
                 title: Image.asset('images/nikkan/庚_剣.jpg'),
               ),

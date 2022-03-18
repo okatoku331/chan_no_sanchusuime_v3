@@ -5,12 +5,19 @@ class NikkanTsutinoe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('日干：戊（つちのえ）'),
+        title: Text(
+          '日干：戊（つちのえ）',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Container(
         height: double.infinity,
-        color: Colors.white70,
+        //color: Colors.white70,
         child: ListView(
           children: <Widget>[
             ListTile(

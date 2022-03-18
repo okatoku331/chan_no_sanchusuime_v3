@@ -427,8 +427,15 @@ class KyouUnsei extends StatelessWidget {
     //■■　画面を生成する　■■
 
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('今日の運勢 ($titleSeinengappi 生) '),
+        title: Text(
+          '今日の運勢 ($titleSeinengappi 生) ',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -488,7 +495,8 @@ class KyouUnsei extends StatelessWidget {
                       '$kitiKyou',
                       style: TextStyle(
                         fontSize: 60,
-                        color: Colors.purpleAccent,
+                        color: Colors.pinkAccent,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -531,7 +539,7 @@ class KyouUnsei extends StatelessWidget {
           SizedBox(
             height: 50,
             child: Container(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ), // Ads
           //else

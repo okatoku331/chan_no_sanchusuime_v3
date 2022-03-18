@@ -5,8 +5,15 @@ class Update2a extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('第2.1版（2021.4.18）'),
+        title: Text(
+          '第2.1版（2021.4.18）',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: ListView(
         children: <Widget>[

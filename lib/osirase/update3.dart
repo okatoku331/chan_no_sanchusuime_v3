@@ -61,8 +61,15 @@ class Update3 extends StatelessWidget {
           ];
           //final List<String> lineList = snapshot.data.docs[0]['aLine'];
           return Scaffold(
+            backgroundColor: Colors.black,
             appBar: AppBar(
-              title: Text(snapshot.data.docs[0]['line0']),
+              title: Text(
+                snapshot.data.docs[0]['line0'],
+                style: TextStyle(
+                  color: Colors.pinkAccent,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             body: ListView.builder(
                 itemCount: lineList.length,

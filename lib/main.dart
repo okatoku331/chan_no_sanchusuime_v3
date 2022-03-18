@@ -63,10 +63,10 @@ class MyApp extends StatelessWidget {
       //　日本語化ここまで
       title: '三柱推命【生年月日占い】',
       //Flutter Demo', //三柱推命【生年月日占い】',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: ThemeData.dark(
+          //primarySwatch: Colors.blue,
+          //visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
       // デフォルトのルーティング
       initialRoute: '/',
       // ルーティングの一覧を設定
@@ -323,8 +323,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('易占クイズ'),
+        title: Text(
+          '易占クイズ',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        //backgroundColor: Colors.black,
+        //titleTextStyle: Colors.pink,
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.navigate_next),
@@ -411,7 +420,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                      '天運の年を算出するには、yyyy/mm/dd ? をタップして、生年月日を入力後、＞　ボタンをタップして下さい。'),
+                      '天運の年を算出するには、yyyy/mm/dd ? をタップして、生年月日を入力後、＞ボタンをタップして下さい。'),
                 ),
               ),
               // 一行目の表示
@@ -425,7 +434,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Container(
                         height: 44,
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Colors.tealAccent,
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
                               color: Colors.blue,
@@ -564,10 +573,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Expanded(
                 flex: 2,
-                child: Image.asset('images/main/gogyou.png'),
+                child: Image.asset('images/main/gogyou1.png'),
                 //height: 142,
               ),
               Container(
+                color: Colors.black,
                 height: 8,
               ),
 

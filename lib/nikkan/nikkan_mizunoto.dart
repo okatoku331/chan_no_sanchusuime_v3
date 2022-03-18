@@ -5,13 +5,20 @@ class NikkanMizunoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         //アップバーを配置する
-        title: Text('日干：癸（みずのと）'), //アップバーの
+        title: Text(
+          '日干：癸（みずのと）',
+          style: TextStyle(
+            color: Colors.pinkAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ), //アップバーの
       ),
       body: Container(
         height: double.infinity,
-        color: Colors.white70,
+        //color: Colors.white70,
         child: ListView(
           children: <Widget>[
             ListTile(
