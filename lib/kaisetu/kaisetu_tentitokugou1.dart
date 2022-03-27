@@ -26,7 +26,7 @@ class KaisetuTentitokugou1 extends StatelessWidget {
             child: Container(
               width: double.infinity,
               height: 200,
-              color: Colors.white70,
+              //color: Colors.white70,
               child: ListTile(
                 title: Image.asset('images/tentitokugou/anehaturu1.jpg'),
               ),

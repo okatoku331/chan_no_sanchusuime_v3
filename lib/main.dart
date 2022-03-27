@@ -388,7 +388,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                     MaterialStateProperty.all<Color>(
                                         Colors.black),
                               ),
-                              child: Text('易占クイズに挑戦する'),
+                              child: Text(
+                                '易占クイズに挑戦する',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               onPressed: () {
                                 //TODO: 易占検定画面へ飛ぶ
                                 if (bestQuizNoMoji == '0') {
@@ -420,7 +427,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                      '天運の年を算出するには、yyyy/mm/dd ? をタップして、生年月日を入力後、＞ボタンをタップして下さい。'),
+                    '天運の年を算出するには、yyyy/mm/dd ? をタップして、生年月日を入力後、＞ボタンをタップして下さい。',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white70,
+                      //fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               // 一行目の表示
@@ -434,10 +447,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Container(
                         height: 44,
                         decoration: BoxDecoration(
-                            color: Colors.tealAccent,
+                            color: Colors.white10,
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: Colors.blue,
+                              color: Colors.tealAccent,
                               width: 1,
                             )),
                         child: Row(
@@ -452,7 +465,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Text(
                                     _birthH[index],
                                     style: TextStyle(
-                                      color: Colors.black87,
+                                      color: Colors.white,
                                       fontSize: 18,
                                     ),
                                   ),
@@ -486,7 +499,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 child: Text(
                                   _memoH[index],
                                   style: TextStyle(
-                                    color: Colors.black87,
+                                    color: Colors.white,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -618,7 +631,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   height: 200,
                   child: CupertinoDatePicker(
-                    //backgroundColor: Colors.blue,
+                    backgroundColor: Colors.tealAccent,
                     initialDateTime: date9,
                     minimumYear: 1900,
                     maximumYear: DateTime.now().year + 10,
@@ -641,7 +654,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       // キャンセル　ボタン
                       TextButton(
-                        child: Text('キャンセル'),
+                        child: Text(
+                          'キャンセル',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         onPressed: () {
                           _birthday = birthdayOld;
                           if (_birthday == 'yyyy/mm/dd') {
@@ -656,7 +675,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
                       // 「削除」ボタン
                       TextButton(
-                          child: Text('削除'),
+                          child: Text(
+                            '削除',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           onPressed: () async {
                             _birthday = _birthO[i];
                             if (_birthday == 'yyyy/mm/dd') {
@@ -672,14 +697,26 @@ class _MyHomePageState extends State<MyHomePage> {
                                     actions: <Widget>[
                                       // 「Cancel」ボタン
                                       TextButton(
-                                          child: Text('Cancel'),
+                                          child: Text(
+                                            'Cancel',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                           onPressed: () {
                                             Navigator.of(context).pop();
                                           }),
 
                                       // 「OK」ボタン
                                       TextButton(
-                                          child: Text('OK'),
+                                          child: Text(
+                                            'OK',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                           onPressed: () {
                                             //birthdayHyouji =
                                             //   '$j : yyyy/mm/dd 生';
@@ -699,7 +736,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
                       // 「登録」　ボタン
                       TextButton(
-                          child: Text('登録'),
+                          child: Text(
+                            '登録',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           onPressed: () async {
                             //TODO;
                             if (_birthday == 'yyyy/mm/dd') {
@@ -717,7 +760,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   actions: <Widget>[
                                     //「Cancel」ボタン
                                     TextButton(
-                                        child: Text('Cancel'),
+                                        child: Text(
+                                          'Cancel',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                         onPressed: () {
                                           setState(() {});
                                           Navigator.of(context).pop();
@@ -725,7 +774,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
                                     // 「OK」ボタン
                                     TextButton(
-                                        child: Text('OK'),
+                                        child: Text(
+                                          'OK',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                         onPressed: () {
                                           //TODO: sakujo?
                                           birthdayHyouji = ' : $_birthday 生';
@@ -771,12 +826,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           actions: <Widget>[
             TextButton(
-                child: Text('Cancel'),
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 onPressed: () {
                   Navigator.of(context).pop();
                 }),
             TextButton(
-                child: Text('削除'),
+                child: Text(
+                  '削除',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 onPressed: () {
                   _memo = 'メモ';
                   _memoH.removeAt(i);
@@ -785,7 +852,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.of(context).pop();
                 }),
             TextButton(
-                child: Text('登録'),
+                child: Text(
+                  '登録',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 onPressed: () {
                   _memoH.removeAt(i);
                   _memoH.insert(i, _memo);
