@@ -1,6 +1,7 @@
 import 'package:chan_no_sanchusuimei_v3/osirase/update1.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update2a.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update3.dart';
+import 'package:chan_no_sanchusuimei_v3/output/kyou_unsei2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'jiko_syoukai.dart';
@@ -105,6 +106,23 @@ class Update extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => JikoSyoukai(),
+                          ));
+                    },
+                  ),
+                ),
+                Divider(
+                  color: Colors.blue,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    title: Text('練習'),
+                    trailing: Icon(Icons.navigate_next),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => KyouUnsei2(),
                           ));
                     },
                   ),
