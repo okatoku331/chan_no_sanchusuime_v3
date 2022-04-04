@@ -50,6 +50,7 @@ flutter:
 
   uses-material-design: true
   assets:
+    - images/0.jpg
     - images/nikkan/甲_大樹.jpg
     - images/nikkan/甲_木陰.jpg
     - images/nikkan/丁_キャンドル.jpg
