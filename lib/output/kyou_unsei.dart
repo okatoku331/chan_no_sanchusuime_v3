@@ -123,7 +123,7 @@ class KyouUnsei extends StatelessWidget {
     String sigouMoji = '';
     //String sikeiMoji = '';
     String sigouKaisetu = '';
-    String tuuhenbosiNowKaisetu = '';
+    //String tuuhenbosiNowKaisetu = '';
     String tuuhenbosiNowKaisetu1 = '';
     String tuuhenbosiNowKaisetu2 = '';
     String tuuhenbosiNowKaisetu3 = '';
@@ -921,7 +921,7 @@ class KyouUnsei extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 60,
                         color: Colors.pinkAccent,
-                        fontWeight: FontWeight.bold,
+                        //fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
