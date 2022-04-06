@@ -12,6 +12,8 @@ class KyouUnsei extends StatelessWidget {
   //■■　変数初期設定　■■
   final DateTime date0 = DateTime(1900, 1, 1);
   final int nikkan = -1;
+  //final double sizeMojiA = 16.0;
+
   //List<String> nikkanName = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
   final String jukkan = "甲乙丙丁戊己庚辛壬癸"; //十干リスト
   final String jukkanYomi = "甲【きのえ】　乙【きのと】　丙【ひのえ】　丁【ひのと】　戊【つちのえ】"
@@ -333,7 +335,8 @@ class KyouUnsei extends StatelessWidget {
       0.0
     ];
     //白：-1 ,ピンク：-1407770
-    final int iroPink1 = -140770;
+    final int iroPink1 = 0xffffa0ff; //-1407770;
+    final int iroGreen = 0xFFa0FFa0; //-1407770;
     List<int> iroMoji = [
       -1,
       -1,
@@ -459,17 +462,20 @@ class KyouUnsei extends StatelessWidget {
 
     zu[5] = 'images/tuuhenbosi/$tuuhendosizuNow.jpg';
 
-    takasaMoji[0] = 25.0;
-    takasaMoji[1] = 25.0;
+    takasaMoji[0] = 40.0;
+    takasaMoji[1] = 40.0;
     takasaMoji[2] = 25.0;
     takasaMoji[3] = 25.0;
-    takasaMoji[4] = 25.0;
+    takasaMoji[4] = 40.0;
     takasaMoji[5] = 50.0;
     takasaMoji[6] = 25.0;
     takasaMoji[7] = 25.0;
-    takasaMoji[8] = 25.0;
+    takasaMoji[8] = 40.0;
 
     takasaZu[5] = 250.0;
+
+    iroMoji[4] = iroPink1;
+    iroMoji[1] = iroGreen;
 
     //　通変星の解説文作成
     if (tuuhenbosiNow == '比肩') {
@@ -601,21 +607,50 @@ class KyouUnsei extends StatelessWidget {
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '偏官') {
       moji[9] = '偏官　の持つ意味は、';
-      moji[10] = '①人間にとって最も重要な日干（自分の肉体）を激しく刻する星（偏官は殺と言われる、健康に注意すること）';
-      moji[15] = '②女性にとっては官星は男性・異性運を表す（遊び、恋愛、若いツバメ、再婚）';
-      moji[17] = '③活発で行動力があり、動き回る星';
-      moji[18] = '④笑顔もなく、ひきつった顔で動き回る';
-      moji[19] = '⑤星気も短く、落ち着きにかける星（仕事や付き合いで動き回り帰りが遅い）';
+      moji[10] = '　①人間にとって最も重要な日干';
+      moji[11] = '　　（自分の肉体）を激しく刻する星';
+      moji[12] = '　　（偏官は殺と言われる、';
+      moji[13] = '　　　　健康に注意すること）';
+      moji[15] = '　②女性にとっては官星は男性運を表す（遊び、恋愛、若いツバメ、再婚）';
+      moji[17] = '　③活発で行動力があり、動き回る星';
+      moji[18] = '　④笑顔もなく、ひきつった顔で動き回る';
+      moji[19] = '　⑤星気も短く、落ち着きにかける星（仕事や付き合いで動き回り帰りが遅い）';
       moji[22] = '■吉ポイントは、マイナス10です。';
+      takasaMoji[9] = 25.0;
+      takasaMoji[10] = 25.0;
+      takasaMoji[11] = 25.0;
+      takasaMoji[12] = 25.0;
+      takasaMoji[13] = 25.0;
+      takasaMoji[15] = 25.0;
+      takasaMoji[17] = 25.0;
+      takasaMoji[18] = 25.0;
+      takasaMoji[19] = 25.0;
+      takasaMoji[22] = 25.0;
+
       kitiPointNikann = -10;
     } else if (tuuhenbosiNow == '正官') {
-      moji[9] = '正官　の持つ意味は、';
-      moji[10] = '①誠実、真面目、品格、正直、温厚、品行方正な星';
-      moji[11] = '②上流社会に住む人のイメージで、良いとこのお坊ちゃんお嬢ちゃん';
-      moji[12] = '③一つの与えられた仕事をきちんとする四角四面の人';
-      moji[13] = '④面白みのない要領の悪い人';
-      moji[14] = '⑤地位、名誉、肩書きの星（地位を得やすい）';
-      moji[15] = '■吉ポイントは、プラス10です。';
+      moji[9] = '正官　の日は、次の星が巡ってきます。';
+      moji[10] = '　・誠実、真面目、品格、正直、温厚、';
+      moji[11] = '　　　　　　　　　　　　　　品行方正な星';
+      moji[12] = '　・上流社会に住む人のイメージで、';
+      moji[13] = '　　　　　良いとこのお坊ちゃんお嬢ちゃん';
+      moji[14] = '　・一つの与えられた仕事をきちんとする';
+      moji[15] = '　　　　　　　　　　　　　　四角四面の星';
+      moji[16] = '　・面白みのない要領の悪い星';
+      moji[17] = '　・地位、名誉、肩書きの星';
+      moji[18] = '　　　　　　　　　　　（地位を得やすい）';
+      moji[30] = '■吉ポイントは、プラス10です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 40;
+      takasaMoji[30] = 80;
 
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '倒食') {
@@ -661,8 +696,9 @@ class KyouUnsei extends StatelessWidget {
       moji[32] = '干合は、男（＋）と女（ー）の発想の違うカップルが'
           '一緒になると新しいエネルギーが生じ、さらに変化したエネルギーも生じるという意味があります。';
       moji[33] = '　■吉ポイントは、プラス20です。';
-      takasaMoji[31] = 25.0;
-      takasaMoji[32] = 100.0;
+      takasaMoji[31] = 25;
+      takasaMoji[32] = 120;
+      iroMoji[31] = iroPink1;
       kitiPointKangou = 20;
     } else {}
 
@@ -682,8 +718,15 @@ class KyouUnsei extends StatelessWidget {
     moji[37] = '　生年月日の日支：$nissiMoji';
     moji[38] = '　　　今日の日支：$nissiNowMoji';
     moji[39] = '　その関係性を表したのが、下図になります。ピンクの矢印がさす部分が今日の運勢です。';
+    takasaMoji[36] = 40;
+    takasaMoji[37] = 25;
+    takasaMoji[38] = 40;
+    takasaMoji[39] = 40;
+
+    iroMoji[36] = iroGreen;
 
     zu[39] = 'images/sigou/s$juunisia$juunisiaNow.jpg';
+    takasaZu[39] = 300;
 
     //　支合を算出する
     var sigouNow = sigouKei.substring(
@@ -740,8 +783,10 @@ class KyouUnsei extends StatelessWidget {
           '中凶です。■吉ポイントは、マイナス15です。';
       kitiPointNissi = -15;
     } else {
-      moji[40] = '支合・三合・冲・害・刑はありません';
+      moji[40] = '　支合・三合・冲・害・刑はありません';
       moji[41] = '■吉ポイントは、プラスマイナス０です。';
+      takasaMoji[40] = 40;
+      takasaMoji[41] = 80;
       kitiPointNissi = 0;
     }
 
@@ -779,11 +824,20 @@ class KyouUnsei extends StatelessWidget {
 
     // 解説３
     moji[42] = '３．総合ポイント';
-    moji[43] = '日干：';
-    moji[44] = '干合：';
-    moji[45] = '日支：';
-    moji[46] = '総合；　$kitiPlus$kitiPoint';
-    moji[49] = '$kitiKyou';
+    moji[43] = '　　　　　　日干：　$kitiPointNikann';
+    moji[44] = '　　　　　　干合：　$kitiPointKangou';
+    moji[45] = '　　　　　　日支：　$kitiPointNissi';
+    moji[46] = '　　　　　　総合；　$kitiPoint';
+    moji[49] = '　　　吉凶レベル：　$kitiKyou';
+    iroMoji[42] = iroGreen;
+    takasaMoji[42] = 40;
+    takasaMoji[43] = 25;
+    takasaMoji[44] = 25;
+    takasaMoji[45] = 25;
+    takasaMoji[46] = 25;
+    takasaMoji[49] = 80;
+    //sizeMoji[49] = 30.0;
+    iroMoji[49] = iroPink1;
 
     //■■　画面を生成する　■■
 
@@ -807,27 +861,35 @@ class KyouUnsei extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [
-                    SizedBox(
-                      height: takasaMoji[index],
+                    Container(
                       child: ListTile(
                         tileColor: Colors.black,
-                        title: Text(
-                          moji[index],
-                          style: TextStyle(
-                            height: 1.6,
-                            fontSize: 17,
-                            color: Color(iroMoji[index]),
-                            fontWeight: FontWeight.normal,
+                        title: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
+                          child: Text(
+                            moji[index],
+                            style: TextStyle(
+                              height: 1.1,
+                              fontSize: 16,
+                              color: Color(iroMoji[index]),
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
                       ),
+                      height: takasaMoji[index],
+                      //color: Colors.black,
                     ),
-                    SizedBox(
-                      height: takasaZu[index],
+                    Container(
                       child: ListTile(
-                        title: Image.asset(zu[index]),
+                        //tileColor: Colors.indigo,
+                        title: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                          child: Image.asset(zu[index]),
+                        ),
                         tileColor: Colors.black,
                       ),
+                      height: takasaZu[index],
                     ),
                   ],
                 );
@@ -836,14 +898,33 @@ class KyouUnsei extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: 90,
-              height: 36,
-              child: ElevatedButton(
-                child: Text('戻る'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+            child: Container(
+              height: 50,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      '$kitiKyou',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.pink,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 90,
+                      height: 36,
+                      child: ElevatedButton(
+                        child: Text('戻る'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

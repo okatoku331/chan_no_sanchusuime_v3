@@ -47,27 +47,28 @@ class KyouUnsei2 extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Column(
                 children: [
-                  SizedBox(
-                    height: takasaMoji[index],
+                  Container(
                     child: ListTile(
-                      tileColor: Colors.black,
+                      tileColor: Colors.purple,
                       title: Text(
                         moji[index],
                         style: TextStyle(
-                          height: 1.6,
+                          //height: 1.0,
                           fontSize: 17,
                           color: Color(iroMoji[index]),
                           fontWeight: FontWeight.normal,
                         ),
                       ),
                     ),
+                    height: takasaMoji[index],
+                    color: Colors.orange,
                   ),
-                  SizedBox(
-                    height: takasaZu[index],
+                  Container(
                     child: ListTile(
                       title: Image.asset(zu[index]),
-                      tileColor: Colors.black,
+                      tileColor: Colors.tealAccent,
                     ),
+                    height: takasaZu[index],
                   ),
                 ],
               );
