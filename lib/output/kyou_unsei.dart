@@ -176,9 +176,29 @@ class KyouUnsei extends StatelessWidget {
       '',
       '',
       '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
       ''
     ];
     List<String> zu = [
+      'images/0.jpg',
+      'images/0.jpg',
+      'images/0.jpg',
+      'images/0.jpg',
+      'images/0.jpg',
+      'images/0.jpg',
+      'images/0.jpg',
+      'images/0.jpg',
+      'images/0.jpg',
+      'images/0.jpg',
       'images/0.jpg',
       'images/0.jpg',
       'images/0.jpg',
@@ -280,6 +300,16 @@ class KyouUnsei extends StatelessWidget {
       0.0,
       0.0,
       0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
       0.0
     ];
     List<double> takasaZu = [
@@ -332,12 +362,32 @@ class KyouUnsei extends StatelessWidget {
       0.0,
       0.0,
       0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
       0.0
     ];
     //白：-1 ,ピンク：-1407770
-    final int iroPink1 = 0xffffa0ff; //-1407770;
-    final int iroGreen = 0xFFa0FFa0; //-1407770;
+    final int iroPink1 = 0xffffa0ff; //ピンク
+    final int iroGreen = 0xFFa0FFa0; //緑
     List<int> iroMoji = [
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
       -1,
       -1,
       -1,
@@ -479,153 +529,258 @@ class KyouUnsei extends StatelessWidget {
 
     //　通変星の解説文作成
     if (tuuhenbosiNow == '比肩') {
-      moji[9] = '比肩　の持つ意味は、';
-      moji[10] = '　①意志と信念の星';
-      moji[11] = '　②独立と改革の星';
-      moji[12] = '　③出費の星';
-      moji[13] = '　④妻・女性を刻する星';
-      moji[14] = '　⑤ライバルの星';
-      moji[15] = '　⑥自己中心の星';
-      moji[16] = '　⑦弁が立つ口の星';
-      moji[17] = '　⑧大胆な星';
-      moji[18] = '　⑨孤独な星';
-      moji[19] = '■吉ポイントは、プラスマイナス０です。';
-      takasaMoji[9] = 28.0;
-      takasaMoji[10] = 28.0;
-      takasaMoji[11] = 28.0;
-      takasaMoji[12] = 28.0;
-      takasaMoji[13] = 28.0;
-      takasaMoji[14] = 28.0;
-      takasaMoji[15] = 28.0;
-      takasaMoji[16] = 28.0;
-      takasaMoji[17] = 28.0;
-      takasaMoji[18] = 28.0;
-      takasaMoji[19] = 28.0;
-      iroMoji[19] = iroPink1;
+      moji[9] = '比肩　の日は、次の星が巡ってきます。';
+      moji[10] = '　・意志と信念の星';
+      moji[11] = '　・独立と改革の星';
+      moji[12] = '　・出費の星';
+      moji[13] = '　・妻・女性を刻する星';
+      moji[14] = '　・ライバルの星';
+      moji[15] = '　・自己中心の星';
+      moji[16] = '　・弁が立つ口の星';
+      moji[17] = '　・大胆な星';
+      moji[18] = '　・孤独な星';
+      moji[40] = '■吉ポイントは、プラスマイナス０です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 40;
+
+      takasaMoji[40] = 80;
       kitiPointNikann = 0;
     } else if (tuuhenbosiNow == '劫敗') {
-      moji[9] = '劫敗　の持つ意味は、';
-      moji[10] = '　①意志と信念の星';
-      moji[11] = '　②独立と改革の星';
-      moji[12] = '　③出費の星';
-      moji[13] = '　④妻・女性を刻する星';
-      moji[14] = '　⑤ライバルの星';
-      moji[15] = '　⑥自己中心の星';
-      moji[16] = '　⑦弁が立つ口の星';
-      moji[17] = '　⑧大胆な星';
-      moji[18] = '　⑨孤独な星';
-      moji[19] = '■吉ポイントは、マイナス10です。';
-      takasaMoji[9] = 28.0;
-      takasaMoji[10] = 28.0;
-      takasaMoji[11] = 28.0;
-      takasaMoji[12] = 28.0;
-      takasaMoji[13] = 28.0;
-      takasaMoji[14] = 28.0;
-      takasaMoji[15] = 28.0;
-      takasaMoji[16] = 28.0;
-      takasaMoji[17] = 28.0;
-      takasaMoji[18] = 28.0;
-      takasaMoji[19] = 28.0;
+      moji[9] = '劫敗　の日は、次の星が巡ってきます。';
+      moji[10] = '　・意志と信念の星';
+      moji[11] = '　・独立と改革の星';
+      moji[12] = '　・出費の星';
+      moji[13] = '　・妻・女性を刻する星';
+      moji[14] = '　・ライバルの星';
+      moji[15] = '　・自己中心の星';
+      moji[16] = '　・弁が立つ口の星';
+      moji[17] = '　・大胆な星';
+      moji[18] = '　・孤独な星';
+      moji[40] = '■吉ポイントは、マイナス10です。';
+      takasaMoji[9] = 25;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 40;
+      takasaMoji[40] = 80;
       kitiPointNikann = -10;
     } else if (tuuhenbosiNow == '食神') {
       moji[9] = '食神　の日は、次の星が巡ってきます。';
-      moji[10] = '①感のよい星';
-      moji[11] = '②機転が効き、頭の良い星（手抜きをした割にには勉強ができる　遊んでから勉強する　直前に徹夜で勉強する）';
-      moji[15] = '③一言多い口の星（実際は半言多い程度）';
-      moji[17] = '④正義感が強い星';
-      moji[18] = '⑤せっかちで慌て者の星';
-      moji[19] = '⑥プライドの星';
-      moji[20] = '⑦寿星（功労の星　神がつくのはこの星だけ）';
-      moji[22] = '⑧衣食に恵まれる星（食べること着ることが大好き）';
-      moji[23] = '⑨明るく聡明な星';
-      moji[24] = '⑩恥ずかしがりやな星';
-      moji[26] = '⑪健康的な色星';
-      moji[27] = '⑫財星を生じ財星を助ける星';
-      moji[28] = '⑬吉星なのでポロッと白状してしまう星';
-      moji[29] = '⑭笑顔とユーモアで口で人を傷つけない吉星';
-      moji[30] = '■吉ポイントは、プラス10です。';
+      moji[10] = '　・感のよい星';
+      moji[11] = '　・機転が効き、頭の良い星';
+      moji[12] = '　　　（手抜きをした割にには勉強ができる';
+      moji[13] = '　　　　遊んでから勉強する';
+      moji[14] = '　　　　直前に徹夜で勉強する）';
+      moji[15] = '　・一言多い口の星（実際は半言多い程度）';
+      moji[16] = '　・正義感が強い星';
+      moji[17] = '　・せっかちで慌て者の星';
+      moji[18] = '　・プライドの星';
+      moji[19] = '　・寿星（功労の星';
+      moji[20] = '　　　　　神がつくのはこの星だけ）';
+      moji[21] = '　・衣食に恵まれる星';
+      moji[22] = '　　　（食べること着ることが大好き）';
+      moji[23] = '　・明るく聡明な星';
+      moji[24] = '　・恥ずかしがりやな星';
+      moji[25] = '　・健康的な色星';
+      moji[26] = '　・財星を生じ財星を助ける星';
+      moji[27] = '　・吉星なのでポロッと白状してしまう星';
+      moji[28] = '　・笑顔とユーモアで、';
+      moji[29] = '　　　　　　口で人を傷つけない吉星';
+      moji[40] = '■吉ポイントは、プラス10です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 25;
+      takasaMoji[19] = 25;
+      takasaMoji[20] = 25;
+      takasaMoji[21] = 25;
+      takasaMoji[22] = 25;
+      takasaMoji[23] = 25;
+      takasaMoji[24] = 25;
+      takasaMoji[25] = 25;
+      takasaMoji[26] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 25;
+      takasaMoji[19] = 25;
+      takasaMoji[20] = 25;
+      takasaMoji[21] = 25;
+      takasaMoji[22] = 25;
+      takasaMoji[23] = 25;
+      takasaMoji[24] = 25;
+      takasaMoji[25] = 25;
+      takasaMoji[26] = 25;
+      takasaMoji[27] = 25;
+      takasaMoji[28] = 25;
+      takasaMoji[29] = 40;
+      takasaMoji[40] = 80;
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '傷官') {
-      moji[9] = '傷官　の持つ意味は,';
-      moji[10] = '①感のよい星';
-      moji[11] = '②機転が効き、頭の良い星（手抜きをした割にには勉強ができる　遊んでから勉強する　直前に徹夜で勉強する）';
-      moji[14] = '③一言多い口の星（実際は二言三言多い）';
-      moji[15] = '④正義感が強い星';
-      moji[16] = '⑤せっかちで慌て者の星';
-      moji[17] = '⑥特にプライドの高い星';
-      moji[18] = '⑦個性の強い星';
-      moji[19] = '⑧譲らない信念の星';
-      moji[20] = '⑨こだわって生きている星';
-      moji[21] = '⑩約束の変更を嫌がる星';
-      moji[22] = '⑪相手に対して要求が強い星';
-      moji[23] = '⑫体を張って生命をかける星';
-      moji[24] = '⑬失敗を素直に認めず、すみませんと言えない星';
-      moji[25] = '⑭人から命令されたり頭を抑えつけられたりするのが大嫌いな星';
-      moji[26] = '⑮やるなと言われればやりたくなる星';
-      moji[27] = '⑯夫が悪いことをしていないかチェックする星';
-      moji[28] = '⑰凶星なのでアリバイ作りがうまく、悪知恵も働きボロを出さず白状しない星';
-      moji[29] = '⑱逃げ場が無いほど口で人を傷つける凶星';
-      moji[30] = '■吉ポイントは、マイナス10です。';
+      moji[9] = '傷官　の日は、次の星が巡ってきます。';
+      moji[10] = '　・感のよい星';
+      moji[11] = '　・機転が効き、頭の良い星';
+      moji[12] = '　　（手抜きをした割にには勉強ができる、';
+      moji[13] = '　　　　遊んでから勉強する、';
+      moji[14] = '　　　　　直前に徹夜で勉強する）';
+      moji[15] = '　・一言多い口の星（実際は二言三言多い）';
+      moji[16] = '　・正義感が強い星';
+      moji[17] = '　・せっかちで慌て者の星';
+      moji[18] = '　・特にプライドの高い星';
+      moji[19] = '　・個性の強い星';
+      moji[20] = '　・譲らない信念の星';
+      moji[21] = '　・こだわって生きている星';
+      moji[22] = '　・約束の変更を嫌がる星';
+      moji[23] = '　・相手に対して要求が強い星';
+      moji[24] = '　・体を張って生命をかける星';
+      moji[25] = '　・失敗を素直に認めず、';
+      moji[26] = '　　　　すみませんと言えない星';
+      moji[27] = '　・人から命令されたり';
+      moji[28] = '　　　　頭を抑えつけられたりするのが';
+      moji[29] = '　　　　　　大嫌いな星';
+      moji[30] = '　・やるなと言われればやりたくなる星';
+      moji[31] = '　・夫が悪いことをしていないかチェックする星';
+      moji[32] = '　・凶星なのでアリバイ作りがうまく、';
+      moji[33] = '　　　悪知恵も働きボロを出さず白状しない星';
+      moji[34] = '　・逃げ場が無いほど口で人を傷つける凶星';
+      moji[40] = '■吉ポイントは、マイナス10です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 25;
+      takasaMoji[19] = 25;
+      takasaMoji[20] = 25;
+      takasaMoji[21] = 25;
+      takasaMoji[22] = 25;
+      takasaMoji[23] = 25;
+      takasaMoji[24] = 25;
+      takasaMoji[25] = 25;
+      takasaMoji[26] = 25;
+      takasaMoji[27] = 25;
+      takasaMoji[28] = 25;
+      takasaMoji[29] = 25;
+      takasaMoji[30] = 25;
+      takasaMoji[31] = 25;
+      takasaMoji[32] = 25;
+      takasaMoji[33] = 25;
+      takasaMoji[34] = 40;
+
+      takasaMoji[40] = 80;
       kitiPointNikann = -10;
     } else if (tuuhenbosiNow == '偏財') {
-      moji[9] = '偏財　の持つ意味は、';
-      moji[10] = '①商売・営業の星';
-      moji[11] = '②人に好かれる星';
-      moji[12] = '③交際上手な星';
-      moji[13] = '④話上手な星（「奥さん、奥さん」と言ってさっと懐に入る、アメ横でバナナの叩き売りをするイメージ）';
-      moji[16] = '⑤Noと言えない星';
-      moji[17] = '⑥駆け引き上手な星';
-      moji[18] = '⑦金に縁のある星';
-      moji[19] = '⑧口先だけでボロ儲けする星';
-      moji[20] = '⑨流通に関する商売';
-      moji[21] = '⑩ボーナスのように金が大きく入るが大きく出ていく星';
-      moji[22] = '■吉ポイントは、プラス10です。';
+      moji[9] = '偏財　の日は、次の星が巡ってきます。';
+      moji[10] = '　・商売・営業の星';
+      moji[11] = '　・人に好かれる星';
+      moji[12] = '　・交際上手な星';
+      moji[13] = '　・話上手な星';
+      moji[14] = '　　　（「奥さん、奥さん」と言って';
+      moji[15] = '　　　　さっと懐に入る、アメ横で';
+      moji[16] = '　　　　バナナの叩き売りをするイメージ）';
+      moji[17] = '　・「No！」と言えない星';
+      moji[18] = '　・駆け引き上手な星';
+      moji[19] = '　・金に縁のある星';
+      moji[20] = '　・口先だけでボロ儲けする星';
+      moji[21] = '　・流通に関する商売の星';
+      moji[22] = '　・ボーナスのように金が大きく入るが';
+      moji[23] = '　　　　大きく出ていく星';
+      moji[40] = '■吉ポイントは、プラス10です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 25;
+      takasaMoji[19] = 25;
+      takasaMoji[20] = 25;
+      takasaMoji[21] = 25;
+      takasaMoji[22] = 25;
+      takasaMoji[23] = 40;
+      takasaMoji[40] = 80;
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '正財') {
-      moji[9] = '正財　の持つ意味は、';
-      moji[10] = '①商売・営業の星';
-      moji[11] = '②人に好かれる星';
-      moji[12] = '③交際上手な星（「奥様、奥様」と言って松坂屋で高級服や貴金属を売る上品なイメージ）';
-      moji[15] = '④話上手な星';
-      moji[16] = '⑤Noと言えない星';
-      moji[17] = '⑥駆け引き上手な星';
-      moji[18] = '⑦金に縁のある星';
-      moji[19] = '⑧コツコツ汗水流して得る確実な収入';
-      moji[20] = '⑨給料のように決められた金が確実に入り無茶な金遣いを好まない星';
-      moji[21] = '■吉ポイントは、プラス10です。';
-      takasaMoji[9] = 25.0;
-      takasaMoji[10] = 25.0;
-      takasaMoji[11] = 25.0;
-      takasaMoji[12] = 25.0;
-      takasaMoji[15] = 25.0;
-      takasaMoji[16] = 25.0;
-      takasaMoji[17] = 25.0;
-      takasaMoji[18] = 25.0;
-      takasaMoji[19] = 25.0;
-      takasaMoji[20] = 25.0;
-      takasaMoji[21] = 25.0;
+      moji[9] = '正財　の日は、次の星が巡ってきます。';
+      moji[10] = '　・商売・営業の星';
+      moji[11] = '　・人に好かれる星';
+      moji[12] = '　・交際上手な星';
+      moji[13] = '　　　（「奥様、奥様」と言って松坂屋で';
+      moji[14] = '　　　　　　高級服や貴金属を売る';
+      moji[15] = '　　　　　　　　　　　上品なイメージ）';
+      moji[16] = '　・話上手な星';
+      moji[17] = '　・「No！」と言えない星';
+      moji[18] = '　・駆け引き上手な星';
+      moji[19] = '　・金に縁のある星';
+      moji[20] = '　・コツコツ汗水流して得る確実な収入';
+      moji[21] = '　・給料のように決められた金が確実に入り';
+      moji[22] = '　　　　無茶な金遣いを好まない星';
+      moji[40] = '■吉ポイントは、プラス10です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 25;
+      takasaMoji[19] = 25;
+      takasaMoji[20] = 25;
+      takasaMoji[21] = 25;
+      takasaMoji[22] = 40;
+      takasaMoji[40] = 80;
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '偏官') {
-      moji[9] = '偏官　の持つ意味は、';
-      moji[10] = '　①人間にとって最も重要な日干';
-      moji[11] = '　　（自分の肉体）を激しく刻する星';
-      moji[12] = '　　（偏官は殺と言われる、';
-      moji[13] = '　　　　健康に注意すること）';
-      moji[15] = '　②女性にとっては官星は男性運を表す（遊び、恋愛、若いツバメ、再婚）';
-      moji[17] = '　③活発で行動力があり、動き回る星';
-      moji[18] = '　④笑顔もなく、ひきつった顔で動き回る';
-      moji[19] = '　⑤星気も短く、落ち着きにかける星（仕事や付き合いで動き回り帰りが遅い）';
-      moji[22] = '■吉ポイントは、マイナス10です。';
-      takasaMoji[9] = 25.0;
-      takasaMoji[10] = 25.0;
-      takasaMoji[11] = 25.0;
-      takasaMoji[12] = 25.0;
-      takasaMoji[13] = 25.0;
-      takasaMoji[15] = 25.0;
-      takasaMoji[17] = 25.0;
-      takasaMoji[18] = 25.0;
-      takasaMoji[19] = 25.0;
-      takasaMoji[22] = 25.0;
+      moji[9] = '偏官　の日は、次の星が巡ってきます。';
+      moji[10] = '　・人間にとって最も重要な日干';
+      moji[11] = '　　　（自分の肉体）を激しく刻する星';
+      moji[12] = '　　　（偏官は殺と言われる、';
+      moji[13] = '　　　　　健康に注意すること）';
+      moji[14] = '　・女性にとっては官星は男性運を表す';
+      moji[15] = '　　　（遊び、恋愛、若いツバメ、再婚）';
+      moji[16] = '　・活発で行動力があり、動き回る星';
+      moji[17] = '　・笑顔もなく、ひきつった顔で動き回る';
+      moji[18] = '　・星気も短く、落ち着きにかける星';
+      moji[19] = '　　　（仕事や付き合いで動き回り帰りが遅い）';
+      moji[40] = '■吉ポイントは、マイナス10です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 25;
+      takasaMoji[19] = 40;
+      takasaMoji[40] = 80;
 
       kitiPointNikann = -10;
     } else if (tuuhenbosiNow == '正官') {
@@ -654,37 +809,92 @@ class KyouUnsei extends StatelessWidget {
 
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '倒食') {
-      moji[9] = '倒食　の持つ意味は、';
-      moji[10] = '①人気運の星　（人当たりがよく、ユーモアのある楽しい星）';
-      moji[12] = '②明るく融通性があり調子の良い星';
-      moji[13] = '③バタバタと忙しい星（サザエさんのような星、返事はよいがわかっていない、気ばかり先にいって肝心な所を見落とす）';
-      moji[16] = '④飽きっぽく忘れやすい星（あれもこれもそれもする人、奥がなく一つを極めること）';
-      moji[17] = '⑤趣味、副業の星';
-      moji[18] = '⑥福分の星、衣食に困らない星';
-      moji[19] = '⑦人の世話や厄介事を引き受ける星';
-      moji[20] = '⑧名誉の星';
-      moji[21] = '⑨文化、芸術、学術、宗教の星（日干を強め栄養を送る星）';
-      moji[23] = '（印星からの栄養は親の愛であり、目に見えない精神的な栄養をあらわす。';
-      moji[24] = '　この印星によって人は救われるので、困ったときの助けの神となる。';
-      moji[25] = '　困った時に立ち直れる人とは、';
-      moji[26] = '　　ⅰ）良きアドバイザーを持つこと・・親、先生、師匠、、コーチ、学術';
-      moji[27] = '　　ⅱ）良き趣味を持つこと・・・文化、芸術';
-      moji[28] = '　　ⅲ）神に助けてもらうこと・・宗教';
-      moji[29] = '⑩人助けの星、ボランティアの星';
-      moji[30] = '■吉ポイントは、プラス10です。';
+      moji[9] = '倒食　の日は、次の星が巡ってきます。';
+      moji[10] = '　・人気運の星　（人当たりがよく、';
+      moji[11] = '　　　　　　　　ユーモアのある楽しい星）';
+
+      moji[12] = '　・明るく融通性があり調子の良い星';
+      moji[13] = '　・バタバタと忙しい星';
+      moji[14] = '　　　（サザエさんのような星、';
+      moji[15] = '　　　　　返事はよいがわかっていない、';
+      moji[16] = '　　　　　　　気ばかり先にいって';
+      moji[17] = '　　　　　　　　　肝心な所を見落とす）';
+      moji[18] = '　・飽きっぽく忘れやすい星';
+      moji[19] = '　　　（あれもこれもそれもして、';
+      moji[20] = '　　　　　　奥がなく一つを極めない）';
+      moji[21] = '　・趣味、副業の星';
+      moji[22] = '　・福分の星、衣食に困らない星';
+      moji[23] = '　・人の世話や厄介事を引き受ける星';
+      moji[24] = '　・名誉の星';
+      moji[25] = '　・文化、芸術、学術、宗教の星';
+      moji[26] = '　　　（日干を強め栄養を送る星）';
+      moji[27] = '　・人助けの星、ボランティアの星';
+      /*moji[33] = '（印星からの栄養は親の愛であり、目に見えない精神的な栄養をあらわす。';
+      moji[34] = '　この印星によって人は救われるので、困ったときの助けの神となる。';
+      moji[35] = '　困った時に立ち直れる人とは、';
+      moji[36] = '　　ⅰ）良きアドバイザーを持つこと・・親、先生、師匠、、コーチ、学術';
+      moji[37] = '　　ⅱ）良き趣味を持つこと・・・文化、芸術';
+      moji[38] = '　　ⅲ）神に助けてもらうこと・・宗教';
+      ;*/
+      moji[40] = '■吉ポイントは、プラス10です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 25;
+      takasaMoji[19] = 25;
+      takasaMoji[20] = 25;
+      takasaMoji[21] = 25;
+      takasaMoji[22] = 25;
+      takasaMoji[23] = 25;
+      takasaMoji[24] = 25;
+      takasaMoji[25] = 25;
+      takasaMoji[26] = 25;
+      takasaMoji[27] = 40;
+
+      takasaMoji[40] = 80;
+
       kitiPointNikann = 10;
     } else if (tuuhenbosiNow == '印綬') {
-      moji[9] = '印綬　の持つ意味は、';
-      moji[10] = '①名誉の星';
-      moji[11] = '②文化、芸術、学術、宗教の星（日干を強め栄養を送る星）';
-      moji[13] = '（印星からの栄養は親の愛であり、目に見えない精神的な栄養をあらわす。';
-      moji[15] = 'この印星によって人は救われるので、困ったときの助けの神となる。';
-      moji[16] = '困った時に立ち直れる人とは、';
-      moji[17] = 'ⅰ）良きアドバイザーを持つこと・・親、先生、師匠、、コーチ、学術';
-      moji[19] = 'ⅱ）良き趣味を持つこと・・・文化、芸術';
-      moji[20] = 'ⅲ）神に助けてもらうこと・・宗教';
-      moji[21] = '③人助けの星、ボランティアの星';
-      moji[22] = '■吉ポイントは、プラス10です。';
+      moji[9] = '印綬　の日は、次の星が巡ってきます。';
+      moji[10] = '　・名誉の星';
+      moji[11] = '　・文化、芸術、学術、宗教の星';
+      moji[12] = '　　　（日干を強め栄養を送る星）';
+      moji[13] = '　　　（印星からの栄養は親の愛であり、';
+      moji[14] = '　　　　目に見えない精神的な栄養をあらわす。';
+      moji[15] = '　　　　この印星によって人は救われるので、';
+      moji[16] = '　　　　困ったときの助けの神となる。';
+      moji[17] = '　　　　では困った時に立ち直れる人とは、';
+      moji[18] = '　　　　　ⅰ）良きアドバイザーを持つこと・・・';
+      moji[19] = '　　　　　　　親、先生、師匠、コーチ、学術';
+      moji[20] = '　　　　　ⅱ）良き趣味を持つこと・・・';
+      moji[21] = '　　　　　　　　　　　　　　　　文化、芸術';
+      moji[22] = '　　　　　ⅲ）神に助けてもらうこと・・・';
+      moji[23] = '　　　　　　　　　　　　　　　　　宗教　）';
+      moji[24] = '　・人助けの星、ボランティアの星';
+      moji[40] = '■吉ポイントは、プラス10です。';
+      takasaMoji[9] = 40;
+      takasaMoji[10] = 25;
+      takasaMoji[11] = 25;
+      takasaMoji[12] = 25;
+      takasaMoji[13] = 25;
+      takasaMoji[14] = 25;
+      takasaMoji[15] = 25;
+      takasaMoji[16] = 25;
+      takasaMoji[17] = 25;
+      takasaMoji[18] = 25;
+      takasaMoji[19] = 25;
+      takasaMoji[20] = 25;
+      takasaMoji[21] = 25;
+      takasaMoji[22] = 25;
+      takasaMoji[23] = 25;
+      takasaMoji[24] = 40;
+      takasaMoji[40] = 80;
       kitiPointNikann = 10;
     }
 
@@ -692,13 +902,14 @@ class KyouUnsei extends StatelessWidget {
     var kangouNow = kangou.substring(
         nikkan * 10 + nikkanNow * 1, nikkan * 10 + nikkanNow * 1 + 1);
     if (kangouNow == '合') {
-      moji[31] = '干合(かんごう）があります。';
-      moji[32] = '干合は、男（＋）と女（ー）の発想の違うカップルが'
+      moji[41] = '干合(かんごう）があります。';
+      moji[42] = '　干合は、男（＋）と女（ー）の発想の違うカップルが'
           '一緒になると新しいエネルギーが生じ、さらに変化したエネルギーも生じるという意味があります。';
-      moji[33] = '　■吉ポイントは、プラス20です。';
-      takasaMoji[31] = 25;
-      takasaMoji[32] = 120;
-      iroMoji[31] = iroPink1;
+      moji[43] = '　■吉ポイントは、プラス20です。';
+      takasaMoji[41] = 40;
+      takasaMoji[42] = 80;
+      takasaMoji[43] = 80;
+      iroMoji[41] = iroPink1;
       kitiPointKangou = 20;
     } else {}
 
@@ -714,79 +925,111 @@ class KyouUnsei extends StatelessWidget {
 
     //  支合・支冲等関係図を算出する
     // 解説２
-    moji[36] = '２．「日支」からみた今日の運勢';
-    moji[37] = '　生年月日の日支：$nissiMoji';
-    moji[38] = '　　　今日の日支：$nissiNowMoji';
-    moji[39] = '　その関係性を表したのが、下図になります。ピンクの矢印がさす部分が今日の運勢です。';
-    takasaMoji[36] = 40;
-    takasaMoji[37] = 25;
-    takasaMoji[38] = 40;
-    takasaMoji[39] = 40;
+    moji[44] = '２．「日支」からみた今日の運勢';
+    moji[45] = '　生年月日の日支：$nissiMoji';
+    moji[46] = '　　　今日の日支：$nissiNowMoji';
+    moji[47] = '　その関係性を表したのが、下図になります。';
+    moji[48] = '　ピンクの矢印がさす部分が今日の運勢です。';
+    takasaMoji[44] = 40;
+    takasaMoji[45] = 25;
+    takasaMoji[46] = 40;
+    takasaMoji[47] = 40;
+    takasaMoji[48] = 40;
 
-    iroMoji[36] = iroGreen;
+    iroMoji[44] = iroGreen;
 
-    zu[39] = 'images/sigou/s$juunisia$juunisiaNow.jpg';
-    takasaZu[39] = 300;
+    zu[47] = 'images/sigou/s$juunisia$juunisiaNow.jpg';
+    takasaZu[47] = 300;
 
     //　支合を算出する
     var sigouNow = sigouKei.substring(
         nissi * 12 + nissiNow * 1, nissi * 12 + nissiNow * 1 + 1);
     if (sigouNow == '合') {
-      moji[40] = '支合（しごう）があります';
-      moji[41] = '支合の意味は、仲のいい恋人夫婦の大きな気が発生します。'
-          '大吉です。■吉ポイントは、プラス20です。';
+      moji[49] = '支合（しごう）があります';
+      moji[50] = '　支合　が巡ってくる日は、仲のいい恋人や夫婦のように、大きな気が発生します。';
+
+      moji[51] = '■吉ポイントは、プラス20です。';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 50;
+      takasaMoji[51] = 80;
       kitiPointNissi = 20;
     } else if (sigouNow == '三') {
-      moji[40] = '三合（さんごう）があります';
-      moji[41] = '三合の意味は、女子学生三人組のような関係で、'
-          '一人一人は弱くても三人そろうと大きな気を発生します。二人そろった半会（はんかい）でもそれなりの気を発生します。'
-          '吉です。■吉ポイントは、プラス10です。';
+      moji[49] = '三合（さんごう）があります';
+      moji[50] = '三合 が巡ってくる日は、女子学生三人組のような関係で、'
+          '一人一人は弱くても三人そろうと大きな気を発生します。二人そろった半会（はんかい）でもそれなりの気を発生します。';
+      moji[51] = '■吉ポイントは、プラス10です。';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 80;
+      takasaMoji[51] = 80;
       kitiPointNissi = 10;
     } else if (sigouNow == '冲') {
-      moji[40] = '冲（ちゅう）があります';
-      moji[41] = '冲は、同性同士の殴り合いを意味します。'
-          '同性同士なので、激しく殴り合ったり、ひっかきあったり、気をうばわれます。'
-          '大凶です。■吉ポイントは、マイナス20です。';
+      moji[49] = '冲（ちゅう）があります';
+      moji[50] = '　トラブルに注意しましょう。冲 が巡ってくる日は、同性同士の殴り合いを意味します。'
+          '同性同士なので、激しく殴り合ったり、ひっかきあったり、気をうばわれます。';
+      moji[51] = '■吉ポイントは、マイナス20です。';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 80;
+      takasaMoji[51] = 80;
       kitiPointNissi = -20;
     } else if (sigouNow == '害') {
-      moji[40] = '害（がい）があります';
-      moji[41] = '害は、トラブルを意味します。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなので気はやはりうばわれます。'
-          '凶です。■吉ポイントは、マイナス10です。';
+      moji[49] = '害（がい）があります';
+      moji[50] = ' トラブルに注意しましょう。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなので気はやはりうばわれます。';
+      moji[51] = '■吉ポイントは、マイナス10です。';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 80;
+      takasaMoji[51] = 80;
       kitiPointNissi = -10;
     } else if (sigouNow == '刑') {
-      moji[40] = '刑（けい）があります';
-      moji[41] = '刑は、トラブルを意味します。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。'
-          '凶です。■吉ポイントは、マイナス10です。';
+      moji[49] = '刑（けい）があります';
+      moji[50] =
+          '刑 が巡ってくる日は、トラブルに注意が必要です。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。';
+      moji[51] = '■吉ポイントは、マイナス10です。';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 80;
+      takasaMoji[51] = 80;
       kitiPointNissi = -10;
     } else if (sigouNow == '一') {
-      moji[40] = '冲（ちゅう）と刑（けい）があります';
-      moji[41] = '悪い作用が重なるのではなく、あるときは冲になり、あるときは刑になります。冲は、同性同士の殴り合いを意味します。'
-          '刑は冲に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。'
-          '凶です。■吉ポイントは、マイナス15です。　';
+      moji[49] = '冲（ちゅう）と刑（けい）があります';
+      moji[50] =
+          'トラブルに巻き込まれないように注意しましょう。悪い作用が重なるのではなく、あるときは冲になり、あるときは刑になります。冲は、同性同士の殴り合いを意味します。'
+          '刑は冲に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。';
+      moji[51] = '■吉ポイントは、マイナス15です。　';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 80;
+      takasaMoji[51] = 80;
       kitiPointNissi = -15;
     } else if (sigouNow == '二') {
-      moji[40] = '害（がい）と刑（けい）があります';
-      moji[41] = '悪い作用が重なるのではなく、あるときは害になり、あるときは刑になります。'
-          '刑は重いトラブル、害は軽いトラブルを意味します。トラブルなのでやはり気はうばわれます。'
-          '凶です。■吉ポイントは、マイナス10です。　';
+      moji[49] = '害（がい）と刑（けい）があります';
+      moji[50] = 'トラブルに巻き込まれないよう注意しましょう。悪い作用が重なるのではなく、あるときは害になり、あるときは刑になります。'
+          '刑は重いトラブル、害は軽いトラブルを意味します。トラブルなのでやはり気はうばわれます。';
+      moji[51] = '■吉ポイントは、マイナス10です。　';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 80;
+      takasaMoji[51] = 80;
       kitiPointNissi = -10;
     } else if (sigouNow == '四') {
-      moji[40] = '支合（しごう）と刑（けい）があります';
-      moji[41] = '良い作用の支合と悪い作用の刑が重なります。普段は仲のいい夫婦が急に大げんかするようなような意味です。'
-          '仲がいいときは気を発生しますが、喧嘩して気がうばわれます。'
-          '吉です。■吉ポイントは、プラス10です。　';
+      moji[49] = '支合（しごう）と刑（けい）があります';
+      moji[50] = '良い作用の支合と悪い作用の刑が重なります。普段は仲のいい夫婦が急に大げんかするようなような意味です。'
+          '仲がいいときは気を発生しますが、喧嘩して気がうばわれます。';
+      moji[51] = '■吉ポイントは、プラス10です。　';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 80;
+      takasaMoji[51] = 80;
       kitiPointNissi = 10;
     } else if (sigouNow == '五') {
-      moji[40] = '卯辰の害があります';
-      moji[41] = '害（がい）は、トラブルを意味しますが、卯辰の害は、冲（ちゅう）のなぐりあいに匹敵する喧嘩を意味します。'
-          '夫婦の激しい喧嘩の意味です。気は激しくうばわれます。'
-          '中凶です。■吉ポイントは、マイナス15です。';
+      moji[49] = '卯辰の害(うだつのがい）があります';
+      moji[50] = '　トラブルに注意が必要です。卯辰の害は、冲（ちゅう）のなぐりあいに匹敵する喧嘩を意味します。'
+          '夫婦の激しい喧嘩の意味です。気は激しくうばわれます。';
+      moji[51] = '■吉ポイントは、マイナス15です。';
+      takasaMoji[49] = 40;
+      takasaMoji[50] = 80;
+      takasaMoji[51] = 80;
       kitiPointNissi = -15;
     } else {
-      moji[40] = '　支合・三合・冲・害・刑はありません';
-      moji[41] = '■吉ポイントは、プラスマイナス０です。';
-      takasaMoji[40] = 40;
-      takasaMoji[41] = 80;
+      moji[49] = '　支合・三合・冲・害・刑はありません';
+      moji[51] = '■吉ポイントは、プラスマイナス０です。';
+      takasaMoji[49] = 40;
+      takasaMoji[51] = 80;
       kitiPointNissi = 0;
     }
 
@@ -823,21 +1066,23 @@ class KyouUnsei extends StatelessWidget {
     }
 
     // 解説３
-    moji[42] = '３．総合ポイント';
-    moji[43] = '　　　　　　日干：　$kitiPointNikann';
-    moji[44] = '　　　　　　干合：　$kitiPointKangou';
-    moji[45] = '　　　　　　日支：　$kitiPointNissi';
-    moji[46] = '　　　　　　総合；　$kitiPoint';
-    moji[49] = '　　　吉凶レベル：　$kitiKyou';
-    iroMoji[42] = iroGreen;
-    takasaMoji[42] = 40;
-    takasaMoji[43] = 25;
-    takasaMoji[44] = 25;
-    takasaMoji[45] = 25;
-    takasaMoji[46] = 25;
-    takasaMoji[49] = 80;
-    //sizeMoji[49] = 30.0;
-    iroMoji[49] = iroPink1;
+    moji[52] = '３．総合ポイント';
+    moji[53] = '　　　　　　日干：　$kitiPointNikann';
+    moji[54] = '　　　　　　干合：　$kitiPointKangou';
+    moji[55] = '　　　　　　日支：　$kitiPointNissi';
+    moji[56] = '　　　ーーーーーーーーーー';
+    moji[57] = '　　　　　　総合；　$kitiPoint';
+    moji[59] = '　　　吉凶レベル：　$kitiKyou';
+    iroMoji[52] = iroGreen;
+    takasaMoji[52] = 40;
+    takasaMoji[53] = 25;
+    takasaMoji[54] = 25;
+    takasaMoji[55] = 25;
+    takasaMoji[56] = 25;
+    takasaMoji[57] = 25;
+    takasaMoji[59] = 80;
+    //sizeMoji[59] = 30.0;
+    iroMoji[59] = iroPink1;
 
     //■■　画面を生成する　■■
 
@@ -857,7 +1102,7 @@ class KyouUnsei extends StatelessWidget {
           Expanded(
             //height: 400,
             child: ListView.builder(
-              itemCount: 50,
+              itemCount: 60,
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [
