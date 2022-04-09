@@ -11,8 +11,8 @@ class KyouUnsei extends StatelessWidget {
 
   //■■　変数初期設定　■■
   final DateTime date0 = DateTime(1900, 1, 1);
+  //DateTime date1 = DateTime(2022, 4, 15); //<<<<<<<デバッグ用コード
   final int nikkan = -1;
-  //final double sizeMojiA = 16.0;
 
   //List<String> nikkanName = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
   final String jukkan = "甲乙丙丁戊己庚辛壬癸"; //十干リスト
@@ -119,12 +119,6 @@ class KyouUnsei extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //　変数定義
-    String kangouMoji1 = '';
-    String kangouMoji2 = '';
-    String kangouMoji3 = '';
-    String sigouMoji = '';
-    //String sikeiMoji = '';
-    String sigouKaisetu = '';
     //String tuuhenbosiNowKaisetu = '';
     List<String> moji = [
       '',
@@ -462,9 +456,10 @@ class KyouUnsei extends StatelessWidget {
     DateTime now = DateTime.now();
     DateFormat outputFormat = DateFormat('yyyy.MM.dd');
     String dateNow = outputFormat.format(now);
+    //dataNow = '2022.04.01'; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<■■■■
     //print(dateNow);
     //　1900.1.1 (甲辰）から今日までの日数を算出する
-    var nissuuNow = now.difference(date0).inDays;
+    var nissuuNow = now.difference(date0).inDays; //<<<<<<<<<<<<<<
     //  今日の日干を算出する
     var nikkanNow = nissuuNow % 10;
     var jukkanNow = jukkan.substring(nikkanNow, nikkanNow + 1);
@@ -638,8 +633,8 @@ class KyouUnsei extends StatelessWidget {
       moji[10] = '　・感のよい星';
       moji[11] = '　・機転が効き、頭の良い星';
       moji[12] = '　　（手抜きをした割にには勉強ができる、';
-      moji[13] = '　　　　遊んでから勉強する、';
-      moji[14] = '　　　　　直前に徹夜で勉強する）';
+      moji[13] = '　　　遊んでから勉強する、';
+      moji[14] = '　　　直前に徹夜で勉強する）';
       moji[15] = '　・一言多い口の星（実際は二言三言多い）';
       moji[16] = '　・正義感が強い星';
       moji[17] = '　・せっかちで慌て者の星';
@@ -651,15 +646,17 @@ class KyouUnsei extends StatelessWidget {
       moji[23] = '　・相手に対して要求が強い星';
       moji[24] = '　・体を張って生命をかける星';
       moji[25] = '　・失敗を素直に認めず、';
-      moji[26] = '　　　　すみませんと言えない星';
+      moji[26] = '　　　すみませんと言えない星';
       moji[27] = '　・人から命令されたり';
-      moji[28] = '　　　　頭を抑えつけられたりするのが';
-      moji[29] = '　　　　　　大嫌いな星';
+      moji[28] = '　　　頭を抑えつけられたりするのが';
+      moji[29] = '　　　大嫌いな星';
       moji[30] = '　・やるなと言われればやりたくなる星';
-      moji[31] = '　・夫が悪いことをしていないかチェックする星';
-      moji[32] = '　・凶星なのでアリバイ作りがうまく、';
-      moji[33] = '　　　悪知恵も働きボロを出さず白状しない星';
-      moji[34] = '　・逃げ場が無いほど口で人を傷つける凶星';
+      moji[31] = '　・夫が悪いことをしていないか';
+      moji[32] = '　　　チェックする星';
+      moji[33] = '　・凶星なのでアリバイ作りがうまく、';
+      moji[34] = '　　　悪知恵も働きボロを出さず';
+      moji[35] = '　　　白状しない星';
+      moji[36] = '　・逃げ場が無いほど口で人を傷つける凶星';
       moji[40] = '■吉ポイントは、マイナス10です。';
       takasaMoji[9] = 40;
       takasaMoji[10] = 25;
@@ -686,7 +683,9 @@ class KyouUnsei extends StatelessWidget {
       takasaMoji[31] = 25;
       takasaMoji[32] = 25;
       takasaMoji[33] = 25;
-      takasaMoji[34] = 40;
+      takasaMoji[34] = 25;
+      takasaMoji[35] = 25;
+      takasaMoji[36] = 40;
 
       takasaMoji[40] = 80;
       kitiPointNikann = -10;
@@ -730,15 +729,15 @@ class KyouUnsei extends StatelessWidget {
       moji[11] = '　・人に好かれる星';
       moji[12] = '　・交際上手な星';
       moji[13] = '　　　（「奥様、奥様」と言って松坂屋で';
-      moji[14] = '　　　　　　高級服や貴金属を売る';
-      moji[15] = '　　　　　　　　　　　上品なイメージ）';
+      moji[14] = '　　　　　高級服や貴金属を売る';
+      moji[15] = '　　　　　上品なイメージ）';
       moji[16] = '　・話上手な星';
       moji[17] = '　・「No！」と言えない星';
       moji[18] = '　・駆け引き上手な星';
       moji[19] = '　・金に縁のある星';
       moji[20] = '　・コツコツ汗水流して得る確実な収入';
-      moji[21] = '　・給料のように決められた金が確実に入り';
-      moji[22] = '　　　　無茶な金遣いを好まない星';
+      moji[21] = '　・給料のように決められた金が確実に';
+      moji[22] = '　　　　入り、無茶な金遣いを好まない星';
       moji[40] = '■吉ポイントは、プラス10です。';
       takasaMoji[9] = 40;
       takasaMoji[10] = 25;
@@ -765,9 +764,11 @@ class KyouUnsei extends StatelessWidget {
       moji[14] = '　・女性にとっては官星は男性運を表す';
       moji[15] = '　　　（遊び、恋愛、若いツバメ、再婚）';
       moji[16] = '　・活発で行動力があり、動き回る星';
-      moji[17] = '　・笑顔もなく、ひきつった顔で動き回る';
-      moji[18] = '　・星気も短く、落ち着きにかける星';
-      moji[19] = '　　　（仕事や付き合いで動き回り帰りが遅い）';
+      moji[17] = '　・笑顔もなく、ひきつった顔で';
+      moji[18] = '　　　　動き回る星';
+      moji[19] = '　・星気も短く、落ち着きにかける星';
+      moji[20] = '　　　（仕事や付き合いで動き回り';
+      moji[21] = '　　　　　帰りが遅い）';
       moji[40] = '■吉ポイントは、マイナス10です。';
       takasaMoji[9] = 40;
       takasaMoji[10] = 25;
@@ -779,7 +780,9 @@ class KyouUnsei extends StatelessWidget {
       takasaMoji[16] = 25;
       takasaMoji[17] = 25;
       takasaMoji[18] = 25;
-      takasaMoji[19] = 40;
+      takasaMoji[19] = 25;
+      takasaMoji[20] = 25;
+      takasaMoji[21] = 40;
       takasaMoji[40] = 80;
 
       kitiPointNikann = -10;
@@ -811,17 +814,16 @@ class KyouUnsei extends StatelessWidget {
     } else if (tuuhenbosiNow == '倒食') {
       moji[9] = '倒食　の日は、次の星が巡ってきます。';
       moji[10] = '　・人気運の星　（人当たりがよく、';
-      moji[11] = '　　　　　　　　ユーモアのある楽しい星）';
-
+      moji[11] = '　　　　ユーモアのある楽しい星）';
       moji[12] = '　・明るく融通性があり調子の良い星';
       moji[13] = '　・バタバタと忙しい星';
       moji[14] = '　　　（サザエさんのような星、';
-      moji[15] = '　　　　　返事はよいがわかっていない、';
-      moji[16] = '　　　　　　　気ばかり先にいって';
-      moji[17] = '　　　　　　　　　肝心な所を見落とす）';
+      moji[15] = '　　　　返事はよいがわかっていない、';
+      moji[16] = '　　　　気ばかり先にいって';
+      moji[17] = '　　　　肝心な所を見落とす）';
       moji[18] = '　・飽きっぽく忘れやすい星';
       moji[19] = '　　　（あれもこれもそれもして、';
-      moji[20] = '　　　　　　奥がなく一つを極めない）';
+      moji[20] = '　　　　奥がなく一つを極めない）';
       moji[21] = '　・趣味、副業の星';
       moji[22] = '　・福分の星、衣食に困らない星';
       moji[23] = '　・人の世話や厄介事を引き受ける星';
@@ -864,18 +866,18 @@ class KyouUnsei extends StatelessWidget {
       moji[9] = '印綬　の日は、次の星が巡ってきます。';
       moji[10] = '　・名誉の星';
       moji[11] = '　・文化、芸術、学術、宗教の星';
-      moji[12] = '　　　（日干を強め栄養を送る星）';
-      moji[13] = '　　　（印星からの栄養は親の愛であり、';
-      moji[14] = '　　　　目に見えない精神的な栄養をあらわす。';
-      moji[15] = '　　　　この印星によって人は救われるので、';
-      moji[16] = '　　　　困ったときの助けの神となる。';
-      moji[17] = '　　　　では困った時に立ち直れる人とは、';
-      moji[18] = '　　　　　ⅰ）良きアドバイザーを持つこと・・・';
-      moji[19] = '　　　　　　　親、先生、師匠、コーチ、学術';
-      moji[20] = '　　　　　ⅱ）良き趣味を持つこと・・・';
-      moji[21] = '　　　　　　　　　　　　　　　　文化、芸術';
-      moji[22] = '　　　　　ⅲ）神に助けてもらうこと・・・';
-      moji[23] = '　　　　　　　　　　　　　　　　　宗教　）';
+      moji[12] = '　　（日干を強め栄養を送る星）';
+      moji[13] = '　　（印星からの栄養は親の愛であり、';
+      moji[14] = '　　目に見えない精神的な栄養をあらわす。';
+      moji[15] = '　　この印星によって人は救われるので、';
+      moji[16] = '　　困ったときの助けの神となる。';
+      moji[17] = '　　では困った時に立ち直れる人とは、';
+      moji[18] = '　　　ⅰ）良きアドバイザーを持つこと・・';
+      moji[19] = '　　　　　　親、先生、師匠、コーチ、学術';
+      moji[20] = '　　　ⅱ）良き趣味を持つこと・・・';
+      moji[21] = '　　　　　　文化、芸術';
+      moji[22] = '　　　ⅲ）神に助けてもらうこと・・・';
+      moji[23] = '　　　　　　宗教　）';
       moji[24] = '　・人助けの星、ボランティアの星';
       moji[40] = '■吉ポイントは、プラス10です。';
       takasaMoji[9] = 40;
@@ -955,25 +957,28 @@ class KyouUnsei extends StatelessWidget {
       kitiPointNissi = 20;
     } else if (sigouNow == '三') {
       moji[49] = '三合（さんごう）があります';
-      moji[50] = '三合 が巡ってくる日は、女子学生三人組のような関係で、'
-          '一人一人は弱くても三人そろうと大きな気を発生します。二人そろった半会（はんかい）でもそれなりの気を発生します。';
+      moji[50] = '　三合 が巡ってくる日は、女子学生三人組のような関係で、'
+          '一人一人は弱くても三人そろうと大きな気を発生します。'
+          '二人そろった半会（はんかい）でもそれなりの気を発生します。';
       moji[51] = '■吉ポイントは、プラス10です。';
       takasaMoji[49] = 40;
-      takasaMoji[50] = 80;
+      takasaMoji[50] = 100;
       takasaMoji[51] = 80;
       kitiPointNissi = 10;
     } else if (sigouNow == '冲') {
       moji[49] = '冲（ちゅう）があります';
-      moji[50] = '　トラブルに注意しましょう。冲 が巡ってくる日は、同性同士の殴り合いを意味します。'
-          '同性同士なので、激しく殴り合ったり、ひっかきあったり、気をうばわれます。';
+      moji[50] = '　冲　が巡ってくる日は、トラブルに巻き込まれないように注意が必要です。'
+          '冲 は、同性同士の殴り合いを意味します。'
+          '同性同士なので、激しく殴り合ったり、ひっかきあったり、気がうばわれます。';
       moji[51] = '■吉ポイントは、マイナス20です。';
       takasaMoji[49] = 40;
-      takasaMoji[50] = 80;
+      takasaMoji[50] = 100;
       takasaMoji[51] = 80;
       kitiPointNissi = -20;
     } else if (sigouNow == '害') {
       moji[49] = '害（がい）があります';
-      moji[50] = ' トラブルに注意しましょう。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなので気はやはりうばわれます。';
+      moji[50] = ' 害　が巡ってくる日は、トラブルに巻き込まれないように注意が必要です。'
+          '冲　に比べれば軽く、激しい喧嘩はしませんが、やはりトラブルなので、気はうばわれます。';
       moji[51] = '■吉ポイントは、マイナス10です。';
       takasaMoji[49] = 40;
       takasaMoji[50] = 80;
@@ -981,8 +986,8 @@ class KyouUnsei extends StatelessWidget {
       kitiPointNissi = -10;
     } else if (sigouNow == '刑') {
       moji[49] = '刑（けい）があります';
-      moji[50] =
-          '刑 が巡ってくる日は、トラブルに注意が必要です。冲（ちゅう）に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。';
+      moji[50] = '　刑 が巡ってくる日は、トラブルに巻き込まれないように注意が必要です。'
+          '冲　に比べれば軽く、激しい喧嘩はしませんが、トラブルなので、やはり気はうばわれます。';
       moji[51] = '■吉ポイントは、マイナス10です。';
       takasaMoji[49] = 40;
       takasaMoji[50] = 80;
@@ -990,30 +995,32 @@ class KyouUnsei extends StatelessWidget {
       kitiPointNissi = -10;
     } else if (sigouNow == '一') {
       moji[49] = '冲（ちゅう）と刑（けい）があります';
-      moji[50] =
-          'トラブルに巻き込まれないように注意しましょう。悪い作用が重なるのではなく、あるときは冲になり、あるときは刑になります。冲は、同性同士の殴り合いを意味します。'
-          '刑は冲に比べれば軽く、激しい喧嘩しませんが、トラブルなのでやはり気はうばわれます。';
+      moji[50] = '　トラブルに巻き込まれないように注意しましょう。'
+          '悪い作用が重なるのではなく、あるときは冲になり、あるときは刑になります。'
+          '冲は、同性同士の殴り合いを意味します。'
+          '刑は冲に比べれば軽く、激しい喧嘩はしませんが、やはりトラブルなので、気はうばわれます。';
       moji[51] = '■吉ポイントは、マイナス15です。　';
       takasaMoji[49] = 40;
-      takasaMoji[50] = 80;
+      takasaMoji[50] = 140;
       takasaMoji[51] = 80;
       kitiPointNissi = -15;
     } else if (sigouNow == '二') {
       moji[49] = '害（がい）と刑（けい）があります';
-      moji[50] = 'トラブルに巻き込まれないよう注意しましょう。悪い作用が重なるのではなく、あるときは害になり、あるときは刑になります。'
+      moji[50] = '　トラブルに巻き込まれないよう注意しましょう。'
+          '悪い作用が重なるのではなく、あるときは害になり、あるときは刑になります。'
           '刑は重いトラブル、害は軽いトラブルを意味します。トラブルなのでやはり気はうばわれます。';
       moji[51] = '■吉ポイントは、マイナス10です。　';
       takasaMoji[49] = 40;
-      takasaMoji[50] = 80;
+      takasaMoji[50] = 120;
       takasaMoji[51] = 80;
       kitiPointNissi = -10;
     } else if (sigouNow == '四') {
       moji[49] = '支合（しごう）と刑（けい）があります';
-      moji[50] = '良い作用の支合と悪い作用の刑が重なります。普段は仲のいい夫婦が急に大げんかするようなような意味です。'
-          '仲がいいときは気を発生しますが、喧嘩して気がうばわれます。';
+      moji[50] = '　良い作用の支合と悪い作用の刑が重なります。普段は仲のいい夫婦が急に大げんかするようなような意味です。'
+          '仲がいいときは気を発生してますが、急に喧嘩して気がうばわれることもあります。';
       moji[51] = '■吉ポイントは、プラス10です。　';
       takasaMoji[49] = 40;
-      takasaMoji[50] = 80;
+      takasaMoji[50] = 100;
       takasaMoji[51] = 80;
       kitiPointNissi = 10;
     } else if (sigouNow == '五') {

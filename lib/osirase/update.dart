@@ -1,7 +1,7 @@
 import 'package:chan_no_sanchusuimei_v3/osirase/update1.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update2a.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update3.dart';
-import 'package:chan_no_sanchusuimei_v3/output/kyou_unsei2.dart';
+//import 'package:chan_no_sanchusuimei_v3/output/kyou_unsei2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'jiko_syoukai.dart';
@@ -110,7 +110,7 @@ class Update extends StatelessWidget {
                     },
                   ),
                 ),
-                Divider(
+                /*Divider(
                   color: Colors.blue,
                 ),
                 Padding(
@@ -126,7 +126,7 @@ class Update extends StatelessWidget {
                           ));
                     },
                   ),
-                ),
+                ),*/
                 Divider(
                   color: Colors.blue,
                 ),
