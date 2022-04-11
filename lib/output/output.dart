@@ -187,7 +187,7 @@ class Output extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
-          'あなたの日干は',
+          'あなたの天運の年は',
           style: TextStyle(
             color: Colors.pinkAccent,
             fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'package:chan_no_sanchusuimei_v3/osirase/update1.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update2a.dart';
 import 'package:chan_no_sanchusuimei_v3/osirase/update3.dart';
+import 'package:chan_no_sanchusuimei_v3/osirase/update3a.dart';
 //import 'package:chan_no_sanchusuimei_v3/output/kyou_unsei2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,23 @@ class Update extends StatelessWidget {
           Expanded(
             child: ListView(
               children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    title: Text('第3.1版　コンセプト変更によるデザインの変更。（2022/4/18 更新)'),
+                    trailing: Icon(Icons.navigate_next),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Update3a(),
+                          ));
+                    },
+                  ),
+                ),
+                Divider(
+                  color: Colors.blue,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
