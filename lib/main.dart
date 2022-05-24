@@ -326,7 +326,7 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
-          '易占クイズ',
+          '易占大学',
           style: TextStyle(
             color: Colors.pinkAccent,
             fontWeight: FontWeight.bold,
@@ -381,7 +381,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 (snapshot.data.docs.length).toString();
                             //print(lastQuizNoMoji);
                             //int bestquizNo = int.parse(bestQuizNoMoji) - 1;
-                            if (!snapshot.hasData) return Text('易占クイズ');
+                            if (!snapshot.hasData) return Text('易占大学');
                             return TextButton(
                               style: ButtonStyle(
                                 foregroundColor:
